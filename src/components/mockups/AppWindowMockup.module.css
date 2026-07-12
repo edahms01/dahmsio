@@ -1,3 +1,24 @@
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
 .wrap {
   position: relative;
   animation: heroUp 0.9s var(--ease-out) 0.3s both;
