@@ -1,0 +1,14 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.accent {
+  color: var(--accent);
+}

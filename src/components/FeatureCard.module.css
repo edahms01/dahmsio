@@ -1,0 +1,91 @@
+.card {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card:hover {
+  border-color: var(--hover-border);
+  transform: translateY(-6px);
+}
+
+.iconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.iconGlyph {
+  width: 20px;
+  height: 20px;
+}
+
+.iconGlyph.square {
+  border-radius: 5px;
+}
+
+.iconGlyph.circle {
+  border-radius: 50%;
+}
+
+.iconGlyph.triangle {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary2);
+  margin: 0 0 20px;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--text-secondary2);
+}
+
+.bullets li {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.mark {
+  flex-shrink: 0;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 24px;
+  font-weight: 600;
+  font-size: 14.5px;
+  transition: gap 0.2s ease;
+}
+
+.link:hover {
+  gap: 12px;
+}

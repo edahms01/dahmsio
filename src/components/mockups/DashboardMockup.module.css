@@ -1,0 +1,82 @@
+.body {
+  padding: 22px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.label {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--text-muted2);
+  letter-spacing: 0.08em;
+}
+
+.value {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  margin-top: 4px;
+}
+
+.delta {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--success);
+  background: rgba(34, 211, 165, 0.12);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 120px;
+  padding-top: 8px;
+}
+
+.bar {
+  flex: 1;
+  border-radius: 6px 6px 0 0;
+  transform-origin: bottom;
+  animation: barGrow 0.8s ease-out both;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.stat {
+  flex: 1;
+  padding: 12px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.statLabel {
+  font-family: var(--fm);
+  font-size: 10.5px;
+  color: var(--text-muted2);
+}
+
+.statValue {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+  }
+}

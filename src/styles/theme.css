@@ -1,0 +1,46 @@
+:root {
+  --bg: #050e13;
+  --text: #e9e9f0;
+  --text-secondary: #a9a9ba;
+  --text-secondary2: #c2c2d0;
+  --text-secondary2b: #c7c7d4;
+  --text-muted: #8a8a9a;
+  --text-muted2: #7a7a8a;
+  --text-muted3: #6f6f80;
+
+  --accent: #159bc8;
+  --accent2: #2bb8d8;
+  --accent3: #4fd8ff;
+  --success: #22d3a5;
+
+  --code-keyword: #c586c0;
+  --code-string: #ce9178;
+  --code-type: #569cd6;
+  --code-function: #dcdcaa;
+  --code-line-number: #5a5a70;
+
+  --dot-red: #ff5f57;
+  --dot-amber: #febc2e;
+  --dot-green: #28c840;
+
+  --surface-fill-hi: rgba(255, 255, 255, 0.09);
+  --surface-fill-lo: rgba(255, 255, 255, 0.02);
+  --surface-border-hi: rgba(255, 255, 255, 0.14);
+  --surface-border-lo: rgba(255, 255, 255, 0.07);
+
+  --fd: "Space Grotesk", sans-serif;
+  --fb: "Instrument Sans", sans-serif;
+  --fm: "JetBrains Mono", monospace;
+
+  --max-wide: 1200px;
+  --max-cta: 1100px;
+  --max-mission: 1000px;
+  --side-padding: 40px;
+
+  --radius-card: 20px;
+  --radius-step: 18px;
+  --radius-button: 12px;
+  --radius-pill: 100px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

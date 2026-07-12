@@ -1,0 +1,30 @@
+.footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 48px var(--side-padding);
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tagline {
+  font-size: 14px;
+  color: var(--text-muted3);
+  font-style: italic;
+}
+
+.links {
+  display: flex;
+  gap: 22px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.link:hover {
+  color: #fff;
+}

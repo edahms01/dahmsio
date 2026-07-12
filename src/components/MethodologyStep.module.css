@@ -1,0 +1,35 @@
+.step {
+  padding: 28px 30px;
+  border-radius: var(--radius-step);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.number {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--accent);
+}
+
+.title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.description {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-secondary2);
+  margin: 0;
+}

@@ -1,0 +1,35 @@
+.step {
+  padding: 26px;
+  border-radius: var(--radius-step);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.step.highlighted {
+  background: linear-gradient(180deg, rgba(21, 155, 200, 0.14), rgba(79, 216, 255, 0.1));
+  border: 1px solid rgba(43, 184, 216, 0.35);
+}
+
+.label {
+  font-family: var(--fm);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary2);
+  margin: 0;
+}
+
+.step.highlighted .description {
+  color: #d2d2dc;
+}
