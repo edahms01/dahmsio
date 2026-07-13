@@ -99,17 +99,28 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       raf = requestAnimationFrame(draw);
     };
 
+    // Touch devices fire a synthetic mousemove at the tap point after touchend, with no
+    // continuous tracking and no mouseleave to reset it — the dots would jump toward
+    // whatever was last tapped and freeze there. Only wire up pointer-repel on devices
+    // that actually have a mouse (fine pointer + hover); touch devices just get the
+    // ambient drift.
+    const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
     resize();
     draw();
     window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", onMove);
-    canvas.addEventListener("mouseleave", onLeave);
+    if (hasFinePointer) {
+      window.addEventListener("mousemove", onMove);
+      canvas.addEventListener("mouseleave", onLeave);
+    }
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", onMove);
-      canvas.removeEventListener("mouseleave", onLeave);
+      if (hasFinePointer) {
+        window.removeEventListener("mousemove", onMove);
+        canvas.removeEventListener("mouseleave", onLeave);
+      }
     };
   }, [maxNodes, linkDist, reduced]);
 
