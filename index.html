@@ -9,6 +9,22 @@
   </head>
   <body>
     <div id="root"></div>
+    <!--
+      Static shim so Netlify's build-time crawler can detect this form and its fields.
+      The real form is rendered by React on the /contact route; this one is never shown.
+      https://docs.netlify.com/manage/forms/setup/#javascript-rendered-forms
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="companyName" />
+      <input type="text" name="website" />
+      <input type="text" name="location" />
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

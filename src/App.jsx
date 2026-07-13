@@ -3,6 +3,7 @@ import Home from "./pages/Home.jsx";
 import Data from "./pages/Data.jsx";
 import Technology from "./pages/Technology.jsx";
 import Consulting from "./pages/Consulting.jsx";
+import Contact from "./pages/Contact.jsx";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Route path="/data" element={<Data />} />
       <Route path="/technology" element={<Technology />} />
       <Route path="/consulting" element={<Consulting />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }

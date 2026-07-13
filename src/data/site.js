@@ -3,13 +3,14 @@ export const NAV_LINKS = [
   { label: "Data", to: "/data" },
   { label: "Technology", to: "/technology" },
   { label: "Consulting", to: "/consulting" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export const FOOTER_LINKS = [
   { label: "Data", to: "/data" },
   { label: "Technology", to: "/technology" },
   { label: "Consulting", to: "/consulting" },
-  { label: "Contact", to: "/#contact" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export const CONTACT_EMAIL = "hello@dahms.io";

@@ -7,7 +7,7 @@ import SecondaryButton from "../components/SecondaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import CapabilityCard from "../components/CapabilityCard.jsx";
 import PipelineStep from "../components/PipelineStep.jsx";
-import { CONTACT_MAILTO, INTERIOR_GLOW_BLOBS } from "../data/site.js";
+import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import styles from "./InteriorPageTemplate.module.css";
 
 export default function InteriorPageTemplate({
@@ -41,7 +41,7 @@ export default function InteriorPageTemplate({
           </h1>
           <p className={`${styles.subcopy} ${styles.anim} ${styles.animDelay2}`}>{heroSubcopy}</p>
           <div className={`${styles.ctaRow} ${styles.anim} ${styles.animDelay3}`}>
-            <PrimaryButton href="#contact" arrow>
+            <PrimaryButton to="/contact" arrow>
               {primaryCtaLabel}
             </PrimaryButton>
             <SecondaryButton href="#capabilities">See capabilities</SecondaryButton>
@@ -87,12 +87,12 @@ export default function InteriorPageTemplate({
         </div>
       </section>
 
-      <section id="contact" className={styles.cta}>
+      <section className={styles.cta}>
         <NetworkCanvas maxNodes={34} linkDist={110} opacity={0.5} className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{ctaHeading}</h2>
           <p className={styles.ctaText}>{ctaText}</p>
-          <PrimaryButton href={CONTACT_MAILTO} size="lg" arrow>
+          <PrimaryButton to="/contact" size="lg" arrow>
             {ctaButtonLabel}
           </PrimaryButton>
         </Reveal>

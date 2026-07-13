@@ -18,9 +18,17 @@ export default function PrimaryButton({ to, href, arrow = false, size, children,
     );
   }
 
+  if (href) {
+    return (
+      <a href={href} className={className} {...rest}>
+        {content}
+      </a>
+    );
+  }
+
   return (
-    <a href={href} className={className} {...rest}>
+    <button type="button" className={className} {...rest}>
       {content}
-    </a>
+    </button>
   );
 }

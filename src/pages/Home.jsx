@@ -7,7 +7,6 @@ import Marquee from "../components/Marquee.jsx";
 import Reveal from "../components/Reveal.jsx";
 import FeatureCard from "../components/FeatureCard.jsx";
 import MethodologyStep from "../components/MethodologyStep.jsx";
-import { CONTACT_MAILTO } from "../data/site.js";
 import { HERO_STATS, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
 import styles from "./Home.module.css";
 
@@ -25,7 +24,7 @@ export default function Home() {
           and set ambitious businesses apart from their competitors.
         </p>
         <div className={`${styles.ctaRow} ${styles.heroUp} ${styles.heroUpDelay3}`}>
-          <PrimaryButton href="#contact" arrow>
+          <PrimaryButton to="/contact" arrow>
             Start your journey
           </PrimaryButton>
           <SecondaryButton href="#services">Explore services</SecondaryButton>
@@ -97,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className={styles.cta}>
+      <section className={styles.cta}>
         <NetworkCanvas maxNodes={34} linkDist={110} opacity={0.5} className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>Start your journey.</h2>
@@ -105,7 +104,7 @@ export default function Home() {
             Tell us the business challenge you're facing and one of our consultants will be in touch — no
             jargon, no obligation.
           </p>
-          <PrimaryButton href={CONTACT_MAILTO} size="lg" arrow>
+          <PrimaryButton to="/contact" size="lg" arrow>
             Send a message
           </PrimaryButton>
         </Reveal>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Brand from "./Brand.jsx";
 import { NAV_LINKS } from "../data/site.js";
 import styles from "./Nav.module.css";
@@ -41,9 +41,9 @@ export default function Nav() {
         ))}
       </div>
       <div className={styles.rightGroup}>
-        <a href="#contact" className={styles.cta}>
+        <Link to="/contact" className={styles.cta}>
           Start your journey
-        </a>
+        </Link>
         <button
           type="button"
           className={styles.menuToggle}
@@ -66,9 +66,9 @@ export default function Nav() {
               {link.label}
             </NavLink>
           ))}
-          <a href="#contact" className={styles.mobileCta}>
+          <Link to="/contact" className={styles.mobileCta}>
             Start your journey
-          </a>
+          </Link>
         </div>
       )}
     </nav>
