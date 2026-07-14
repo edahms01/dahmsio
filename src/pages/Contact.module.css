@@ -121,6 +121,10 @@
   gap: 22px;
 }
 
+.form > button {
+  align-self: flex-start;
+}
+
 .row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
