@@ -7,10 +7,13 @@ import Marquee from "../components/Marquee.jsx";
 import Reveal from "../components/Reveal.jsx";
 import FeatureCard from "../components/FeatureCard.jsx";
 import MethodologyStep from "../components/MethodologyStep.jsx";
-import { HERO_STATS, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
+import usePageMeta from "../hooks/usePageMeta.js";
+import { META, HERO_STATS, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
+  usePageMeta(META.title, META.description);
+
   return (
     <Layout blobs={HOME_GLOW_BLOBS}>
       <header className={styles.hero}>

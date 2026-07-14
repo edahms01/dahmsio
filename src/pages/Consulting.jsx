@@ -1,7 +1,9 @@
 import InteriorPageTemplate from "./InteriorPageTemplate.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import KanbanMockup from "../components/mockups/KanbanMockup.jsx";
+import usePageMeta from "../hooks/usePageMeta.js";
 import {
+  META,
   HERO,
   MOCKUP,
   CAPABILITIES_HEADING,
@@ -14,6 +16,8 @@ import {
 } from "../data/consulting.js";
 
 export default function Consulting() {
+  usePageMeta(META.title, META.description);
+
   return (
     <InteriorPageTemplate
       {...HERO}

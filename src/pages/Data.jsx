@@ -1,7 +1,9 @@
 import InteriorPageTemplate from "./InteriorPageTemplate.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import DashboardMockup from "../components/mockups/DashboardMockup.jsx";
+import usePageMeta from "../hooks/usePageMeta.js";
 import {
+  META,
   HERO,
   MOCKUP,
   CAPABILITIES_HEADING,
@@ -14,6 +16,8 @@ import {
 } from "../data/data.js";
 
 export default function Data() {
+  usePageMeta(META.title, META.description);
+
   return (
     <InteriorPageTemplate
       {...HERO}

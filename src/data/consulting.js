@@ -1,6 +1,12 @@
 import { ACCENT, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
 
+export const META = {
+  title: "Data & Tech Consulting — DahmsIO",
+  description:
+    "Data & technology strategy, product consulting, and embedded analyst and engineer resourcing from DahmsIO.",
+};
+
 export const HERO = {
   eyebrow: "Data & Tech Consulting",
   heroPrefix: "Strategy and talent that become part of your",
