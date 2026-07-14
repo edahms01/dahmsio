@@ -152,7 +152,9 @@ export default function Contact() {
           </Reveal>
         ) : (
           <Reveal className={styles.formCard}>
-            <p className={styles.formIntro}>{FORM_INTRO}</p>
+            <p className={styles.formIntro}>
+              {FORM_INTRO} <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a>.
+            </p>
 
             <form
               name="contact"

@@ -115,6 +115,16 @@
   margin: 0 0 32px;
 }
 
+.formIntro a {
+  color: var(--accent);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.formIntro a:hover {
+  color: var(--accent3);
+}
+
 .form {
   display: flex;
   flex-direction: column;

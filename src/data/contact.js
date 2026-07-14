@@ -29,7 +29,7 @@ export const MOCKUP = {
 };
 
 export const FORM_INTRO =
-  "Send us a message below. Describe your business challenge, goal, or idea, and a consultant will be in touch. Thanks!";
+  "Send us a message below. Describe your business challenge, goal, or idea, and a consultant will be in touch. Or if you'd prefer to send an email, drop us a note at";
 
 export const FIELDS = {
   companyName: { name: "companyName", label: "Company Name", required: true, type: "text" },
