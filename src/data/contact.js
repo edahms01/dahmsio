@@ -4,7 +4,7 @@ export const META = {
 };
 
 export const HERO = {
-  eyebrow: "Where expert guides lead journeys.",
+  eyebrow: "Get In Touch",
   heroPrefix: "Start your journey",
   heroAccent: "with us",
   heroSubcopy: "Get on the path of transformation. A new world of data & technology awaits!",
