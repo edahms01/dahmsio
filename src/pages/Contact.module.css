@@ -44,23 +44,6 @@
   animation-delay: 0.24s;
 }
 
-.backLink {
-  display: flex;
-  width: fit-content;
-  align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-.backLink:hover {
-  color: #fff;
-}
-
-.badge {
-  margin-bottom: 22px;
-}
 
 .h1 {
   font-family: var(--fd);

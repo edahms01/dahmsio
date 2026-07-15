@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
-import HeroBadgePill from "../components/HeroBadgePill.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
@@ -32,10 +30,7 @@ export default function InteriorPageTemplate({
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
         <div>
-          <Link to="/" className={`${styles.backLink} ${styles.anim}`}>
-            ← Back to home
-          </Link>
-          <HeroBadgePill className={`${styles.badge} ${styles.anim}`}>{eyebrow}</HeroBadgePill>
+          <div className={`eyebrow ${styles.anim}`}>{eyebrow}</div>
           <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
             {heroPrefix} <span className={styles.gradientSpan}>{heroAccent}</span>.
           </h1>
