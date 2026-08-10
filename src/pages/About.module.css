@@ -1,20 +1,28 @@
-.sections {
+/* Hero: single column — no headshot slot here anymore, it's paired with the Founder's Note
+   instead, per the content brief. */
+.hero {
+  position: relative;
+  z-index: 10;
+  padding: 150px var(--side-padding) 70px;
+  max-width: var(--max-wide);
+  margin: 0 auto;
+}
+
+.heroInner {
+  max-width: 62ch;
+}
+
+/* Shared shell for the Background and How We Work sections. */
+.section {
   position: relative;
   z-index: 10;
   max-width: var(--max-wide);
   margin: 0 auto;
-  padding: 100px var(--side-padding);
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
+  padding: 70px var(--side-padding);
 }
 
-.section {
+.sectionIntro {
   max-width: 68ch;
-}
-
-.sectionHeading {
-  font-size: clamp(26px, 3.2vw, 38px);
 }
 
 .sectionText {
@@ -25,7 +33,112 @@
 }
 
 .sectionText + .sectionText {
-  margin-top: 14px;
+  margin-top: 16px;
+}
+
+/* Credibility strip — marketing copy, not a resume: bold lead-in + body only, no card
+   chrome, no stat-block styling (deliberately distinct from MessageMockup's stat cards). */
+.subheading {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 56px 0 28px;
+}
+
+.credibilityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 40px;
+}
+
+.leadItem {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.leadItemLead {
+  display: block;
+  font-family: var(--fd);
+  font-weight: 600;
+  color: #f3f3f8;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+/* Four engagement models — light card treatment, visually distinct from the credibility
+   strip above and the operating-principles trust block below. */
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.engagementItem {
+  padding: 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Operating principles — deliberately lighter and smaller than the engagement cards above:
+   no card background/border, smaller type, muted color. */
+.operatingPrinciples {
+  margin-top: 40px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+
+.operatingPrinciple {
+  font-size: 13px;
+  color: var(--text-muted2);
+  line-height: 1.5;
+}
+
+.operatingPrincipleLead {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Founder's Note — the one deliberate first-person exception, paired with the headshot.
+   Visually set apart with a top border and its own grid rather than folded into .section. */
+.foundersNote {
+  position: relative;
+  z-index: 10;
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 80px var(--side-padding);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.foundersNoteGrid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.foundersNoteText {
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+}
+
+.signature {
+  font-family: var(--fd);
+  font-weight: 600;
+  margin: 28px 0 10px;
+  font-size: 17px;
+}
+
+.credentialsLine {
+  font-size: 13px;
+  color: var(--text-muted2);
+  line-height: 1.6;
 }
 
 .headshotPlaceholder {
@@ -35,9 +148,17 @@
   justify-content: center;
   gap: 10px;
   height: 100%;
-  min-height: 220px;
+  min-height: 260px;
   padding: 32px;
   text-align: center;
   color: var(--text-secondary);
   font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .credibilityGrid,
+  .engagementGrid,
+  .foundersNoteGrid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -14,12 +14,18 @@ export const ORGANIZATION = {
   email: CONTACT_EMAIL,
 };
 
-// TODO(Eric): extend with alumniOf / knowsAbout / credentials once the /about placeholder
-// copy (src/data/about.js) is filled in with your real bio.
 export const FOUNDER = {
   name: "Eric Dahms",
   jobTitle: "Founder",
   url: `${SITE_URL}/about/`,
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "University of Essex" },
+    { "@type": "CollegeOrUniversity", name: "Bentley University" },
+    { "@type": "HighSchool", name: "Westbrook High School" },
+  ],
+  // TODO(Eric): hasCredential (EducationalOccupationalCredential) could carry "Certified
+  // Product Manager" / "Certified Google Cloud Leader" too, if worth the extra structured
+  // data — not requested yet, just noting the option.
 };
 
 export const SERVICE_TYPES = [

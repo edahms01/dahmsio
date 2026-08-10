@@ -6,11 +6,13 @@ import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
-import { META, HERO, HEADSHOT, SECTIONS, CTA } from "../data/about.js";
+import { META, HERO, BACKGROUND, CREDIBILITY, HOW_WE_WORK, HEADSHOT, FOUNDERS_NOTE, CTA } from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
-// Reusing the interior page template's own hero/CTA classes directly — same file, same
-// classnames — so this page matches Data/Technology/Consulting exactly rather than
-// approximating their look with a parallel copy of the CSS.
+// Reusing the interior page template's own hero/CTA text classes directly — same file, same
+// classnames — so typography matches Data/Technology/Consulting exactly. The hero and
+// Founder's Note containers are custom to this page (see About.module.css): the hero has no
+// side-by-side mockup slot (headshot moved to the Founder's Note instead), and the Founder's
+// Note needs its own paired-with-headshot grid.
 import interiorStyles from "./InteriorPageTemplate.module.css";
 import styles from "./About.module.css";
 
@@ -20,9 +22,9 @@ export default function About() {
       <PageMeta {...META} />
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
 
-      <header className={interiorStyles.hero}>
+      <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={interiorStyles.heroCanvas} />
-        <div>
+        <div className={styles.heroInner}>
           <div className={`eyebrow ${interiorStyles.anim}`}>{HERO.eyebrow}</div>
           <h1 className={`${interiorStyles.h1} ${interiorStyles.anim} ${interiorStyles.animDelay1}`}>
             {HERO.heroPrefix} <span className={interiorStyles.gradientSpan}>{HERO.heroAccent}</span>.
@@ -36,26 +38,81 @@ export default function About() {
             </PrimaryButton>
           </div>
         </div>
-        <AppWindowMockup filename={HEADSHOT.filename}>
-          <div className={styles.headshotPlaceholder}>
-            {/* TODO(Eric): swap for <img src="/headshot.jpg" alt="Eric Dahms, founder of DahmsIO" /> once a real headshot exists. */}
-            <span>Headshot coming soon</span>
-          </div>
-        </AppWindowMockup>
       </header>
 
-      <section className={styles.sections}>
-        {SECTIONS.map((section) => (
-          <Reveal key={section.eyebrow} className={styles.section}>
-            <div className="eyebrow">{section.eyebrow}</div>
-            <h2 className={`sectionHeading ${styles.sectionHeading}`}>{section.heading}</h2>
-            {section.paragraphs.map((paragraph, i) => (
-              <p key={i} className={styles.sectionText}>
+      {/* Section 1 — Background */}
+      <section className={styles.section}>
+        <Reveal className={styles.sectionIntro}>
+          <h2 className="sectionHeading">{BACKGROUND.heading}</h2>
+          {BACKGROUND.paragraphs.map((paragraph, i) => (
+            <p key={i} className={styles.sectionText}>
+              {paragraph}
+            </p>
+          ))}
+        </Reveal>
+
+        <Reveal>
+          <h3 className={styles.subheading}>{CREDIBILITY.heading}</h3>
+          <div className={styles.credibilityGrid}>
+            {CREDIBILITY.items.map((item) => (
+              <div key={item.lead} className={styles.leadItem}>
+                <span className={styles.leadItemLead}>{item.lead}</span>
+                {item.body}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Section 2 — How We Work */}
+      <section className={styles.section}>
+        <Reveal className={styles.sectionIntro}>
+          <h2 className="sectionHeading">{HOW_WE_WORK.heading}</h2>
+          <p className={styles.sectionText}>{HOW_WE_WORK.paragraph}</p>
+        </Reveal>
+
+        <Reveal>
+          <h3 className={styles.subheading}>{HOW_WE_WORK.engagementHeading}</h3>
+          <div className={styles.engagementGrid}>
+            {HOW_WE_WORK.engagementModels.map((model) => (
+              <div key={model.lead} className={styles.engagementItem}>
+                <span className={styles.leadItemLead}>{model.lead}</span>
+                {model.body}
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.operatingPrinciples}>
+            {HOW_WE_WORK.operatingPrinciples.map((principle) => (
+              <div key={principle.lead} className={styles.operatingPrinciple}>
+                <span className={styles.operatingPrincipleLead}>{principle.lead}</span> {principle.body}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Section 3 — Founder's Note: the one deliberate first-person exception, paired with
+          the headshot. */}
+      <section className={styles.foundersNote}>
+        <Reveal className={styles.foundersNoteGrid}>
+          <AppWindowMockup filename={HEADSHOT.filename}>
+            <div className={styles.headshotPlaceholder}>
+              {/* TODO(Eric): swap for <img src="/headshot.jpg" alt="Eric Dahms, founder of DahmsIO" /> once a real headshot exists. */}
+              <span>Headshot coming soon</span>
+            </div>
+          </AppWindowMockup>
+          <div>
+            <h2 className="sectionHeading">{FOUNDERS_NOTE.heading}</h2>
+            {FOUNDERS_NOTE.paragraphs.map((paragraph, i) => (
+              <p key={i} className={styles.foundersNoteText}>
                 {paragraph}
               </p>
             ))}
-          </Reveal>
-        ))}
+            <p className={styles.signature}>{FOUNDERS_NOTE.signature}</p>
+            <p className={styles.credentialsLine}>{FOUNDERS_NOTE.credentialsLine}</p>
+          </div>
+        </Reveal>
       </section>
 
       <section className={interiorStyles.cta}>
