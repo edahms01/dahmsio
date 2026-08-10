@@ -5,6 +5,7 @@ import NetworkCanvas from "../components/NetworkCanvas.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
+import CapabilityCard from "../components/CapabilityCard.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import { META, HERO, BACKGROUND, CREDIBILITY, HOW_WE_WORK, HEADSHOT, FOUNDERS_NOTE, CTA } from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
@@ -73,12 +74,11 @@ export default function About() {
 
         <Reveal>
           <h3 className={styles.subheading}>{HOW_WE_WORK.engagementHeading}</h3>
-          <div className={styles.engagementGrid}>
+          {/* Same CapabilityCard + grid used for Data/Technology/Consulting's capabilities
+              sections — matches the rest of the site instead of a bespoke card style. */}
+          <div className={interiorStyles.capabilitiesGrid}>
             {HOW_WE_WORK.engagementModels.map((model) => (
-              <div key={model.lead} className={styles.engagementItem}>
-                <span className={styles.leadItemLead}>{model.lead}</span>
-                {model.body}
-              </div>
+              <CapabilityCard key={model.title} {...model} />
             ))}
           </div>
 

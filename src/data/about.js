@@ -1,4 +1,6 @@
 import { ROUTE_PATHS } from "../routes.js";
+import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
+import { hexToRgba } from "../utils/color.js";
 
 // Real copy — about-page-copy-v23.md. Company voice ("we"/"our") throughout except
 // FOUNDERS_NOTE, the one deliberate first-person exception (paired with the headshot). No em
@@ -64,22 +66,37 @@ export const HOW_WE_WORK = {
   paragraph:
     "Very few people are genuine experts in tech infrastructure, data science, software engineering, and product development all at once. DahmsIO works through a vetted network of technical specialists, brought into a project based on need. You get the right expert for the problem in front of you, and one point of contact from the first conversation to the final handover. You won't be passed around, and you won't have to explain your business twice.",
   engagementHeading: "Four ways to work together",
+  // Same shape as CapabilityCard's props (title/description/markColor/hoverBorder) — reusing
+  // that component directly so these look like the capability cards on Data/Technology/
+  // Consulting, not a bespoke treatment unique to this page.
   engagementModels: [
     {
-      lead: "Ongoing partner.",
-      body: "We act as your data and technology department on retainer: a set number of hours each month, spent on maintenance, improvements, or new work as your priorities move.",
+      title: "Ongoing partner",
+      description:
+        "We act as your data and technology department on retainer: a set number of hours each month, spent on maintenance, improvements, or new work as your priorities move.",
+      markColor: ACCENT,
+      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
-      lead: "Build & maintain.",
-      body: "We design and build the system, then keep it running, patched, and improving under an ongoing arrangement.",
+      title: "Build & maintain",
+      description:
+        "We design and build the system, then keep it running, patched, and improving under an ongoing arrangement.",
+      markColor: ACCENT3,
+      hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
-      lead: "Build & deploy.",
-      body: "We design, build, and hand over a finished solution. You own it outright from day one, and you handle maintenance going forward.",
+      title: "Build & deploy",
+      description:
+        "We design, build, and hand over a finished solution. You own it outright from day one, and you handle maintenance going forward.",
+      markColor: ACCENT2,
+      hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
-      lead: "Advisory & strategy.",
-      body: "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and hand you a clear, costed roadmap to run yourself, hand to your own team, or bring back to us.",
+      title: "Advisory & strategy",
+      description:
+        "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and hand you a clear, costed roadmap to run yourself, hand to your own team, or bring back to us.",
+      markColor: ACCENT,
+      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
   ],
   operatingHeading: "How we operate",

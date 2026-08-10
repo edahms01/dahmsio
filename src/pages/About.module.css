@@ -66,23 +66,8 @@
   font-size: 16px;
 }
 
-/* Four engagement models — light card treatment, visually distinct from the credibility
-   strip above and the operating-principles list below. Equal height regardless of copy
-   length is CSS Grid's default (`align-items: stretch`) — spelled out explicitly here so it
-   doesn't get silently overridden later. */
-.engagementGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: stretch;
-  gap: 22px;
-}
-
-.engagementItem {
-  padding: 22px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
+/* Four engagement models reuse CapabilityCard + interiorStyles.capabilitiesGrid directly
+   (see About.jsx) — no bespoke grid/card CSS needed here anymore. */
 
 /* Operating principles — a plain, full-width bulleted list, deliberately quieter than the
    engagement cards above: no card background/border, smaller type, muted color, so the eye
@@ -178,7 +163,6 @@
 
 @media (max-width: 900px) {
   .credibilityGrid,
-  .engagementGrid,
   .foundersNoteGrid {
     grid-template-columns: 1fr;
   }
