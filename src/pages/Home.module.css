@@ -81,34 +81,6 @@
   margin-top: 38px;
 }
 
-.statsRow {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 38px;
-  margin-top: 60px;
-  overflow-x: auto;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-family: var(--fd);
-  font-weight: 600;
-  font-size: 19px;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-
-.statDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
-  flex-shrink: 0;
-}
-
 .scrollIndicator {
   position: absolute;
   bottom: 30px;
@@ -256,9 +228,6 @@
     position: static;
   }
 
-  .statsRow {
-    gap: 24px;
-  }
 }
 
 @media (max-width: 700px), (max-height: 700px) {

@@ -8,7 +8,7 @@ import Reveal from "../components/Reveal.jsx";
 import FeatureCard from "../components/FeatureCard.jsx";
 import MethodologyStep from "../components/MethodologyStep.jsx";
 import usePageMeta from "../hooks/usePageMeta.js";
-import { META, HERO_STATS, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
+import { META, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -31,14 +31,6 @@ export default function Home() {
             Start your journey
           </PrimaryButton>
           <SecondaryButton href="#services">Explore services</SecondaryButton>
-        </div>
-        <div className={`${styles.statsRow} ${styles.heroUp} ${styles.heroUpDelay4}`}>
-          {HERO_STATS.map((stat) => (
-            <div key={stat} className={styles.stat}>
-              <span className={styles.statDot} />
-              {stat}
-            </div>
-          ))}
         </div>
         <div className={styles.scrollIndicator}>
           <span>Scroll</span>

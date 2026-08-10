@@ -7,8 +7,6 @@ export const META = {
     "DahmsIO is a data, technology and consulting firm that turns complex data and technology into clear, practical systems.",
 };
 
-export const HERO_STATS = ["AI-Powered", "Built to Scale", "Future-Proof", "Differentiate"];
-
 export const MARQUEE_ITEMS = [
   "Data Automation",
   "Business Analytics",
