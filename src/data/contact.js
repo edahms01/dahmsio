@@ -26,7 +26,7 @@ export const MOCKUP = {
   ],
   stats: [
     { label: "RESPONSE TIME", value: "< 24 hrs" },
-    { label: "PROJECTS SCOPED", value: "150+" },
+    { label: "OUR ROLE", value: "Your Tech Partner" },
     { label: "NO OBLIGATION", value: "100%" },
   ],
 };
