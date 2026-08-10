@@ -14,10 +14,12 @@ export const ORGANIZATION = {
   email: CONTACT_EMAIL,
 };
 
-// Extended with real bio details (url, credentials, etc.) once /about ships — see T4.
+// TODO(Eric): extend with alumniOf / knowsAbout / credentials once the /about placeholder
+// copy (src/data/about.js) is filled in with your real bio.
 export const FOUNDER = {
   name: "Eric Dahms",
   jobTitle: "Founder",
+  url: `${SITE_URL}/about/`,
 };
 
 export const SERVICE_TYPES = [

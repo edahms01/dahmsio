@@ -5,6 +5,7 @@ export const NAV_LINKS = [
   { label: "Data", to: ROUTE_PATHS.data },
   { label: "Technology", to: ROUTE_PATHS.technology },
   { label: "Consulting", to: ROUTE_PATHS.consulting },
+  { label: "About", to: ROUTE_PATHS.about },
   { label: "Contact", to: ROUTE_PATHS.contact },
 ];
 
@@ -12,6 +13,7 @@ export const FOOTER_LINKS = [
   { label: "Data", to: ROUTE_PATHS.data },
   { label: "Technology", to: ROUTE_PATHS.technology },
   { label: "Consulting", to: ROUTE_PATHS.consulting },
+  { label: "About", to: ROUTE_PATHS.about },
   { label: "Contact", to: ROUTE_PATHS.contact },
 ];
 
@@ -21,7 +23,7 @@ export const CONTACT_EMAIL = "hello@dahms.io";
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 export const TAGLINE = "Where innovation meets intelligence.";
 
-// Shared ambient background blobs for the 3 interior pages (Data/Technology/Consulting) — identical across all three.
+// Shared ambient background blobs for the interior pages (Data/Technology/Consulting/About) — identical across all four.
 export const INTERIOR_GLOW_BLOBS = [
   {
     top: "-14%",

@@ -11,5 +11,6 @@ export const ROUTE_PATHS = {
   data: "/data/",
   technology: "/technology/",
   consulting: "/consulting/",
+  about: "/about/",
   contact: "/contact/",
 };

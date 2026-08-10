@@ -2,6 +2,7 @@ import Home from "./pages/Home.jsx";
 import Data from "./pages/Data.jsx";
 import Technology from "./pages/Technology.jsx";
 import Consulting from "./pages/Consulting.jsx";
+import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { ROUTE_PATHS } from "./routes.js";
@@ -20,6 +21,7 @@ export const routes = [
   { path: ROUTE_PATHS.data, element: <Data /> },
   { path: ROUTE_PATHS.technology, element: <Technology /> },
   { path: ROUTE_PATHS.consulting, element: <Consulting /> },
+  { path: ROUTE_PATHS.about, element: <About /> },
   { path: ROUTE_PATHS.contact, element: <Contact /> },
   { path: "/404/", element: <NotFound /> },
   { path: "*", element: <NotFound /> },
