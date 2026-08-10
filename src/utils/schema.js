@@ -19,7 +19,18 @@ export function buildOrganizationSchema() {
     email: ORGANIZATION.email,
     areaServed: AREA_SERVED_STATES.map((name) => ({ "@type": "State", name })),
     founder: { "@type": "Person", ...FOUNDER },
-    serviceType: SERVICE_TYPES,
+    // `serviceType` is scoped to Service/FinancialService in the schema.org vocabulary, not
+    // Organization/LocalBusiness/ProfessionalService — using it directly here validates as a
+    // warning (unrecognized property) in validator.schema.org. hasOfferCatalog is the
+    // documented way to attach a service list to an Organization-type node instead.
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Services",
+      itemListElement: SERVICE_TYPES.map((name) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name },
+      })),
+    },
     ...(SAME_AS.length > 0 ? { sameAs: SAME_AS } : {}),
   };
 }
