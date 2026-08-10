@@ -82,13 +82,14 @@ export default function About() {
             ))}
           </div>
 
-          <div className={styles.operatingPrinciples}>
+          <h3 className={styles.subheading}>{HOW_WE_WORK.operatingHeading}</h3>
+          <ul className={styles.operatingPrinciples}>
             {HOW_WE_WORK.operatingPrinciples.map((principle) => (
-              <div key={principle.lead} className={styles.operatingPrinciple}>
+              <li key={principle.lead} className={styles.operatingPrinciple}>
                 <span className={styles.operatingPrincipleLead}>{principle.lead}</span> {principle.body}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </Reveal>
       </section>
 
@@ -110,7 +111,11 @@ export default function About() {
               </p>
             ))}
             <p className={styles.signature}>{FOUNDERS_NOTE.signature}</p>
-            <p className={styles.credentialsLine}>{FOUNDERS_NOTE.credentialsLine}</p>
+            <ul className={styles.credentials}>
+              {FOUNDERS_NOTE.credentials.map((credential) => (
+                <li key={credential}>{credential}</li>
+              ))}
+            </ul>
           </div>
         </Reveal>
       </section>

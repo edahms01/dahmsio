@@ -67,10 +67,13 @@
 }
 
 /* Four engagement models — light card treatment, visually distinct from the credibility
-   strip above and the operating-principles trust block below. */
+   strip above and the operating-principles list below. Equal height regardless of copy
+   length is CSS Grid's default (`align-items: stretch`) — spelled out explicitly here so it
+   doesn't get silently overridden later. */
 .engagementGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: stretch;
   gap: 22px;
 }
 
@@ -81,21 +84,26 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Operating principles — deliberately lighter and smaller than the engagement cards above:
-   no card background/border, smaller type, muted color. */
+/* Operating principles — a plain, full-width bulleted list, deliberately quieter than the
+   engagement cards above: no card background/border, smaller type, muted color, so the eye
+   lands on the engagement models first. global.css resets `ul { list-style: none }`
+   site-wide, so this needs its own explicit list-style to actually show bullets. */
 .operatingPrinciples {
-  margin-top: 40px;
-  padding-top: 26px;
+  list-style: disc;
+  margin: 0;
+  padding: 26px 0 0 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 32px;
 }
 
 .operatingPrinciple {
   font-size: 13px;
   color: var(--text-muted2);
   line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.operatingPrinciple:last-child {
+  margin-bottom: 0;
 }
 
 .operatingPrincipleLead {
@@ -135,10 +143,23 @@
   font-size: 17px;
 }
 
-.credentialsLine {
-  font-size: 13px;
+/* Compact bulleted list, small type, tight spacing, no card/box — same list-style override
+   as .operatingPrinciples, since global.css strips it by default. */
+.credentials {
+  list-style: disc;
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
   color: var(--text-muted2);
-  line-height: 1.6;
+  line-height: 1.5;
+}
+
+.credentials li {
+  margin-bottom: 3px;
+}
+
+.credentials li:last-child {
+  margin-bottom: 0;
 }
 
 .headshotPlaceholder {
