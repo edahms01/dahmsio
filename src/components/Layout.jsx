@@ -10,7 +10,7 @@ export default function Layout({ blobs, children }) {
       <JsonLd data={buildOrganizationSchema()} />
       <GlowField blobs={blobs} />
       <Nav />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );

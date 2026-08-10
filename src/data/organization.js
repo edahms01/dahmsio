@@ -3,14 +3,14 @@ import { SITE_URL, CONTACT_EMAIL } from "./site.js";
 // TODO(Eric): Google's Rich Results Test flags priceRange, address, and telephone as
 // missing (all optional, non-critical — schema currently validates clean without them).
 // Add once the address/GBP question is resolved (see post-deploy checklist: GBP requires a
-// verifiable address even when hidden) and a pricing-tier ladder exists (see T5's proposed
-// budget-field revision). Wire into buildOrganizationSchema() in src/utils/schema.js.
+// verifiable address even when hidden). Wire into buildOrganizationSchema() in
+// src/utils/schema.js.
 export const ORGANIZATION = {
   name: "DahmsIO",
   alternateName: ["Dahms IO", "dahms.io"],
   url: SITE_URL,
   logo: `${SITE_URL}/icon-512.png`,
-  image: `${SITE_URL}/og-image.png`,
+  image: `${SITE_URL}/og-image.jpg`,
   email: CONTACT_EMAIL,
 };
 

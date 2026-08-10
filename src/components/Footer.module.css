@@ -14,7 +14,9 @@
 
 .tagline {
   font-size: 14px;
-  color: var(--text-muted3);
+  /* text-muted3 fails WCAG contrast against --bg (3.95:1, needs 4.5:1) — text-muted2 passes
+     (4.62:1) and is the next step up in the existing muted-text scale. */
+  color: var(--text-muted2);
   font-style: italic;
 }
 
