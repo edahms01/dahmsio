@@ -17,7 +17,7 @@ export const HERO = {
 export const MOCKUP = {
   filename: "hello@dahms.io",
   thread: [
-    { from: "them", text: "Hi — we're looking to modernise our data stack before Q3. Where would you start?" },
+    { from: "them", text: "Hi — we're looking to modernize our data stack before Q3. Where would you start?" },
     {
       from: "us",
       text: "Great question. A consultant will follow up shortly to scope it properly.",
@@ -56,7 +56,7 @@ export const FIELDS = {
     label: "Estimated Budget",
     required: false,
     type: "select",
-    options: ["Not sure yet", "Under $10k", "$10k – $50k", "$50k – $150k", "$150k+"],
+    options: ["Not sure yet", "Under $5k", "$5k – $15k", "$15k – $35k", "$35k – $75k", "$75k+"],
   },
   firstName: { name: "firstName", label: "First Name", required: true, type: "text" },
   lastName: { name: "lastName", label: "Last Name", required: true, type: "text" },
