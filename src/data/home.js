@@ -1,8 +1,9 @@
 import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
+import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
-  path: "/",
+  path: ROUTE_PATHS.home,
   title: "DahmsIO — Where innovation meets intelligence",
   description:
     "DahmsIO is a data, technology and consulting firm that turns complex data and technology into clear, practical systems.",
@@ -33,7 +34,7 @@ export const SERVICES = [
       "Statistical analysis & forecasting",
       "Data science & machine learning",
     ],
-    href: "/data/",
+    href: ROUTE_PATHS.data,
     linkLabel: "View the Data page",
     icon: "square",
     markColor: ACCENT,
@@ -51,7 +52,7 @@ export const SERVICES = [
       "Cloud development & migration",
       "AI implementation",
     ],
-    href: "/technology/",
+    href: ROUTE_PATHS.technology,
     linkLabel: "View the Technology page",
     icon: "circle",
     markColor: ACCENT3,
@@ -69,7 +70,7 @@ export const SERVICES = [
       "Analyst & engineer resourcing",
       "UX & product design",
     ],
-    href: "/consulting/",
+    href: ROUTE_PATHS.consulting,
     linkLabel: "View the Consulting page",
     icon: "triangle",
     markColor: ACCENT2,

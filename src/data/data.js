@@ -1,8 +1,9 @@
 import { ACCENT, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
+import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
-  path: "/data/",
+  path: ROUTE_PATHS.data,
   title: "Data Intelligence — DahmsIO",
   description:
     "Multi-source data engineering, BI dashboards, statistical analysis and machine learning — DahmsIO turns scattered data into decisions you can trust.",

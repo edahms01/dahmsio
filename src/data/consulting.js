@@ -1,8 +1,9 @@
 import { ACCENT, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
+import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
-  path: "/consulting/",
+  path: ROUTE_PATHS.consulting,
   title: "Data & Tech Consulting — DahmsIO",
   description:
     "Data & technology strategy, product consulting, and embedded analyst and engineer resourcing from DahmsIO.",

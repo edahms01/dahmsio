@@ -1,8 +1,9 @@
 import { ACCENT, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
+import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
-  path: "/technology/",
+  path: ROUTE_PATHS.technology,
   title: "Tech Implementation — DahmsIO",
   description:
     "Full-stack development, system integration, cloud migration and AI implementation — DahmsIO builds what's next without breaking what already works.",

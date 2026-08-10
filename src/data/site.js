@@ -1,18 +1,18 @@
-// Trailing slash matches the URL Netlify actually serves for these pre-rendered routes
-// (dirStyle: 'nested' -> /foo/index.html) — linking straight to it avoids a 301 hop.
+import { ROUTE_PATHS } from "../routes.js";
+
 export const NAV_LINKS = [
-  { label: "Home", to: "/" },
-  { label: "Data", to: "/data/" },
-  { label: "Technology", to: "/technology/" },
-  { label: "Consulting", to: "/consulting/" },
-  { label: "Contact", to: "/contact/" },
+  { label: "Home", to: ROUTE_PATHS.home },
+  { label: "Data", to: ROUTE_PATHS.data },
+  { label: "Technology", to: ROUTE_PATHS.technology },
+  { label: "Consulting", to: ROUTE_PATHS.consulting },
+  { label: "Contact", to: ROUTE_PATHS.contact },
 ];
 
 export const FOOTER_LINKS = [
-  { label: "Data", to: "/data/" },
-  { label: "Technology", to: "/technology/" },
-  { label: "Consulting", to: "/consulting/" },
-  { label: "Contact", to: "/contact/" },
+  { label: "Data", to: ROUTE_PATHS.data },
+  { label: "Technology", to: ROUTE_PATHS.technology },
+  { label: "Consulting", to: ROUTE_PATHS.consulting },
+  { label: "Contact", to: ROUTE_PATHS.contact },
 ];
 
 export const SITE_URL = "https://dahms.io";
