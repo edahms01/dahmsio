@@ -2,6 +2,7 @@ import { ACCENT, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
 
 export const META = {
+  path: "/data",
   title: "Data Intelligence — DahmsIO",
   description:
     "Multi-source data engineering, BI dashboards, statistical analysis and machine learning — DahmsIO turns scattered data into decisions you can trust.",

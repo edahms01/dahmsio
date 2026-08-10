@@ -1,4 +1,5 @@
 import Layout from "../components/Layout.jsx";
+import PageMeta from "../components/PageMeta.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
 import HeroBadgePill from "../components/HeroBadgePill.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
@@ -7,15 +8,13 @@ import Marquee from "../components/Marquee.jsx";
 import Reveal from "../components/Reveal.jsx";
 import FeatureCard from "../components/FeatureCard.jsx";
 import MethodologyStep from "../components/MethodologyStep.jsx";
-import usePageMeta from "../hooks/usePageMeta.js";
 import { META, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  usePageMeta(META.title, META.description);
-
   return (
     <Layout blobs={HOME_GLOW_BLOBS}>
+      <PageMeta {...META} />
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
         <HeroBadgePill className={styles.heroUp}>Data · Technology · Consulting</HeroBadgePill>

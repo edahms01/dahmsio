@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Layout from "../components/Layout.jsx";
+import PageMeta from "../components/PageMeta.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import MessageMockup from "../components/mockups/MessageMockup.jsx";
-import usePageMeta from "../hooks/usePageMeta.js";
 import { INTERIOR_GLOW_BLOBS, CONTACT_EMAIL, CONTACT_MAILTO } from "../data/site.js";
 import { META, HERO, MOCKUP, FORM_INTRO, FIELDS, CONTACT_INFO_HEADING, SUBMIT_LABEL } from "../data/contact.js";
 import styles from "./Contact.module.css";
@@ -89,8 +89,6 @@ function Field({ def, value, onChange }) {
 }
 
 export default function Contact() {
-  usePageMeta(META.title, META.description);
-
   const [values, setValues] = useState(initialValues);
   const [botField, setBotField] = useState("");
   const [status, setStatus] = useState("idle");
@@ -118,6 +116,7 @@ export default function Contact() {
 
   return (
     <Layout blobs={INTERIOR_GLOW_BLOBS}>
+      <PageMeta {...META} />
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
         <div>

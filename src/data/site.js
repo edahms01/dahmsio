@@ -13,6 +13,8 @@ export const FOOTER_LINKS = [
   { label: "Contact", to: "/contact" },
 ];
 
+export const SITE_URL = "https://dahms.io";
+
 export const CONTACT_EMAIL = "hello@dahms.io";
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 export const TAGLINE = "Where innovation meets intelligence.";

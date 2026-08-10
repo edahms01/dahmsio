@@ -3,9 +3,10 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  # vite@8 / @vitejs/plugin-react@6 require Node ^20.19.0 || >=22.12.0.
+  NODE_VERSION = "22"
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404/index.html"
+  status = 404
