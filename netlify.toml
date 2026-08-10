@@ -6,6 +6,11 @@
   # vite@8 / @vitejs/plugin-react@6 require Node ^20.19.0 || >=22.12.0.
   NODE_VERSION = "22"
 
+# Pings IndexNow with the sitemap's URLs after every successful production deploy. See
+# netlify/plugins/indexnow/index.js — best-effort, never fails the build.
+[[plugins]]
+  package = "./netlify/plugins/indexnow"
+
 [[redirects]]
   from = "/*"
   to = "/404/index.html"
