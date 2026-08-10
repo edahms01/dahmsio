@@ -27,8 +27,13 @@ jargon.
 
 ## Voice
 
-First person singular. Eric Dahms is the founder and sole consultant — no plural corporate
-"we."
+Plural/company voice ("we," "our," "us") throughout — the site reads as DahmsIO the company,
+not a personal freelance pitch, even though Eric Dahms is the sole consultant behind it.
+The `/about` page is the deliberate exception in framing, not in pronoun: it can and should
+name Eric Dahms as founder (search engines and buyers both weight a real, credentialed human
+as a trust signal), but should read as company history — "Our Story," not a personal
+first-person bio. Don't reintroduce first-person-singular voice site-wide; that was a prior
+misreading of the original task brief, corrected in T5.
 
 ## Scope guardrails
 

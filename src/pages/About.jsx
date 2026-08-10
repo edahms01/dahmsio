@@ -38,7 +38,7 @@ export default function About() {
         </div>
         <AppWindowMockup filename={HEADSHOT.filename}>
           <div className={styles.headshotPlaceholder}>
-            {/* TODO(Eric): swap for <img src="/headshot.jpg" alt="Eric Dahms" /> once a real headshot exists. */}
+            {/* TODO(Eric): swap for <img src="/headshot.jpg" alt="Eric Dahms, founder of DahmsIO" /> once a real headshot exists. */}
             <span>Headshot coming soon</span>
           </div>
         </AppWindowMockup>
