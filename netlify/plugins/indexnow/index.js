@@ -2,6 +2,15 @@
 // search engines that support the protocol (Bing, Yandex, and others) get told about the
 // site's current URLs without waiting on their own recrawl schedule.
 //
+// NOT CURRENTLY REGISTERED in netlify.toml — see the "IndexNow" note in this project's
+// CLAUDE.md / memory. Every [[plugins]] declaration (this one, a trivial stub, package.json
+// added or not, "./..." vs "/..." path syntax) fails the build with a generic
+// "Build script returned non-zero exit code: 2" when deployed via the manual API/zip-upload
+// path this project currently uses — reproduced identically across all four variants, so
+// it's a platform/deploy-method restriction, not a bug in this file. Works fine in theory for
+// a genuinely git-triggered Netlify CI build; untested, since this site isn't auto-deploying
+// from git pushes currently.
+//
 // Best-effort by design: every failure path here logs and returns, never throws or calls
 // utils.build.failBuild — an IndexNow outage should never take the site down.
 const fs = require("node:fs");
