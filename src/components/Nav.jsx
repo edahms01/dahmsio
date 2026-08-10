@@ -41,7 +41,7 @@ export default function Nav() {
         ))}
       </div>
       <div className={styles.rightGroup}>
-        <Link to="/contact" className={styles.cta}>
+        <Link to="/contact/" className={styles.cta}>
           Start your journey
         </Link>
         <button
@@ -66,7 +66,7 @@ export default function Nav() {
               {link.label}
             </NavLink>
           ))}
-          <Link to="/contact" className={styles.mobileCta}>
+          <Link to="/contact/" className={styles.mobileCta}>
             Start your journey
           </Link>
         </div>

@@ -1,5 +1,5 @@
 export const META = {
-  path: "/contact",
+  path: "/contact/",
   title: "Contact — DahmsIO",
   description: "Tell us about your data or technology challenge — a DahmsIO consultant will be in touch.",
 };

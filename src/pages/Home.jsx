@@ -26,7 +26,7 @@ export default function Home() {
           and set ambitious businesses apart from their competitors.
         </p>
         <div className={`${styles.ctaRow} ${styles.heroUp} ${styles.heroUpDelay3}`}>
-          <PrimaryButton to="/contact" arrow>
+          <PrimaryButton to="/contact/" arrow>
             Start your journey
           </PrimaryButton>
           <SecondaryButton href="#services">Explore services</SecondaryButton>
@@ -98,7 +98,7 @@ export default function Home() {
             Tell us the business challenge you're facing and one of our consultants will be in touch — no
             jargon, no obligation.
           </p>
-          <PrimaryButton to="/contact" size="lg" arrow>
+          <PrimaryButton to="/contact/" size="lg" arrow>
             Send a message
           </PrimaryButton>
         </Reveal>

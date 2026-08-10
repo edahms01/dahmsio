@@ -36,7 +36,7 @@ export default function InteriorPageTemplate({
           </h1>
           <p className={`${styles.subcopy} ${styles.anim} ${styles.animDelay2}`}>{heroSubcopy}</p>
           <div className={`${styles.ctaRow} ${styles.anim} ${styles.animDelay3}`}>
-            <PrimaryButton to="/contact" arrow>
+            <PrimaryButton to="/contact/" arrow>
               {primaryCtaLabel}
             </PrimaryButton>
             <SecondaryButton href="#capabilities">See capabilities</SecondaryButton>
@@ -87,7 +87,7 @@ export default function InteriorPageTemplate({
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{ctaHeading}</h2>
           <p className={styles.ctaText}>{ctaText}</p>
-          <PrimaryButton to="/contact" size="lg" arrow>
+          <PrimaryButton to="/contact/" size="lg" arrow>
             {ctaButtonLabel}
           </PrimaryButton>
         </Reveal>
