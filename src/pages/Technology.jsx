@@ -21,6 +21,7 @@ export default function Technology() {
       <PageMeta {...META} />
       <InteriorPageTemplate
         {...HERO}
+        breadcrumbPath={META.path}
         mockup={
           <AppWindowMockup filename={MOCKUP.filename}>
             <CodeEditorMockup />

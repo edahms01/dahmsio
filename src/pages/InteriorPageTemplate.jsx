@@ -1,4 +1,5 @@
 import Layout from "../components/Layout.jsx";
+import JsonLd from "../components/JsonLd.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
@@ -6,9 +7,11 @@ import Reveal from "../components/Reveal.jsx";
 import CapabilityCard from "../components/CapabilityCard.jsx";
 import PipelineStep from "../components/PipelineStep.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
+import { buildBreadcrumbSchema } from "../utils/schema.js";
 import styles from "./InteriorPageTemplate.module.css";
 
 export default function InteriorPageTemplate({
+  breadcrumbPath,
   eyebrow,
   heroPrefix,
   heroAccent,
@@ -27,6 +30,7 @@ export default function InteriorPageTemplate({
 }) {
   return (
     <Layout blobs={INTERIOR_GLOW_BLOBS}>
+      <JsonLd data={buildBreadcrumbSchema(breadcrumbPath)} />
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
         <div>

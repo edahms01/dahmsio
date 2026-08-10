@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import JsonLd from "../components/JsonLd.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
@@ -8,6 +9,7 @@ import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import MessageMockup from "../components/mockups/MessageMockup.jsx";
 import { INTERIOR_GLOW_BLOBS, CONTACT_EMAIL, CONTACT_MAILTO } from "../data/site.js";
 import { META, HERO, MOCKUP, FORM_INTRO, FIELDS, CONTACT_INFO_HEADING, SUBMIT_LABEL } from "../data/contact.js";
+import { buildBreadcrumbSchema } from "../utils/schema.js";
 import styles from "./Contact.module.css";
 
 const encode = (data) =>
@@ -117,6 +119,7 @@ export default function Contact() {
   return (
     <Layout blobs={INTERIOR_GLOW_BLOBS}>
       <PageMeta {...META} />
+      <JsonLd data={buildBreadcrumbSchema(META.path)} />
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
         <div>
