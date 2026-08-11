@@ -1,8 +1,8 @@
 import styles from "./CapabilityCard.module.css";
 
-export default function CapabilityCard({ title, description, rows = [], markColor, hoverBorder }) {
+export default function CapabilityCard({ title, description, rows = [], markColor, hoverBorder, className = "" }) {
   return (
-    <div className={styles.card} style={{ "--hover-border": hoverBorder }}>
+    <div className={`${styles.card} ${className}`} style={{ "--hover-border": hoverBorder }}>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{description}</p>
       {rows.length > 0 && (

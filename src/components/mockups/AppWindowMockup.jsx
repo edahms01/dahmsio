@@ -1,8 +1,8 @@
 import styles from "./AppWindowMockup.module.css";
 
-export default function AppWindowMockup({ filename, children }) {
+export default function AppWindowMockup({ filename, children, className = "" }) {
   return (
-    <div className={styles.wrap}>
+    <div className={`${styles.wrap} ${className}`}>
       <div className={styles.glow} />
       <div className={styles.window}>
         <div className={styles.titleBar}>

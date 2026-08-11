@@ -36,7 +36,7 @@ export default function InteriorPageTemplate({
         <div>
           <div className={`eyebrow ${styles.anim}`}>{eyebrow}</div>
           <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
-            {heroPrefix} <span className={styles.gradientSpan}>{heroAccent}</span>.
+            {heroPrefix} <span className={styles.gradientSpan}>{heroAccent}.</span>
           </h1>
           <p className={`${styles.subcopy} ${styles.anim} ${styles.animDelay2}`}>{heroSubcopy}</p>
           <div className={`${styles.ctaRow} ${styles.anim} ${styles.animDelay3}`}>

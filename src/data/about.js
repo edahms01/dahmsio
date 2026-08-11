@@ -4,8 +4,9 @@ import { hexToRgba } from "../utils/color.js";
 
 // Real copy — about-page-copy-v23.md. Company voice ("we"/"our") throughout except
 // FOUNDERS_NOTE, the one deliberate first-person exception (paired with the headshot). No em
-// dashes, no employer names, no business-size language (positioning is by geography and by
-// relationship to technology, not by size) — keep it that way in any future edits here.
+// dashes (one deliberate exception in BACKGROUND.paragraphs, see comment there), no employer
+// names, no business-size language (positioning is by geography and by relationship to
+// technology, not by size) — keep it that way in any future edits here.
 // "twenty years" used in place of the source doc's "two decades" per standing preference
 // (career start Oct 2007 -> 18-19 years as of 2026; Eric's call was to just say "twenty
 // years" outright rather than hedge with "close to" or "nearly").
@@ -22,47 +23,75 @@ export const HERO = {
   heroPrefix: "Global experience.",
   heroAccent: "Local focus",
   heroSubcopy:
-    "Twenty years of enterprise data infrastructure, analytics, and technology development experience, now working for the businesses that drive New England.",
+    "We've spent our careers solving hard data and technology problems inside large, complex organizations. DahmsIO brings that same thinking to businesses that don't have an enterprise budget, but deserve enterprise-level results.",
   primaryCtaLabel: "Get in touch",
 };
 
+// Hero mockup — OrbitNetworkMockup, ported from the Claude Design hero graphic (project
+// a37bbdf4, About.dc.html): orbiting nodes firing inward toward a pulsing center hub,
+// visualizing the "Global experience. Local focus." headline. Purely illustrative, so the
+// only page-specific data is the app-window filename.
+export const MOCKUP = {
+  filename: "network.io",
+};
+
 export const BACKGROUND = {
-  heading: "Enterprise capability, brought within reach",
+  eyebrow: "Background",
+  heading: "Enterprise capability, brought within reach.",
   paragraphs: [
-    "For twenty years, DahmsIO's founder has built the data, analytics, tech, and AI systems that global organizations run on: econometrics platforms used by modelling teams across continents, infrastructure processing millions of records a day, and AI tools that turn weeks of work into days.",
-    "That capability rarely reaches the businesses keeping local and regional economies running: the ones still reconciling numbers by hand, or watching a national competitor pull steadily ahead. It isn't that the technology doesn't fit them; nobody has been building it for them.",
-    "DahmsIO exists to close that gap, bringing the same standards, rigor, and technology that large enterprises invest millions in, sized and priced to help your business compete. Whether you've never taken on work like this or you know exactly how far behind you've fallen, it starts the same way: an honest look at what you have, and what it could be doing for you.",
+    "For twenty years, the founder of DahmsIO has built the data, analytics, tech, and AI systems that global organizations run on: full-stack software, econometrics platforms used by data scientists across continents, infrastructure processing millions of records a day, and AI tools that compress weeks of work into just days.",
+    "Those capabilities rarely trickle down to the businesses keeping local and regional economies running. Too many companies are still reconciling numbers by hand, managing annoying spreadsheets, and engaging in manual operational tasks because systems don't speak to one another.",
+    "It's not that the technology doesn't fit or is too costly for those companies, it's that nobody has offered the right solutions, at the right price, for their unique need. Most agencies are looking for the biggest companies where they can become embedded and get the most revenue, for their own success. They're not looking to apply their capabilities to drive progress within an economy.",
+    // The page-wide "no em dash" convention (see file header) gets one deliberate exception
+    // here, per Eric's call — it's the right punctuation for this specific break.
+    "DahmsIO exists to close that gap by bringing the same technological concepts, standards, and rigor as major organizations, but scoped and priced to fit your circumstance — driving your business to the next level, regardless of industry or size.",
+    "Whether you're just getting started or already know that your business needs work, the process begins the same way: an honest look at what you have and what new tech could be doing for you.",
   ],
 };
 
 export const CREDIBILITY = {
   heading: "What this looks like in practice",
+  // Small tiles, deliberately lighter-weight than engagementModels' CapabilityCard treatment
+  // below (flat background instead of a gradient panel, no numbered row list) so the two card
+  // grids on this page read as related but distinct. hoverBorder cycles through the site's
+  // three accents same as engagementModels.
   items: [
     {
       lead: "A single clear view of your business.",
       body: "One trustworthy picture of what's happening, updated automatically, instead of a spreadsheet rebuilt by hand every Monday.",
+      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       lead: "Data that runs itself.",
       body: "Automated pipelines and quality checks, proven at millions of records a day, keep your numbers current and consistent without anyone chasing them.",
+      hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
       lead: "Tools your team actually uses.",
       body: "Systems built to be fast and obvious, because software that fights your team is software your team works around.",
+      hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
       lead: "AI applied where it pays.",
       body: "Assistants and agents that take real work off your team's plate, and a straight answer when AI isn't the right tool yet.",
+      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       lead: "Answers, not correlations.",
       body: "Econometrics and statistical modelling separate what is genuinely driving your results from what merely happens at the same time.",
+      hoverBorder: hexToRgba(ACCENT3, 0.45),
+    },
+    {
+      lead: "A roadmap you can actually execute.",
+      body: "A clear, costed plan for what to fix first and what it will take, whether you run it yourself or bring us back to build it.",
+      hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
   ],
 };
 
 export const HOW_WE_WORK = {
-  heading: "A network, not a bottleneck",
+  eyebrow: "How we work",
+  heading: "A network of experts to build your future.",
   paragraph:
     "Very few people are genuine experts in tech infrastructure, data science, software engineering, and product development all at once. DahmsIO works through a vetted network of technical specialists, brought into a project based on need. You get the right expert for the problem in front of you, and one point of contact from the first conversation to the final handover. You won't be passed around, and you won't have to explain your business twice.",
   engagementHeading: "Four ways to work together",
@@ -121,24 +150,27 @@ export const HOW_WE_WORK = {
 };
 
 export const HEADSHOT = {
-  // TODO(Eric): add a real founder photo at public/headshot.jpg (or similar), then swap the
-  // placeholder box in About.jsx for an <img src="/headshot.jpg" alt="Eric Dahms, founder of DahmsIO" />.
+  // AppWindowMockup's fake browser-chrome filename label, not the actual served path (see
+  // src below) — kept as the display name shown in the mock titlebar.
   filename: "eric_dahms.jpg",
+  src: "/founder-photo.jpg",
+  alt: "Eric Dahms, founder of DahmsIO",
 };
 
 export const FOUNDERS_NOTE = {
-  heading: "A note from Eric, founder of DahmsIO",
+  eyebrow: "Founder's Note",
+  heading: "A note from our Founder",
   paragraphs: [
-    "I grew up in Westbrook, Maine, and graduated from Westbrook High School. I've spent the twenty years since in London, working across global markets. I've led data, analytics, and tech product teams for some of the largest marketing and technology organizations in the world, building the products and platforms their analysts and data scientists work in every day.",
-    "I've stayed hands-on my entire career. I design and ship AI assistants, automation pipelines, and working prototypes myself. It means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
-    "I started DahmsIO to bring that experience back to the place I'm from. There's no shortage of ambition or capability in this region. What's missing is technology built for the businesses here, at a sensible size and price. I'm building this company with the goal of moving home to run it in person.",
-    "Business ownership runs in my family. My father worked his way from the job site to owning the construction company he'd spent thirty years at, and my brother runs it today. I'd like to join them with something of my own.",
-    "If you're running a business in Maine or elsewhere in New England and want a partner who understands both enterprise-grade technology and local business, let's talk about where new technology could take your business next.",
+    "I grew up in Westbrook, Maine and graduated from Westbrook High School. I've spent the past twenty years in London, England working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
+    "I've stayed hands-on my entire career. I design and ship data platforms, AI assistants, automation pipelines, and working prototypes myself, which means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
+    "I started DahmsIO to bring this experience back to the place I'm from. There's no shortage of ambition or capability in this region. What's missing is technology built for the businesses here, at a sensible price and scope. I'm building this company with the goal of moving home to run it in person and get hands-on in helping local and regional businesses prosper.",
+    "Business ownership runs in my family. My father worked his way from the construction job site to owning that same company 25 years later, and now my brother runs it today. I'd like to join them with a business of my own.",
+    "If you're running a business in Maine or elsewhere in New England and want a partner who understands how the data and technology space can be applied to local business, send us a message and let's talk about how new technology can take your business to the next level.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one
   // styling choice.
-  signature: "Eric Dahms, Founder",
+  signature: "Eric Dahms, Founder/CEO",
   credentials: [
     "MSc International Economics, University of Essex",
     "BSc Marketing & Information Technology, Bentley University",

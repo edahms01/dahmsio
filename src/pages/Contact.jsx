@@ -125,7 +125,7 @@ export default function Contact() {
         <div>
           <div className={`eyebrow ${styles.anim}`}>{HERO.eyebrow}</div>
           <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
-            {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}</span>.
+            {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}.</span>
           </h1>
           <p className={`${styles.subcopy} ${styles.anim} ${styles.animDelay2}`}>{HERO.heroSubcopy}</p>
           <div className={`${styles.ctaRow} ${styles.anim} ${styles.animDelay3}`}>

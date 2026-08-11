@@ -1,7 +1,7 @@
 import InteriorPageTemplate from "./InteriorPageTemplate.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
-import KanbanMockup from "../components/mockups/KanbanMockup.jsx";
+import RoadmapMockup from "../components/mockups/RoadmapMockup.jsx";
 import {
   META,
   HERO,
@@ -24,7 +24,7 @@ export default function Consulting() {
         breadcrumbPath={META.path}
         mockup={
           <AppWindowMockup filename={MOCKUP.filename}>
-            <KanbanMockup {...MOCKUP} />
+            <RoadmapMockup {...MOCKUP} />
           </AppWindowMockup>
         }
         capabilitiesHeading={CAPABILITIES_HEADING}

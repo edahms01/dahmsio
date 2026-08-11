@@ -11,44 +11,36 @@ export const META = {
 
 export const HERO = {
   eyebrow: "Data & Tech Consulting",
-  heroPrefix: "Strategy and talent that become part of your",
-  heroAccent: "team",
+  heroPrefix: "Vision, strategy and talent that become",
+  heroAccent: "part of your business",
   heroSubcopy:
-    "From technology strategy to hands-on resourcing, we plug into how you already work, so every project has the right thinking and the right people behind it.",
+    "From strategy and vision to hands-on resourcing, we plug into how you already work, so every project has the right thinking and the right people behind it.",
   primaryCtaLabel: "Scope a consulting project",
 };
 
+// Hero mockup — RoadmapMockup, ported from the Claude Design hero graphic (project
+// a37bbdf4, Consulting.dc.html): a four-stage engagement timeline (Discover -> Plan -> Embed
+// -> Deliver) sitting above the current-sprint/columns block, replacing the prior
+// sprint-board-only KanbanMockup.
 export const MOCKUP = {
-  filename: "sprint_board.io",
+  filename: "roadmap.io",
+  headerLabel: "PRODUCT ROADMAP",
+  progressPercent: 62,
+  stages: [
+    { label: "Discover", state: "done" },
+    { label: "Plan", state: "done" },
+    { label: "Embed", state: "current" },
+    { label: "Deliver", state: "upcoming" },
+  ],
   sprintLabel: "CURRENT SPRINT",
-  sprintName: "Sprint 14",
+  sprintName: "Sprint 14 · Embed phase",
   status: "On track",
   progress: 60,
   progressLabel: "Day 6 of 10",
   columns: [
-    {
-      title: "TO DO",
-      items: [{ label: "Stakeholder review", variant: "default" }],
-    },
-    {
-      title: "IN PROGRESS",
-      items: [
-        { label: "Roadmap v2", variant: "active" },
-        { label: "API design", variant: "default" },
-      ],
-    },
-    {
-      title: "DONE",
-      items: [
-        { label: "Discovery", variant: "done" },
-        { label: "Kickoff", variant: "done" },
-      ],
-    },
-  ],
-  stats: [
-    { label: "VELOCITY", value: "32" },
-    { label: "TEAM SIZE", value: "6" },
-    { label: "NPS", value: "9.4" },
+    { title: "TO DO", item: "Stakeholder review", variant: "default" },
+    { title: "IN PROGRESS", item: "Roadmap v2", variant: "active" },
+    { title: "DONE", item: "Discovery", variant: "done" },
   ],
 };
 

@@ -1,0 +1,204 @@
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.body {
+  padding: 24px 24px 22px;
+}
+
+.header {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--text-muted2);
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.stageTrack {
+  position: relative;
+  margin: 0 2px 30px;
+}
+
+.stageLine {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stageLineFill {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent3));
+}
+
+.stages {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.stageDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.stageDot.done {
+  background: var(--accent3);
+}
+
+.stageDot.upcoming {
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+}
+
+.stageDotCurrent {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  box-shadow: 0 0 16px rgba(21, 155, 200, 0.6);
+}
+
+.stageDotRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent3);
+  animation: pulseRing 2.4s ease-out infinite;
+}
+
+.stageLabel {
+  font-size: 11.5px;
+}
+
+.stageLabel_done {
+  color: var(--text-secondary2b);
+}
+
+.stageLabel_current {
+  color: #fff;
+  font-weight: 600;
+}
+
+.stageLabel_upcoming {
+  color: var(--text-muted3);
+}
+
+.sprint {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 20px;
+}
+
+.sprintTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.label {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--text-muted2);
+  letter-spacing: 0.08em;
+}
+
+.value {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+
+.status {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--success);
+  background: rgba(34, 211, 165, 0.12);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.progressTrack {
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent3));
+  border-radius: 4px;
+}
+
+.progressLabel {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--text-muted2);
+  margin-bottom: 16px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.colTitle {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--text-muted2);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.item {
+  padding: 10px;
+  border-radius: 9px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--text-secondary2);
+}
+
+.item.active {
+  background: rgba(21, 155, 200, 0.12);
+  border-color: rgba(21, 155, 200, 0.35);
+  color: var(--text);
+}
+
+.item.done {
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stageDotRing {
+    animation: none;
+  }
+}

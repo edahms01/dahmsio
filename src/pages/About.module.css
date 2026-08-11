@@ -1,16 +1,35 @@
-/* Hero: single column — no headshot slot here anymore, it's paired with the Founder's Note
-   instead, per the content brief. */
+/* Hero: two-column grid, mirroring InteriorPageTemplate's, paired with the network mockup.
+   Text column is weighted wider than the mockup column (1.2fr/.8fr, vs. the interior pages'
+   1.05fr/.95fr) so "Global experience." clears onto one line at the headline's max clamp
+   size (64px) on a standard laptop viewport, with "Local focus." wrapping cleanly onto its
+   own line below. No headshot slot here — that's paired with the Founder's Note instead, per
+   the content brief. align-items:start (not InteriorPageTemplate's center) makes the
+   mockup's position deterministic regardless of headline length, then .heroMockupOffset
+   below nudges it down to line up with the H1, not the eyebrow above it. */
 .hero {
   position: relative;
   z-index: 10;
   padding: 150px var(--side-padding) 70px;
   max-width: var(--max-wide);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items: start;
 }
 
-.heroInner {
-  max-width: 62ch;
+/* Offsets the hero mockup down to the eyebrow's rendered height (13px text + 16px
+   margin-bottom, ~34px total) so its top lines up with the H1 below the eyebrow — matching
+   how the mockup reads on Data/Technology/Consulting (their taller, multi-line headlines put
+   the vertically-centered mockup at headline height too; About's shorter 2-line headline
+   doesn't get there by centering alone). */
+.heroMockupOffset {
+  margin-top: 34px;
 }
+
+/* No width cap here (unlike a prior 62ch version) — the h1 should only be bound by the grid
+   column, same as InteriorPageTemplate's hero text. The paragraph keeps its own 52ch cap via
+   interiorStyles.subcopy, so readability there is unaffected. */
 
 /* Shared shell for the Background and How We Work sections. */
 .section {
@@ -21,8 +40,40 @@
   padding: 70px var(--side-padding);
 }
 
+/* Marks the transition from the Background/Credibility section into How We Work — the
+   divider formerly bracketing the operating-principles list (see .operatingPrinciples,
+   .foundersNote) moved here instead. */
+.sectionDivider {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* See the comment in About.jsx above the CTA section. */
+.ctaCenterBetweenLines {
+  margin-bottom: 0;
+}
+
 .sectionIntro {
   max-width: 68ch;
+}
+
+/* Centered section header, matching InteriorPageTemplate's .pipelineHead (see About.jsx for
+   why this one section gets it). Smaller bottom margin than .pipelineHead's 52px — that was
+   tuned for the gap before a card grid; here it's followed by a paragraph, which already
+   carries its own top margin via .sectionText. */
+.sectionHeadCentered {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* How We Work's graphic + header/text pairing — graphic in the narrower left column, text
+   in the wider right column (mirrored from the source design, which put the graphic on the
+   right). Same shape as .hero's grid, different ratio since this isn't a page-opening
+   headline. */
+.howWeWorkGrid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: center;
 }
 
 .sectionText {
@@ -36,8 +87,44 @@
   margin-top: 16px;
 }
 
-/* Credibility strip — marketing copy, not a resume: bold lead-in + body only, no card
-   chrome, no stat-block styling (deliberately distinct from MessageMockup's stat cards). */
+/* Background's three paragraphs specifically (not HOW_WE_WORK's single intro paragraph,
+   which reads fine at .sectionText's normal size): a touch smaller, since this is the
+   longest block of prose on the page. */
+.backgroundText {
+  font-size: clamp(15px, 1.3vw, 16px);
+}
+
+/* True two-column text flow (CSS multi-column, not a grid): all three paragraphs run down
+   the left column and continue into the right wherever they land, rather than being
+   pre-split into fixed left/right halves. */
+.backgroundColumns {
+  column-count: 2;
+  column-gap: 40px;
+  margin-top: 20px;
+}
+
+.backgroundColumns .sectionText {
+  margin: 0 0 16px;
+}
+
+.backgroundColumns .sectionText:last-child {
+  margin-bottom: 0;
+}
+
+/* Discourages the column-balancer from starting column 2 right before this paragraph (see
+   About.jsx), keeping it in column 1 instead so column 2 doesn't end up the longer one. */
+.backgroundKeepWithPrev {
+  break-before: avoid-column;
+}
+
+/* Shared size/weight for every sub-page-title heading on this page — the section intros
+   (Background, How We Work, Founder's Note) and the nested subsection headers (credibility
+   strip, engagement models, operating principles) all render at the same size, matching
+   marketing-copy-not-a-resume styling: bold lead-in only, no card chrome, no stat-block
+   treatment (deliberately distinct from MessageMockup's stat cards). Margin differs by
+   context: nested subsection headers need top spacing to separate from the block above
+   (default here); section-intro headings sit flush at the top of their section/column and
+   only need a bottom gap, via .subheadingFlush. */
 .subheading {
   font-family: var(--fd);
   font-weight: 600;
@@ -45,16 +132,38 @@
   margin: 56px 0 28px;
 }
 
-.credibilityGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px 40px;
+.subheadingFlush {
+  margin: 0 0 20px;
 }
 
+/* Three columns of two rows (six items), stepping down to 2 then 1 at the same breakpoints
+   as InteriorPageTemplate's .pipelineGrid — the site's existing pattern for narrowing a grid
+   without leaving ragged unfilled space in a track. */
+.credibilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Small tiles — a lighter-weight cousin of CapabilityCard (see engagementModels below):
+   flat single-tone background instead of a gradient panel, a smaller radius, and no numbered
+   row list, so the two card grids on this page read as related but not repetitive. Full width
+   of its grid cell (see .credibilityGrid's 3-column track for the narrower footprint, instead
+   of a width:75% hack that left uneven gaps within each cell). */
 .leadItem {
+  position: relative;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.25s ease;
   font-size: 15px;
   line-height: 1.65;
   color: var(--text-secondary);
+}
+
+.leadItem:hover {
+  border-color: var(--hover-border);
 }
 
 .leadItemLead {
@@ -66,24 +175,48 @@
   font-size: 16px;
 }
 
-/* Four engagement models reuse CapabilityCard + interiorStyles.capabilitiesGrid directly
-   (see About.jsx) — no bespoke grid/card CSS needed here anymore. */
+.leadItemBody {
+  display: block;
+  font-size: 14px;
+}
 
-/* Operating principles — a plain, full-width bulleted list, deliberately quieter than the
-   engagement cards above: no card background/border, smaller type, muted color, so the eye
-   lands on the engagement models first. global.css resets `ul { list-style: none }`
-   site-wide, so this needs its own explicit list-style to actually show bullets. */
+/* Four engagement models reuse CapabilityCard + interiorStyles.capabilitiesGrid directly
+   (see About.jsx) — no bespoke grid/card CSS needed here anymore, aside from zeroing its
+   margin-top (see .engagementGridSpacing below, applied alongside it in the JSX). */
+.engagementGridSpacing {
+  margin-top: 0;
+}
+
+/* CapabilityCard's 36px padding and its description's 22px bottom margin are both tuned for
+   cards that also carry a numbered .rows list underneath (Data/Technology/Consulting) —
+   About's engagementModels have no rows, so unmodified the card was mostly empty space below
+   two lines of description. Smaller padding and a zeroed description margin here instead. */
+.engagementCard {
+  padding: 24px;
+}
+
+.engagementCard p {
+  margin-bottom: 0;
+}
+
+/* Operating principles — a plain, full-width bulleted list, set apart from the engagement
+   cards below by having no card background/border rather than by type size: body copy runs
+   at the same clamp(16px,1.6vw,18px) as .sectionText, matching the intro paragraph directly
+   above it (and the rest of the page's prose) instead of the smaller 15px used by
+   CREDIBILITY's .leadItem / CapabilityCard's description. global.css resets `ul { list-style:
+   none }` site-wide, so this needs its own explicit list-style to actually show bullets. No
+   top padding — the 28px header-to-body gap comes from .subheading's margin-bottom alone,
+   matching CREDIBILITY's gap above. */
 .operatingPrinciples {
   list-style: disc;
   margin: 0;
-  padding: 26px 0 0 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0 0 0 20px;
 }
 
 .operatingPrinciple {
-  font-size: 13px;
-  color: var(--text-muted2);
-  line-height: 1.5;
+  font-size: clamp(16px, 1.6vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.7;
   margin-bottom: 10px;
 }
 
@@ -92,30 +225,41 @@
 }
 
 .operatingPrincipleLead {
+  font-family: var(--fd);
   font-weight: 600;
-  color: var(--text-muted);
+  color: #f3f3f8;
 }
 
-/* Founder's Note — the one deliberate first-person exception, paired with the headshot.
-   Visually set apart with a top border and its own grid rather than folded into .section. */
+/* Founder's Note — the one deliberate first-person exception, paired with the headshot. Its
+   own grid rather than folded into .section; top border applied via .sectionDivider in the
+   JSX (same divider style used between Background/Credibility and How We Work). */
 .foundersNote {
   position: relative;
   z-index: 10;
   max-width: var(--max-wide);
   margin: 0 auto;
   padding: 80px var(--side-padding);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+/* Even columns (not the interior pages' asymmetric ratios) — the photo is centered within
+   its own column (see .headshotWindow), and that centering only matches "centered on the
+   left half of the page" if the column boundary actually sits at the page's true midpoint. */
 .foundersNoteGrid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items: start;
 }
 
+/* Quote-style left border, standing in for italics as the page's "this is a letter" signal
+   (see the comment in About.jsx above where this wraps the paragraphs + signature). */
+.letterBody {
+  border-left: 2px solid rgba(255, 255, 255, 0.14);
+  padding-left: 22px;
+}
+
 .foundersNoteText {
-  font-size: clamp(16px, 1.6vw, 18px);
+  font-size: 15px;
   line-height: 1.7;
   color: var(--text-secondary);
   margin: 0 0 16px;
@@ -125,7 +269,7 @@
   font-family: var(--fd);
   font-weight: 600;
   margin: 28px 0 10px;
-  font-size: 17px;
+  font-size: 19px;
 }
 
 /* Compact bulleted list, small type, tight spacing, no card/box — same list-style override
@@ -147,23 +291,51 @@
   margin-bottom: 0;
 }
 
-.headshotPlaceholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 100%;
-  min-height: 260px;
-  padding: 32px;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 14px;
+/* AppWindowMockup's .window already supplies the border/glow/rounded-corner frame that
+   matches the rest of the site's mockups (see the graphics on About's hero and
+   Data/Technology/Consulting) — this just fills that frame with the photo itself.
+   overflow:hidden on .window clips it to the window's rounded corners, so no separate
+   border-radius is needed here. */
+.headshotImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* 60% width (75% * 0.8 — a further 20% reduction on top of the earlier 25% cut). Centered
+   in its (now even, see .foundersNoteGrid) grid column, so it stays centered on the page's
+   true left half at any size rather than hugging the left edge. */
+.headshotWindow {
+  width: 60%;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px) {
-  .credibilityGrid,
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+  }
+
+  .credibilityGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .foundersNoteGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .howWeWorkGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .backgroundColumns {
+    column-count: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .credibilityGrid {
     grid-template-columns: 1fr;
   }
 }

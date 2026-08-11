@@ -1,0 +1,130 @@
+@keyframes spinSlow {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseRing {
+  from {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+.body {
+  position: relative;
+  height: 340px;
+  padding: 20px;
+}
+
+.corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid transparent;
+}
+
+.cornerTL {
+  top: 14px;
+  left: 14px;
+  border-top-color: rgba(79, 216, 255, 0.4);
+  border-left-color: rgba(79, 216, 255, 0.4);
+}
+
+.cornerTR {
+  top: 14px;
+  right: 14px;
+  border-top-color: rgba(79, 216, 255, 0.4);
+  border-right-color: rgba(79, 216, 255, 0.4);
+}
+
+.cornerBL {
+  bottom: 14px;
+  left: 14px;
+  border-bottom-color: rgba(79, 216, 255, 0.4);
+  border-left-color: rgba(79, 216, 255, 0.4);
+}
+
+.cornerBR {
+  bottom: 14px;
+  right: 14px;
+  border-bottom-color: rgba(79, 216, 255, 0.4);
+  border-right-color: rgba(79, 216, 255, 0.4);
+}
+
+.sweep {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg 300deg, rgba(79, 216, 255, 0.32) 335deg, transparent 360deg);
+  mix-blend-mode: screen;
+  animation: spinSlow 7s linear infinite;
+}
+
+.rings {
+  position: absolute;
+  inset: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  animation: spinSlow 100s linear infinite;
+}
+
+.hubWrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+}
+
+.hubRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 1px solid rgba(79, 216, 255, 0.5);
+  animation: pulseRing 3.2s ease-out infinite;
+}
+
+.hubRingDelay {
+  animation-delay: 1.6s;
+}
+
+.hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  box-shadow: 0 0 40px rgba(21, 155, 200, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hubIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: #f4fbff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep,
+  .rings,
+  .hubRing {
+    animation: none;
+  }
+}

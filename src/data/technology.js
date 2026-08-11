@@ -11,10 +11,10 @@ export const META = {
 
 export const HERO = {
   eyebrow: "Tech Implementation",
-  heroPrefix: "Build what's next, without breaking what already",
-  heroAccent: "works",
+  heroPrefix: "Implement the technology that closes the",
+  heroAccent: "gaps in your business",
   heroSubcopy:
-    "From full-stack builds to legacy integrations, we architect the technology stack, so every system you rely on is modern, connected and built to last.",
+    "From full-stack builds to legacy integrations, we architect the technology flow, so every system you rely on is modern, connected and built to last.",
   primaryCtaLabel: "Scope a tech project",
 };
 

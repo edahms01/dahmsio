@@ -11,13 +11,17 @@ export const META = {
 
 export const HERO = {
   eyebrow: "Data Intelligence",
-  heroPrefix: "Turn scattered data into decisions you can",
-  heroAccent: "trust",
+  heroPrefix: "Turn scattered data into",
+  heroAccent: "decisions you can trust",
   heroSubcopy:
-    "From multi-source pipelines to boardroom-ready dashboards, we engineer the full data stack, so every number your team relies on is accurate, timely and understood.",
+    "From multi-source pipelines to boardroom-ready dashboards and predictive model forecasts, we engineer the full data stack, so every number your team relies on is accurate, timely and understood.",
   primaryCtaLabel: "Scope a data project",
 };
 
+// Hero mockup — DashboardMockup: bars 1-6 are actuals; bars 7-8 are dashed "forecast"
+// columns. Ported from the Claude Design hero graphic (project a37bbdf4, Data.dc.html),
+// which also overlays an actual-vs-forecast trend line (fixed in the component itself, not
+// data-driven) — echoes the hero copy's "predictive model forecasts" line.
 export const MOCKUP = {
   filename: "revenue_dashboard.io",
   label: "MONTHLY REVENUE",
@@ -29,7 +33,9 @@ export const MOCKUP = {
     { height: 54, from: "rgba(43,184,216,.55)", to: "rgba(43,184,216,.14)" },
     { height: 78, from: "rgba(129,110,247,.6)", to: "rgba(129,110,247,.15)" },
     { height: 70, from: "rgba(79,216,255,.6)", to: "rgba(79,216,255,.15)" },
-    { height: 100, from: "var(--accent)", to: "rgba(79,216,255,.4)", glow: true },
+    { height: 82, from: "var(--accent)", to: "rgba(79,216,255,.4)", glow: true },
+    { height: 90, forecast: true, bg: "rgba(79,216,255,.08)", border: "rgba(79,216,255,.55)" },
+    { height: 98, forecast: true, bg: "rgba(79,216,255,.06)", border: "rgba(79,216,255,.4)" },
   ],
   stats: [
     { label: "CONVERSION", value: "4.7%" },

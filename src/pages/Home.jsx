@@ -1,7 +1,6 @@
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
-import HeroBadgePill from "../components/HeroBadgePill.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
 import Marquee from "../components/Marquee.jsx";
@@ -17,13 +16,12 @@ export default function Home() {
       <PageMeta {...META} />
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
-        <HeroBadgePill className={styles.heroUp}>Data · Technology · Consulting</HeroBadgePill>
         <h1 className={`${styles.h1} ${styles.heroUp} ${styles.heroUpDelay1}`}>
-          Where innovation meets <span className={styles.gradientSpan}>intelligence</span>.
+          Where innovation meets <span className={styles.gradientSpan}>intelligence.</span>
         </h1>
         <p className={`${styles.subcopy} ${styles.heroUp} ${styles.heroUpDelay2}`}>
-          We turn complex data and technology into clear, practical systems that grow revenue, cut waste,
-          and set ambitious businesses apart from their competitors.
+          We turn complex data and technology into clear, practical systems that grow revenue, sharpen
+          efficiency, and set ambitious businesses apart from their competitors.
         </p>
         <div className={`${styles.ctaRow} ${styles.heroUp} ${styles.heroUpDelay3}`}>
           <PrimaryButton to="/contact/" arrow>
@@ -36,8 +34,6 @@ export default function Home() {
           <span className={styles.scrollLine} />
         </div>
       </header>
-
-      <Marquee items={MARQUEE_ITEMS} />
 
       <section id="services" className={styles.services}>
         <Reveal>
@@ -54,6 +50,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <Marquee items={MARQUEE_ITEMS} />
 
       <section className={styles.mission}>
         <Reveal duration={900}>
