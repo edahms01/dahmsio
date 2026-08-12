@@ -4,7 +4,7 @@ import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
   path: ROUTE_PATHS.home,
-  title: "DahmsIO — Where innovation meets intelligence",
+  title: "DahmsIO | Where innovation meets intelligence",
   // "New England" here (not in visible copy) targets regional search intent without
   // narrowing how the page reads to visitors — DahmsIO works with businesses anywhere;
   // New England is the initial target market, not the whole addressable one.

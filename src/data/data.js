@@ -4,9 +4,9 @@ import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
   path: ROUTE_PATHS.data,
-  title: "Data Intelligence — DahmsIO",
+  title: "Data Intelligence | DahmsIO",
   description:
-    "Multi-source data engineering, BI dashboards, statistical analysis and machine learning — DahmsIO turns scattered data into decisions you can trust.",
+    "Multi-source data engineering, BI dashboards, statistical analysis and machine learning. DahmsIO turns scattered data into decisions you can trust.",
 };
 
 export const HERO = {
@@ -25,7 +25,7 @@ export const HERO = {
 export const MOCKUP = {
   filename: "revenue_dashboard.io",
   label: "MONTHLY REVENUE",
-  value: "£1.28M",
+  value: "$1.28M",
   delta: "18.4%",
   bars: [
     { height: 46, from: "rgba(21,155,200,.5)", to: "rgba(21,155,200,.12)" },
@@ -40,7 +40,7 @@ export const MOCKUP = {
   stats: [
     { label: "CONVERSION", value: "4.7%" },
     { label: "CHURN", value: "1.9%" },
-    { label: "LTV", value: "£3.4k" },
+    { label: "LTV", value: "$3.4k" },
   ],
 };
 

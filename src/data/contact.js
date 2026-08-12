@@ -2,8 +2,8 @@ import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
   path: ROUTE_PATHS.contact,
-  title: "Contact — DahmsIO",
-  description: "Tell us about your data or technology challenge — a DahmsIO consultant will be in touch.",
+  title: "Contact | DahmsIO",
+  description: "Tell us about your data or technology challenge. A DahmsIO consultant will be in touch.",
 };
 
 export const HERO = {

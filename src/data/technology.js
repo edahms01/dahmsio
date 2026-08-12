@@ -4,9 +4,9 @@ import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
   path: ROUTE_PATHS.technology,
-  title: "Tech Implementation — DahmsIO",
+  title: "Tech Implementation | DahmsIO",
   description:
-    "Full-stack development, system integration, cloud migration and AI implementation — DahmsIO builds what's next without breaking what already works.",
+    "Full-stack development, system integration, cloud migration and AI implementation. DahmsIO closes the gaps in your business without breaking what works.",
 };
 
 export const HERO = {

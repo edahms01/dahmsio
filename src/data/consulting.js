@@ -4,7 +4,7 @@ import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
   path: ROUTE_PATHS.consulting,
-  title: "Data & Tech Consulting — DahmsIO",
+  title: "Data & Tech Consulting | DahmsIO",
   description:
     "Data & technology strategy, product consulting, and embedded analyst and engineer resourcing from DahmsIO.",
 };

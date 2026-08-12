@@ -16,7 +16,7 @@ export const ORGANIZATION = {
 
 export const FOUNDER = {
   name: "Eric Dahms",
-  jobTitle: "Founder",
+  jobTitle: "Founder/CEO",
   url: `${SITE_URL}/about/`,
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "University of Essex" },

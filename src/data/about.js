@@ -13,7 +13,7 @@ import { hexToRgba } from "../utils/color.js";
 
 export const META = {
   path: ROUTE_PATHS.about,
-  title: "About — DahmsIO",
+  title: "About | DahmsIO",
   description:
     "DahmsIO brings enterprise-grade data, analytics, and technology experience to businesses across New England, founded by Eric Dahms.",
 };
