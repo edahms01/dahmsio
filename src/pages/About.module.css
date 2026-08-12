@@ -241,13 +241,14 @@
   padding: 80px var(--side-padding);
 }
 
-/* Even columns (not the interior pages' asymmetric ratios) — the photo is centered within
-   its own column (see .headshotWindow), and that centering only matches "centered on the
-   left half of the page" if the column boundary actually sits at the page's true midpoint. */
+/* Text column widened at the photo column's expense (0.85fr/1.15fr, tighter 44px gap) so the
+   letter gets more room now that the photo itself has shrunk (see .headshotWindow) — the
+   photo still centers within its own column, just no longer exactly on the page's true left
+   half; a deliberate trade for a wider text column, per Eric's call. */
 .foundersNoteGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 44px;
   align-items: start;
 }
 
@@ -303,11 +304,10 @@
   object-fit: cover;
 }
 
-/* 60% width (75% * 0.8 — a further 20% reduction on top of the earlier 25% cut). Centered
-   in its (now even, see .foundersNoteGrid) grid column, so it stays centered on the page's
-   true left half at any size rather than hugging the left edge. */
+/* 45% width (60% * 0.75 — a further 25% reduction on top of the earlier 20% cut). Still
+   centered within its own grid column via margin auto. */
 .headshotWindow {
-  width: 60%;
+  width: 45%;
   margin: 0 auto;
 }
 
