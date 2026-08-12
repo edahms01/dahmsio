@@ -163,8 +163,6 @@ export const FOUNDERS_NOTE = {
   paragraphs: [
     "I grew up in Westbrook, Maine and graduated from Westbrook High School. I've spent the past twenty years in London, England working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
     "I've stayed hands-on my entire career. I design and ship data platforms, AI assistants, automation pipelines, and working prototypes myself, which means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
-    "I started DahmsIO to bring this experience back to the place I'm from. There's no shortage of ambition or capability in this region. What's missing is technology built for the businesses here, at a sensible price and scope. I'm building this company with the goal of moving home to run it in person and get hands-on in helping local and regional businesses prosper.",
-    "Business ownership runs in my family. My father worked his way from the construction job site to owning that same company 25 years later, and now my brother runs it today. I'd like to join them with a business of my own.",
     "If you're running a business in Maine or elsewhere in New England and want a partner who understands how the data and technology space can be applied to local business, send us a message and let's talk about how new technology can take your business to the next level.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
