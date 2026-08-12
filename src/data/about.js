@@ -161,7 +161,7 @@ export const FOUNDERS_NOTE = {
   eyebrow: "Founder's Note",
   heading: "A note from our Founder",
   paragraphs: [
-    "I grew up in Westbrook, Maine and graduated from Westbrook High School. I've spent the past twenty years in London, England working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
+    "I've spent the past twenty years in London, England working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
     "I've stayed hands-on my entire career. I design and ship data platforms, AI assistants, automation pipelines, and working prototypes myself, which means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
     "If you're running a business in Maine or elsewhere in New England and want a partner who understands how the data and technology space can be applied to local business, send us a message and let's talk about how new technology can take your business to the next level.",
   ],
