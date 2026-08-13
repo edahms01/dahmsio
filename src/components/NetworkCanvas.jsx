@@ -55,15 +55,27 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       mouse.y = -9999;
     };
 
-    // Touch equivalent of onMove/onLeave. Bound to `window` (not the canvas) because
-    // the canvas has pointer-events: none, so it never receives touch events as a
-    // hit-test target — same reason mousemove above is bound to window too.
-    const onTouchMove = (e) => {
+    // Touch "poke" equivalent of onMove/onLeave. Deliberately touchstart-only, not
+    // touchmove: touchmove fires continuously for the same finger drag that scrolls the
+    // page, and since the canvas scrolls with the page, following it live turned every
+    // scroll into a chaotic sweep of repel across the whole node field. A single poke at
+    // the tap point — auto-released a moment later — gives a reactive feel without
+    // fighting scroll. Bound to `window` (not the canvas) because the canvas has
+    // pointer-events: none, so it never receives touch events as a hit-test target —
+    // same reason mousemove above is bound to window too.
+    let touchResetTimer = null;
+    const onTouchStart = (e) => {
       const touch = e.touches[0];
       if (!touch) return;
       const rect = canvas.getBoundingClientRect();
       mouse.x = touch.clientX - rect.left;
       mouse.y = touch.clientY - rect.top;
+      clearTimeout(touchResetTimer);
+      touchResetTimer = setTimeout(onLeave, 500);
+    };
+    const onTouchEnd = () => {
+      clearTimeout(touchResetTimer);
+      onLeave();
     };
 
     const draw = () => {
@@ -110,10 +122,10 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       raf = requestAnimationFrame(draw);
     };
 
-    // Devices with a real mouse (fine pointer + hover) get cursor-repel via mousemove,
-    // reset on mouseleave. Touch-only devices get the same repel via touchmove/touchstart,
-    // reset on touchend/touchcancel — touchend/touchcancel is the touch equivalent of
-    // mouseleave here (there is no "hover exit" on touch, but there is always a lift-off).
+    // Devices with a real mouse (fine pointer + hover) get continuous cursor-repel via
+    // mousemove, reset on mouseleave. Touch-only devices get a one-shot poke on
+    // touchstart instead (see onTouchStart above for why not touchmove), reset early by
+    // touchend/touchcancel or otherwise auto-released by its own timer.
     // Passive listeners: we never call preventDefault, so this doesn't block scrolling.
     const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
@@ -124,23 +136,22 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       window.addEventListener("mousemove", onMove);
       canvas.addEventListener("mouseleave", onLeave);
     } else {
-      window.addEventListener("touchstart", onTouchMove, { passive: true });
-      window.addEventListener("touchmove", onTouchMove, { passive: true });
-      window.addEventListener("touchend", onLeave);
-      window.addEventListener("touchcancel", onLeave);
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchend", onTouchEnd);
+      window.addEventListener("touchcancel", onTouchEnd);
     }
 
     return () => {
       cancelAnimationFrame(raf);
+      clearTimeout(touchResetTimer);
       window.removeEventListener("resize", resize);
       if (hasFinePointer) {
         window.removeEventListener("mousemove", onMove);
         canvas.removeEventListener("mouseleave", onLeave);
       } else {
-        window.removeEventListener("touchstart", onTouchMove);
-        window.removeEventListener("touchmove", onTouchMove);
-        window.removeEventListener("touchend", onLeave);
-        window.removeEventListener("touchcancel", onLeave);
+        window.removeEventListener("touchstart", onTouchStart);
+        window.removeEventListener("touchend", onTouchEnd);
+        window.removeEventListener("touchcancel", onTouchEnd);
       }
     };
   }, [maxNodes, linkDist, reduced]);
