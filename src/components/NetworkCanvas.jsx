@@ -30,11 +30,28 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
 
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.offsetWidth;
-      h = canvas.offsetHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
+      const newW = canvas.offsetWidth;
+      const newH = canvas.offsetHeight;
+      canvas.width = newW * dpr;
+      canvas.height = newH * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Mobile browsers fire window "resize" as the address bar hides/shows during
+      // scroll — that's a height-only change, not an actual layout resize. Re-rolling
+      // every node to a fresh random position on each of those firings is what caused
+      // the dots to jump chaotically as soon as scrolling started. Only regenerate the
+      // node field when the width actually changes (real resize/orientation change);
+      // for height-only changes, keep existing nodes and just clamp them into bounds.
+      const widthChanged = Math.abs(newW - w) > 1;
+      w = newW;
+      h = newH;
+      if (!widthChanged && nodes.length) {
+        for (const n of nodes) {
+          n.y = Math.min(n.y, h);
+        }
+        return;
+      }
+
       const count = Math.min(maxNodes, Math.floor((w * h) / 15000));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * w,
