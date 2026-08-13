@@ -55,6 +55,17 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       mouse.y = -9999;
     };
 
+    // Touch equivalent of onMove/onLeave. Bound to `window` (not the canvas) because
+    // the canvas has pointer-events: none, so it never receives touch events as a
+    // hit-test target — same reason mousemove above is bound to window too.
+    const onTouchMove = (e) => {
+      const touch = e.touches[0];
+      if (!touch) return;
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = touch.clientX - rect.left;
+      mouse.y = touch.clientY - rect.top;
+    };
+
     const draw = () => {
       const [r, g, b] = getAccentRgb();
       ctx.clearRect(0, 0, w, h);
@@ -99,11 +110,11 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       raf = requestAnimationFrame(draw);
     };
 
-    // Touch devices fire a synthetic mousemove at the tap point after touchend, with no
-    // continuous tracking and no mouseleave to reset it — the dots would jump toward
-    // whatever was last tapped and freeze there. Only wire up pointer-repel on devices
-    // that actually have a mouse (fine pointer + hover); touch devices just get the
-    // ambient drift.
+    // Devices with a real mouse (fine pointer + hover) get cursor-repel via mousemove,
+    // reset on mouseleave. Touch-only devices get the same repel via touchmove/touchstart,
+    // reset on touchend/touchcancel — touchend/touchcancel is the touch equivalent of
+    // mouseleave here (there is no "hover exit" on touch, but there is always a lift-off).
+    // Passive listeners: we never call preventDefault, so this doesn't block scrolling.
     const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     resize();
@@ -112,6 +123,11 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
     if (hasFinePointer) {
       window.addEventListener("mousemove", onMove);
       canvas.addEventListener("mouseleave", onLeave);
+    } else {
+      window.addEventListener("touchstart", onTouchMove, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      window.addEventListener("touchend", onLeave);
+      window.addEventListener("touchcancel", onLeave);
     }
 
     return () => {
@@ -120,6 +136,11 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       if (hasFinePointer) {
         window.removeEventListener("mousemove", onMove);
         canvas.removeEventListener("mouseleave", onLeave);
+      } else {
+        window.removeEventListener("touchstart", onTouchMove);
+        window.removeEventListener("touchmove", onTouchMove);
+        window.removeEventListener("touchend", onLeave);
+        window.removeEventListener("touchcancel", onLeave);
       }
     };
   }, [maxNodes, linkDist, reduced]);
