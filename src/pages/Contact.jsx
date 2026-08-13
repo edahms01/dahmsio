@@ -7,8 +7,19 @@ import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import MessageMockup from "../components/mockups/MessageMockup.jsx";
+import FaqAccordion from "../components/FaqAccordion.jsx";
 import { INTERIOR_GLOW_BLOBS, CONTACT_EMAIL, CONTACT_MAILTO } from "../data/site.js";
-import { META, HERO, MOCKUP, FORM_INTRO, FIELDS, CONTACT_INFO_HEADING, SUBMIT_LABEL } from "../data/contact.js";
+import {
+  META,
+  HERO,
+  MOCKUP,
+  FORM_INTRO,
+  FIELDS,
+  CONTACT_INFO_HEADING,
+  SUBMIT_LABEL,
+  FAQ_HEADING,
+  FAQ,
+} from "../data/contact.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 import styles from "./Contact.module.css";
 
@@ -202,6 +213,16 @@ export default function Contact() {
             </form>
           </Reveal>
         )}
+      </section>
+
+      <section className={styles.faqSection}>
+        <Reveal duration={900}>
+          <div className="eyebrow" style={{ textAlign: "center" }}>
+            FAQ
+          </div>
+          <h2 className={`sectionHeading ${styles.faqHeading}`}>{FAQ_HEADING}</h2>
+          <FaqAccordion items={FAQ} />
+        </Reveal>
       </section>
     </Layout>
   );

@@ -53,7 +53,7 @@ export const CAPABILITIES = [
     description: "Collect, clean and structure data from every source into one reliable, automated pipeline.",
     rows: [
       "Multi-source data collection",
-      "Standardisation & automation",
+      "Standardization & automation",
       "Cleansing & processing",
       "Database engineering",
       "Cloud & infrastructure development",
@@ -96,13 +96,14 @@ export const PIPELINE = [
   {
     label: "STEP 03",
     labelColor: ACCENT3,
-    title: "Model",
-    description: "Apply statistics and forecasting to surface what matters.",
+    title: "Compute",
+    description:
+      "Apply the right technique, statistical modeling, forecasting, or business logic, to turn clean data into something useful.",
   },
   {
     label: "STEP 04",
-    title: "Report",
-    description: "Live dashboards your team actually understands and uses.",
+    title: "Deliver",
+    description: "Put it wherever it's needed: a live dashboard, a report, or straight into another system.",
     highlighted: true,
   },
 ];

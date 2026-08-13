@@ -10,14 +10,14 @@ export const HERO = {
   eyebrow: "Get In Touch",
   heroPrefix: "Start your journey",
   heroAccent: "with us",
-  heroSubcopy: "Get on the path of transformation. A new world of data & technology awaits!",
+  heroSubcopy: "Your next chapter starts with a message. Tell us where you are today. We'll show you what's possible.",
   primaryCtaLabel: "Jump to the form",
 };
 
 export const MOCKUP = {
   filename: "hello@dahms.io",
   thread: [
-    { from: "them", text: "Hi — we're looking to modernize our data stack before Q3. Where would you start?" },
+    { from: "them", text: "Hi, we're looking to modernize our data stack before Q3. Where would you start?" },
     {
       from: "us",
       text: "Great question. A consultant will follow up shortly to scope it properly.",
@@ -73,3 +73,31 @@ export const FIELDS = {
 
 export const CONTACT_INFO_HEADING = "Contact Info";
 export const SUBMIT_LABEL = "Send Message";
+
+export const FAQ_HEADING = "Common questions";
+
+export const FAQ = [
+  {
+    question: "What if I don't know exactly what I need?",
+    answer:
+      "That's normal, and it's where most conversations start. Describe the problem, not the solution, we'll help you figure out the rest.",
+  },
+  {
+    question: "How fast can you start?",
+    answer: "Once we've scoped the work together, most projects begin within a couple of weeks.",
+  },
+  {
+    question: "I've never worked with a consultant before. Is that a problem?",
+    answer: "No. Most of the businesses we talk to haven't either.",
+  },
+  {
+    question: "What if I'm not sure I can afford this?",
+    answer:
+      "Every engagement is scoped and priced to fit your budget before any work starts, there's no minimum project size.",
+  },
+  {
+    question: "Do I have to sign a long-term contract?",
+    answer:
+      "No. Some clients work with us on retainer, others for a single project with a clear end date. You pick the model that fits.",
+  },
+];

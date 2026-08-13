@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
@@ -63,6 +64,9 @@ export default function Home() {
             <span className={styles.missionAccent}>accessible to businesses of every size</span>, bridging
             the gap between complex tech and real business impact.
           </p>
+          <Link to="/about/" className={styles.missionLink}>
+            More on our mission →
+          </Link>
         </Reveal>
       </section>
 
@@ -93,8 +97,8 @@ export default function Home() {
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>Start your journey.</h2>
           <p className={styles.ctaText}>
-            Tell us the business challenge you're facing and one of our consultants will be in touch — no
-            jargon, no obligation.
+            Tell us the business challenge you're facing and one of our consultants will be in touch. No
+            pressure, no obligation.
           </p>
           <PrimaryButton to="/contact/" size="lg" arrow>
             Send a message

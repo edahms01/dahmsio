@@ -41,7 +41,7 @@ export const BACKGROUND = {
   paragraphs: [
     "For twenty years, the founder of DahmsIO has built the data, analytics, tech, and AI systems that global organizations run on: full-stack software, econometrics platforms used by data scientists across continents, infrastructure processing millions of records a day, and AI tools that compress weeks of work into just days.",
     "Those capabilities rarely trickle down to the businesses keeping local and regional economies running. Too many companies are still reconciling numbers by hand, managing annoying spreadsheets, and engaging in manual operational tasks because systems don't speak to one another.",
-    "It's not that the technology doesn't fit or is too costly for those companies, it's that nobody has offered the right solutions, at the right price, for their unique need. Most agencies are looking for the biggest companies where they can become embedded and get the most revenue, for their own success. They're not looking to apply their capabilities to drive progress within an economy.",
+    "It's not that the technology doesn't fit or is too costly for those companies, it's that nobody has offered the right solutions, at the right price, for their unique need. We measure success by the difference we make in this region, not by the size of the client on the invoice.",
     // The page-wide "no em dash" convention (see file header) gets one deliberate exception
     // here, per Eric's call — it's the right punctuation for this specific break.
     "DahmsIO exists to close that gap by bringing the same technological concepts, standards, and rigor as major organizations, but scoped and priced to fit your circumstance — driving your business to the next level, regardless of industry or size.",
@@ -78,7 +78,7 @@ export const CREDIBILITY = {
     },
     {
       lead: "Answers, not correlations.",
-      body: "Econometrics and statistical modelling separate what is genuinely driving your results from what merely happens at the same time.",
+      body: "Econometrics and statistical modeling separate what is genuinely driving your results from what merely happens at the same time.",
       hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
@@ -163,7 +163,7 @@ export const FOUNDERS_NOTE = {
   paragraphs: [
     "I've spent the past twenty years in London, England working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
     "I've stayed hands-on my entire career. I design and ship data platforms, AI assistants, automation pipelines, and working prototypes myself, which means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
-    "If you're running a business in Maine or elsewhere in New England and want a partner who understands how the data and technology space can be applied to local business, send us a message and let's talk about how new technology can take your business to the next level.",
+    "If you're running a business in Maine or elsewhere in New England and want a partner who understands how the data and technology space can be applied to local business, send us a message and let's talk about where new technology could take your business.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one
