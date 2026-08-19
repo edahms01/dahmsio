@@ -12,18 +12,22 @@ export const META = {
     "DahmsIO is a New England data, technology and consulting firm that turns complex data and technology into clear, practical systems.",
 };
 
+// Aligned to the sub-service names introduced in subservice-expansion-plan-v6.md, in each
+// page's own order (Data, Technology, Consulting Advisory, Consulting Talent).
 export const MARQUEE_ITEMS = [
-  "Data Automation",
-  "Business Analytics",
-  "Data Science",
+  "Data Foundations",
+  "Reporting & Dashboards",
+  "Analytics & Forecasting",
+  "Data Science & Machine Learning",
+  "Custom Software Development",
+  "Systems Integration",
   "Workflow Automation",
   "AI Implementation",
-  "Tech Integrations",
-  "Web & App Development",
-  "Cloud Migration",
-  "Full-Stack Development",
-  "Team Resourcing",
-  "Consulting",
+  "Assessment & Audit",
+  "Strategy & Roadmap",
+  "Product & Delivery",
+  "Embedded Specialists",
+  "Interim Leadership",
 ];
 
 export const SERVICES = [
@@ -32,10 +36,10 @@ export const SERVICES = [
     description:
       "Pipelines, warehouses and dashboards that turn scattered data into decisions you can trust.",
     bullets: [
-      "Multi-source data engineering",
-      "Reporting & BI dashboards",
-      "Statistical analysis & forecasting",
-      "Data science & machine learning",
+      "Data Foundations",
+      "Reporting & Dashboards",
+      "Analytics & Forecasting",
+      "Data Science & Machine Learning",
     ],
     href: ROUTE_PATHS.data,
     linkLabel: "View the Data page",
@@ -50,10 +54,10 @@ export const SERVICES = [
     title: "Tech Implementation",
     description: "New platforms built, existing systems integrated, cloud and AI managed end-to-end.",
     bullets: [
-      "Full-stack app development",
-      "System integration & modernization",
-      "Cloud development & migration",
-      "AI implementation",
+      "Custom Software Development",
+      "Systems Integration",
+      "Workflow Automation",
+      "AI Implementation",
     ],
     href: ROUTE_PATHS.technology,
     linkLabel: "View the Technology page",
@@ -67,11 +71,15 @@ export const SERVICES = [
   {
     title: "Data & Tech Consulting",
     description: "Strategy, product vision and the right people, embedded alongside your team.",
+    // 5 bullets here vs. 4 on the Data/Technology cards above — Consulting has 5
+    // sub-services (3 Advisory + 2 Talent) and Eric's call was to list all of them rather
+    // than force a 4-item match with the other two cards.
     bullets: [
-      "Data & technology strategy",
-      "Product & Agile consulting",
-      "Analyst & engineer resourcing",
-      "UX & product design",
+      "Assessment & Audit",
+      "Strategy & Roadmap",
+      "Product & Delivery",
+      "Embedded Specialists",
+      "Interim Leadership",
     ],
     href: ROUTE_PATHS.consulting,
     linkLabel: "View the Consulting page",

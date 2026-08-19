@@ -28,13 +28,23 @@ export const FOUNDER = {
   // data — not requested yet, just noting the option.
 };
 
+// Full sub-service set from subservice-expansion-plan-v6.md, in each page's own order (Data,
+// Technology, Consulting Advisory, Consulting Talent) — was a curated shortlist of 6 generic
+// terms before the sub-service expansion.
 export const SERVICE_TYPES = [
-  "Data Engineering",
-  "Business Intelligence",
+  "Data Foundations",
+  "Reporting & Dashboards",
+  "Analytics & Forecasting",
+  "Data Science & Machine Learning",
+  "Custom Software Development",
+  "Systems Integration",
   "Workflow Automation",
   "AI Implementation",
-  "Full-Stack Development",
-  "Econometric Analysis",
+  "Assessment & Audit",
+  "Strategy & Roadmap",
+  "Product & Delivery",
+  "Embedded Specialists",
+  "Interim Leadership",
 ];
 
 export const AREA_SERVED_STATES = [
