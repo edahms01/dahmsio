@@ -1,4 +1,4 @@
-import { ACCENT, ACCENT3 } from "./colors.js";
+import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
 
@@ -22,29 +22,110 @@ export const MOCKUP = {
   filename: "integration.ts",
 };
 
-export const CAPABILITIES_HEADING = "Two disciplines, one dependable delivery engine.";
-export const CAPABILITIES_HEADING_WIDTH = "24ch";
-
-export const CAPABILITIES = [
+// Sub-service accordion — replaces the old CAPABILITIES block (subservice-expansion-plan-v6,
+// "Technology — APPROVED"). Copy is verbatim from that file; do not edit wording here.
+export const SUBSERVICE_GROUPS = [
   {
-    title: "Product Development",
-    description:
-      "Design and build the software your business runs on, from scratch or bolted onto what you already have.",
-    rows: [
-      "Full-stack app development",
-      "Web & mobile app development",
-      "System integration & modernization",
-      "API & platform architecture",
+    eyebrow: "What we build",
+    heading: "Built, connected, automated, and made smart.",
+    paragraphs: [
+      "New software is the foundation everything else sits on. Once it exists, it's worth connecting to what you already run. Once your systems talk to each other, the manual work between them is worth automating. And once things run on their own, that's where a layer that makes decisions, not just repeats steps, starts to pay off.",
+      "You don't need to start at the beginning. Most businesses come to us already running plenty of systems and just need one piece: a connection, an automation, or an AI layer added to what's already there. Tell us where you are and we'll start there.",
     ],
-    markColor: ACCENT,
-    hoverBorder: hexToRgba(ACCENT, 0.45),
-  },
-  {
-    title: "Cloud, AI & Automation",
-    description: "Modern infrastructure and intelligent automation that keeps everything running.",
-    rows: ["Cloud development & migration", "AI implementation", "Workflow automation", "Tech integrations"],
-    markColor: ACCENT3,
-    hoverBorder: hexToRgba(ACCENT3, 0.45),
+    numbered: true,
+    items: [
+      {
+        number: "01",
+        id: "custom-software",
+        // RESERVED, unrouted. Do not add a route, sitemap entry, or page component for this
+        // slug — anchor-only until outreach data shows real demand to promote it (same for
+        // every `slug` in this file; see subservice-expansion-plan-v6.md).
+        slug: "/technology/custom-software-development/",
+        title: "Custom Software Development",
+        outcome: "Software built around how your business actually works.",
+        body: "Off-the-shelf tools ask your business to work the way the software expects. When that stops fitting, we design and build something instead, a web app, a mobile app, or an internal tool your team uses every day, built full stack from the database up, so the system matches your process instead of you working around its limits.",
+        symptoms: [
+          "You're working around a tool instead of it working for you",
+          "Nothing off-the-shelf actually fits how your business runs",
+          "You've outgrown a spreadsheet or a patched-together tool that was never meant to last",
+        ],
+        deliverables: [
+          "A working application built for your process, not a generic template",
+          "Interface, logic, and database all built to work together",
+          "Web and mobile versions wherever your team needs them",
+          "An architecture built to be extended later, not thrown away and rebuilt",
+        ],
+        markColor: ACCENT,
+        hoverBorder: hexToRgba(ACCENT, 0.45),
+      },
+      {
+        number: "02",
+        id: "systems-integration",
+        slug: "/technology/systems-integration/",
+        title: "Systems Integration",
+        outcome: "Connect the tools you already run so they finally talk to each other.",
+        body: "Most businesses aren't short on software, they're short on it working together. One tool holds your customers, another holds your orders, and a third holds your finances, and none of them know the others exist. We connect what you already have, and where a new system needs to join the mix, we bring it in clean rather than bolting it on.",
+        symptoms: [
+          "The same information gets typed into two or three different systems",
+          "You just added a new tool and now nothing talks to what you already had",
+          "Someone's full-time job is moving data from one place to another",
+        ],
+        deliverables: [
+          "Your existing systems connected, so information moves on its own",
+          "A new system brought in without breaking what already works",
+          "One source of truth instead of three versions of the same number",
+          "Fewer manual handoffs between tools and between people",
+        ],
+        markColor: ACCENT3,
+        hoverBorder: hexToRgba(ACCENT3, 0.45),
+      },
+      {
+        number: "03",
+        id: "workflow-automation",
+        slug: "/technology/workflow-automation/",
+        title: "Workflow Automation",
+        outcome: "Put the repetitive parts of your business on autopilot.",
+        body: "Every business has a handful of tasks that happen the same way, every single time: a form gets filled out, an invoice gets sent, a follow-up email goes out three days later. None of that needs a person doing it by hand. We map out where the repetition lives and set it to run itself, so your team's time goes toward the work that actually needs a person.",
+        symptoms: [
+          "The same multi-step task happens every day or every week, exactly the same way",
+          "A new customer or order kicks off a checklist someone has to remember to run through",
+          "You've thought \"there has to be a faster way to do this\" more than once",
+        ],
+        deliverables: [
+          "The repetitive steps in your process running on their own, without anyone remembering to start them",
+          "Fewer things falling through the cracks because a step got missed or forgotten",
+          "Notifications and hand-offs that happen automatically at the right moment",
+          "Time back for your team to spend where their judgment actually matters",
+        ],
+        markColor: ACCENT2,
+        hoverBorder: hexToRgba(ACCENT2, 0.45),
+      },
+      {
+        number: "04",
+        id: "ai-implementation",
+        slug: "/technology/ai-implementation/",
+        title: "AI Implementation",
+        outcome: "AI that does real work inside your business, not a chatbot bolted onto your website.",
+        // Deliberate, approved exception to the no-comparison copy rule (subservice-
+        // expansion-plan-v6.md, Technology — Pass 2 note): AI is the one category where
+        // prospects arrive with a specific low-quality mental image already installed. Do
+        // not "fix" the outcome line above.
+        body: "Most AI talk is either overhyped or too vague to act on. We build the specific piece that actually helps: an assistant that knows your business and answers real questions, an agent that can take action across your systems, or the decision logic that determines what happens next without a person in the loop. You get a straight answer on what's worth building and what isn't, before anything gets built.",
+        symptoms: [
+          "Your team answers the same kind of question over and over, and most of the answer already lives in your systems",
+          "You want something to take action, not just generate text, and stop when it's supposed to",
+          "You've been pitched AI more than once and want someone to tell you plainly what's actually worth it for you",
+        ],
+        deliverables: [
+          "An assistant built on your own information, not a generic chatbot",
+          "Agents that can take real action across the tools you already use",
+          "The orchestration and decision logic that ties multiple steps together into one working system",
+          "An honest answer up front on whether this is worth building for you at all",
+        ],
+        markColor: ACCENT,
+        hoverBorder: hexToRgba(ACCENT, 0.45),
+      },
+    ],
   },
 ];
 
