@@ -188,7 +188,7 @@ export default function About() {
           border-top below (both then rely solely on ctaInner's own symmetric 70px top/bottom
           padding). No top border on this section itself (removed per Eric's call). */}
       <section className={`${interiorStyles.cta} ${styles.ctaCenterBetweenLines}`}>
-        <NetworkCanvas maxNodes={34} linkDist={110} opacity={0.5} className={interiorStyles.ctaCanvas} />
+        <NetworkCanvas maxNodes={70} linkDist={130} opacity={0.7} className={interiorStyles.ctaCanvas} />
         <Reveal duration={900} className={interiorStyles.ctaInner}>
           <h2 className={`sectionHeading ${interiorStyles.ctaHeading}`}>{CTA.heading}</h2>
           <p className={interiorStyles.ctaText}>{CTA.text}</p>

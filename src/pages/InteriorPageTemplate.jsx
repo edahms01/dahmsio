@@ -140,7 +140,7 @@ export default function InteriorPageTemplate({
       )}
 
       <section className={styles.cta}>
-        <NetworkCanvas maxNodes={34} linkDist={110} opacity={0.5} className={styles.ctaCanvas} />
+        <NetworkCanvas maxNodes={70} linkDist={130} opacity={0.7} className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{ctaHeading}</h2>
           <p className={styles.ctaText}>{ctaText}</p>
