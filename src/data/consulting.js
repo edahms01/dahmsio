@@ -11,7 +11,7 @@ export const META = {
 
 export const HERO = {
   eyebrow: "Data & Tech Consulting",
-  heroPrefix: "Vision, strategy and talent that become",
+  heroPrefix: "Strategy, vision and talent that become",
   heroAccent: "part of your business",
   heroSubcopy:
     "From strategy and vision to hands-on resourcing, we plug into how you already work, so every project has the right thinking and the right people behind it.",
@@ -26,7 +26,7 @@ export const HERO = {
 // once the pipeline was replaced.
 export const MOCKUP = {
   filename: "roadmap.io",
-  headerLabel: "PRODUCT ROADMAP",
+  headerLabel: "ROADMAP",
   progressPercent: 62,
   stages: [
     { label: "Discover", state: "done" },
@@ -57,7 +57,7 @@ export const SUBSERVICE_GROUPS = [
     eyebrow: "Advisory",
     heading: "Think before you build.",
     paragraphs: [
-      "Every advisory engagement moves through the same three questions: what's actually going on, what should happen about it, and how the work actually gets run once you commit. You can start at whichever one you need. No build, no code, no contract to build anything after.",
+      "Every advisory engagement answers three questions: what's actually happening, what should happen next, and how the work gets carried out once you commit. Start wherever you need. No build, no code, and no obligation to take on further work afterward.",
     ],
     numbered: true,
     items: [
@@ -133,7 +133,7 @@ export const SUBSERVICE_GROUPS = [
     eyebrow: "Talent",
     heading: "The people to make it happen.",
     paragraphs: [
-      "Advisory answers what to do. Talent answers who does it, whether that's extra hands on a specific piece of work or someone senior directing the whole effort. Both join your team directly rather than working from a separate shop.",
+      "Advisory answers what to do. Talent answers who does it, whether that's extra hands for a specific project or a senior leader directing the effort. Both join your team directly rather than working from a separate shop.",
     ],
     numbered: false,
     items: [
@@ -220,7 +220,7 @@ export const PIPELINE = [
 ];
 
 export const CTA = {
-  heading: "Ready to bring in the right people?",
-  text: "Tell us the gap, strategic or hands-on, and we'll map the right mix of thinking and talent to close it.",
+  heading: "Ready to close the gap?",
+  text: "Tell us where the gap is and we'll map whether you need advice, extra hands, or both.",
   buttonLabel: "Start a consulting project",
 };

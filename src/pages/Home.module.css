@@ -229,9 +229,11 @@
   text-align: center;
 }
 
+/* Heading -> text -> button gaps set to the same value (28px) so the CTA block reads as
+   evenly spaced, rather than each gap being sized independently. Testing on Home first. */
 .ctaHeading {
   font-size: clamp(32px, 4.6vw, 58px);
-  margin: 0 0 18px;
+  margin: 0 0 28px;
 }
 
 .ctaText {
@@ -239,7 +241,7 @@
   line-height: 1.6;
   color: var(--text-secondary2);
   max-width: 50ch;
-  margin: 0 auto 34px;
+  margin: 0 auto 28px;
 }
 
 @media (max-width: 900px) {

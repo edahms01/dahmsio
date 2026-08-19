@@ -28,9 +28,9 @@ export const MOCKUP = {
 export const SUBSERVICE_GROUPS = [
   {
     eyebrow: "What we build",
-    heading: "Built, connected, automated, and made smart.",
+    heading: "Built, connected, automated, and made intelligent.",
     paragraphs: [
-      "New software gives your business something to build on. Once it's in place, connecting it to what you already run is the natural next step. With your systems finally talking to each other, the manual work between them becomes worth automating. And once that's running quietly in the background, a layer that makes decisions, not just repeats steps, is where the real payoff starts.",
+      "New software gives your business something to build on. Once it's in place, connecting it to what you already run is the natural next step. With your systems finally talking to each other, the manual work between them becomes worth automating. And once that's running quietly in the background, a layer that makes decisions is where the real payoff starts.",
       "You don't need to start at the beginning. Most businesses come to us already running plenty of systems and just need one piece: a connection, an automation, or an AI layer added to what's already there. Tell us where you are and we'll start there.",
     ],
     numbered: true,
@@ -106,11 +106,7 @@ export const SUBSERVICE_GROUPS = [
         id: "ai-implementation",
         slug: "/technology/ai-implementation/",
         title: "AI Implementation",
-        outcome: "AI that does real work inside your business, not a chatbot bolted onto your website.",
-        // Deliberate, approved exception to the no-comparison copy rule (subservice-
-        // expansion-plan-v6.md, Technology — Pass 2 note): AI is the one category where
-        // prospects arrive with a specific low-quality mental image already installed. Do
-        // not "fix" the outcome line above.
+        outcome: "AI that does real work inside your business.",
         body: "Most AI talk is either overhyped or too vague to act on. We build the specific piece that actually helps: an assistant that knows your business and answers real questions, an agent that can take action across your systems, or the decision logic that determines what happens next without a person in the loop. You get a straight answer on what's worth building and what isn't, before anything gets built.",
         symptoms: [
           "Your team answers the same kind of question over and over, and most of the answer already lives in your systems",
