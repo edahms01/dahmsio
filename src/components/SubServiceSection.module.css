@@ -1,0 +1,170 @@
+.group {
+  margin-bottom: 64px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.heading {
+  font-size: clamp(30px, 4.2vw, 52px);
+  max-width: 26ch;
+}
+
+.intro {
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  margin: 20px 0 0;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 44px;
+}
+
+/* Card treatment ported straight from CapabilityCard so the accordion reads as native to the
+   page rather than a bespoke component — same gradient fill, border, radius, hover border. */
+.row {
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: border-color 0.25s ease;
+  scroll-margin-top: 100px;
+}
+
+.row:hover {
+  border-color: var(--hover-border);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+}
+
+.headerMain {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  flex: 1;
+}
+
+.number {
+  font-family: var(--fm);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.outcome {
+  font-size: 15px;
+  color: var(--text-secondary2);
+}
+
+.toggleLabel {
+  font-family: var(--fm);
+  font-size: 13px;
+  color: var(--accent3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 0fr/1fr grid-template-rows trick — animates to and from an unknown content height without
+   measuring scrollHeight in JS. `hidden` (applied a beat late on close by the component, see
+   SubServiceSection.jsx) is what actually removes it from the a11y tree and tab order; this
+   is purely the visual transition. */
+.panelOuter {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s var(--ease-out);
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+}
+
+.noAnim {
+  transition: none;
+}
+
+.panelInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary2);
+  margin: 0 28px 24px;
+}
+
+.listBlock {
+  margin: 0 28px 24px;
+}
+
+.listLabel {
+  font-family: var(--fd);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted2);
+  margin: 0 0 12px;
+}
+
+/* global.css resets `ul { list-style: none }` site-wide — restored here, same pattern as
+   About.module.css's .operatingPrinciples/.credentials. */
+.list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.list li {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #d2d2dc;
+  margin-bottom: 8px;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+.cta {
+  margin: 0 28px 28px;
+}
+
+@media (max-width: 560px) {
+  .header {
+    padding: 22px 20px;
+  }
+
+  .body,
+  .listBlock,
+  .cta {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
