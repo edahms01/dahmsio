@@ -84,26 +84,22 @@
   padding: 100px var(--side-padding) 40px;
 }
 
-/* TEMPORARY — only still consumed by Technology/Consulting until their own sub-service
-   passes (see the comment above InteriorPageTemplate's props). Remove once both are
-   migrated. */
-.capabilitiesHeading {
-  font-size: clamp(30px, 4.2vw, 52px);
-}
-
-.capabilitiesGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  margin-top: 52px;
-}
-
 .pipeline {
   position: relative;
   z-index: 10;
   max-width: var(--max-wide);
   margin: 0 auto;
   padding: 100px var(--side-padding);
+}
+
+/* Consulting-only (pipelineAfterGroup): the pipeline sits between two independent
+   SubServiceSection instances (Advisory, then Talent) instead of in its own full-padding
+   section — each instance treats its single group as both first and last child, so its own
+   margin-bottom collapses to 0 (see SubServiceSection.module.css .group:last-child). This
+   provides the vertical rhythm that margin would otherwise have supplied, matching
+   .group's own 64px spacing so the pipeline reads as just another block in the flow. */
+.pipelineInline {
+  margin: 64px 0;
 }
 
 .pipelineHead {
@@ -212,10 +208,6 @@
   .hero {
     grid-template-columns: 1fr;
     padding-top: 120px;
-  }
-
-  .capabilitiesGrid {
-    grid-template-columns: 1fr;
   }
 
   .pipelineGrid {

@@ -6,9 +6,7 @@ import {
   META,
   HERO,
   MOCKUP,
-  CAPABILITIES_HEADING,
-  CAPABILITIES_HEADING_WIDTH,
-  CAPABILITIES,
+  SUBSERVICE_GROUPS,
   PIPELINE_EYEBROW,
   PIPELINE_HEADING,
   PIPELINE,
@@ -27,12 +25,13 @@ export default function Consulting() {
             <RoadmapMockup {...MOCKUP} />
           </AppWindowMockup>
         }
-        capabilitiesHeading={CAPABILITIES_HEADING}
-        capabilitiesHeadingWidth={CAPABILITIES_HEADING_WIDTH}
-        capabilities={CAPABILITIES}
+        subserviceGroups={SUBSERVICE_GROUPS}
         pipelineEyebrow={PIPELINE_EYEBROW}
         pipelineHeading={PIPELINE_HEADING}
         pipeline={PIPELINE}
+        // Pipeline describes the Advisory engagement only (SUBSERVICE_GROUPS[0]) — rendered
+        // between Advisory and Talent instead of after the whole section.
+        pipelineAfterGroup={0}
         ctaHeading={CTA.heading}
         ctaText={CTA.text}
         ctaButtonLabel={CTA.buttonLabel}
