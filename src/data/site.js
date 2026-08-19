@@ -23,6 +23,15 @@ export const CONTACT_EMAIL = "hello@dahms.io";
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 export const TAGLINE = "Where innovation meets intelligence.";
 
+// Shared UI labels for the sub-service accordion sections (Data/Technology/Consulting) —
+// lives here rather than in a page data file because all three pages reuse it verbatim.
+export const SUBSERVICE_LABELS = {
+  symptoms: "You might need this if",
+  deliverables: "What you get",
+  open: "See more →",
+  close: "Close ↓",
+};
+
 // Shared ambient background blobs for the interior pages (Data/Technology/Consulting/About) — identical across all four.
 export const INTERIOR_GLOW_BLOBS = [
   {

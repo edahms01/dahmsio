@@ -1,4 +1,4 @@
-import { ACCENT, ACCENT3 } from "./colors.js";
+import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
 
@@ -44,36 +44,110 @@ export const MOCKUP = {
   ],
 };
 
-export const CAPABILITIES_HEADING = "Two disciplines, one dependable data foundation.";
-export const CAPABILITIES_HEADING_WIDTH = "22ch";
-
-export const CAPABILITIES = [
+// Sub-service accordion — replaces the old CAPABILITIES block (subservice-expansion-plan-v6,
+// "Data — APPROVED"). Copy is verbatim from that file; do not edit wording here.
+export const SUBSERVICE_GROUPS = [
   {
-    title: "Data Management",
-    description: "Collect, clean and structure data from every source into one reliable, automated pipeline.",
-    rows: [
-      "Multi-source data collection",
-      "Standardization & automation",
-      "Cleansing & processing",
-      "Database engineering",
-      "Cloud & infrastructure development",
+    eyebrow: "What we do",
+    heading: "Four stages, each one unlocks the next.",
+    paragraphs: [
+      "Clean, reliable data is what makes reporting worth looking at. Good reporting is what makes analysis worth trusting. And trusted analysis is what the more advanced work needs underneath it to function at all.",
+      "Most businesses come to us somewhere in the first two and work down from there over time. You don't have to do all four, and we focus on one stage at a time. Find the one that sounds like your typical week and we can start there.",
     ],
-    markColor: ACCENT,
-    hoverBorder: hexToRgba(ACCENT, 0.45),
-  },
-  {
-    title: "Business Analytics",
-    description: "Turn that clean data into models, dashboards and answers your teams act on every day.",
-    rows: [
-      "Business analytics",
-      "Marketing analytics",
-      "Reporting solutions & dashboards",
-      "ROI & efficiency modeling",
-      "Statistical analysis & forecasting",
-      "Data science & machine learning",
+    numbered: true,
+    items: [
+      {
+        number: "01",
+        id: "data-foundations",
+        // RESERVED, unrouted. Do not add a route, sitemap entry, or page component for this
+        // slug — anchor-only until outreach data shows real demand to promote it (same for
+        // every `slug` in this file; see subservice-expansion-plan-v6.md).
+        slug: "/data/foundations/",
+        title: "Data Foundations",
+        outcome: "Get everything into one place, clean, current, and updating itself.",
+        body: "Most businesses already have the data they need. It's just scattered across systems that were never meant to talk to each other. We connect those sources, clean what comes out, and set the whole thing to run on its own, so everything downstream starts from numbers you can trust.",
+        symptoms: [
+          "Your numbers live in different systems and never quite agree",
+          "Someone on your team spends hours every week copying data between spreadsheets",
+          "You've been told a report isn't possible because the data isn't there yet",
+        ],
+        deliverables: [
+          "One place where your data from every system lands together",
+          "Automated collection that runs on schedule instead of by hand",
+          "Cleaning and de-duplication so records match across sources",
+          "Checks that flag bad or missing data before it reaches a report",
+          "Documentation of where every number comes from",
+        ],
+        markColor: ACCENT,
+        hoverBorder: hexToRgba(ACCENT, 0.45),
+      },
+      {
+        number: "02",
+        id: "reporting-dashboards",
+        slug: "/data/reporting-dashboards/",
+        title: "Reporting & Dashboards",
+        outcome: "See what's happening without rebuilding a spreadsheet.",
+        body: "Most businesses already produce reports. The catch is that a person has to build them, usually the same person, usually on a Monday morning. We take what you're assembling by hand and turn it into something that's just there when you open it: current, on your phone or your desktop, and showing everyone the same numbers.",
+        symptoms: [
+          "Your weekly numbers get built by hand and are stale by the time anyone reads them",
+          "Two people pull the same report and come back with different answers",
+          "Only one person actually knows how the spreadsheet works",
+        ],
+        deliverables: [
+          "Dashboards that update on their own, on desktop and phone",
+          "One agreed definition for every number, so nobody argues about whose figure is right",
+          "Reports that send themselves on whatever schedule suits you",
+          "Separate views per team, so people see what's theirs and not everything at once",
+          "Room to answer a new question yourself instead of waiting on whoever owns the spreadsheet",
+        ],
+        markColor: ACCENT3,
+        hoverBorder: hexToRgba(ACCENT3, 0.45),
+      },
+      {
+        number: "03",
+        id: "analytics-forecasting",
+        slug: "/data/analytics-forecasting/",
+        title: "Analytics & Forecasting",
+        outcome: "Understand why something happened and what's likely next.",
+        body: "A dashboard tells you what happened. It rarely tells you why. This is the work of pulling apart what is actually driving your results and what only looks like it is, then using that to put a credible number on what's coming. It's the difference between noticing that revenue dipped and knowing which of the six things you changed that month caused it.",
+        symptoms: [
+          "You can see the numbers moving but nobody can say why",
+          "You're planning next year off last year plus a gut feeling",
+          "You want to know whether something you spent money on actually worked",
+        ],
+        deliverables: [
+          "A clear read on which factors genuinely move your results and which are coincidence",
+          "Forecasts for demand, revenue, or inventory, with an honest range rather than one confident number",
+          "Before-and-after measurement on a change you made, so you know if it paid",
+          "Scenario answers: what happens to the business if this goes up and that goes down",
+          "A written explanation of the method in plain English, so you can defend the numbers to someone else",
+        ],
+        markColor: ACCENT2,
+        hoverBorder: hexToRgba(ACCENT2, 0.45),
+      },
+      {
+        number: "04",
+        id: "data-science-ml",
+        slug: "/data/data-science-machine-learning/",
+        title: "Data Science & Machine Learning",
+        outcome: "Systems that predict, score, and decide on their own.",
+        body: "Everything above puts a person in front of the numbers to make a call. This stage lets the numbers make the routine calls themselves. A model learns the patterns in your own history and then applies them to every new record as it arrives: which customers are about to leave, which orders look wrong, which of tomorrow's jobs will run late. You still set the rules and see every call it makes. It just handles the volume no team could work through by hand.",
+        symptoms: [
+          "You'd act on something if you could spot it early, but you only find out after the fact",
+          "The judgment call is repeatable, but it happens too many times per day or week for anyone to keep up",
+          "An algorithm could learn what your best customers have in common, but nobody has built one for your business",
+        ],
+        deliverables: [
+          "Scoring that flags the records worth your attention, ranked, as they come in",
+          "Predictions built on your own history rather than an industry average",
+          "A plain-English account of what the model weighs, so it's never a black box",
+          "Monitoring that tells you when the model starts drifting, before it makes bad calls",
+          "An honest answer up front on whether this is worth building for you at all",
+        ],
+        markColor: ACCENT,
+        hoverBorder: hexToRgba(ACCENT, 0.45),
+      },
     ],
-    markColor: ACCENT3,
-    hoverBorder: hexToRgba(ACCENT3, 0.45),
   },
 ];
 
@@ -97,8 +171,10 @@ export const PIPELINE = [
     label: "STEP 03",
     labelColor: ACCENT3,
     title: "Compute",
-    description:
-      "Apply the right technique, statistical modeling, forecasting, or business logic, to turn clean data into something useful.",
+    // Changed per subservice-expansion-plan-v6 ("Data pipeline — stage lines"): "forecasting"
+    // dropped as redundant with "statistical modeling" and to bring this card's copy length
+    // in line with the other three steps.
+    description: "Apply statistical modeling or business logic to turn data into something useful.",
   },
   {
     label: "STEP 04",
@@ -106,6 +182,19 @@ export const PIPELINE = [
     description: "Put it wherever it's needed: a live dashboard, a report, or straight into another system.",
     highlighted: true,
   },
+];
+
+// Connects each pipeline step to the sub-service stage(s) that do that work — an orientation
+// diagram, not an exhaustive coverage matrix (see plan doc). Data-only; no other page's
+// pipeline gets this treatment. `steps` are zero-based indices into PIPELINE above.
+export const PIPELINE_STAGE_LINES = [
+  { steps: [0, 1], labels: ["Data Foundations"] },
+  {
+    steps: [2],
+    labels: ["Analytics & Forecasting", "Data Science & Machine Learning"],
+    mobileLabels: ["Analytics & Data Science"],
+  },
+  { steps: [3], labels: ["Reporting & Dashboards"] },
 ];
 
 export const CTA = {

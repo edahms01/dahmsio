@@ -6,12 +6,11 @@ import {
   META,
   HERO,
   MOCKUP,
-  CAPABILITIES_HEADING,
-  CAPABILITIES_HEADING_WIDTH,
-  CAPABILITIES,
+  SUBSERVICE_GROUPS,
   PIPELINE_EYEBROW,
   PIPELINE_HEADING,
   PIPELINE,
+  PIPELINE_STAGE_LINES,
   CTA,
 } from "../data/data.js";
 
@@ -27,12 +26,11 @@ export default function Data() {
             <DashboardMockup {...MOCKUP} />
           </AppWindowMockup>
         }
-        capabilitiesHeading={CAPABILITIES_HEADING}
-        capabilitiesHeadingWidth={CAPABILITIES_HEADING_WIDTH}
-        capabilities={CAPABILITIES}
+        subserviceGroups={SUBSERVICE_GROUPS}
         pipelineEyebrow={PIPELINE_EYEBROW}
         pipelineHeading={PIPELINE_HEADING}
         pipeline={PIPELINE}
+        pipelineStageLines={PIPELINE_STAGE_LINES}
         ctaHeading={CTA.heading}
         ctaText={CTA.text}
         ctaButtonLabel={CTA.buttonLabel}
