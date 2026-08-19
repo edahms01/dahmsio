@@ -192,9 +192,13 @@ export const PIPELINE_STAGE_LINES = [
   {
     steps: [2],
     labels: ["Analytics & Forecasting", "Data Science & Machine Learning"],
-    mobileLabels: ["Analytics & Data Science"],
+    mobileLabels: ["Analytics", "Data Science"],
   },
-  { steps: [3], labels: ["Reporting & Dashboards"] },
+  {
+    steps: [3],
+    labels: ["Reporting & Dashboards"],
+    mobileLabels: ["Reporting", "Dashboards"],
+  },
 ];
 
 export const CTA = {

@@ -129,17 +129,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 34px;
   position: relative;
+}
+
+/* The bracket's side/bottom edges reach up toward the step(s) it belongs to, converging into
+   the rail below — width spans the full grouped span for multi-step entries (e.g. Data
+   Foundations, steps 01+02), so the grouping reads at a glance instead of relying on the
+   label text alone. */
+.stageLineBracket {
+  position: absolute;
+  top: 0;
+  left: 9%;
+  right: 9%;
+  height: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
 }
 
 .stageLineRail {
   position: absolute;
-  top: 0;
+  top: 12px;
   left: 50%;
   width: 1px;
-  height: 14px;
-  background: rgba(255, 255, 255, 0.18);
+  height: 18px;
+  background: rgba(255, 255, 255, 0.22);
   transform: translateX(-50%);
 }
 
@@ -217,7 +232,7 @@
      rotates from horizontal-under-the-row into a vertical rail to the left of the stack —
      one unified grid so the rail can span exactly the row(s) its step(s) occupy. */
   .pipelineGrid.withLines {
-    grid-template-columns: minmax(64px, 100px) 1fr;
+    grid-template-columns: minmax(70px, 116px) 1fr;
     row-gap: 20px;
   }
 
@@ -233,25 +248,49 @@
     align-items: center;
     justify-content: flex-end;
     padding-top: 0;
-    padding-right: 14px;
+    padding-right: 30px;
     text-align: right;
   }
 
-  .stageLineRail {
-    position: static;
+  /* Same bracket, rotated: top/bottom edges hug the step(s) instead of the sides, so a
+     grouped entry (Data Foundations, steps 01+02) still reads as one bracket spanning both
+     cards rather than two independent lines. Solid edge faces the rail/label side, open edge
+     faces the step(s) it's grouping — matching the desktop bracket's convention. */
+  .stageLineBracket {
+    top: 10%;
+    bottom: 10%;
     left: auto;
-    top: auto;
-    width: 1px;
-    height: 100%;
-    min-height: 24px;
-    transform: none;
-    order: 1;
-    margin-left: 14px;
+    right: 0;
+    height: auto;
+    width: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .stageLineRail {
+    position: absolute;
+    top: 50%;
+    left: auto;
+    right: 12px;
+    width: 16px;
+    height: 1px;
+    min-height: 0;
+    transform: translateY(-50%);
+    margin-left: 0;
   }
 
   .stageLineLabel {
     align-items: flex-end;
     text-align: right;
+  }
+
+  /* Mobile labels are already the shortened variant (mobileLabels) — nowrap plus a touch
+     smaller than the desktop 12px keeps a two-word label like "Data Science" on its own
+     single line inside the narrow label column instead of breaking a third time. */
+  .stageLineLabelMobile .stageLineLabelLine {
+    font-size: 11px;
+    white-space: nowrap;
   }
 
   .stageLineLabelDesktop {

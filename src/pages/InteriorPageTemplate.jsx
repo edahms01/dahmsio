@@ -124,6 +124,7 @@ export default function InteriorPageTemplate({
                   "--row-end": rowEnd,
                 }}
               >
+                <span className={styles.stageLineBracket} aria-hidden="true" />
                 <span className={styles.stageLineRail} aria-hidden="true" />
                 <span className={`${styles.stageLineLabel} ${styles.stageLineLabelDesktop}`}>
                   {line.labels.map((label) => (
