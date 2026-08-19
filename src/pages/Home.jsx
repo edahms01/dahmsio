@@ -45,7 +45,7 @@ export default function Home() {
         </Reveal>
         <div className={styles.servicesGrid}>
           {SERVICES.map((service, i) => (
-            <Reveal key={service.title} delay={i * 120}>
+            <Reveal key={service.title} delay={i * 120} className={styles.serviceReveal}>
               <FeatureCard {...service} />
             </Reveal>
           ))}

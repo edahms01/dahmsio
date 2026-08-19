@@ -124,6 +124,16 @@
   margin-top: 56px;
 }
 
+/* Consulting's card runs one bullet longer than Data/Technology's (5 sub-services vs 4,
+   see home.js SERVICES), so the three cards no longer reach FeatureCard's bottom-anchored
+   "View Page" link at the same natural height. Grid stretch already sizes this Reveal
+   wrapper to the tallest card in the row, but that stretched height needs to be explicit
+   for FeatureCard's own height:100% to resolve against and push its link (margin-top: auto)
+   down to match across all three cards. */
+.serviceReveal {
+  height: 100%;
+}
+
 .mission {
   position: relative;
   z-index: 10;
