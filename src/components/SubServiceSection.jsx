@@ -153,7 +153,7 @@ export default function SubServiceSection({ groups, ctaLabel }) {
                       <p className={styles.body}>{item.body}</p>
 
                       <div className={styles.listBlock}>
-                        <h4 className={styles.listLabel}>{SUBSERVICE_LABELS.symptoms}</h4>
+                        <h3 className={styles.listLabel}>{SUBSERVICE_LABELS.symptoms}</h3>
                         <ul className={styles.list}>
                           {item.symptoms.map((symptom) => (
                             <li key={symptom}>{symptom}</li>
@@ -162,7 +162,7 @@ export default function SubServiceSection({ groups, ctaLabel }) {
                       </div>
 
                       <div className={styles.listBlock}>
-                        <h4 className={styles.listLabel}>{SUBSERVICE_LABELS.deliverables}</h4>
+                        <h3 className={styles.listLabel}>{SUBSERVICE_LABELS.deliverables}</h3>
                         <ul className={styles.list}>
                           {item.deliverables.map((deliverable) => (
                             <li key={deliverable}>{deliverable}</li>
