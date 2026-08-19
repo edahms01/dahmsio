@@ -23,13 +23,14 @@ export const MOCKUP = {
 };
 
 // Sub-service accordion — replaces the old CAPABILITIES block (subservice-expansion-plan-v6,
-// "Technology — APPROVED"). Copy is verbatim from that file; do not edit wording here.
+// "Technology — APPROVED"). First intro paragraph updated post-build per Eric's direct edit;
+// the rest of the section's copy is still verbatim from the plan doc.
 export const SUBSERVICE_GROUPS = [
   {
     eyebrow: "What we build",
     heading: "Built, connected, automated, and made smart.",
     paragraphs: [
-      "New software is the foundation everything else sits on. Once it exists, it's worth connecting to what you already run. Once your systems talk to each other, the manual work between them is worth automating. And once things run on their own, that's where a layer that makes decisions, not just repeats steps, starts to pay off.",
+      "New software gives your business something to build on. Once it's in place, connecting it to what you already run is the natural next step. With your systems finally talking to each other, the manual work between them becomes worth automating. And once that's running quietly in the background, a layer that makes decisions, not just repeats steps, is where the real payoff starts.",
       "You don't need to start at the beginning. Most businesses come to us already running plenty of systems and just need one piece: a connection, an automation, or an AI layer added to what's already there. Tell us where you are and we'll start there.",
     ],
     numbered: true,

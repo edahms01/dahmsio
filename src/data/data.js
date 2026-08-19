@@ -45,14 +45,15 @@ export const MOCKUP = {
 };
 
 // Sub-service accordion — replaces the old CAPABILITIES block (subservice-expansion-plan-v6,
-// "Data — APPROVED"). Copy is verbatim from that file; do not edit wording here.
+// "Data — APPROVED"). Intro paragraphs updated post-build per Eric's direct edit; the rest of
+// the section's copy is still verbatim from the plan doc.
 export const SUBSERVICE_GROUPS = [
   {
     eyebrow: "What we do",
     heading: "Four stages, each one unlocks the next.",
     paragraphs: [
-      "Clean, reliable data is what makes reporting worth looking at. Good reporting is what makes analysis worth trusting. And trusted analysis is what the more advanced work needs underneath it to function at all.",
-      "Most businesses come to us somewhere in the first two and work down from there over time. You don't have to do all four, and we focus on one stage at a time. Find the one that sounds like your typical week and we can start there.",
+      "Clean, reliable data is what makes reporting valuable. Quality reporting is what makes analysis worth trusting. And trusted analysis is the foundation upon which advanced data science techniques can be confidently implemented.",
+      "Most businesses are somewhere in the first two stages. You don't necessarily need to do all four stages, depending on your need, and we will focus on one stage at a time, keeping you updated along the way.",
     ],
     numbered: true,
     items: [
