@@ -6,7 +6,7 @@ export const META = {
   path: ROUTE_PATHS.technology,
   title: "Tech Implementation | DahmsIO",
   description:
-    "Custom software development, systems integration, workflow automation and AI implementation. DahmsIO closes gaps in your business without breaking what works.",
+    "Custom software development, systems integration, workflow automation, and AI implementation. DahmsIO closes gaps in your business without breaking what works.",
 };
 
 export const HERO = {
@@ -14,7 +14,7 @@ export const HERO = {
   heroPrefix: "Implement the technology that closes",
   heroAccent: "gaps in your business",
   heroSubcopy:
-    "From full-stack builds to legacy integrations, we architect the technology flow, so every system you rely on is modern, connected and built to last.",
+    "From new builds to connecting the older systems you can't replace, we work out how the pieces fit together, so every system you rely on is modern, connected, and built to last.",
   primaryCtaLabel: "Scope a tech project",
 };
 
@@ -140,7 +140,7 @@ export const PIPELINE = [
     label: "STEP 02",
     labelColor: ACCENT,
     title: "Architect",
-    description: "Design the technical approach, scoped to your systems, budget and timeline.",
+    description: "Design the technical approach around your systems, budget, and timeline.",
   },
   {
     label: "STEP 03",
@@ -158,6 +158,6 @@ export const PIPELINE = [
 
 export const CTA = {
   heading: "Ready to modernize your stack?",
-  text: "Tell us what you're building or integrating and we'll map the fastest path to a system that works reliably.",
+  text: "Show us what you're building or trying to connect. We'll come back with a straight answer on what it takes to make it work reliably.",
   buttonLabel: "Start a tech project",
 };

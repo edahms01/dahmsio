@@ -6,15 +6,15 @@ export const META = {
   path: ROUTE_PATHS.consulting,
   title: "Data & Tech Consulting | DahmsIO",
   description:
-    "Data and technology assessment, strategy and product consulting, plus embedded analysts, engineers and interim leadership from DahmsIO.",
+    "Data and technology assessment, strategy and product consulting, plus embedded analysts, engineers, and interim leadership from DahmsIO.",
 };
 
 export const HERO = {
   eyebrow: "Data & Tech Consulting",
-  heroPrefix: "Strategy, vision and talent that become",
+  heroPrefix: "Strategy, vision, and talent that become",
   heroAccent: "part of your business",
   heroSubcopy:
-    "From strategy and vision to hands-on resourcing, we plug into how you already work, so every project has the right thinking and the right people behind it.",
+    "Some problems need a decision made. Others need someone to do the work. We plug into how you already run things, so every project has the right thinking and the right people behind it.",
   primaryCtaLabel: "Scope a consulting project",
 };
 

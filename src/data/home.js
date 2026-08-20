@@ -9,7 +9,7 @@ export const META = {
   // narrowing how the page reads to visitors — DahmsIO works with businesses anywhere;
   // New England is the initial target market, not the whole addressable one.
   description:
-    "DahmsIO is a New England data, technology and consulting firm that turns complex data and technology into clear, practical systems.",
+    "DahmsIO is a New England data, technology, and consulting firm that turns complex data and technology into clear, practical systems.",
 };
 
 // Aligned to the sub-service names introduced in subservice-expansion-plan-v6.md, in each
@@ -34,7 +34,7 @@ export const SERVICES = [
   {
     title: "Data Intelligence",
     description:
-      "Pipelines, warehouses and dashboards that turn scattered data into decisions you can trust.",
+      "Pipelines, warehouses, and dashboards that turn scattered data into decisions you can trust.",
     bullets: [
       "Data Foundations",
       "Reporting & Dashboards",
@@ -52,7 +52,7 @@ export const SERVICES = [
   },
   {
     title: "Tech Implementation",
-    description: "New platforms built, existing systems integrated, cloud and AI managed end-to-end.",
+    description: "We build new platforms, connect the systems you already run, and manage cloud and AI end to end.",
     bullets: [
       "Custom Software Development",
       "Systems Integration",
@@ -97,25 +97,25 @@ export const METHODOLOGY_STEPS = [
     number: "01",
     title: "Discover",
     description:
-      "We map your goals, data and systems, whether you know exactly what you need or are still defining it.",
+      "We map your goals, data, and systems, whether you know exactly what you need or are still defining it.",
   },
   {
     number: "02",
     title: "Strategize",
     description:
-      "We shape a solution scoped to your size, industry and budget, with a clear plan and success measures.",
+      "We shape a solution built around your industry, timeline, and budget, with a clear plan and a way to tell whether it worked.",
   },
   {
     number: "03",
     title: "Build",
     description:
-      "End-to-end delivery: a fresh platform or new capabilities integrated with your existing technology.",
+      "We deliver end to end, whether that's a new platform or new capabilities connected into what you already run.",
   },
   {
     number: "04",
     title: "Optimize",
     description:
-      "We measure, refine and maintain systems to keep your data and technology working as your business grows.",
+      "We measure, refine, and maintain systems to keep your data and technology working as your business grows.",
   },
 ];
 

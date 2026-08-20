@@ -4,7 +4,7 @@ import { hexToRgba } from "../utils/color.js";
 
 // Real copy — about-page-copy-v23.md. Company voice ("we"/"our") throughout except
 // FOUNDERS_NOTE, the one deliberate first-person exception (paired with the headshot). No em
-// dashes (one deliberate exception in BACKGROUND.paragraphs, see comment there), no employer
+// dashes anywhere, no employer
 // names, no business-size language (positioning is by geography and by relationship to
 // technology, not by size) — keep it that way in any future edits here.
 // "twenty years" used in place of the source doc's "two decades" per standing preference
@@ -23,7 +23,7 @@ export const HERO = {
   heroPrefix: "Global experience.",
   heroAccent: "Local focus",
   heroSubcopy:
-    "We've spent our careers solving hard data and technology problems inside large, complex organizations. DahmsIO brings that same thinking to businesses that don't have an enterprise budget, but deserve enterprise-level results.",
+    "We've spent our careers solving hard data and technology problems inside large, complex organizations. DahmsIO brings that same thinking to businesses that don't have an enterprise budget but deserve enterprise-level results.",
   primaryCtaLabel: "Get in touch",
 };
 
@@ -40,12 +40,10 @@ export const BACKGROUND = {
   heading: "Enterprise capability, brought within reach.",
   paragraphs: [
     "For twenty years, the founder of DahmsIO has built the data, analytics, tech, and AI systems that global organizations run on: full-stack software, econometrics platforms used by data scientists across continents, infrastructure processing millions of records a day, and AI tools that compress weeks of work into just days.",
-    "Those capabilities rarely trickle down to the businesses keeping local and regional economies running. Too many companies are still reconciling numbers by hand, managing annoying spreadsheets, and engaging in manual operational tasks because systems don't speak to one another.",
-    "It's not that the technology doesn't fit or is too costly for those companies, it's that nobody has offered the right solutions, at the right price, for their unique need. We measure success by the difference we make in this region, not by the size of the client on the invoice.",
-    // The page-wide "no em dash" convention (see file header) gets one deliberate exception
-    // here, per Eric's call — it's the right punctuation for this specific break.
-    "DahmsIO exists to close that gap by bringing the same technological concepts, standards, and rigor as major organizations, but scoped and priced to fit your circumstance — driving your business to the next level, regardless of industry or size.",
-    "Whether you're just getting started or already know that your business needs work, the process begins the same way: an honest look at what you have and what new tech could be doing for you.",
+    "Those capabilities rarely trickle down to the businesses keeping local and regional economies running. Too many are still reconciling numbers by hand, rebuilding the same spreadsheet every month, and doing work manually because their systems don't talk to each other.",
+    "It's not that the technology doesn't fit, or that it costs too much. It's that nobody has offered the right solution, at the right price, for the way they actually work. We measure success by the difference we make in this region, not by the size of the client on the invoice.",
+    "DahmsIO exists to close that gap, bringing the same standards and rigor large organizations rely on, scoped and priced to fit the business in front of us.",
+    "Whether you're not sure where to start or already know exactly what's broken, the process begins the same way: an honest look at what you have and what new tech could be doing for you.",
   ],
 };
 
@@ -68,7 +66,7 @@ export const CREDIBILITY = {
     },
     {
       lead: "Tools your team actually uses.",
-      body: "Systems built to be fast and obvious, because software that fights your team is software your team works around.",
+      body: "Systems built to be quick and obvious to use, because software that fights the people using it is software they work around.",
       hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
@@ -77,8 +75,8 @@ export const CREDIBILITY = {
       hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
-      lead: "Answers, not correlations.",
-      body: "Econometrics and statistical modeling separate what is genuinely driving your results from what merely happens at the same time.",
+      lead: "Answers you can act on.",
+      body: "Statistical modeling separates what's actually moving your results from what just happens at the same time.",
       hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
@@ -123,7 +121,7 @@ export const HOW_WE_WORK = {
     {
       title: "Advisory & strategy",
       description:
-        "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and hand you a clear, costed roadmap to run yourself, hand to your own team, or bring back to us.",
+        "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and give you a clear, costed roadmap you can run yourself, pass to your team, or bring back to us.",
       markColor: ACCENT,
       hoverBorder: hexToRgba(ACCENT, 0.45),
     },
@@ -161,9 +159,9 @@ export const FOUNDERS_NOTE = {
   eyebrow: "Founder's Note",
   heading: "A note from our Founder",
   paragraphs: [
-    "I've spent the past twenty years in London, England working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
+    "I've spent the past twenty years in London, England, working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
     "I've stayed hands-on my entire career. I design and ship data platforms, AI assistants, automation pipelines, and working prototypes myself, which means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
-    "If you're running a business in Maine or elsewhere in New England and want a partner who understands how the data and technology space can be applied to local business, send us a message and let's talk about where new technology could take your business.",
+    "If you're running a business in Maine or elsewhere in New England and want a partner who understands what this technology can actually do for a local business, send us a message and let's talk about where new technology could take your business.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one
@@ -179,6 +177,6 @@ export const FOUNDERS_NOTE = {
 
 export const CTA = {
   heading: "Start with a conversation",
-  text: "Tell us what's slowing your business down. We'll tell you honestly whether we can help, what it would take, and what it would cost, before you commit to anything.",
+  text: "Tell us what's slowing your business down. You'll get an honest answer on whether we can help, what it would take, and what it would cost, before you commit to anything.",
   buttonLabel: "Get in touch",
 };

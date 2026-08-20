@@ -16,7 +16,7 @@ export const HERO = {
   heroPrefix: "Turn scattered data into",
   heroAccent: "decisions you can trust",
   heroSubcopy:
-    "From multi-source pipelines to boardroom-ready dashboards and predictive model forecasts, we engineer the full data stack, so every number your team relies on is accurate, timely and understood.",
+    "From multi-source pipelines to dashboards and forecasts you can plan against, we build the whole data stack, so every number your team relies on is accurate, current, and easy to explain.",
   primaryCtaLabel: "Scope a data project",
 };
 
@@ -162,13 +162,13 @@ export const PIPELINE = [
     label: "STEP 01",
     labelColor: ACCENT,
     title: "Collect",
-    description: "Pull from every platform, database and spreadsheet into one place.",
+    description: "Pull from every platform, database, and spreadsheet into one place.",
   },
   {
     label: "STEP 02",
     labelColor: ACCENT,
     title: "Standardize",
-    description: "Clean, de-duplicate and automate so data stays consistent.",
+    description: "Clean, de-duplicate, and automate so data stays consistent.",
   },
   {
     label: "STEP 03",
@@ -206,6 +206,6 @@ export const PIPELINE_STAGE_LINES = [
 
 export const CTA = {
   heading: "Ready to trust your numbers?",
-  text: "Tell us where your data lives today and we'll map the fastest path to clean, useful, decision-ready analytics.",
+  text: "Tell us where your data lives today. We'll show you the shortest route to numbers you can actually plan against.",
   buttonLabel: "Start a data project",
 };

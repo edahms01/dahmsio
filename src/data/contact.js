@@ -3,14 +3,14 @@ import { ROUTE_PATHS } from "../routes.js";
 export const META = {
   path: ROUTE_PATHS.contact,
   title: "Contact | DahmsIO",
-  description: "Tell us about your data or technology challenge. A DahmsIO consultant will be in touch.",
+  description: "Tell us about your data or technology challenge and we'll get back to you shortly.",
 };
 
 export const HERO = {
   eyebrow: "Get In Touch",
-  heroPrefix: "Start your journey",
-  heroAccent: "with us",
-  heroSubcopy: "Your next chapter starts with a message. Tell us where you are today. We'll show you what's possible.",
+  heroPrefix: "Tell us what's",
+  heroAccent: "not working",
+  heroSubcopy: "You don't need to know what the solution is. Describe the problem you're dealing with, and we'll take it from there.",
   primaryCtaLabel: "Jump to the form",
 };
 
@@ -20,14 +20,14 @@ export const MOCKUP = {
     { from: "them", text: "Hi, we're looking to modernize our data stack before Q3. Where would you start?" },
     {
       from: "us",
-      text: "Great question. A consultant will follow up shortly to scope it properly.",
+      text: "Great question. A consultant will follow up shortly to walk through it with you.",
       meta: "✓✓ Delivered",
     },
   ],
   stats: [
     { label: "RESPONSE TIME", value: "< 24 hrs" },
     { label: "OUR ROLE", value: "Your Tech Partner" },
-    { label: "NO OBLIGATION", value: "100%" },
+    { label: "NO OBLIGATION", value: "Ever" },
   ],
 };
 
@@ -80,7 +80,7 @@ export const FAQ = [
   {
     question: "What if I don't know exactly what I need?",
     answer:
-      "That's normal, and it's where most conversations start. Describe the problem, not the solution, we'll help you figure out the rest.",
+      "That's normal, and it's where most conversations start. Describe the problem, not the solution. We'll help you figure out the rest.",
   },
   {
     question: "How fast can you start?",
@@ -93,7 +93,7 @@ export const FAQ = [
   {
     question: "What if I'm not sure I can afford this?",
     answer:
-      "Every engagement is scoped and priced to fit your budget before any work starts, there's no minimum project size.",
+      "Every engagement is scoped and priced to fit your budget before any work starts. There's no minimum project size.",
   },
   {
     question: "Do I have to sign a long-term contract?",
