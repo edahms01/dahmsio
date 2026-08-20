@@ -3,7 +3,7 @@ import { ROUTE_PATHS } from "../routes.js";
 export const META = {
   path: ROUTE_PATHS.contact,
   title: "Contact | DahmsIO",
-  description: "Tell us about your data or technology challenge and we'll get back to you shortly.",
+  description: "Tell us about your data or technology challenge and we'll start planning your tech future.",
 };
 
 export const HERO = {

@@ -15,7 +15,7 @@ export const META = {
   path: ROUTE_PATHS.about,
   title: "About | DahmsIO",
   description:
-    "DahmsIO brings enterprise-grade data, analytics, and technology experience to businesses across New England, founded by Eric Dahms.",
+    "DahmsIO brings enterprise-grade data, analytics, and technology experience to businesses, founded by Eric Dahms.",
 };
 
 export const HERO = {

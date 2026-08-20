@@ -6,7 +6,7 @@ export const META = {
   path: ROUTE_PATHS.technology,
   title: "Tech Implementation | DahmsIO",
   description:
-    "Custom software development, systems integration, workflow automation, and AI implementation. DahmsIO closes gaps in your business without breaking what works.",
+    "DahmsIO implements the technology that closes gaps in your business. Software development, systems integration, workflow automation, and AI implementation.",
 };
 
 export const HERO = {

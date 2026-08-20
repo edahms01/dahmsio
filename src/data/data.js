@@ -5,10 +5,8 @@ import { ROUTE_PATHS } from "../routes.js";
 export const META = {
   path: ROUTE_PATHS.data,
   title: "Data Intelligence | DahmsIO",
-  // "Econometric" placed here per subservice-expansion-plan-v6.md (D6) — the word doesn't
-  // appear in any visible sub-service copy, only in META and structured data, for search.
   description:
-    "Data foundations, reporting dashboards, econometric analytics, and data science and machine learning. DahmsIO turns scattered data into decisions you can trust.",
+    "DahmsIO turns scattered data into decisions you can trust. Data foundations, reporting dashboards, statistical modeling, data science and machine learning.",
 };
 
 export const HERO = {
