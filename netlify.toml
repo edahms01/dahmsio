@@ -37,31 +37,73 @@
 # Root-level static files (favicons, manifest, OG image) aren't content-hashed, so they get a
 # shorter cache instead of "immutable" — a same-named replacement should still show up within
 # a day rather than being stuck behind a year-long cache.
+#
+# Cache-Control alone isn't enough here: Netlify's own Edge/CDN keeps a separate internal
+# cache-retention window (visible as `ttl=` in the `cache-status` response header) that is NOT
+# governed by Cache-Control at all — confirmed live at a flat ~365 days across every path on
+# this site (hashed or not, max-age=0 or max-age=86400) before this fix. Netlify-CDN-Cache-Control
+# is the header that actually controls that edge-layer duration, so every rule below sets both:
+# Cache-Control for the browser, Netlify-CDN-Cache-Control for Netlify's own edge cache.
 [[headers]]
   for = "/*.svg"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Netlify-CDN-Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/*.png"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Netlify-CDN-Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/*.jpg"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Netlify-CDN-Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/*.webmanifest"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+    Netlify-CDN-Cache-Control = "public, max-age=86400"
 
-# Explicit, rather than relying on Netlify's default static-file MIME guessing — llms.txt is
-# generated at build time (scripts/generate-llms.mjs) and should always be served as plain
-# text, never re-guessed as something else.
+# IndexNow key file (netlify/plugins/indexnow) — static verification token, effectively
+# permanent, same one-day tier as the favicons/manifest above. Named explicitly rather than
+# matched by a "/*.txt" glob, since that would also catch llms.txt/robots.txt/sitemap.xml
+# below, which need a much shorter TTL than this file does.
+[[headers]]
+  for = "/e48e0e69fb393d53e516b4eeb052ec99.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Netlify-CDN-Cache-Control = "public, max-age=86400"
+
+# Crawler-facing files — llms.txt, robots.txt, sitemap.xml. All three are generated or can
+# change at build time and are specifically meant to be read by crawlers picking up on
+# content changes, so they get a shorter TTL than the general one-day tier above.
+#
+# llms.txt: explicit rule also needed for Content-Type, rather than relying on Netlify's
+# default static-file MIME guessing — it's generated at build time
+# (scripts/generate-llms.mjs) and should always be served as plain text.
 [[headers]]
   for = "/llms.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=300"
+    Netlify-CDN-Cache-Control = "public, max-age=300"
+
+# robots.txt and sitemap.xml previously had no explicit rule at all — Netlify's own default
+# (public, max-age=0, must-revalidate) already kept the client-facing Cache-Control short, but
+# left Netlify's internal edge TTL at its ~365-day default (see comment above). Explicit rules
+# here close that gap the same way the other rules in this file do.
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    Netlify-CDN-Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    Netlify-CDN-Cache-Control = "public, max-age=300"
