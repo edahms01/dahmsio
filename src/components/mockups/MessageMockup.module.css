@@ -40,28 +40,36 @@
   opacity: 0.75;
 }
 
-.stats {
+/* "What happens next" steps — a vertical list rather than the old 3-up stat grid, since these
+   read as a sequence (reply, then a call) rather than independent facts. */
+.steps {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.stat {
-  flex: 1;
-  padding: 12px;
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
   border-radius: 11px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 13px;
+  color: var(--text-secondary2);
 }
 
-.statLabel {
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
   font-family: var(--fm);
-  font-size: 10.5px;
-  color: var(--text-muted2);
-}
-
-.statValue {
-  font-family: var(--fd);
-  font-weight: 600;
-  font-size: 18px;
-  margin-top: 3px;
+  font-size: 11px;
 }

@@ -40,6 +40,16 @@
   padding: 70px var(--side-padding);
 }
 
+/* Background-only (the first .section, directly under the hero): InteriorPageTemplate's hero
+   is followed by .capabilities' 100px top padding (70px hero bottom + 100px = 170px total),
+   but this section's own 70px top padding only gave 140px — same hero-to-content transition,
+   two different values. Bumped to 100px to match; How We Work below keeps the plain 70px .section
+   padding, since its 140px gap from Background is the intentional content-to-content match (see
+   the comment above the How We Work section in About.jsx). */
+.sectionFirst {
+  padding-top: 100px;
+}
+
 /* Marks the transition from the Background/Credibility section into How We Work — the
    divider formerly bracketing the operating-principles list (see .operatingPrinciples,
    .foundersNote) moved here instead. */

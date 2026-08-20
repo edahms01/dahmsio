@@ -98,7 +98,7 @@ export default function InteriorPageTemplate({
     <Layout blobs={INTERIOR_GLOW_BLOBS}>
       <JsonLd data={buildBreadcrumbSchema(breadcrumbPath)} />
       <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
+        <NetworkCanvas maxNodes={90} opacity={0.9} className={styles.heroCanvas} />
         <div>
           <div className={`eyebrow ${styles.anim}`}>{eyebrow}</div>
           <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
@@ -118,14 +118,26 @@ export default function InteriorPageTemplate({
       {/* id="capabilities" kept as a plain anchor — the hero's SecondaryButton above links
           here; the anchor id itself is structural, not copy, so it stays hardcoded. */}
       {typeof pipelineAfterGroup === "number" ? (
-        <section id="capabilities" className={styles.capabilities}>
-          <SubServiceSection groups={subserviceGroups.slice(0, pipelineAfterGroup + 1)} ctaLabel={primaryCtaLabel} />
-          <div className={styles.pipelineInline}>
-            {pipelineHead}
-            {pipelineGrid}
-          </div>
-          <SubServiceSection groups={subserviceGroups.slice(pipelineAfterGroup + 1)} ctaLabel={primaryCtaLabel} />
-        </section>
+        <>
+          <section id="capabilities" className={styles.capabilities}>
+            <SubServiceSection groups={subserviceGroups.slice(0, pipelineAfterGroup + 1)} ctaLabel={primaryCtaLabel} />
+            <div className={styles.pipelineInline}>
+              {pipelineHead}
+              {pipelineGrid}
+            </div>
+          </section>
+          {/* Own <section> (standard .capabilities padding) rather than folding into the one
+              above — the remaining groups (Talent, on Consulting) get the same section-to-section
+              rhythm as everywhere else on the page, not the tighter inline group spacing that
+              ties the pipeline to the Advisory group above it. */}
+          {/* .capabilitiesFinal bumps bottom padding to match .pipeline's 100px — this section
+              (not .pipeline) is what sits directly above the CTA here, and .capabilities' plain
+              40px bottom padding left the pre-CTA gap noticeably tighter than the pipeline-then-
+              CTA pages (Data/Technology) use. */}
+          <section className={`${styles.capabilities} ${styles.capabilitiesFinal}`}>
+            <SubServiceSection groups={subserviceGroups.slice(pipelineAfterGroup + 1)} ctaLabel={primaryCtaLabel} />
+          </section>
+        </>
       ) : (
         <>
           <section id="capabilities" className={styles.capabilities}>
@@ -140,7 +152,7 @@ export default function InteriorPageTemplate({
       )}
 
       <section className={styles.cta}>
-        <NetworkCanvas maxNodes={70} linkDist={130} opacity={0.7} className={styles.ctaCanvas} />
+        <NetworkCanvas maxNodes={70} opacity={0.7} className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{ctaHeading}</h2>
           <p className={styles.ctaText}>{ctaText}</p>

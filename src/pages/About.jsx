@@ -38,7 +38,7 @@ export default function About() {
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
 
       <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={interiorStyles.heroCanvas} />
+        <NetworkCanvas maxNodes={90} opacity={0.9} className={interiorStyles.heroCanvas} />
         <div>
           <div className={`eyebrow ${interiorStyles.anim}`}>{HERO.eyebrow}</div>
           <h1 className={`${interiorStyles.h1} ${interiorStyles.anim} ${interiorStyles.animDelay1}`}>
@@ -65,7 +65,7 @@ export default function About() {
       </header>
 
       {/* Section 1 — Background */}
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.sectionFirst}`}>
         {/* Eyebrow + big statement heading, matching Data/Technology/Consulting's
             "Capabilities"/"The pipeline" pattern — the nested subheadings below (CREDIBILITY,
             engagementHeading, operatingHeading) stay at .subheading's smaller size, since
@@ -199,7 +199,7 @@ export default function About() {
           border-top below (both then rely solely on ctaInner's own symmetric 70px top/bottom
           padding). No top border on this section itself (removed per Eric's call). */}
       <section className={`${interiorStyles.cta} ${styles.ctaCenterBetweenLines}`}>
-        <NetworkCanvas maxNodes={70} linkDist={130} opacity={0.7} className={interiorStyles.ctaCanvas} />
+        <NetworkCanvas maxNodes={70} opacity={0.7} className={interiorStyles.ctaCanvas} />
         <Reveal duration={900} className={interiorStyles.ctaInner}>
           <h2 className={`sectionHeading ${interiorStyles.ctaHeading}`}>{CTA.heading}</h2>
           <p className={interiorStyles.ctaText}>{CTA.text}</p>

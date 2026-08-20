@@ -8,7 +8,16 @@ function hexToRgb(hex) {
   return [parseInt(full.slice(0, 2), 16), parseInt(full.slice(2, 4), 16), parseInt(full.slice(4, 6), 16)];
 }
 
-export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, className = "" }) {
+// linkDist/dotOpacity default to the values every hero/CTA canvas site-wide settled on after
+// the Contact page test (dimmer dots, slightly less-dense connecting lines) — pass either prop
+// explicitly only to deviate from that.
+export default function NetworkCanvas({
+  maxNodes,
+  linkDist = 120,
+  opacity = 0.9,
+  dotOpacity = 0.5,
+  className = "",
+}) {
   const canvasRef = useRef(null);
   const reduced = usePrefersReducedMotion();
 
@@ -130,7 +139,7 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
       }
 
       for (const n of nodes) {
-        ctx.fillStyle = `rgba(${r},${g},${b},.8)`;
+        ctx.fillStyle = `rgba(${r},${g},${b},${dotOpacity})`;
         ctx.beginPath();
         ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
         ctx.fill();
@@ -171,7 +180,7 @@ export default function NetworkCanvas({ maxNodes, linkDist, opacity = 0.9, class
         window.removeEventListener("touchcancel", onTouchEnd);
       }
     };
-  }, [maxNodes, linkDist, reduced]);
+  }, [maxNodes, linkDist, dotOpacity, reduced]);
 
   if (reduced) return null;
 

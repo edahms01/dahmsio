@@ -15,7 +15,10 @@ import {
   MOCKUP,
   FORM_INTRO,
   FIELDS,
+  BUSINESS_INFO_HEADING,
+  PROJECT_DETAILS_HEADING,
   CONTACT_INFO_HEADING,
+  SUBJECT_FALLBACK,
   SUBMIT_LABEL,
   SUBMITTING_LABEL,
   SUCCESS,
@@ -123,7 +126,12 @@ export default function Contact() {
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...values, services: values.services.join(", ") }),
+        body: encode({
+          "form-name": "contact",
+          ...values,
+          services: values.services.join(", "),
+          subject: SUBJECT_FALLBACK,
+        }),
       });
       if (!res.ok) throw new Error(`Status ${res.status}`);
       setStatus("success");
@@ -137,7 +145,7 @@ export default function Contact() {
       <PageMeta {...META} />
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
       <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
+        <NetworkCanvas maxNodes={90} opacity={0.9} className={styles.heroCanvas} />
         <div>
           <div className={`eyebrow ${styles.anim}`}>{HERO.eyebrow}</div>
           <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
@@ -151,7 +159,7 @@ export default function Contact() {
           </div>
         </div>
         <AppWindowMockup filename={MOCKUP.filename}>
-          <MessageMockup thread={MOCKUP.thread} stats={MOCKUP.stats} />
+          <MessageMockup thread={MOCKUP.thread} steps={MOCKUP.steps} />
         </AppWindowMockup>
       </header>
 
@@ -176,6 +184,11 @@ export default function Contact() {
               className={styles.form}
             >
               <input type="hidden" name="form-name" value="contact" />
+              {/* No visible Subject field — Netlify Forms reads a field named "subject" for the
+                  notification email's subject line, so this fixed value stands in for it. Must
+                  stay in the static markup (not just the fetch body) for Netlify's build-time
+                  form-detection scan to recognize the field. */}
+              <input type="hidden" name="subject" value={SUBJECT_FALLBACK} />
               <p className={styles.honeypot}>
                 <label>
                   {HONEYPOT_LABEL}
@@ -183,11 +196,16 @@ export default function Contact() {
                 </label>
               </p>
 
+              <h2 className={styles.sectionLabel}>{BUSINESS_INFO_HEADING}</h2>
+
               <div className={styles.row2}>
                 <Field def={FIELDS.companyName} value={values.companyName} onChange={handleChange} />
                 <Field def={FIELDS.website} value={values.website} onChange={handleChange} />
               </div>
               <Field def={FIELDS.location} value={values.location} onChange={handleChange} />
+
+              <h2 className={styles.sectionLabel}>{PROJECT_DETAILS_HEADING}</h2>
+
               <Field def={FIELDS.services} value={values.services} onChange={handleChange} />
               <Field def={FIELDS.budget} value={values.budget} onChange={handleChange} />
 
@@ -197,10 +215,7 @@ export default function Contact() {
                 <Field def={FIELDS.firstName} value={values.firstName} onChange={handleChange} />
                 <Field def={FIELDS.lastName} value={values.lastName} onChange={handleChange} />
               </div>
-              <div className={styles.row2}>
-                <Field def={FIELDS.email} value={values.email} onChange={handleChange} />
-                <Field def={FIELDS.subject} value={values.subject} onChange={handleChange} />
-              </div>
+              <Field def={FIELDS.email} value={values.email} onChange={handleChange} />
               <Field def={FIELDS.message} value={values.message} onChange={handleChange} />
 
               {status === "error" && (

@@ -39,11 +39,10 @@ export const BACKGROUND = {
   eyebrow: "Background",
   heading: "Enterprise capability, brought within reach.",
   paragraphs: [
-    "For twenty years, the founder of DahmsIO has built the data, analytics, tech, and AI systems that global organizations run on: full-stack software, econometrics platforms used by data scientists across continents, infrastructure processing millions of records a day, and AI tools that compress weeks of work into just days.",
-    "Those capabilities rarely trickle down to the businesses keeping local and regional economies running. Too many are still reconciling numbers by hand, rebuilding the same spreadsheet every month, and doing work manually because their systems don't talk to each other.",
-    "It's not that the technology doesn't fit, or that it costs too much. It's that nobody has offered the right solution, at the right price, for the way they actually work. We measure success by the difference we make in this region, not by the size of the client on the invoice.",
-    "DahmsIO exists to close that gap, bringing the same standards and rigor large organizations rely on, scoped and priced to fit the business in front of us.",
-    "Whether you're not sure where to start or already know exactly what's broken, the process begins the same way: an honest look at what you have and what new tech could be doing for you.",
+    "Most businesses aren't short on tools or data. They're short on time to get real value out of them. The numbers get reconciled by hand, the same spreadsheet gets rebuilt every month, and everyone works around systems that don't talk to each other.",
+    "None of that is a technology problem. The fixes have existed for years. Most of them just assume someone in-house has the time to set them up and keep them running.",
+    "DahmsIO exists to close that gap. Twenty years of doing this at enterprise scale means we know which parts actually matter for a business like yours, and which you can safely leave out.",
+    "So whether you're not sure where to start or already know exactly what's broken, it begins the same way: an honest look at where you are, and where you want to go next.",
   ],
 };
 
@@ -184,7 +183,7 @@ export const FOUNDERS_NOTE = {
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one
   // styling choice.
-  signature: "Eric Dahms, Founder/CEO",
+  signature: "Eric Dahms, Founder",
   credentials: [
     "MSc International Economics, University of Essex",
     "BSc Marketing & Information Technology, Bentley University",

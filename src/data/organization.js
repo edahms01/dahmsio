@@ -16,7 +16,7 @@ export const ORGANIZATION = {
 
 export const FOUNDER = {
   name: "Eric Dahms",
-  jobTitle: "Founder/CEO",
+  jobTitle: "Founder",
   url: `${SITE_URL}/about/`,
   // Personal profile — distinct from ORGANIZATION_SAME_AS below (company page). Keep these
   // two arrays separate: this one is Eric-the-person's own profiles, not the company's.

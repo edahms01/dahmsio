@@ -30,7 +30,7 @@ export default function Home() {
     <Layout blobs={HOME_GLOW_BLOBS}>
       <PageMeta {...META} />
       <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
+        <NetworkCanvas maxNodes={90} opacity={0.9} className={styles.heroCanvas} />
         <h1 className={`${styles.h1} ${styles.heroUp} ${styles.heroUpDelay1}`}>
           {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}.</span>
         </h1>
@@ -96,7 +96,7 @@ export default function Home() {
       </section>
 
       <section className={styles.cta}>
-        <NetworkCanvas maxNodes={70} linkDist={130} opacity={0.7} className={styles.ctaCanvas} />
+        <NetworkCanvas maxNodes={70} opacity={0.7} className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{CTA.heading}</h2>
           <p className={styles.ctaText}>{CTA.text}</p>

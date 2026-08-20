@@ -84,6 +84,13 @@
   padding: 100px var(--side-padding) 40px;
 }
 
+/* See the comment where this is applied in InteriorPageTemplate.jsx (Consulting's
+   pipelineAfterGroup split) — matches .pipeline's 100px bottom padding instead of the plain
+   40px, since this section (not .pipeline) is the one directly above the CTA there. */
+.capabilitiesFinal {
+  padding-bottom: 100px;
+}
+
 .pipeline {
   position: relative;
   z-index: 10;
@@ -92,14 +99,17 @@
   padding: 100px var(--side-padding);
 }
 
-/* Consulting-only (pipelineAfterGroup): the pipeline sits between two independent
-   SubServiceSection instances (Advisory, then Talent) instead of in its own full-padding
-   section — each instance treats its single group as both first and last child, so its own
-   margin-bottom collapses to 0 (see SubServiceSection.module.css .group:last-child). This
-   provides the vertical rhythm that margin would otherwise have supplied, matching
-   .group's own 64px spacing so the pipeline reads as just another block in the flow. */
+/* Consulting-only (pipelineAfterGroup): the pipeline sits inside the Advisory section, after
+   its SubServiceSection instance, instead of in its own full-padding section — that instance's
+   single group is both first and last child, so its own margin-bottom collapses to 0 (see
+   SubServiceSection.module.css .group:last-child). This top margin provides the vertical rhythm
+   that would otherwise have supplied, matching .group's own 64px spacing so the pipeline reads
+   as just another block in the flow. No bottom margin: the section ends right after, so
+   .capabilities' own bottom padding plus the next section's top padding already supply the
+   (larger, standard) section-to-section gap before Talent — a bottom margin here would stack on
+   top of that padding instead of collapsing with it. */
 .pipelineInline {
-  margin: 64px 0;
+  margin: 64px 0 0;
 }
 
 .pipelineHead {

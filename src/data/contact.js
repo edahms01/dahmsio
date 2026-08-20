@@ -8,9 +8,9 @@ export const META = {
 
 export const HERO = {
   eyebrow: "Get In Touch",
-  heroPrefix: "Tell us what's",
-  heroAccent: "not working",
-  heroSubcopy: "You don't need to know what the solution is. Describe the problem you're dealing with, and we'll take it from there.",
+  heroPrefix: "Let's talk about your",
+  heroAccent: "next steps",
+  heroSubcopy: "You don't need to know the solution yet. Describe the challenge you're dealing with, and we'll take it from there.",
   primaryCtaLabel: "Jump to the form",
 };
 
@@ -20,19 +20,18 @@ export const MOCKUP = {
     { from: "them", text: "Hi, we're looking to modernize our data stack before Q3. Where would you start?" },
     {
       from: "us",
-      text: "Great question. A consultant will follow up shortly to walk through it with you.",
+      text: "Great question. A specialist will follow up shortly to walk through it with you.",
       meta: "✓✓ Delivered",
     },
   ],
-  stats: [
-    { label: "RESPONSE TIME", value: "< 24 hrs" },
-    { label: "OUR ROLE", value: "Your Tech Partner" },
-    { label: "NO OBLIGATION", value: "Ever" },
-  ],
+  // "What happens next" steps, replacing the old stats row — reads as a natural continuation
+  // of the chat thread above it instead of three disconnected facts. No response-time claim
+  // (deliberately dropped per Eric's review — not a promise we want to make).
+  steps: ["You send a message", "A specialist will respond", "Free project scoping, no obligation"],
 };
 
 export const FORM_INTRO =
-  "Send us a message below. Describe your business challenge, goal, or idea, and a consultant will be in touch. Or if you'd prefer to send an email, drop us a note at";
+  "Send us a message below. Describe your business challenge, goal, or idea, and a specialist will be in touch. Or if you'd prefer to send an email, drop us a note at";
 
 export const FIELDS = {
   companyName: { name: "companyName", label: "Company Name", required: true, type: "text" },
@@ -57,12 +56,11 @@ export const FIELDS = {
     required: false,
     type: "select",
     placeholder: "Select a range…",
-    options: ["Not sure yet", "Under $5k", "$5k – $15k", "$15k – $35k", "$35k – $75k", "$75k+"],
+    options: ["Not sure yet", "Under $5k", "$5k – $15k", "$15k – $35k", "$35k – $50k", "$50k+"],
   },
   firstName: { name: "firstName", label: "First Name", required: true, type: "text" },
   lastName: { name: "lastName", label: "Last Name", required: true, type: "text" },
   email: { name: "email", label: "Email", required: true, type: "email" },
-  subject: { name: "subject", label: "Subject", required: true, type: "text" },
   message: {
     name: "message",
     label: "Message",
@@ -72,7 +70,19 @@ export const FIELDS = {
   },
 };
 
+// Three section labels split the form into: who you are (Business Info), what you need
+// (Project Details — leaves room to grow if project-description fields are added later),
+// and how to reach you (Contact Info).
+export const BUSINESS_INFO_HEADING = "Business Info";
+export const PROJECT_DETAILS_HEADING = "Project Details";
 export const CONTACT_INFO_HEADING = "Contact Info";
+
+// Netlify Forms uses a field literally named "subject" to set the notification email's
+// subject line. There's no visible Subject field on the form (removed — asking visitors to
+// summarize their own message was unnecessary friction), so this fixed value is sent as a
+// hidden field instead, just to keep notification emails out of Netlify's generic default
+// subject line.
+export const SUBJECT_FALLBACK = "New contact form submission";
 export const SUBMIT_LABEL = "Send Message";
 export const SUBMITTING_LABEL = "Sending…";
 
@@ -81,7 +91,7 @@ export const SUBMITTING_LABEL = "Sending…";
 // error/success states, not just in hidden metadata, so the rule applies same as visible copy.
 export const SUCCESS = {
   heading: "Message sent.",
-  text: "Thanks for reaching out. A consultant will be in touch soon.",
+  text: "Thanks for reaching out. We'll be in touch soon.",
 };
 
 export const HONEYPOT_LABEL = "Don't fill this out if you're human:";
@@ -106,7 +116,7 @@ export const FAQ = [
   },
   {
     question: "I've never worked with a consultant before. Is that a problem?",
-    answer: "No. Most of the businesses we talk to haven't either.",
+    answer: "No. We'll walk you through exactly how it works, no prior experience required.",
   },
   {
     question: "What if I'm not sure I can afford this?",
@@ -116,6 +126,6 @@ export const FAQ = [
   {
     question: "Do I have to sign a long-term contract?",
     answer:
-      "No. Some clients work with us on retainer, others for a single project with a clear end date. You pick the model that fits.",
+      "No. You can work with us on retainer, or for a single project with a clear end date. You pick the model that fits.",
   },
 ];

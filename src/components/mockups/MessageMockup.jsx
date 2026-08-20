@@ -1,6 +1,6 @@
 import styles from "./MessageMockup.module.css";
 
-export default function MessageMockup({ thread, stats }) {
+export default function MessageMockup({ thread, steps }) {
   return (
     <div className={styles.body}>
       <div className={styles.thread}>
@@ -11,11 +11,11 @@ export default function MessageMockup({ thread, stats }) {
           </div>
         ))}
       </div>
-      <div className={styles.stats}>
-        {stats.map((stat) => (
-          <div key={stat.label} className={styles.stat}>
-            <div className={styles.statLabel}>{stat.label}</div>
-            <div className={styles.statValue}>{stat.value}</div>
+      <div className={styles.steps}>
+        {steps.map((step, i) => (
+          <div key={step} className={styles.step}>
+            <span className={styles.stepNumber}>{i + 1}</span>
+            {step}
           </div>
         ))}
       </div>

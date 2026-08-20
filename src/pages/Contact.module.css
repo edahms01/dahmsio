@@ -18,7 +18,11 @@
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
-  align-items: center;
+  /* start, not center (unlike InteriorPageTemplate's identical-looking .hero): Contact's
+     heading is short enough that centering left the mockup floating above the eyebrow instead
+     of lining up with it. Top-aligning ties the mockup to the eyebrow/heading the way the
+     longer headings on other pages already read, just via a different mechanism. */
+  align-items: start;
 }
 
 .heroCanvas {
@@ -190,6 +194,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px 22px;
+  /* Checkboxes have no border/box like the other fields do, so the standard 22px .form gap
+     to the next field (Estimated Budget) reads as too tight after them — this extra margin
+     brings that transition in line with how the bordered inputs feel spaced. */
+  margin-bottom: 10px;
 }
 
 .checkboxOption {
@@ -268,9 +276,16 @@
   text-align: center;
 }
 
-.faqHeading {
+/* Compound selector (.faqSection .faqHeading, not just .faqHeading) is required: the global
+   .sectionHeading class (also on this <h2>, for shared typography) sets margin: 0, and a
+   single-class selector ties with it on specificity, so the cascade's source order decided
+   the winner and silently zeroed this margin — same issue as InteriorPageTemplate's
+   .ctaInner .ctaHeading. */
+.faqSection .faqHeading {
   font-size: clamp(26px, 3.2vw, 38px);
-  margin: 0 0 32px;
+  /* 52px matches the heading -> content gap used elsewhere (e.g. InteriorPageTemplate's
+     .pipelineHead before .pipelineGrid) rather than the tighter 32px this had. */
+  margin: 0 0 52px;
 }
 
 @media (max-width: 900px) {
