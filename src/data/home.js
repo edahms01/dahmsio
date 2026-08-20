@@ -19,7 +19,7 @@ export const HERO = {
   heroPrefix: "Where innovation meets",
   heroAccent: "intelligence",
   heroSubcopy:
-    "We turn complex data and technology into clear, practical systems that grow revenue, sharpen efficiency, and set ambitious businesses apart from their competitors.",
+    "We turn complex data and technology into clear, practical systems that grow revenue, boost efficiency, and set ambitious businesses apart from competitors.",
   primaryCtaLabel: NAV_CTA_LABEL,
   secondaryCtaLabel: "Explore services",
   scrollLabel: "Scroll",

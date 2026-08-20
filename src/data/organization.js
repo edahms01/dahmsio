@@ -18,6 +18,9 @@ export const FOUNDER = {
   name: "Eric Dahms",
   jobTitle: "Founder/CEO",
   url: `${SITE_URL}/about/`,
+  // Personal profile — distinct from ORGANIZATION_SAME_AS below (company page). Keep these
+  // two arrays separate: this one is Eric-the-person's own profiles, not the company's.
+  sameAs: ["https://www.linkedin.com/in/eric-dahms"],
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "University of Essex" },
     { "@type": "CollegeOrUniversity", name: "Bentley University" },
@@ -56,13 +59,11 @@ export const AREA_SERVED_STATES = [
   "Connecticut",
 ];
 
-// TODO(Eric): populate with your real public profile URLs. Each one strengthens the
-// disambiguation signal search engines use to tell DahmsIO apart from unrelated companies
-// and people also named Dahms.
-export const SAME_AS = [
-  // "https://www.linkedin.com/company/REPLACE_ME",
-  // "https://www.linkedin.com/in/REPLACE_ME",
-  // "https://github.com/REPLACE_ME",
+// Organization-level profiles only — the company page, not Eric's personal accounts (see
+// FOUNDER.sameAs above for that). Each one strengthens the disambiguation signal search
+// engines use to tell DahmsIO apart from unrelated companies and people also named Dahms.
+export const ORGANIZATION_SAME_AS = [
+  "https://www.linkedin.com/company/dahmsio",
   // Google Business Profile URL, once created (see post-deploy checklist).
   // "https://www.google.com/maps/place/REPLACE_ME",
 ];

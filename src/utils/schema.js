@@ -1,5 +1,11 @@
 import { SITE_URL, NAV_LINKS } from "../data/site.js";
-import { ORGANIZATION, FOUNDER, SERVICE_TYPES, AREA_SERVED_STATES, SAME_AS } from "../data/organization.js";
+import {
+  ORGANIZATION,
+  FOUNDER,
+  SERVICE_TYPES,
+  AREA_SERVED_STATES,
+  ORGANIZATION_SAME_AS,
+} from "../data/organization.js";
 
 /**
  * Site-wide ProfessionalService JSON-LD. Rendered once, in Layout.jsx, so it's present on
@@ -31,7 +37,7 @@ export function buildOrganizationSchema() {
         itemOffered: { "@type": "Service", name },
       })),
     },
-    ...(SAME_AS.length > 0 ? { sameAs: SAME_AS } : {}),
+    ...(ORGANIZATION_SAME_AS.length > 0 ? { sameAs: ORGANIZATION_SAME_AS } : {}),
   };
 }
 
