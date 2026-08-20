@@ -3,7 +3,7 @@ import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
-import { META } from "../data/notFound.js";
+import { META, CONTENT } from "../data/notFound.js";
 import styles from "./NotFound.module.css";
 
 export default function NotFound() {
@@ -15,13 +15,11 @@ export default function NotFound() {
         <meta name="robots" content="noindex" />
       </Head>
       <section className={styles.section}>
-        <div className="eyebrow">404</div>
-        <h1 className={`sectionHeading ${styles.heading}`}>Page not found.</h1>
-        <p className={styles.text}>
-          The page you're looking for doesn't exist or has moved. Let's get you back on track.
-        </p>
+        <div className="eyebrow">{CONTENT.eyebrow}</div>
+        <h1 className={`sectionHeading ${styles.heading}`}>{CONTENT.heading}</h1>
+        <p className={styles.text}>{CONTENT.text}</p>
         <PrimaryButton to="/" arrow>
-          Back to home
+          {CONTENT.buttonLabel}
         </PrimaryButton>
       </section>
     </Layout>

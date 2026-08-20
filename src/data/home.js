@@ -1,6 +1,7 @@
 import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
 import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
+import { NAV_CTA_LABEL } from "./site.js";
 
 export const META = {
   path: ROUTE_PATHS.home,
@@ -8,6 +9,39 @@ export const META = {
   description:
     "DahmsIO is a data, technology, and consulting firm that turns complex data and technology into clear, practical systems.",
 };
+
+// heroAccent has no trailing period — Home.jsx appends it, same convention as
+// InteriorPageTemplate/About's {heroPrefix} <span>{heroAccent}.</span> pattern.
+// primaryCtaLabel reuses NAV_CTA_LABEL rather than its own string since the hero button and
+// the nav CTA are meant to say the same thing site-wide; single-sourced here instead of a
+// third hardcoded copy.
+export const HERO = {
+  heroPrefix: "Where innovation meets",
+  heroAccent: "intelligence",
+  heroSubcopy:
+    "We turn complex data and technology into clear, practical systems that grow revenue, sharpen efficiency, and set ambitious businesses apart from their competitors.",
+  primaryCtaLabel: NAV_CTA_LABEL,
+  secondaryCtaLabel: "Explore services",
+  scrollLabel: "Scroll",
+};
+
+export const SERVICES_EYEBROW = "What we do";
+export const SERVICES_HEADING = "Three ways we move your business forward.";
+
+// textAccent renders inside its own <span> for the gradient treatment; textPrefix/textSuffix
+// are the plain-text copy around it.
+export const MISSION = {
+  eyebrow: "Our mission",
+  textPrefix: "We make advanced technology",
+  textAccent: "accessible to businesses of every size",
+  textSuffix: ", bridging the gap between complex tech and real business impact.",
+  linkLabel: "More on our mission →",
+};
+
+export const METHODOLOGY_EYEBROW = "How we work";
+export const METHODOLOGY_HEADING = "A methodology built around check-ins, not surprises.";
+export const METHODOLOGY_TEXT =
+  "Every project runs through a clear framework with collaboration points before each phase, so we can adapt fast when needs change and you always know exactly where things stand.";
 
 // Aligned to the sub-service names introduced in subservice-expansion-plan-v6.md, in each
 // page's own order (Data, Technology, Consulting Advisory, Consulting Talent).
@@ -148,3 +182,9 @@ export const HOME_GLOW_BLOBS = [
     speed: 0.2,
   },
 ];
+
+export const CTA = {
+  heading: "Start your journey.",
+  text: "Tell us the business challenge you're facing and one of our specialists will be in touch. No pressure, no obligation.",
+  buttonLabel: "Send a message",
+};

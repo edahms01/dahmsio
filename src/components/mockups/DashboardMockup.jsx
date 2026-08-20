@@ -5,7 +5,7 @@ import styles from "./DashboardMockup.module.css";
 // "forecast" columns with a pulsing marker at the model's projected point), echoing the
 // hero copy's "predictive model forecasts" line. Bars/stats stay data-driven like before;
 // the line/polygon points are fixed to the source design's exact coordinates.
-export default function DashboardMockup({ label, value, delta, bars, stats }) {
+export default function DashboardMockup({ label, value, delta, bars, stats, legend }) {
   return (
     <div className={styles.body}>
       <div className={styles.top}>
@@ -71,11 +71,11 @@ export default function DashboardMockup({ label, value, delta, bars, stats }) {
       <div className={styles.legend}>
         <span className={styles.legendItem}>
           <span className={styles.legendLineActual} />
-          Actual
+          {legend.actual}
         </span>
         <span className={styles.legendItem}>
           <span className={styles.legendLineForecast} />
-          Model Forecast
+          {legend.forecast}
         </span>
       </div>
       <div className={styles.stats}>

@@ -230,8 +230,14 @@
 }
 
 /* Heading -> text -> button gaps set to the same value (28px) so the CTA block reads as
-   evenly spaced, rather than each gap being sized independently. Testing on Home first. */
-.ctaHeading {
+   evenly spaced, rather than each gap being sized independently.
+   Compound selector (.ctaInner .ctaHeading, not just .ctaHeading) is required here: the
+   global .sectionHeading class (also on this <h2>, for shared typography) sets margin: 0,
+   and a single-class selector ties with it on specificity, so the cascade's source order
+   decided the winner and silently zeroed this margin. The extra ancestor class breaks the
+   tie so this rule always wins regardless of bundle order. Rolled out to
+   InteriorPageTemplate.module.css too, same fix, same reason. */
+.ctaInner .ctaHeading {
   font-size: clamp(32px, 4.6vw, 58px);
   margin: 0 0 28px;
 }

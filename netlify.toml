@@ -56,3 +56,12 @@
   for = "/*.webmanifest"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# Explicit, rather than relying on Netlify's default static-file MIME guessing — llms.txt is
+# generated at build time (scripts/generate-llms.mjs) and should always be served as plain
+# text, never re-guessed as something else.
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"

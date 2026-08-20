@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Brand from "./Brand.jsx";
-import { NAV_LINKS } from "../data/site.js";
+import { NAV_LINKS, DESKTOP_NAV_LINKS, NAV_CTA_LABEL } from "../data/site.js";
 import styles from "./Nav.module.css";
 
 export default function Nav() {
@@ -29,7 +29,7 @@ export default function Nav() {
     <nav className={`${styles.nav} ${scrolled || menuOpen ? styles.scrolled : ""}`}>
       <Brand />
       <div className={styles.links}>
-        {NAV_LINKS.map((link) => (
+        {DESKTOP_NAV_LINKS.map((link) => (
           <NavLink
             key={link.to}
             to={link.to}
@@ -42,7 +42,7 @@ export default function Nav() {
       </div>
       <div className={styles.rightGroup}>
         <Link to="/contact/" className={styles.cta}>
-          Start your journey
+          {NAV_CTA_LABEL}
         </Link>
         <button
           type="button"
@@ -67,7 +67,7 @@ export default function Nav() {
             </NavLink>
           ))}
           <Link to="/contact/" className={styles.mobileCta}>
-            Start your journey
+            {NAV_CTA_LABEL}
           </Link>
         </div>
       )}

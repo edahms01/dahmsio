@@ -42,6 +42,7 @@ export const MOCKUP = {
     { label: "CHURN", value: "1.9%" },
     { label: "LTV", value: "$3.4k" },
   ],
+  legend: { actual: "Actual", forecast: "Model Forecast" },
 };
 
 // Sub-service accordion — replaces the old CAPABILITIES block (subservice-expansion-plan-v6,

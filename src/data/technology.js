@@ -20,6 +20,8 @@ export const HERO = {
 
 export const MOCKUP = {
   filename: "integration.ts",
+  terminalCommand: "$ npm run deploy",
+  terminalResult: "✓ Build complete, deployed to production",
 };
 
 // Sub-service accordion — replaces the old CAPABILITIES block (subservice-expansion-plan-v6,

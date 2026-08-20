@@ -9,7 +9,18 @@ import OrbitNetworkMockup from "../components/mockups/OrbitNetworkMockup.jsx";
 import BenchNetworkMockup from "../components/mockups/BenchNetworkMockup.jsx";
 import CapabilityCard from "../components/CapabilityCard.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
-import { META, HERO, MOCKUP, BACKGROUND, CREDIBILITY, HOW_WE_WORK, HEADSHOT, FOUNDERS_NOTE, CTA } from "../data/about.js";
+import {
+  META,
+  HERO,
+  MOCKUP,
+  BACKGROUND,
+  CREDIBILITY,
+  HOW_WE_WORK,
+  BENCH_NETWORK,
+  HEADSHOT,
+  FOUNDERS_NOTE,
+  CTA,
+} from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 // Reusing the interior page template's own hero/CTA text classes directly — same file, same
 // classnames — so typography matches Data/Technology/Consulting exactly. The hero and
@@ -109,8 +120,8 @@ export default function About() {
           <div className="eyebrow">{HOW_WE_WORK.eyebrow}</div>
         </Reveal>
         <Reveal className={styles.howWeWorkGrid}>
-          <AppWindowMockup filename="experts.io">
-            <BenchNetworkMockup />
+          <AppWindowMockup filename={BENCH_NETWORK.filename}>
+            <BenchNetworkMockup {...BENCH_NETWORK} />
           </AppWindowMockup>
           <div>
             <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>

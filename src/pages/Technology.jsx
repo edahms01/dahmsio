@@ -22,7 +22,7 @@ export default function Technology() {
         breadcrumbPath={META.path}
         mockup={
           <AppWindowMockup filename={MOCKUP.filename}>
-            <CodeEditorMockup />
+            <CodeEditorMockup terminalCommand={MOCKUP.terminalCommand} terminalResult={MOCKUP.terminalResult} />
           </AppWindowMockup>
         }
         subserviceGroups={SUBSERVICE_GROUPS}

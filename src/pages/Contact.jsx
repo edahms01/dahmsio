@@ -17,6 +17,11 @@ import {
   FIELDS,
   CONTACT_INFO_HEADING,
   SUBMIT_LABEL,
+  SUBMITTING_LABEL,
+  SUCCESS,
+  HONEYPOT_LABEL,
+  ERROR_TEXT,
+  FAQ_EYEBROW,
   FAQ_HEADING,
   FAQ,
 } from "../data/contact.js";
@@ -68,7 +73,7 @@ function Field({ def, value, onChange }) {
         {labelEl}
         <select name={name} required={required} value={value} onChange={onChange}>
           <option value="" disabled>
-            Select a range…
+            {placeholder}
           </option>
           {options.map((option) => (
             <option key={option} value={option}>
@@ -153,10 +158,8 @@ export default function Contact() {
       <section id="contact-form" className={styles.formSection}>
         {status === "success" ? (
           <Reveal className={styles.formCard}>
-            <h2 className={styles.successHeading}>Message sent.</h2>
-            <p className={styles.successText}>
-              Thanks for reaching out — a consultant will be in touch soon.
-            </p>
+            <h2 className={styles.successHeading}>{SUCCESS.heading}</h2>
+            <p className={styles.successText}>{SUCCESS.text}</p>
           </Reveal>
         ) : (
           <Reveal className={styles.formCard}>
@@ -175,7 +178,7 @@ export default function Contact() {
               <input type="hidden" name="form-name" value="contact" />
               <p className={styles.honeypot}>
                 <label>
-                  Don&apos;t fill this out if you&apos;re human:
+                  {HONEYPOT_LABEL}
                   <input name="bot-field" value={botField} onChange={(e) => setBotField(e.target.value)} />
                 </label>
               </p>
@@ -202,13 +205,12 @@ export default function Contact() {
 
               {status === "error" && (
                 <p className={styles.errorText}>
-                  Something went wrong sending that — try again, or email us directly at{" "}
-                  <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a>.
+                  {ERROR_TEXT} <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a>.
                 </p>
               )}
 
               <PrimaryButton type="submit" size="lg" disabled={status === "submitting"}>
-                {status === "submitting" ? "Sending…" : SUBMIT_LABEL}
+                {status === "submitting" ? SUBMITTING_LABEL : SUBMIT_LABEL}
               </PrimaryButton>
             </form>
           </Reveal>
@@ -218,7 +220,7 @@ export default function Contact() {
       <section className={styles.faqSection}>
         <Reveal duration={900}>
           <div className="eyebrow" style={{ textAlign: "center" }}>
-            FAQ
+            {FAQ_EYEBROW}
           </div>
           <h2 className={`sectionHeading ${styles.faqHeading}`}>{FAQ_HEADING}</h2>
           <FaqAccordion items={FAQ} />

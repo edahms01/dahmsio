@@ -6,7 +6,7 @@ import SecondaryButton from "../components/SecondaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import SubServiceSection from "../components/SubServiceSection.jsx";
 import PipelineStep from "../components/PipelineStep.jsx";
-import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
+import { INTERIOR_GLOW_BLOBS, SEE_CAPABILITIES_LABEL } from "../data/site.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 import styles from "./InteriorPageTemplate.module.css";
 
@@ -109,14 +109,14 @@ export default function InteriorPageTemplate({
             <PrimaryButton to="/contact/" arrow>
               {primaryCtaLabel}
             </PrimaryButton>
-            <SecondaryButton href="#capabilities">See capabilities</SecondaryButton>
+            <SecondaryButton href="#capabilities">{SEE_CAPABILITIES_LABEL}</SecondaryButton>
           </div>
         </div>
         {mockup}
       </header>
 
-      {/* id="capabilities" kept as-is — the hero's "See capabilities" SecondaryButton above
-          links here and that hardcoded label/anchor is out of scope for this build. */}
+      {/* id="capabilities" kept as a plain anchor — the hero's SecondaryButton above links
+          here; the anchor id itself is structural, not copy, so it stays hardcoded. */}
       {typeof pipelineAfterGroup === "number" ? (
         <section id="capabilities" className={styles.capabilities}>
           <SubServiceSection groups={subserviceGroups.slice(0, pipelineAfterGroup + 1)} ctaLabel={primaryCtaLabel} />

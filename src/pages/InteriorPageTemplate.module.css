@@ -191,9 +191,15 @@
   text-align: center;
 }
 
-.ctaHeading {
+/* Heading -> text -> button gaps set to the same value (28px), matching Home.module.css's
+   CTA (same reasoning: reads as evenly spaced instead of independently-sized gaps).
+   Compound selector (.ctaInner .ctaHeading, not just .ctaHeading) is required: the global
+   .sectionHeading class (also on this <h2>, for shared typography) sets margin: 0, and a
+   single-class selector ties with it on specificity, so the cascade's source order decided
+   the winner and silently zeroed this margin. The extra ancestor class breaks the tie. */
+.ctaInner .ctaHeading {
   font-size: clamp(30px, 4.4vw, 54px);
-  margin: 0 0 16px;
+  margin: 0 0 28px;
 }
 
 .ctaText {
@@ -201,7 +207,7 @@
   line-height: 1.6;
   color: var(--text-secondary2);
   max-width: 48ch;
-  margin: 0 auto 32px;
+  margin: 0 auto 28px;
 }
 
 @media (max-width: 900px) {

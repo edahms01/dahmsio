@@ -1,20 +1,20 @@
 import styles from "./BenchNetworkMockup.module.css";
 
 // Ported from the Claude Design hero graphic (About.dc.html, project a37bbdf4) — a "bench"
-// of specialists (Data Scientist, Cloud Architect, Backend Engineer, UX Designer, Security
-// Specialist, DevOps Engineer) wired into a single Product Manager hub, who in turn connects
-// to "You". Visualizes HOW_WE_WORK's "network, not a bottleneck" framing directly. Purely
-// illustrative (no props), same as OrbitNetworkMockup.
+// of specialists wired into a single Product Manager hub, who in turn connects to "You".
+// Visualizes HOW_WE_WORK's "network, not a bottleneck" framing directly. Labels (specialist
+// roles, hub title, chip text, "You") come from about.js's BENCH_NETWORK as props; only
+// layout (x/y coordinates, stroke colors) stays local since that's presentation, not copy.
 // labelColor was alternating #c7c7d4/#8a8a9a per node in the source design — dropped in
 // favor of one consistent color (.nodeLabel in the CSS module) after it read as an
 // inconsistency (some role titles grayer than others) rather than an intentional pattern.
-const SPECIALISTS = [
-  { code: "DS", line1: "Data", line2: "Scientist", x: 10, y: 7, codeColor: "var(--accent3)" },
-  { code: "CL", line1: "Cloud", line2: "Architect", x: 34, y: 18, codeColor: "var(--accent3)" },
-  { code: "BE", line1: "Backend", line2: "Engineer", x: 10, y: 33, codeColor: "var(--accent2)" },
-  { code: "UX", line1: "UX", line2: "Designer", x: 10, y: 59, codeColor: "var(--accent)" },
-  { code: "SC", line1: "Security", line2: "Specialist", x: 10, y: 83, codeColor: "var(--accent3)" },
-  { code: "DO", line1: "DevOps", line2: "Engineer", x: 34, y: 84, codeColor: "var(--accent2)" },
+const SPECIALIST_LAYOUT = [
+  { x: 10, y: 7, codeColor: "var(--accent3)" },
+  { x: 34, y: 18, codeColor: "var(--accent3)" },
+  { x: 10, y: 33, codeColor: "var(--accent2)" },
+  { x: 10, y: 59, codeColor: "var(--accent)" },
+  { x: 10, y: 83, codeColor: "var(--accent3)" },
+  { x: 34, y: 84, codeColor: "var(--accent2)" },
 ];
 
 const HUB = { x: 52, y: 48 };
@@ -30,11 +30,13 @@ const SPOKE_STYLE = [
   { stroke: "var(--accent2)", dash: true },
 ];
 
-export default function BenchNetworkMockup() {
+export default function BenchNetworkMockup({ specialists, hub, chip, youLabel }) {
+  const nodes = specialists.map((specialist, i) => ({ ...specialist, ...SPECIALIST_LAYOUT[i] }));
+
   return (
     <div className={styles.body}>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className={styles.lines}>
-        {SPECIALISTS.map((node, i) => (
+        {nodes.map((node, i) => (
           <line
             key={node.code}
             x1={node.x}
@@ -51,7 +53,7 @@ export default function BenchNetworkMockup() {
 
       <div className={styles.sweep} style={{ left: `${HUB.x}%`, top: `${HUB.y}%` }} />
 
-      {SPECIALISTS.map((node) => (
+      {nodes.map((node) => (
         <div key={node.code} className={styles.node} style={{ left: `${node.x}%`, top: `${node.y}%` }}>
           <span className={styles.nodeBadge} style={{ color: node.codeColor }}>
             {node.code}
@@ -65,21 +67,23 @@ export default function BenchNetworkMockup() {
 
       <div className={styles.hub} style={{ left: `${HUB.x}%`, top: `${HUB.y}%` }}>
         <span className={styles.hubBadge}>
-          PM
+          {hub.badge}
           <span className={styles.hubRing} />
         </span>
-        <div className={styles.hubTitle}>Product Manager</div>
+        <div className={styles.hubTitle}>{hub.title}</div>
         <div className={styles.hubSubtitle}>
-          <div>Your single</div>
-          <div>point of contact</div>
+          {hub.subtitle.map((line) => (
+            <div key={line}>{line}</div>
+          ))}
         </div>
       </div>
 
       {/* Nudged a few px right of the true midpoint so it clears the PM hub's ring instead
           of overlapping it. */}
       <div className={styles.chip} style={{ left: `${(HUB.x + YOU.x) / 2 + 3}%`, top: `${HUB.y}%` }}>
-        <div>Discovery · Vision</div>
-        <div>Strategy · Roadmap</div>
+        {chip.map((line) => (
+          <div key={line}>{line}</div>
+        ))}
       </div>
 
       <div className={styles.you} style={{ left: `${YOU.x}%`, top: `${YOU.y}%` }}>
@@ -87,7 +91,7 @@ export default function BenchNetworkMockup() {
           <span className={styles.youHead} />
           <span className={styles.youShoulders} />
         </span>
-        <div className={styles.youLabel}>You</div>
+        <div className={styles.youLabel}>{youLabel}</div>
       </div>
     </div>
   );

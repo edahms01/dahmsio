@@ -8,7 +8,21 @@ import Marquee from "../components/Marquee.jsx";
 import Reveal from "../components/Reveal.jsx";
 import FeatureCard from "../components/FeatureCard.jsx";
 import MethodologyStep from "../components/MethodologyStep.jsx";
-import { META, MARQUEE_ITEMS, SERVICES, METHODOLOGY_STEPS, HOME_GLOW_BLOBS } from "../data/home.js";
+import {
+  META,
+  HERO,
+  MARQUEE_ITEMS,
+  SERVICES,
+  SERVICES_EYEBROW,
+  SERVICES_HEADING,
+  MISSION,
+  METHODOLOGY_EYEBROW,
+  METHODOLOGY_HEADING,
+  METHODOLOGY_TEXT,
+  METHODOLOGY_STEPS,
+  CTA,
+  HOME_GLOW_BLOBS,
+} from "../data/home.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -18,30 +32,25 @@ export default function Home() {
       <header className={styles.hero}>
         <NetworkCanvas maxNodes={90} linkDist={130} opacity={0.9} className={styles.heroCanvas} />
         <h1 className={`${styles.h1} ${styles.heroUp} ${styles.heroUpDelay1}`}>
-          Where innovation meets <span className={styles.gradientSpan}>intelligence.</span>
+          {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}.</span>
         </h1>
-        <p className={`${styles.subcopy} ${styles.heroUp} ${styles.heroUpDelay2}`}>
-          We turn complex data and technology into clear, practical systems that grow revenue, sharpen
-          efficiency, and set ambitious businesses apart from their competitors.
-        </p>
+        <p className={`${styles.subcopy} ${styles.heroUp} ${styles.heroUpDelay2}`}>{HERO.heroSubcopy}</p>
         <div className={`${styles.ctaRow} ${styles.heroUp} ${styles.heroUpDelay3}`}>
           <PrimaryButton to="/contact/" arrow>
-            Start your journey
+            {HERO.primaryCtaLabel}
           </PrimaryButton>
-          <SecondaryButton href="#services">Explore services</SecondaryButton>
+          <SecondaryButton href="#services">{HERO.secondaryCtaLabel}</SecondaryButton>
         </div>
         <div className={styles.scrollIndicator}>
-          <span>Scroll</span>
+          <span>{HERO.scrollLabel}</span>
           <span className={styles.scrollLine} />
         </div>
       </header>
 
       <section id="services" className={styles.services}>
         <Reveal>
-          <div className="eyebrow">What we do</div>
-          <h2 className={`sectionHeading ${styles.servicesHeading}`}>
-            Three ways we move your business forward.
-          </h2>
+          <div className="eyebrow">{SERVICES_EYEBROW}</div>
+          <h2 className={`sectionHeading ${styles.servicesHeading}`}>{SERVICES_HEADING}</h2>
         </Reveal>
         <div className={styles.servicesGrid}>
           {SERVICES.map((service, i) => (
@@ -57,15 +66,14 @@ export default function Home() {
       <section className={styles.mission}>
         <Reveal duration={900}>
           <div className="eyebrow" style={{ marginBottom: 22 }}>
-            Our mission
+            {MISSION.eyebrow}
           </div>
           <p className={styles.missionText}>
-            We make advanced technology{" "}
-            <span className={styles.missionAccent}>accessible to businesses of every size</span>, bridging
-            the gap between complex tech and real business impact.
+            {MISSION.textPrefix} <span className={styles.missionAccent}>{MISSION.textAccent}</span>
+            {MISSION.textSuffix}
           </p>
           <Link to="/about/" className={styles.missionLink}>
-            More on our mission →
+            {MISSION.linkLabel}
           </Link>
         </Reveal>
       </section>
@@ -73,14 +81,9 @@ export default function Home() {
       <section id="methodology" className={styles.methodology}>
         <div className={styles.methodologyGrid}>
           <div className={styles.methodologyLeft}>
-            <div className="eyebrow">How we work</div>
-            <h2 className={`sectionHeading ${styles.methodologyHeading}`}>
-              A methodology built around check-ins, not surprises.
-            </h2>
-            <p className={styles.methodologyText}>
-              Every project runs through a clear framework with collaboration points before each phase, so
-              we can adapt fast when needs change and you always know exactly where things stand.
-            </p>
+            <div className="eyebrow">{METHODOLOGY_EYEBROW}</div>
+            <h2 className={`sectionHeading ${styles.methodologyHeading}`}>{METHODOLOGY_HEADING}</h2>
+            <p className={styles.methodologyText}>{METHODOLOGY_TEXT}</p>
           </div>
           <div className={styles.methodologyRight}>
             {METHODOLOGY_STEPS.map((step, i) => (
@@ -95,13 +98,10 @@ export default function Home() {
       <section className={styles.cta}>
         <NetworkCanvas maxNodes={70} linkDist={130} opacity={0.7} className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
-          <h2 className={`sectionHeading ${styles.ctaHeading}`}>Start your journey.</h2>
-          <p className={styles.ctaText}>
-            Tell us the business challenge you're facing and one of our consultants will be in touch. No
-            pressure, no obligation.
-          </p>
+          <h2 className={`sectionHeading ${styles.ctaHeading}`}>{CTA.heading}</h2>
+          <p className={styles.ctaText}>{CTA.text}</p>
           <PrimaryButton to="/contact/" size="lg" arrow>
-            Send a message
+            {CTA.buttonLabel}
           </PrimaryButton>
         </Reveal>
       </section>

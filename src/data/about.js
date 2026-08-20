@@ -147,6 +147,24 @@ export const HOW_WE_WORK = {
   ],
 };
 
+// Text content for BenchNetworkMockup (the "bench of specialists -> PM hub -> You" graphic
+// in HOW_WE_WORK's section). Layout (x/y coordinates, stroke colors) stays a local constant
+// in the component itself since that's presentation, not copy; only the labels live here.
+export const BENCH_NETWORK = {
+  filename: "experts.io",
+  specialists: [
+    { code: "DS", line1: "Data", line2: "Scientist" },
+    { code: "CL", line1: "Cloud", line2: "Architect" },
+    { code: "BE", line1: "Backend", line2: "Engineer" },
+    { code: "UX", line1: "UX", line2: "Designer" },
+    { code: "SC", line1: "Security", line2: "Specialist" },
+    { code: "DO", line1: "DevOps", line2: "Engineer" },
+  ],
+  hub: { badge: "PM", title: "Product Manager", subtitle: ["Your single", "point of contact"] },
+  chip: ["Discovery · Vision", "Strategy · Roadmap"],
+  youLabel: "You",
+};
+
 export const HEADSHOT = {
   // AppWindowMockup's fake browser-chrome filename label, not the actual served path (see
   // src below) — kept as the display name shown in the mock titlebar.

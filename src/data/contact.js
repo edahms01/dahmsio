@@ -56,6 +56,7 @@ export const FIELDS = {
     label: "Estimated Budget",
     required: false,
     type: "select",
+    placeholder: "Select a range…",
     options: ["Not sure yet", "Under $5k", "$5k – $15k", "$15k – $35k", "$35k – $75k", "$75k+"],
   },
   firstName: { name: "firstName", label: "First Name", required: true, type: "text" },
@@ -73,6 +74,23 @@ export const FIELDS = {
 
 export const CONTACT_INFO_HEADING = "Contact Info";
 export const SUBMIT_LABEL = "Send Message";
+export const SUBMITTING_LABEL = "Sending…";
+
+// Em dashes replaced with periods here (were "reaching out — a consultant" / "sending that —
+// try again") to match the site-wide no-em-dash convention — both strings render live on
+// error/success states, not just in hidden metadata, so the rule applies same as visible copy.
+export const SUCCESS = {
+  heading: "Message sent.",
+  text: "Thanks for reaching out. A consultant will be in touch soon.",
+};
+
+export const HONEYPOT_LABEL = "Don't fill this out if you're human:";
+
+// Trailing text before the mailto link, same pattern as FORM_INTRO (plain string, link and
+// closing period appended in JSX).
+export const ERROR_TEXT = "Something went wrong sending that. Try again, or email us directly at";
+
+export const FAQ_EYEBROW = "FAQ";
 
 export const FAQ_HEADING = "Common questions";
 

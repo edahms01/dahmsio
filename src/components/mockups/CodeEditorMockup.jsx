@@ -1,6 +1,6 @@
 import styles from "./CodeEditorMockup.module.css";
 
-export default function CodeEditorMockup() {
+export default function CodeEditorMockup({ terminalCommand, terminalResult }) {
   return (
     <>
       <div className={styles.code}>
@@ -32,8 +32,8 @@ export default function CodeEditorMockup() {
         </div>
       </div>
       <div className={styles.terminal}>
-        <div className={styles.cmd}>$ npm run deploy</div>
-        <div className={styles.result}>✓ Build complete, deployed to production</div>
+        <div className={styles.cmd}>{terminalCommand}</div>
+        <div className={styles.result}>{terminalResult}</div>
       </div>
     </>
   );
