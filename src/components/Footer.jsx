@@ -6,7 +6,7 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <Brand size={32} fontSize="19px" />
+      <Brand size={20} />
       <div className={styles.tagline}>{TAGLINE}</div>
       <div className={styles.links}>
         {FOOTER_LINKS.map((link) => (

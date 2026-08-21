@@ -1,14 +1,15 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-family: var(--fd);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: -0.02em;
-  color: var(--text);
 }
 
-.accent {
-  color: var(--accent);
+/* Height driven by the --logo-height custom property (set from Brand's `size` prop, same
+   value the old icon used) so nav/footer keep their existing relative scale. Width left to
+   `auto` — the logo's viewBox has no width/height attributes, so the browser derives the
+   intrinsic aspect ratio (255.25 x 46.99) from it and scales width proportionally; setting
+   both dimensions here would risk stretching or cropping it. */
+.logo {
+  display: block;
+  height: var(--logo-height, 34px);
+  width: auto;
 }
