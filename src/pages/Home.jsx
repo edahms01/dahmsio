@@ -20,6 +20,7 @@ import {
   METHODOLOGY_HEADING,
   METHODOLOGY_TEXT,
   METHODOLOGY_STEPS,
+  HERO_ASSURANCES,
   CTA,
   HOME_GLOW_BLOBS,
 } from "../data/home.js";
@@ -41,6 +42,18 @@ export default function Home() {
           </PrimaryButton>
           <SecondaryButton href="#services">{HERO.secondaryCtaLabel}</SecondaryButton>
         </div>
+        {/* heroUpDelay4 already existed in Home.module.css and was unused in this file —
+            this is the fourth staggered element it was reserved for. */}
+        <ul className={`${styles.assurances} ${styles.heroUp} ${styles.heroUpDelay4}`}>
+          {HERO_ASSURANCES.map((item) => (
+            <li key={item} className={styles.assurance}>
+              <svg className={styles.assuranceIcon} viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M2.5 8.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
       </header>
 
       <section id="services" className={styles.services}>

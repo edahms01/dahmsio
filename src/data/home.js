@@ -24,6 +24,22 @@ export const HERO = {
   secondaryCtaLabel: "Explore services",
 };
 
+// Hero assurance strip — five scannable commitments under the CTA row. Deliberately
+// commercial rather than capability copy. Order is load-bearing: the first three remove
+// the cost of starting a conversation, the last two remove the fear of being locked in
+// afterward, so a mid-width wrap breaks between those two groups rather than mid-thought.
+// "Full ownership" (not "You own everything built") is deliberately two words, matching
+// the declarative rhythm of the other four items and buying back line width at narrower
+// desktop viewports. Plain text, not an image, so it indexes and matches the language
+// used in outreach.
+export const HERO_ASSURANCES = [
+  "Free project scoping",
+  "No obligation",
+  "No minimum project size",
+  "Full ownership",
+  "No vendor lock-in",
+];
+
 export const SERVICES_EYEBROW = "What we do";
 export const SERVICES_HEADING = "Three ways we move your business forward.";
 

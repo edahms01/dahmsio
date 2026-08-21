@@ -81,6 +81,48 @@
   margin-top: 38px;
 }
 
+/* Assurance strip under the hero CTAs. flex-wrap: nowrap is deliberate — the five items
+   are sized to hold one row down to the 900px breakpoint below, where the grid rule
+   takes over. Wrap is intentionally not used as a fallback: a 4+1 or 3+2 wrap reads
+   worse than the row simply holding until the grid swap. If real-browser testing in the
+   901-960px range still overflows, tighten gap and icon size further here — never touch
+   the item wording (see HERO_ASSURANCES in home.js). Muted secondary text, no card
+   chrome, no borders. */
+.assurances {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  margin: 28px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-secondary2);
+  white-space: nowrap;
+}
+
+.assurance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.assuranceIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+/* No site-wide prefers-reduced-motion handling exists for .heroUp/.heroUpDelay* (checked
+   global.css and theme.css too) — the pre-existing hero elements using those classes
+   already animate regardless of the preference. Scoped to .assurances only, so this
+   doesn't change that pre-existing behavior; it just keeps the new strip from animating
+   in under reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .assurances {
+    animation: none;
+  }
+}
+
 .services {
   position: relative;
   z-index: 10;
@@ -240,6 +282,16 @@
 
   .methodologyLeft {
     position: static;
+  }
+
+  /* Below 900px the row no longer needs to hold one line — this rule overrides
+     .assurances' nowrap/flex entirely, so the desktop single-line constraint above is
+     moot once this takes effect. */
+  .assurances {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+    white-space: normal;
   }
 
 }
