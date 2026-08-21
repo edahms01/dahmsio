@@ -23,8 +23,8 @@ export default function InteriorPageTemplate({
   pipelineHeading,
   pipeline,
   pipelineStageLines,
-  // Consulting-only: renders the pipeline between subserviceGroups[pipelineAfterGroup] and
-  // the next group instead of after the whole section, since the pipeline describes the
+  // Consulting-only: renders the pipeline's own section between subserviceGroups[pipelineAfterGroup]
+  // and the next group instead of after the whole section, since the pipeline describes the
   // Advisory engagement only and doesn't apply to Talent. Undefined on Data/Technology, which
   // keep the pipeline in its own section after all groups.
   pipelineAfterGroup,
@@ -121,15 +121,17 @@ export default function InteriorPageTemplate({
         <>
           <section id="capabilities" className={styles.capabilities}>
             <SubServiceSection groups={subserviceGroups.slice(0, pipelineAfterGroup + 1)} ctaLabel={primaryCtaLabel} />
-            <div className={styles.pipelineInline}>
-              {pipelineHead}
-              {pipelineGrid}
-            </div>
           </section>
-          {/* Own <section> (standard .capabilities padding) rather than folding into the one
-              above — the remaining groups (Talent, on Consulting) get the same section-to-section
-              rhythm as everywhere else on the page, not the tighter inline group spacing that
-              ties the pipeline to the Advisory group above it. */}
+
+          {/* Own <section> with the standard .pipeline padding (same as Data/Technology's
+              pipeline) rather than folded inline under Advisory — inline crowded the pipeline
+              against the Advisory cards with no real section break, which read like a layout
+              error rather than its own step in the page. */}
+          <section className={styles.pipeline}>
+            {pipelineHead}
+            {pipelineGrid}
+          </section>
+
           {/* .capabilitiesFinal bumps bottom padding to match .pipeline's 100px — this section
               (not .pipeline) is what sits directly above the CTA here, and .capabilities' plain
               40px bottom padding left the pre-CTA gap noticeably tighter than the pipeline-then-

@@ -22,7 +22,6 @@ export const HERO = {
     "We turn complex data and technology into clear, practical systems that grow revenue, boost efficiency, and set ambitious businesses apart from competitors.",
   primaryCtaLabel: NAV_CTA_LABEL,
   secondaryCtaLabel: "Explore services",
-  scrollLabel: "Scroll",
 };
 
 export const SERVICES_EYEBROW = "What we do";

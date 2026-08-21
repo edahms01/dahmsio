@@ -7,9 +7,8 @@ import { hexToRgba } from "../utils/color.js";
 // dashes anywhere, no employer
 // names, no business-size language (positioning is by geography and by relationship to
 // technology, not by size) — keep it that way in any future edits here.
-// "twenty years" used in place of the source doc's "two decades" per standing preference
-// (career start Oct 2007 -> 18-19 years as of 2026; Eric's call was to just say "twenty
-// years" outright rather than hedge with "close to" or "nearly").
+// "fifteen years" (London tenure, not total career length) is the current figure per Eric's
+// 2026-08 rewrite — update if it drifts out of date.
 
 export const META = {
   path: ROUTE_PATHS.about,
@@ -179,9 +178,9 @@ export const FOUNDERS_NOTE = {
   eyebrow: "Founder's Note",
   heading: "A note from our Founder",
   paragraphs: [
-    "I've spent the past twenty years in London, England, working for the largest global agencies. I've led data, analytics, and tech product teams for some of the largest clients in the world, building the products and platforms that marketers, analysts and data scientists use every day.",
-    "I've stayed hands-on my entire career. I design and ship data platforms, AI assistants, automation pipelines, and working prototypes myself, which means I can tell you quickly and honestly what today's technology will do for your business, and just as usefully, what it won't.",
-    "If you're running a business in Maine or elsewhere in New England and want a partner who understands what this technology can actually do for a local business, send us a message and let's talk about where new technology could take your business.",
+    "I grew up in Westbrook, Maine and I've spent the last fifteen years in London, building data and technology solutions for some of the largest companies in the world.",
+    "I've stayed hands-on the entire time, designing and shipping custom products, building data platforms and automations with engineers, and now building and implementing AI tools. I can tell you quickly and honestly what today's technology will do for your business and, just as usefully, what it won't.",
+    "I'm building DahmsIO because I want to bring that advanced global knowledge to the businesses driving local and regional economies. If you're running a business in New England, send us a message and let's talk about how data and technology can propel you to the next level.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one

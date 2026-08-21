@@ -41,10 +41,6 @@ export default function Home() {
           </PrimaryButton>
           <SecondaryButton href="#services">{HERO.secondaryCtaLabel}</SecondaryButton>
         </div>
-        <div className={styles.scrollIndicator}>
-          <span>{HERO.scrollLabel}</span>
-          <span className={styles.scrollLine} />
-        </div>
       </header>
 
       <section id="services" className={styles.services}>

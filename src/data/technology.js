@@ -32,8 +32,8 @@ export const SUBSERVICE_GROUPS = [
     eyebrow: "What we build",
     heading: "Built, connected, automated, and made intelligent.",
     paragraphs: [
-      "New software gives your business something to build on. Once it's in place, connecting it to what you already run is the natural next step. With your systems finally talking to each other, the manual work between them becomes worth automating. And once that's running quietly in the background, a layer that makes decisions is where the real payoff starts.",
-      "You don't need to start at the beginning. Most businesses come to us already running plenty of systems and just need one piece: a connection, an automation, or an AI layer added to what's already there. Tell us where you are and we'll start there.",
+      "Build the software, connect it to what you already run, automate the manual work between them, then let AI sit on top. Each step makes the next one worth doing.",
+      "You don't need to start at the beginning. If you're already running plenty of systems and just need one piece added, a connection, an automation, or an AI layer. Tell us where you are and we'll start there.",
     ],
     numbered: true,
     items: [
@@ -159,7 +159,7 @@ export const PIPELINE = [
 ];
 
 export const CTA = {
-  heading: "Ready to modernize your stack?",
+  heading: "Ready to modernize your tech?",
   text: "Show us what you're building or trying to connect. We'll come back with a straight answer on what it takes to make it work reliably.",
   buttonLabel: "Start a tech project",
 };

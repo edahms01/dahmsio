@@ -70,15 +70,17 @@ export const SUBSERVICE_GROUPS = [
         slug: "/consulting/assessment-audit/",
         title: "Assessment & Audit",
         outcome: "A clear, honest picture of what you have and what it's costing you.",
-        body: "Before anything gets fixed, someone has to look at it plainly. We go through your systems, your process, and your data, and tell you what's actually working, what's quietly costing you time or money, and what to leave alone. No build happens here, and no assumption that one should.",
+        body: "Before anything gets fixed, someone has to look at it plainly. We go through your systems, your process, your data, and the competitive landscape around you, then tell you what's actually working, what's quietly costing you time or money, and what to leave alone. No build happens here, and no assumption that one should.",
         symptoms: [
           "You suspect something's wrong but can't put your finger on what",
           "You want a second opinion before committing to a bigger project",
+          "You don't know how you compare to competitors, or what they're doing that you aren't",
           "You inherited systems or a process nobody on your team fully understands anymore",
         ],
         deliverables: [
           "A plain-English writeup of what you have today and how it's actually performing",
           "A ranked list of what's genuinely costing you time or money, and what isn't",
+          "A look at where you stand against competitors and where the market's heading",
           "Recommendations you can act on yourself, hand to your team, or bring back to us",
           "No obligation to do anything else afterward",
         ],
