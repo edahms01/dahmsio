@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PrimaryButton from "./PrimaryButton.jsx";
 import Reveal from "./Reveal.jsx";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion.js";
@@ -151,6 +151,16 @@ export default function SubServiceSection({ groups, ctaLabel }) {
                       reducedMotion={reducedMotion}
                     >
                       <p className={styles.body}>{item.body}</p>
+
+                      {item.crossLink && (
+                        <p className={styles.aside}>
+                          {item.crossLink.before}
+                          <Link to={item.crossLink.to} className={styles.asideLink}>
+                            {item.crossLink.linkText}
+                          </Link>
+                          {item.crossLink.after}
+                        </p>
+                      )}
 
                       <div className={styles.listBlock}>
                         <h3 className={styles.listLabel}>{SUBSERVICE_LABELS.symptoms}</h3>

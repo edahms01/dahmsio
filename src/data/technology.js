@@ -60,6 +60,15 @@ export const SUBSERVICE_GROUPS = [
         ],
         markColor: ACCENT,
         hoverBorder: hexToRgba(ACCENT, 0.45),
+        // Footnote-style cross-link to a related sub-service on another page. Rendered as a
+        // small italic aside beneath `body`, not part of the approved plan-doc copy — see
+        // SubServiceSection.jsx.
+        crossLink: {
+          before: "Locking in scope before development starts is usually an ",
+          linkText: "Advisory",
+          after: " conversation.",
+          to: "/consulting/",
+        },
       },
       {
         number: "02",
@@ -81,6 +90,15 @@ export const SUBSERVICE_GROUPS = [
         ],
         markColor: ACCENT3,
         hoverBorder: hexToRgba(ACCENT3, 0.45),
+        // Footnote-style cross-link to a related sub-service on another page. Rendered as a
+        // small italic aside beneath `body`, not part of the approved plan-doc copy — see
+        // SubServiceSection.jsx.
+        crossLink: {
+          before: "Once systems are connected, seeing it all in one place usually comes down to ",
+          linkText: "Reporting & Dashboards",
+          after: ".",
+          to: "/data/",
+        },
       },
       {
         number: "03",

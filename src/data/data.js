@@ -148,6 +148,16 @@ export const SUBSERVICE_GROUPS = [
         ],
         markColor: ACCENT,
         hoverBorder: hexToRgba(ACCENT, 0.45),
+        // Footnote-style cross-link to a related sub-service on another page. Rendered as a
+        // small italic aside beneath `body`, not part of the approved plan-doc copy — see
+        // SubServiceSection.jsx.
+        crossLink: {
+          before:
+            "Once a model's ready, getting people to actually talk to it in plain language is part of ",
+          linkText: "AI Implementation",
+          after: ".",
+          to: "/technology/",
+        },
       },
     ],
   },

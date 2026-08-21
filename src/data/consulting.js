@@ -86,6 +86,16 @@ export const SUBSERVICE_GROUPS = [
         ],
         markColor: ACCENT,
         hoverBorder: hexToRgba(ACCENT, 0.45),
+        // Footnote-style cross-link to a related sub-service on another page. Rendered as a
+        // small italic aside beneath `body`, not part of the approved plan-doc copy — see
+        // SubServiceSection.jsx.
+        crossLink: {
+          before:
+            "Audits tend to circle back to the same thing: the data itself needs work first. That's ",
+          linkText: "Data Foundations",
+          after: ".",
+          to: "/data/",
+        },
       },
       {
         number: "02",
@@ -107,6 +117,15 @@ export const SUBSERVICE_GROUPS = [
         ],
         markColor: ACCENT3,
         hoverBorder: hexToRgba(ACCENT3, 0.45),
+        // Footnote-style cross-link to a related sub-service on another page. Rendered as a
+        // small italic aside beneath `body`, not part of the approved plan-doc copy — see
+        // SubServiceSection.jsx.
+        crossLink: {
+          before: "Roadmaps often surface a manual process worth automating. That's ",
+          linkText: "Workflow Automation",
+          after: ".",
+          to: "/technology/",
+        },
       },
       {
         number: "03",

@@ -119,6 +119,30 @@
   margin: 0 28px 24px;
 }
 
+/* Footnote-style cross-link aside, appended after `body` in the panel. No caption/small token
+   exists in the type scale, so sized at ~0.85em of .body's 15px. Italic + text-muted2 matches
+   the existing muted-italic convention (Footer.module.css .tagline) — text-muted2 is the step
+   in the muted-text scale that still passes WCAG contrast against --bg. Pulled up toward
+   `body` with a negative top margin so it reads as attached to that paragraph, not a new block. */
+.aside {
+  font-size: 12.75px;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--text-muted2);
+  margin: -12px 28px 24px;
+}
+
+.asideLink {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.asideLink:hover {
+  color: var(--text-secondary2);
+}
+
 .listBlock {
   margin: 0 28px 24px;
 }
@@ -162,6 +186,7 @@
   }
 
   .body,
+  .aside,
   .listBlock,
   .cta {
     margin-left: 20px;
