@@ -194,6 +194,17 @@ export const FOUNDERS_NOTE = {
   ],
 };
 
+export const WHERE_WE_WORK = {
+  eyebrow: "Where We Work",
+  locations: [
+    { city: "Westbrook, ME, USA", address: "607 Bridgton Rd, Westbrook, ME 04092" },
+    {
+      city: "London, UK",
+      address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom",
+    },
+  ],
+};
+
 export const CTA = {
   heading: "Start with a conversation",
   text: "Tell us what's slowing your business down. You'll get an honest answer on whether we can help, what it would take, and what it would cost, before you commit to anything.",

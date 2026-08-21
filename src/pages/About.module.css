@@ -304,6 +304,42 @@
   margin-bottom: 0;
 }
 
+/* Where We Work — two office locations, centered as a pair beneath their own eyebrow, same
+   .sectionHeadCentered treatment as Founder's Note's. Deliberately undecorated (no border,
+   no background) like the credentials list above rather than Credibility's bordered
+   .leadItem tiles — this is address text only, not a card grid. */
+.whereWeWorkGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 260px));
+  justify-content: center;
+  gap: 16px 56px;
+}
+
+.location {
+  text-align: center;
+}
+
+/* Bold label sized against .leadItemLead (16px, same weight/family) — the page's existing
+   bold-label-then-body pattern — since credentials' plain list items have no separate label
+   to match against. */
+.locationCity {
+  display: block;
+  font-family: var(--fd);
+  font-weight: 600;
+  color: #f3f3f8;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+/* Smaller/regular, matching credentials' quiet muted tone rather than .leadItemBody's 14px
+   secondary — this is a single address line, not card body copy. */
+.locationAddress {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted2);
+}
+
 /* AppWindowMockup's .window already supplies the border/glow/rounded-corner frame that
    matches the rest of the site's mockups (see the graphics on About's hero and
    Data/Technology/Consulting) — this just fills that frame with the photo itself.
@@ -359,5 +395,10 @@
      mixed with two implicit ones. */
   .engagementGrid {
     grid-template-rows: none;
+  }
+
+  .whereWeWorkGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }

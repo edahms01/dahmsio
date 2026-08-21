@@ -23,6 +23,7 @@ export function buildOrganizationSchema() {
     logo: ORGANIZATION.logo,
     image: ORGANIZATION.image,
     email: ORGANIZATION.email,
+    address: ORGANIZATION.address,
     areaServed: AREA_SERVED_STATES.map((name) => ({ "@type": "State", name })),
     founder: { "@type": "Person", ...FOUNDER },
     // `serviceType` is scoped to Service/FinancialService in the schema.org vocabulary, not

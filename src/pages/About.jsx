@@ -19,6 +19,7 @@ import {
   BENCH_NETWORK,
   HEADSHOT,
   FOUNDERS_NOTE,
+  WHERE_WE_WORK,
   CTA,
 } from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
@@ -237,6 +238,25 @@ export default function About() {
               </ul>
             </div>
           </div>
+        </Reveal>
+      </section>
+
+      {/* Section 7 — Where We Work: a compact, undecorated block (no card chrome, no map
+          embed) listing our two physical locations — same shape as Founder's Note's
+          credentials list (small, quiet, address text only) rather than the Credibility
+          section's bordered tiles. Centered eyebrow above the pair, same treatment as
+          Founder's Note's and How We Work's own centered eyebrows. */}
+      <section className={styles.section}>
+        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 28 }}>
+          <div className="eyebrow">{WHERE_WE_WORK.eyebrow}</div>
+        </Reveal>
+        <Reveal className={styles.whereWeWorkGrid}>
+          {WHERE_WE_WORK.locations.map((location) => (
+            <div key={location.city} className={styles.location}>
+              <span className={styles.locationCity}>{location.city}</span>
+              <span className={styles.locationAddress}>{location.address}</span>
+            </div>
+          ))}
         </Reveal>
       </section>
 

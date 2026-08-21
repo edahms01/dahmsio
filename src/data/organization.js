@@ -1,10 +1,9 @@
 import { SITE_URL, CONTACT_EMAIL } from "./site.js";
 
-// TODO(Eric): Google's Rich Results Test flags priceRange, address, and telephone as
-// missing (all optional, non-critical — schema currently validates clean without them).
-// Add once the address/GBP question is resolved (see post-deploy checklist: GBP requires a
-// verifiable address even when hidden). Wire into buildOrganizationSchema() in
-// src/utils/schema.js.
+// TODO(Eric): Google's Rich Results Test flags priceRange and telephone as missing (both
+// optional, non-critical — schema currently validates clean without them). address was added
+// 2026-08-21 (Westbrook + London). Wire priceRange/telephone into buildOrganizationSchema() in
+// src/utils/schema.js once resolved.
 export const ORGANIZATION = {
   name: "DahmsIO",
   alternateName: ["Dahms IO", "dahms.io"],
@@ -12,6 +11,26 @@ export const ORGANIZATION = {
   logo: `${SITE_URL}/icon-512.png`,
   image: `${SITE_URL}/og-image.jpg`,
   email: CONTACT_EMAIL,
+  // Two physical locations — Eric's US home base and his UK office. Order (Westbrook first)
+  // matches the "Where We Work" block on the About page. Kept here rather than as a bare
+  // array literal so it reads as one source of truth alongside the rest of ORGANIZATION.
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "607 Bridgton Rd",
+      addressLocality: "Westbrook",
+      addressRegion: "ME",
+      postalCode: "04092",
+      addressCountry: "US",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "71-75 Shelton Street, Covent Garden",
+      addressLocality: "London",
+      postalCode: "WC2H 9JQ",
+      addressCountry: "GB",
+    },
+  ],
 };
 
 export const FOUNDER = {
