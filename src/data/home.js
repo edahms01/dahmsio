@@ -47,8 +47,8 @@ export const SERVICES_HEADING = "Three ways we move your business forward.";
 // are the plain-text copy around it.
 export const MISSION = {
   eyebrow: "Our mission",
-  textPrefix: "We make advanced technology",
-  textAccent: "accessible to businesses of every size",
+  textPrefix: "We make advanced data & technology",
+  textAccent: "accessible to businesses of any size",
   textSuffix: ", bridging the gap between complex tech and real business impact.",
   linkLabel: "More on our mission →",
 };
