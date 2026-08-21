@@ -47,6 +47,7 @@ export const BACKGROUND = {
 };
 
 export const CREDIBILITY = {
+  eyebrow: "In action",
   heading: "What this looks like in practice",
   // Small tiles, deliberately lighter-weight than engagementModels' CapabilityCard treatment
   // below (flat background instead of a gradient panel, no numbered row list) so the two card
@@ -54,43 +55,44 @@ export const CREDIBILITY = {
   // three accents same as engagementModels.
   items: [
     {
-      lead: "A single clear view of your business.",
-      body: "One trustworthy picture of what's happening, updated automatically, instead of a spreadsheet rebuilt by hand every Monday.",
+      lead: "A single clear view.",
+      body: "One trustworthy picture of your business, updated automatically, instead of three reports that don't agree.",
       hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       lead: "Data that runs itself.",
-      body: "Automated pipelines and quality checks, proven at millions of records a day, keep your numbers current and consistent without anyone chasing them.",
+      body: "Automated pipelines and quality checks keep your numbers current and consistent, with no chasing.",
       hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
       lead: "Tools your team actually uses.",
-      body: "Systems built to be quick and obvious to use, because software that fights the people using it is software they work around.",
+      body: "Software that fits how your team already works, so it gets used.",
       hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
       lead: "AI applied where it pays.",
-      body: "Assistants and agents that take real work off your team's plate, and a straight answer when AI isn't the right tool yet.",
+      body: "Assistants and agents that take real work off your team's plate, and a straight answer when AI isn't the right fit.",
       hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       lead: "Answers you can act on.",
-      body: "Statistical modeling separates what's actually moving your results from what just happens at the same time.",
+      body: "Statistical modeling separates what's actually moving your results from what is happening in the background.",
       hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
-      lead: "A roadmap you can actually execute.",
-      body: "A clear, costed plan for what to fix first and what it will take, whether you run it yourself or bring us back to build it.",
+      lead: "A roadmap you can execute.",
+      body: "A clear, costed plan for what to do first, whether you run it yourself or bring us back to build it.",
       hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
   ],
 };
 
 export const HOW_WE_WORK = {
-  eyebrow: "How we work",
+  eyebrow: "Our network",
   heading: "A network of experts to build your future.",
   paragraph:
-    "Very few people are genuine experts in tech infrastructure, data science, software engineering, and product development all at once. DahmsIO works through a vetted network of technical specialists, brought into a project based on need. You get the right expert for the problem in front of you, and one point of contact from the first conversation to the final handover. You won't be passed around, and you won't have to explain your business twice.",
+    "Few people are genuinely expert in infrastructure, data science, software engineering, and product development all at once. DahmsIO works through a vetted network of specialists, brought in as a project needs them. You get the right person for the problem, and one point of contact throughout.",
+  engagementEyebrow: "Engagement models",
   engagementHeading: "Four ways to work together",
   // Same shape as CapabilityCard's props (title/description/markColor/hoverBorder) — reusing
   // that component directly so these look like the capability cards on Data/Technology/
@@ -111,20 +113,21 @@ export const HOW_WE_WORK = {
       hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
-      title: "Build & deploy",
+      title: "Build & hand-over",
       description:
         "We design, build, and hand over a finished solution. You own it outright from day one, and you handle maintenance going forward.",
       markColor: ACCENT2,
       hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
-      title: "Advisory & strategy",
+      title: "Advisory",
       description:
-        "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and give you a clear, costed roadmap you can run yourself, pass to your team, or bring back to us.",
+        "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and give you a clear roadmap you can run yourself or bring back to us.",
       markColor: ACCENT,
       hoverBorder: hexToRgba(ACCENT, 0.45),
     },
   ],
+  operatingEyebrow: "Operating principles",
   operatingHeading: "How we operate",
   operatingPrinciples: [
     {

@@ -67,10 +67,14 @@ export default function About() {
       {/* Section 1 — Background */}
       <section className={`${styles.section} ${styles.sectionFirst}`}>
         {/* Eyebrow + big statement heading, matching Data/Technology/Consulting's
-            "Capabilities"/"The pipeline" pattern — the nested subheadings below (CREDIBILITY,
-            engagementHeading, operatingHeading) stay at .subheading's smaller size, since
-            those pages don't have an equivalent second heading level to match against. */}
-        <Reveal className={styles.sectionIntro}>
+            "Capabilities"/"The pipeline" pattern — the nested subheadings elsewhere on this
+            page (operatingHeading) stay at .subheading's smaller size, since those pages
+            don't have an equivalent second heading level to match against. No width cap on
+            this wrapper (a previous 68ch cap here was removed) — "Enterprise capability,
+            brought within reach." needs ~910px to sit on one line at this font size, and the
+            section's own full width comfortably covers that; a ch cap belongs on flowing
+            paragraph prose, not a short headline like this one. */}
+        <Reveal>
           <div className="eyebrow" style={{ marginBottom: 14 }}>
             {BACKGROUND.eyebrow}
           </div>
@@ -80,42 +84,54 @@ export default function About() {
         </Reveal>
 
         {/* True two-column text flow (CSS columns, not a grid) — paragraphs run down the
-            left column then continue into the right. Left unhinted, the auto-balancer put
-            the break right before paragraphs[2] ("It's not that the technology..."),
-            leaving column 2 a line longer than column 1; keeping that paragraph off column
-            2's top pulls it back up into column 1 instead. */}
+            left column then continue into the right, wherever they land. No per-paragraph
+            break hint needed here (unlike a prior version of this copy): .backgroundText's
+            break-inside:avoid-column keeps every paragraph whole, and the balancer alone
+            splits this particular set of four paragraphs 2-and-2, with both columns landing
+            at nearly the same height. */}
         <Reveal className={styles.backgroundColumns}>
           {BACKGROUND.paragraphs.map((paragraph, i) => (
-            <p
-              key={i}
-              className={`${styles.sectionText} ${styles.backgroundText} ${i === 2 ? styles.backgroundKeepWithPrev : ""}`}
-            >
+            <p key={i} className={`${styles.sectionText} ${styles.backgroundText}`}>
               {paragraph}
             </p>
           ))}
         </Reveal>
+      </section>
 
-        <Reveal>
-          <h3 className={styles.subheading}>{CREDIBILITY.heading}</h3>
-          <div className={styles.credibilityGrid}>
-            {CREDIBILITY.items.map((item) => (
-              <div key={item.lead} className={styles.leadItem} style={{ "--hover-border": item.hoverBorder }}>
-                <span className={styles.leadItemLead}>{item.lead}</span>
-                <span className={styles.leadItemBody}>{item.body}</span>
-              </div>
-            ))}
+      {/* Section 2 — Credibility: its own section (not folded into Background) so it gets the
+          same section-to-section rhythm as everywhere else on the page — no divider line, just
+          the standard 70px-bottom/70px-top padding stack (140px gap), matching how
+          Data/Technology/Consulting separate Capabilities from Pipeline. Same eyebrow +
+          big-heading treatment as Background/How We Work below, now that this is a peer
+          section rather than a nested subsection of Background — but centered above the grid
+          rather than left-aligned, same .sectionHeadCentered treatment (and marginBottom:0
+          override) as Engagement Models below, since these six cards read as a set rather
+          than a left-to-right continuation of prose the way Background's copy does. */}
+      <section className={styles.section}>
+        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>
+            {CREDIBILITY.eyebrow}
           </div>
+          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+            {CREDIBILITY.heading}
+          </h2>
+        </Reveal>
+        <Reveal className={styles.credibilityGrid}>
+          {CREDIBILITY.items.map((item) => (
+            <div key={item.lead} className={styles.leadItem} style={{ "--hover-border": item.hoverBorder }}>
+              <span className={styles.leadItemLead}>{item.lead}</span>
+              <span className={styles.leadItemBody}>{item.body}</span>
+            </div>
+          ))}
         </Reveal>
       </section>
 
-      {/* Section 2 — How We Work */}
+      {/* Section 3 — How We Work (intro only; Operating Principles and Engagement Models are
+          each their own section below). */}
       <section className={styles.section}>
         {/* Eyebrow centered above the whole graphic + text pairing (same treatment as
             Founder's Note's eyebrow above its own two-column grid), heading/paragraph left-
-            aligned in their column beside the graphic. No top border here — Background's own
-            70px bottom padding + this section's 70px top padding already match the 140px gap
-            Data/Technology/Consulting use between Capabilities and Pipeline, without needing
-            a divider line to mark it. */}
+            aligned in their column beside the graphic. */}
         <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 28 }}>
           <div className="eyebrow">{HOW_WE_WORK.eyebrow}</div>
         </Reveal>
@@ -130,36 +146,66 @@ export default function About() {
             <p className={styles.sectionText}>{HOW_WE_WORK.paragraph}</p>
           </div>
         </Reveal>
+      </section>
 
-        <Reveal>
-          <h3 className={styles.subheading}>{HOW_WE_WORK.operatingHeading}</h3>
-          <ul className={styles.operatingPrinciples}>
-            {HOW_WE_WORK.operatingPrinciples.map((principle) => (
-              <li key={principle.lead} className={styles.operatingPrinciple}>
-                <span className={styles.operatingPrincipleLead}>{principle.lead}</span> {principle.body}
-              </li>
-            ))}
-          </ul>
-
-          <h3 className={styles.subheading}>{HOW_WE_WORK.engagementHeading}</h3>
-          {/* Same CapabilityCard + grid used for Data/Technology/Consulting's capabilities
-              sections — matches the rest of the site instead of a bespoke card style.
-              .engagementGridSpacing zeroes interiorStyles.capabilitiesGrid's own 52px
-              margin-top (tuned for that template's bigger heading) so the header-to-body gap
-              here matches CREDIBILITY's (28px, from .subheading's margin-bottom alone). */}
-          <div className={`${interiorStyles.capabilitiesGrid} ${styles.engagementGridSpacing}`}>
-            {HOW_WE_WORK.engagementModels.map((model) => (
-              <CapabilityCard key={model.title} {...model} className={styles.engagementCard} />
-            ))}
+      {/* Section 4 — Operating Principles: its own section, same rhythm/spacing rationale and
+          centered eyebrow + big-heading treatment as Credibility/Engagement Models. */}
+      <section className={styles.section}>
+        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>
+            {HOW_WE_WORK.operatingEyebrow}
           </div>
+          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+            {HOW_WE_WORK.operatingHeading}
+          </h2>
+        </Reveal>
+        <Reveal className={styles.operatingPrinciples} as="ul">
+          {HOW_WE_WORK.operatingPrinciples.map((principle) => (
+            <li key={principle.lead} className={styles.operatingPrinciple}>
+              <span className={styles.operatingPrincipleLead}>{principle.lead}</span> {principle.body}
+            </li>
+          ))}
         </Reveal>
       </section>
 
-      {/* Section 3 — Founder's Note: the one deliberate first-person exception, paired with
-          the headshot. Eyebrow sits centered above the whole two-column grid (graphic +
+      {/* Section 5 — Engagement Models: its own section, same rhythm/spacing rationale and
+          eyebrow + big-heading treatment as Credibility above, but centered above the grid
+          (the four cards read as a set, not a left-to-right continuation of prose the way
+          Credibility's/Background's copy-heavy sections do) — same .sectionHeadCentered
+          treatment as How We Work's eyebrow, marginBottom zeroed so the gap down to the grid
+          still comes from .engagementGrid's own 44px margin-top alone. */}
+      <section className={styles.section}>
+        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>
+            {HOW_WE_WORK.engagementEyebrow}
+          </div>
+          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+            {HOW_WE_WORK.engagementHeading}
+          </h2>
+        </Reveal>
+        {/* Reuses CapabilityCard directly (see .engagementCard below for its own tuned
+            padding) inside a 2x2 grid of its own — .engagementGrid, not
+            interiorStyles.capabilitiesGrid: that class doesn't actually exist in
+            InteriorPageTemplate.module.css (Data/Technology/Consulting build their capability
+            cards through SubServiceSection instead), so referencing it here was a latent bug —
+            these four cards were rendering as a plain single-column stack, not a grid, until
+            now. margin-top matches the 44px heading-to-grid gap used elsewhere on this page
+            (see .credibilityGrid) now that this heading has no intro paragraph before it. */}
+        <Reveal className={styles.engagementGrid}>
+          {HOW_WE_WORK.engagementModels.map((model) => (
+            <CapabilityCard key={model.title} {...model} className={styles.engagementCard} />
+          ))}
+        </Reveal>
+      </section>
+
+      {/* Section 6 — Founder's Note: the one deliberate first-person-voice exception, paired
+          with the headshot. Eyebrow sits centered above the whole two-column grid (graphic +
           text), not tucked inside the text column, so it reads as this section's title the
-          same way BACKGROUND's and HOW_WE_WORK's centered eyebrows do. */}
-      <section className={`${styles.foundersNote} ${styles.sectionDivider}`}>
+          same way BACKGROUND's and HOW_WE_WORK's centered eyebrows do. Uses the standard
+          .section shell (not a bespoke one) so its padding matches every other section on the
+          page exactly (140px gap on both sides) — the first-person shift is signaled by the
+          copy and heading alone now, not by an extra 10px of padding or a divider line. */}
+      <section className={styles.section}>
         {/* Overrides .sectionHeadCentered's default 8px margin (tuned for a paragraph's own
             top margin to collapse against) — foundersNoteGrid has nothing to collapse with,
             so this needs its own explicit gap. */}

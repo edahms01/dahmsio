@@ -31,7 +31,13 @@
    column, same as InteriorPageTemplate's hero text. The paragraph keeps its own 52ch cap via
    interiorStyles.subcopy, so readability there is unaffected. */
 
-/* Shared shell for the Background and How We Work sections. */
+/* Shared shell for every major section on this page — Background, Credibility, How We Work,
+   Operating Principles, Engagement Models, and Founder's Note — each its own <section>, no
+   divider line between any of them (including into Founder's Note, despite its voice shift:
+   that's signaled by the copy and heading alone). Adjacent sections' 70px bottom + 70px top
+   padding stack into the same 140px content-to-content gap Data/Technology/Consulting use
+   between Capabilities and Pipeline, with no exceptions — every major-section gap on the site
+   is the same 140px. */
 .section {
   position: relative;
   z-index: 10;
@@ -43,27 +49,14 @@
 /* Background-only (the first .section, directly under the hero): InteriorPageTemplate's hero
    is followed by .capabilities' 100px top padding (70px hero bottom + 100px = 170px total),
    but this section's own 70px top padding only gave 140px — same hero-to-content transition,
-   two different values. Bumped to 100px to match; How We Work below keeps the plain 70px .section
-   padding, since its 140px gap from Background is the intentional content-to-content match (see
-   the comment above the How We Work section in About.jsx). */
+   two different values. Bumped to 100px to match. */
 .sectionFirst {
   padding-top: 100px;
-}
-
-/* Marks the transition from the Background/Credibility section into How We Work — the
-   divider formerly bracketing the operating-principles list (see .operatingPrinciples,
-   .foundersNote) moved here instead. */
-.sectionDivider {
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 /* See the comment in About.jsx above the CTA section. */
 .ctaCenterBetweenLines {
   margin-bottom: 0;
-}
-
-.sectionIntro {
-  max-width: 68ch;
 }
 
 /* Centered section header, matching InteriorPageTemplate's .pipelineHead (see About.jsx for
@@ -78,12 +71,13 @@
 /* How We Work's graphic + header/text pairing — graphic in the narrower left column, text
    in the wider right column (mirrored from the source design, which put the graphic on the
    right). Same shape as .hero's grid, different ratio since this isn't a page-opening
-   headline. */
+   headline. align-items:start top-aligns the heading with the graphic instead of centering
+   it against the graphic's full height, matching .hero and .foundersNoteGrid. */
 .howWeWorkGrid {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 56px;
-  align-items: center;
+  align-items: start;
 }
 
 .sectionText {
@@ -97,16 +91,19 @@
   margin-top: 16px;
 }
 
-/* Background's three paragraphs specifically (not HOW_WE_WORK's single intro paragraph,
-   which reads fine at .sectionText's normal size): a touch smaller, since this is the
-   longest block of prose on the page. */
+/* Background's paragraphs specifically (not HOW_WE_WORK's single intro paragraph, which reads
+   fine at .sectionText's normal size): a touch smaller, since this is the longest block of
+   prose on the page. break-inside:avoid-column stops the column-balancer from splitting a
+   single paragraph mid-sentence across the two columns — a real problem with the current
+   four-paragraph copy, where the balancer would otherwise cut one open partway through. */
 .backgroundText {
   font-size: clamp(15px, 1.3vw, 16px);
+  break-inside: avoid-column;
 }
 
-/* True two-column text flow (CSS multi-column, not a grid): all three paragraphs run down
-   the left column and continue into the right wherever they land, rather than being
-   pre-split into fixed left/right halves. */
+/* True two-column text flow (CSS multi-column, not a grid): paragraphs run down the left
+   column and continue into the right wherever they land, rather than being pre-split into
+   fixed left/right halves. */
 .backgroundColumns {
   column-count: 2;
   column-gap: 40px;
@@ -121,20 +118,13 @@
   margin-bottom: 0;
 }
 
-/* Discourages the column-balancer from starting column 2 right before this paragraph (see
-   About.jsx), keeping it in column 1 instead so column 2 doesn't end up the longer one. */
-.backgroundKeepWithPrev {
-  break-before: avoid-column;
-}
-
-/* Shared size/weight for every sub-page-title heading on this page — the section intros
-   (Background, How We Work, Founder's Note) and the nested subsection headers (credibility
-   strip, engagement models, operating principles) all render at the same size, matching
-   marketing-copy-not-a-resume styling: bold lead-in only, no card chrome, no stat-block
-   treatment (deliberately distinct from MessageMockup's stat cards). Margin differs by
-   context: nested subsection headers need top spacing to separate from the block above
-   (default here); section-intro headings sit flush at the top of their section/column and
-   only need a bottom gap, via .subheadingFlush. */
+/* Shared size/weight for this page's one remaining smaller subsection heading — Founder's
+   Note (Credibility, Operating Principles, and Engagement Models were all promoted to the
+   same eyebrow+h2 .sectionHeading treatment as Background/How We Work, since every one of
+   them is now its own peer section), matching marketing-copy-not-a-resume styling: bold
+   lead-in only, no card chrome, no stat-block treatment (deliberately distinct from
+   MessageMockup's stat cards). Founder's Note's heading sits flush at the top of its own
+   section, hence .subheadingFlush below rather than this rule's default top-margin. */
 .subheading {
   font-family: var(--fd);
   font-weight: 600;
@@ -153,6 +143,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  /* .sectionHeading carries no margin of its own (see global.css) — this replaces the 20px
+     gap the old h3 .subheadingFlush treatment supplied, matching the 44px heading-to-grid gap
+     SubServiceSection uses elsewhere on the site when there's no intro paragraph in between
+     (see SubServiceSection.module.css .accordion). */
+  margin-top: 44px;
 }
 
 /* Small tiles — a lighter-weight cousin of CapabilityCard (see engagementModels below):
@@ -190,11 +185,19 @@
   font-size: 14px;
 }
 
-/* Four engagement models reuse CapabilityCard + interiorStyles.capabilitiesGrid directly
-   (see About.jsx) — no bespoke grid/card CSS needed here anymore, aside from zeroing its
-   margin-top (see .engagementGridSpacing below, applied alongside it in the JSX). */
-.engagementGridSpacing {
-  margin-top: 0;
+/* Four engagement models reuse CapabilityCard, laid out as a 2x2 square (see About.jsx for
+   why this isn't interiorStyles.capabilitiesGrid). Steps to a single column at 560px (see
+   .credibilityGrid, same breakpoint), rather than keeping two narrow columns down to mobile.
+   grid-template-rows: 1fr 1fr (not the implicit auto rows a plain 2-column grid gets by
+   default) so the two rows can't diverge in height from each other — without it, each row
+   sizes to only its own two cards' content, and a longer description in row 2 makes it
+   taller than row 1 even though every card shares the same font size and padding. */
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  margin-top: 44px;
 }
 
 /* CapabilityCard's 36px padding and its description's 22px bottom margin are both tuned for
@@ -209,29 +212,34 @@
   margin-bottom: 0;
 }
 
-/* Operating principles — a plain, full-width bulleted list, set apart from the engagement
-   cards below by having no card background/border rather than by type size: body copy runs
-   at the same clamp(16px,1.6vw,18px) as .sectionText, matching the intro paragraph directly
-   above it (and the rest of the page's prose) instead of the smaller 15px used by
-   CREDIBILITY's .leadItem / CapabilityCard's description. global.css resets `ul { list-style:
-   none }` site-wide, so this needs its own explicit list-style to actually show bullets. No
-   top padding — the 28px header-to-body gap comes from .subheading's margin-bottom alone,
-   matching CREDIBILITY's gap above. */
+/* Operating principles — a two-column bulleted list, set apart from the engagement cards
+   below by having no card background/border rather than by type size: body copy runs at the
+   same clamp(16px,1.6vw,18px) as .sectionText (and the rest of the page's prose) instead of
+   the smaller 15px used by CREDIBILITY's .leadItem / CapabilityCard's description. global.css
+   resets `ul { list-style: none }` site-wide, so this needs its own explicit list-style to
+   actually show bullets. margin-top matches CREDIBILITY's/Engagement Models' grids (44px,
+   since .sectionHeading itself carries no margin — see .credibilityGrid). Two columns (was a
+   single full-width column) so four short bullets don't read as a bare wall of text with
+   nothing else on the page — grid, not CSS multi-column, for predictable left/right pairing
+   instead of the balancer deciding where each item lands. list-style-position:inside because
+   outside markers on grid items don't reserve consistent gutter space the way they do in a
+   normal block flow — inside keeps each bullet flush with its own column instead of
+   overlapping the gap or the previous column. */
 .operatingPrinciples {
   list-style: disc;
-  margin: 0;
-  padding: 0 0 0 20px;
+  list-style-position: inside;
+  margin: 44px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+  row-gap: 20px;
 }
 
 .operatingPrinciple {
   font-size: clamp(16px, 1.6vw, 18px);
   color: var(--text-secondary);
   line-height: 1.7;
-  margin-bottom: 10px;
-}
-
-.operatingPrinciple:last-child {
-  margin-bottom: 0;
 }
 
 .operatingPrincipleLead {
@@ -240,16 +248,10 @@
   color: #f3f3f8;
 }
 
-/* Founder's Note — the one deliberate first-person exception, paired with the headshot. Its
-   own grid rather than folded into .section; top border applied via .sectionDivider in the
-   JSX (same divider style used between Background/Credibility and How We Work). */
-.foundersNote {
-  position: relative;
-  z-index: 10;
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  padding: 80px var(--side-padding);
-}
+/* Founder's Note — the one deliberate first-person-voice exception, paired with the headshot.
+   Its own grid (see .foundersNoteGrid below), but the outer <section> itself is the shared
+   .section shell in About.jsx, not a bespoke one — the padding is the same 70px every other
+   section on the page uses. */
 
 /* Text column widened at the photo column's expense (0.85fr/1.15fr, tighter 44px gap) so the
    letter gets more room now that the photo itself has shrunk (see .headshotWindow) — the
@@ -345,7 +347,17 @@
 }
 
 @media (max-width: 560px) {
-  .credibilityGrid {
+  .credibilityGrid,
+  .engagementGrid,
+  .operatingPrinciples {
     grid-template-columns: 1fr;
+  }
+
+  /* Single column means each card is now the only item in its row — the desktop
+     grid-template-rows: 1fr 1fr split (see .engagementGrid) has nothing left to equalize, so
+     reset it back to natural per-card height instead of leaving two stray explicit tracks
+     mixed with two implicit ones. */
+  .engagementGrid {
+    grid-template-rows: none;
   }
 }
