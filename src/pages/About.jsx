@@ -21,7 +21,7 @@ import {
   CONTINUUM,
   HEADSHOT,
   FOUNDERS_NOTE,
-  WHERE_WE_WORK,
+  // WHERE_WE_WORK, — unused while the Where We Work section below is commented out
   CTA,
 } from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
@@ -266,11 +266,12 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* Section 8 — Where We Work: a compact, undecorated block (no card chrome, no map
+      {/* Section 8 — Where We Work: commented out 2026-08-22 pending revisit (Eric's call).
+          a compact, undecorated block (no card chrome, no map
           embed) listing our two physical locations — same shape as Founder's Note's
           credentials list (small, quiet, address text only) rather than the Credibility
           section's bordered tiles. Centered eyebrow above the pair, same treatment as
-          Founder's Note's and How We Work's own centered eyebrows. */}
+          Founder's Note's and How We Work's own centered eyebrows.
       <section className={styles.section}>
         <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 28 }}>
           <div className="eyebrow">{WHERE_WE_WORK.eyebrow}</div>
@@ -284,6 +285,7 @@ export default function About() {
           ))}
         </Reveal>
       </section>
+      */}
 
       {/* .ctaCenterBetweenLines zeroes interiorStyles.cta's shared 90px bottom margin so this
           content sits equidistant between the Founder's Note section above and the footer's
