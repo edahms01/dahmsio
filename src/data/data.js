@@ -51,10 +51,9 @@ export const MOCKUP = {
 export const SUBSERVICE_GROUPS = [
   {
     eyebrow: "What we do",
-    heading: "Four stages, each one unlocks the next.",
+    heading: "We build that trust, one stage at a time.",
     paragraphs: [
-      "Clean, reliable data is what makes reporting valuable. Quality reporting is what makes analysis worth trusting. And trusted analysis is the foundation upon which advanced data science techniques can be confidently implemented.",
-      "Most businesses are somewhere in the first two stages. You don't necessarily need to do all four stages, depending on your need, and we will focus on one stage at a time, keeping you updated along the way.",
+      "You shouldn't need a translator to understand your own business. We take data that's spread across every system you use and turn it into a data foundation, one that drives trusted analysis today and a more intelligent future tomorrow.",
     ],
     numbered: true,
     items: [
