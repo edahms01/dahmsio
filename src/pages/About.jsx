@@ -7,6 +7,7 @@ import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import OrbitNetworkMockup from "../components/mockups/OrbitNetworkMockup.jsx";
 import BenchNetworkMockup from "../components/mockups/BenchNetworkMockup.jsx";
+import ContinuumGraphic from "../components/ContinuumGraphic.jsx";
 import CapabilityCard from "../components/CapabilityCard.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import {
@@ -17,6 +18,7 @@ import {
   CREDIBILITY,
   HOW_WE_WORK,
   BENCH_NETWORK,
+  CONTINUUM,
   HEADSHOT,
   FOUNDERS_NOTE,
   WHERE_WE_WORK,
@@ -199,7 +201,30 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* Section 6 — Founder's Note: the one deliberate first-person-voice exception, paired
+      {/*
+      Section 6 — The Long Cycle: DISABLED per Eric, 2026-08-22 — ContinuumGraphic needs more
+      work before it goes back out. Commented out rather than removed so the markup is ready
+      to restore as-is. Was: moved here from Home (see home.js's history) so the compounding-
+      progress framing lands right before Founder's Note makes it personal. Structured exactly
+      as it was on Home — centered eyebrow + heading in the standard content-width wrapper,
+      graphic breaking out past it (see .continuum/.continuumHead/.continuumGraphic in
+      About.module.css) — using its own section shell rather than the shared .section, so the
+      graphic isn't clipped back down to var(--max-wide).
+
+      <section className={styles.continuum}>
+        <Reveal className={styles.continuumHead}>
+          <div className="eyebrow">{CONTINUUM.eyebrow}</div>
+          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+            {CONTINUUM.heading}
+          </h2>
+        </Reveal>
+        <Reveal>
+          <ContinuumGraphic className={styles.continuumGraphic} />
+        </Reveal>
+      </section>
+      */}
+
+      {/* Section 7 — Founder's Note: the one deliberate first-person-voice exception, paired
           with the headshot. Eyebrow sits centered above the whole two-column grid (graphic +
           text), not tucked inside the text column, so it reads as this section's title the
           same way BACKGROUND's and HOW_WE_WORK's centered eyebrows do. Uses the standard
@@ -241,7 +266,7 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* Section 7 — Where We Work: a compact, undecorated block (no card chrome, no map
+      {/* Section 8 — Where We Work: a compact, undecorated block (no card chrome, no map
           embed) listing our two physical locations — same shape as Founder's Note's
           credentials list (small, quiet, address text only) rather than the Credibility
           section's bordered tiles. Centered eyebrow above the pair, same treatment as

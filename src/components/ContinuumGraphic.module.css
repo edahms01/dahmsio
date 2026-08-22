@@ -1,0 +1,56 @@
+@keyframes orbBreath {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes haloFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+.wrap {
+  position: relative;
+}
+
+.svg {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/* Scaled-down version of the source file's own ambient glow (see ContinuumGraphic.jsx) —
+   sized relative to the loop itself rather than a fixed pixel blob, so it holds together at
+   whatever width the consumer gives this component. */
+.halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  aspect-ratio: 1080 / 340;
+  background: radial-gradient(ellipse, rgba(21, 155, 200, 0.16), transparent 66%);
+  filter: blur(24px);
+  transform: translate(-50%, -50%);
+  animation: haloFloat 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.orbBreath {
+  animation: orbBreath 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halo,
+  .orbBreath {
+    animation: none;
+  }
+}

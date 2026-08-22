@@ -248,6 +248,36 @@
   color: #f3f3f8;
 }
 
+/* The Long Cycle — ContinuumGraphic, moved here from Home (see About.jsx) to sit just before
+   Founder's Note. Its own section, not the shared .section shell, since the graphic itself
+   breaks past .section's var(--max-wide) cap (see .continuumGraphic below) — the shell would
+   just clip its own child back down. Vertical rhythm still matches every other section-to-
+   section gap on this page (70px top + 70px bottom stacking into 140px total), not Home's own
+   130px, so this reads as a peer of Engagement Models/Founder's Note rather than an outlier. */
+.continuum {
+  position: relative;
+  z-index: 10;
+  padding: 70px 0;
+}
+
+/* Kept at the standard content width/padding every other heading on this page uses, even
+   though the section around it no longer enforces that — the eyebrow reads as this page's
+   usual section label, only the graphic below it is the breakout element. */
+.continuumHead {
+  max-width: var(--max-wide);
+  margin: 0 auto 44px;
+  padding: 0 var(--side-padding);
+  text-align: center;
+}
+
+/* Same breakout math as Home.module.css's own (former) .continuumGraphic: CSS max() picks 0
+   once the viewport is narrower than var(--max-wide), so the second term drops out cleanly
+   and this matches every other section's width there instead of overflowing it. */
+.continuumGraphic {
+  width: calc(100vw - var(--side-padding) - max(0px, (100vw - var(--max-wide)) / 2));
+  margin: 0 auto;
+}
+
 /* Founder's Note — the one deliberate first-person-voice exception, paired with the headshot.
    Its own grid (see .foundersNoteGrid below), but the outer <section> itself is the shared
    .section shell in About.jsx, not a bespoke one — the padding is the same 70px every other

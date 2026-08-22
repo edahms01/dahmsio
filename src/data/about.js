@@ -174,6 +174,13 @@ export const HEADSHOT = {
   alt: "Eric Dahms, founder of DahmsIO",
 };
 
+// The Long Cycle — moved here from Home (home.js) so this page carries the compounding-
+// progress framing right before Founder's Note makes it personal. Copy unchanged.
+export const CONTINUUM = {
+  eyebrow: "The Long Cycle",
+  heading: "Progress that compounds over time.",
+};
+
 export const FOUNDERS_NOTE = {
   eyebrow: "Founder's Note",
   heading: "A note from our Founder",
@@ -198,10 +205,12 @@ export const WHERE_WE_WORK = {
   eyebrow: "Where We Work",
   locations: [
     { city: "Westbrook, ME, USA", address: "607 Bridgton Rd, Westbrook, ME 04092" },
-    {
-      city: "London, UK",
-      address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom",
-    },
+    // "Covent Garden" and "United Kingdom" dropped from the visible line (kept in the
+    // JSON-LD streetAddress/addressCountry, which are separate fields) so this fits on one
+    // line, matching Westbrook's single-line address instead of wrapping to two — see
+    // About.jsx's Where We Work section for why that wrap mattered (visual balance, not a
+    // top-alignment bug: both city labels were already pixel-aligned).
+    { city: "London, UK", address: "71-75 Shelton Street, London, WC2H 9JQ" },
   ],
 };
 
