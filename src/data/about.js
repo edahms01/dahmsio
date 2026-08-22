@@ -31,7 +31,7 @@ export const HERO = {
 // visualizing the "Global experience. Local focus." headline. Purely illustrative, so the
 // only page-specific data is the app-window filename.
 export const MOCKUP = {
-  filename: "network.io",
+  filename: "global-local.io",
 };
 
 export const BACKGROUND = {

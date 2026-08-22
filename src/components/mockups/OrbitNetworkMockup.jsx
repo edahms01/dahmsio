@@ -65,6 +65,7 @@ export default function OrbitNetworkMockup() {
       <div className={styles.hubWrap}>
         <span className={styles.hubRing} />
         <span className={`${styles.hubRing} ${styles.hubRingDelay}`} />
+        <span className={styles.flareLoop} />
         <div className={styles.hub}>
           <div className={styles.hubIcon} />
         </div>

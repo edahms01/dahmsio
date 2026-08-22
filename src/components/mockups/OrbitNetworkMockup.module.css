@@ -18,6 +18,104 @@
   }
 }
 
+/* The offset loop that appears to come off the hub and curl back onto it — previously an
+   accidental one-time artifact of .hubRingDelay's animation-delay (see .hubRing's fixed
+   `transform` below for the bug), now reproduced deliberately here: this element keeps the
+   same un-centered `left/top: 50%` positioning (no translate(-50%,-50%)) that made the
+   original glitch read as a loop reaching out of the hub, but on its own controlled,
+   occasional cycle instead of a one-shot accident.
+
+   Fires every 6s (5 times over this 30s loop) at a fixed rotate() for that appearance only —
+   held still in place while visible, not rotating as it shows — cycling through 5 positions
+   evenly spaced around the hub (0/72/144/216/288deg) before repeating. */
+@keyframes flareLoop {
+  0%,
+  12% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.75);
+  }
+  14.3% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  17.7% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1.06);
+  }
+  20% {
+    opacity: 0;
+    transform: rotate(0deg) scale(1.16);
+  }
+
+  32% {
+    opacity: 0;
+    transform: rotate(72deg) scale(0.75);
+  }
+  34.3% {
+    opacity: 1;
+    transform: rotate(72deg) scale(1);
+  }
+  37.7% {
+    opacity: 1;
+    transform: rotate(72deg) scale(1.06);
+  }
+  40% {
+    opacity: 0;
+    transform: rotate(72deg) scale(1.16);
+  }
+
+  52% {
+    opacity: 0;
+    transform: rotate(144deg) scale(0.75);
+  }
+  54.3% {
+    opacity: 1;
+    transform: rotate(144deg) scale(1);
+  }
+  57.7% {
+    opacity: 1;
+    transform: rotate(144deg) scale(1.06);
+  }
+  60% {
+    opacity: 0;
+    transform: rotate(144deg) scale(1.16);
+  }
+
+  72% {
+    opacity: 0;
+    transform: rotate(216deg) scale(0.75);
+  }
+  74.3% {
+    opacity: 1;
+    transform: rotate(216deg) scale(1);
+  }
+  77.7% {
+    opacity: 1;
+    transform: rotate(216deg) scale(1.06);
+  }
+  80% {
+    opacity: 0;
+    transform: rotate(216deg) scale(1.16);
+  }
+
+  92% {
+    opacity: 0;
+    transform: rotate(288deg) scale(0.75);
+  }
+  94.3% {
+    opacity: 1;
+    transform: rotate(288deg) scale(1);
+  }
+  97.7% {
+    opacity: 1;
+    transform: rotate(288deg) scale(1.06);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(288deg) scale(1.16);
+  }
+}
+
 .body {
   position: relative;
   height: 340px;
@@ -88,8 +186,14 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 76px;
-  height: 76px;
+  /* Centers the ring outright, rather than leaving it to the pulseRing animation's own
+     translate(-50%,-50%) — during .hubRingDelay's 1.6s animation-delay (before its first
+     iteration starts), an element sits at its own un-animated base style, and without this
+     transform here that meant an un-centered ring, offset down-right by half its own size,
+     for that first 1.6s of every page load. */
+  transform: translate(-50%, -50%);
+  width: 57px;
+  height: 57px;
   border-radius: 50%;
   border: 1px solid rgba(79, 216, 255, 0.5);
   animation: pulseRing 3.2s ease-out infinite;
@@ -99,32 +203,52 @@
   animation-delay: 1.6s;
 }
 
+.flareLoop {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Box's top-left corner sits exactly at the hub center (see .flareLoop's un-centered
+     left/top: 50% above), so pinning transform-origin there makes `rotate()` in the
+     keyframes above sweep the whole loop around the hub rather than around its own middle. */
+  transform-origin: 0 0;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 1px solid rgba(79, 216, 255, 0.6);
+  opacity: 0;
+  animation: flareLoop 30s ease-in-out infinite;
+}
+
+/* 57px = 76px reduced 25%, matched by .hubRing/.hubIcon above/below so the whole hub unit
+   (circle, pulse rings, icon) scales together rather than just the circle shrinking inside
+   unchanged rings. */
 .hub {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 76px;
-  height: 76px;
+  width: 57px;
+  height: 57px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--accent3));
-  box-shadow: 0 0 40px rgba(21, 155, 200, 0.55);
+  box-shadow: 0 0 30px rgba(21, 155, 200, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .hubIcon {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
   background: #f4fbff;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sweep,
   .rings,
-  .hubRing {
+  .hubRing,
+  .flareLoop {
     animation: none;
   }
 }
