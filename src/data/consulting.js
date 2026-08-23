@@ -241,7 +241,7 @@ export const PIPELINE = [
 ];
 
 export const CTA = {
-  heading: "Ready to close the gap?",
+  heading: "Ready to decide what's next?",
   text: "Tell us where the gap is and we'll map whether you need advice, extra hands, or both.",
   buttonLabel: "Start a consulting project",
 };

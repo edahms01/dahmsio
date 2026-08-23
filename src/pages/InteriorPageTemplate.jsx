@@ -22,7 +22,6 @@ export default function InteriorPageTemplate({
   pipelineEyebrow,
   pipelineHeading,
   pipeline,
-  pipelineStageLines,
   // Consulting-only: renders the pipeline's own section between subserviceGroups[pipelineAfterGroup]
   // and the next group instead of after the whole section, since the pipeline describes the
   // Advisory engagement only and doesn't apply to Talent. Undefined on Data/Technology, which
@@ -44,53 +43,12 @@ export default function InteriorPageTemplate({
   );
 
   const pipelineGrid = (
-    <div className={`${styles.pipelineGrid} ${pipelineStageLines ? styles.withLines : ""}`}>
+    <div className={styles.pipelineGrid}>
       {pipeline.map((step, i) => (
-        <Reveal
-          key={step.title}
-          delay={i * 100}
-          duration={700}
-          className={styles.stepItem}
-          style={pipelineStageLines ? { "--row": i + 1 } : undefined}
-        >
+        <Reveal key={step.title} delay={i * 100} duration={700}>
           <PipelineStep {...step} />
         </Reveal>
       ))}
-      {pipelineStageLines?.map((line) => {
-        const rowStart = Math.min(...line.steps) + 1;
-        const rowEnd = Math.max(...line.steps) + 2;
-        const mobileLabels = line.mobileLabels ?? line.labels;
-
-        return (
-          <div
-            key={line.labels.join("/")}
-            className={styles.stageLine}
-            style={{
-              "--col-start": rowStart,
-              "--col-end": rowEnd,
-              "--row-start": rowStart,
-              "--row-end": rowEnd,
-            }}
-          >
-            <span className={styles.stageLineBracket} aria-hidden="true" />
-            <span className={styles.stageLineRail} aria-hidden="true" />
-            <span className={`${styles.stageLineLabel} ${styles.stageLineLabelDesktop}`}>
-              {line.labels.map((label) => (
-                <span key={label} className={styles.stageLineLabelLine}>
-                  {label}
-                </span>
-              ))}
-            </span>
-            <span className={`${styles.stageLineLabel} ${styles.stageLineLabelMobile}`}>
-              {mobileLabels.map((label) => (
-                <span key={label} className={styles.stageLineLabelLine}>
-                  {label}
-                </span>
-              ))}
-            </span>
-          </div>
-        );
-      })}
     </div>
   );
 

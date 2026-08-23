@@ -91,7 +91,7 @@ export const SUBMITTING_LABEL = "Sending…";
 // error/success states, not just in hidden metadata, so the rule applies same as visible copy.
 export const SUCCESS = {
   heading: "Message sent.",
-  text: "Thanks for reaching out. We'll be in touch soon.",
+  text: "Thanks for reaching out. We'll be back with honest thoughts on where to start.",
 };
 
 export const HONEYPOT_LABEL = "Don't fill this out if you're human:";

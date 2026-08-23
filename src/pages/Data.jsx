@@ -10,7 +10,6 @@ import {
   PIPELINE_EYEBROW,
   PIPELINE_HEADING,
   PIPELINE,
-  PIPELINE_STAGE_LINES,
   CTA,
 } from "../data/data.js";
 
@@ -30,7 +29,6 @@ export default function Data() {
         pipelineEyebrow={PIPELINE_EYEBROW}
         pipelineHeading={PIPELINE_HEADING}
         pipeline={PIPELINE}
-        pipelineStageLines={PIPELINE_STAGE_LINES}
         ctaHeading={CTA.heading}
         ctaText={CTA.text}
         ctaButtonLabel={CTA.buttonLabel}

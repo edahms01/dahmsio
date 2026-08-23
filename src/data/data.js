@@ -195,23 +195,6 @@ export const PIPELINE = [
   },
 ];
 
-// Connects each pipeline step to the sub-service stage(s) that do that work — an orientation
-// diagram, not an exhaustive coverage matrix (see plan doc). Data-only; no other page's
-// pipeline gets this treatment. `steps` are zero-based indices into PIPELINE above.
-export const PIPELINE_STAGE_LINES = [
-  { steps: [0, 1], labels: ["Data Foundations"] },
-  {
-    steps: [2],
-    labels: ["Analytics & Forecasting", "Data Science & Machine Learning"],
-    mobileLabels: ["Analytics", "Data Science"],
-  },
-  {
-    steps: [3],
-    labels: ["Reporting & Dashboards"],
-    mobileLabels: ["Reporting", "Dashboards"],
-  },
-];
-
 export const CTA = {
   heading: "Ready to trust your numbers?",
   text: "Tell us where your data lives today. We'll show you the shortest route to numbers you can actually plan against.",

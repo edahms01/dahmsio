@@ -32,7 +32,7 @@ export const TAGLINE = "Where innovation meets intelligence.";
 
 // Shared global CTA label — Nav's desktop and mobile links, and Home's hero primary button,
 // all say the same thing; single-sourced here instead of three separate hardcoded copies.
-export const NAV_CTA_LABEL = "Start your journey";
+export const NAV_CTA_LABEL = "Plan your next step";
 
 // Shared UI labels for the sub-service accordion sections (Data/Technology/Consulting) —
 // lives here rather than in a page data file because all three pages reuse it verbatim.

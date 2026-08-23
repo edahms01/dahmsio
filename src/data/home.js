@@ -199,7 +199,7 @@ export const HOME_GLOW_BLOBS = [
 ];
 
 export const CTA = {
-  heading: "Start your journey.",
+  heading: "Where do you want to be next year?",
   text: "Tell us the business challenge you're facing and one of our specialists will be in touch. No pressure, no obligation.",
   buttonLabel: "Send a message",
 };

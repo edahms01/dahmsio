@@ -177,7 +177,7 @@ export const PIPELINE = [
 ];
 
 export const CTA = {
-  heading: "Ready to modernize your tech?",
+  heading: "Ready to build something that lasts?",
   text: "Show us what you're building or trying to connect. We'll come back with a straight answer on what it takes to make it work reliably.",
   buttonLabel: "Start a tech project",
 };
