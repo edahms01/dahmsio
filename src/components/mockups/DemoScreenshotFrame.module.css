@@ -1,0 +1,11 @@
+/* The screenshot sits inside AppWindowMockup (the site's shared hero window). It's a tall
+   portrait capture; this height shows the app top-to-bottom through the chat input ("Enter
+   Chat" area) — that input defines the product at a glance, so it's kept in frame even though
+   it makes this graphic a little taller than the other pages' hero mockups. */
+.shot {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 46vh, 470px);
+  object-fit: cover;
+  object-position: top center;
+}

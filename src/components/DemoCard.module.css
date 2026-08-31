@@ -6,36 +6,54 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   border: 1px solid rgba(255, 255, 255, 0.09);
   overflow: hidden;
-  transition: border-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
+/* Hover lift matches FeatureCard's (.servicesGrid) exactly, not just the border-color
+   change this had before. */
 .card:hover {
   border-color: var(--accent);
+  transform: translateY(-6px);
 }
 
 .card:hover .cta {
   color: var(--accent2);
 }
 
+/* 2.5:1 banner crop of the live-app screenshot. object-position: top leads with the app's
+   title and tagline; a taller ratio would dip into the empty canvas band below the intro. */
 .thumb {
-  aspect-ratio: 4 / 1;
+  position: relative;
+  aspect-ratio: 5 / 2;
+  overflow: hidden;
   background: linear-gradient(135deg, rgba(21, 155, 200, 0.18), rgba(79, 216, 255, 0.05));
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+/* Absolutely positioned so the (near-square) screenshot can't drive the thumb's height —
+   the 16:9 box wins and object-fit crops the overflow. */
 .thumb img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
+/* Padding matches FeatureCard's 32px exactly. This card also carries a thumb region
+   FeatureCard doesn't have — check the before/after screenshot; if 32px reads as too much
+   air under the 4:1 thumbnail, flag it back rather than silently keeping something that
+   doesn't look right in context. */
 .body {
   display: flex;
   flex: 1;
   flex-direction: column;
   gap: 7px;
-  padding: 20px;
+  padding: 32px;
 }
 
 .category {
@@ -45,16 +63,18 @@
   color: var(--accent);
 }
 
+/* Size matches FeatureCard's title exactly (23px). */
 .title {
   font-family: var(--fd);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 23px;
   letter-spacing: -0.02em;
   margin: 0;
 }
 
+/* Size matches FeatureCard's description exactly (15px / 1.6). */
 .summary {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.6;
   color: var(--text-secondary2);
   margin: 0;

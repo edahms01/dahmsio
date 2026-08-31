@@ -1,80 +1,6 @@
-@keyframes heroUp {
-  from {
-    opacity: 0;
-    transform: translateY(26px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero {
-  position: relative;
-  z-index: 10;
-  padding: 150px var(--side-padding) 70px;
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.heroCanvas {
-  z-index: -1;
-}
-
-.anim {
-  animation: heroUp 0.7s var(--ease-out) both;
-}
-
-.animDelay1 {
-  animation-duration: 0.8s;
-  animation-delay: 0.08s;
-}
-
-.animDelay2 {
-  animation-duration: 0.8s;
-  animation-delay: 0.16s;
-}
-
-.animDelay3 {
-  animation-duration: 0.8s;
-  animation-delay: 0.24s;
-}
-
-
-.h1 {
-  font-family: var(--fd);
-  font-weight: 700;
-  font-size: clamp(40px, 5.6vw, 72px);
-  line-height: 1.03;
-  letter-spacing: -0.035em;
-  margin: 0;
-}
-
-.gradientSpan {
-  background: linear-gradient(115deg, var(--accent), var(--accent3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.subcopy {
-  font-size: clamp(16px, 1.6vw, 20px);
-  line-height: 1.55;
-  color: var(--text-secondary);
-  max-width: 52ch;
-  margin: 26px 0 0;
-}
-
-.ctaRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 34px;
-}
+/* The hero band (grid, graphic-column alignment, typography, entrance animation, responsive
+   stack) lives in components/HeroSection — shared by Data/Technology/Consulting, About,
+   Contact and DemoCaseTemplate. */
 
 .capabilities {
   position: relative;
@@ -149,11 +75,6 @@
 }
 
 @media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 120px;
-  }
-
   .pipelineGrid {
     grid-template-columns: 1fr 1fr;
   }

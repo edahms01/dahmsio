@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import DemoAppScreenshot from "./mockups/DemoAppScreenshot.jsx";
 import styles from "./DemoCard.module.css";
 
 /**
@@ -8,33 +7,15 @@ import styles from "./DemoCard.module.css";
  * fill, hairline border, hover border — is the same one CapabilityCard / SubServiceSection
  * use elsewhere, so this reads as native to the page rather than a new component language.
  *
- * Displays either a screenshot image (if thumbnail provided) or a rendered app mockup
- * (if mockup data provided). To use a real screenshot, add a thumbnail path and remove
- * the mockup fields.
+ * `thumbnail` is a screenshot of the live demo app (public/images/demos/…). No window
+ * chrome here — that framed treatment is the case study hero's, not the card's.
  */
-export default function DemoCard({
-  slug,
-  category,
-  title,
-  summary,
-  thumbnail,
-  mockupTitle,
-  mockupQuestion,
-  mockupAnswer,
-  mockupSource,
-}) {
+export default function DemoCard({ slug, category, title, summary, thumbnail }) {
   return (
     <Link to={`/demos/${slug}/`} className={styles.card}>
       <div className={styles.thumb}>
         {thumbnail ? (
           <img src={thumbnail} alt="" loading="lazy" />
-        ) : mockupTitle ? (
-          <DemoAppScreenshot
-            title={mockupTitle}
-            question={mockupQuestion}
-            answer={mockupAnswer}
-            answerSource={mockupSource}
-          />
         ) : (
           <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.05)" }} />
         )}

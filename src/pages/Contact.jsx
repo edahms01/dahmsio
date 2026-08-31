@@ -2,7 +2,7 @@ import { useState } from "react";
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import JsonLd from "../components/JsonLd.jsx";
-import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import HeroSection, { HeroEyebrow, HeroHeading, HeroLede, HeroActions } from "../components/HeroSection.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
@@ -144,24 +144,22 @@ export default function Contact() {
     <Layout blobs={INTERIOR_GLOW_BLOBS}>
       <PageMeta {...META} />
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
-      <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} opacity={0.9} className={styles.heroCanvas} />
-        <div>
-          <div className={`eyebrow ${styles.anim}`}>{HERO.eyebrow}</div>
-          <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
-            {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}.</span>
-          </h1>
-          <p className={`${styles.subcopy} ${styles.anim} ${styles.animDelay2}`}>{HERO.heroSubcopy}</p>
-          <div className={`${styles.ctaRow} ${styles.anim} ${styles.animDelay3}`}>
-            <PrimaryButton href="#contact-form" arrow>
-              {HERO.primaryCtaLabel}
-            </PrimaryButton>
-          </div>
-        </div>
-        <AppWindowMockup filename={MOCKUP.filename}>
-          <MessageMockup thread={MOCKUP.thread} steps={MOCKUP.steps} />
-        </AppWindowMockup>
-      </header>
+      <HeroSection
+        mockup={
+          <AppWindowMockup filename={MOCKUP.filename}>
+            <MessageMockup thread={MOCKUP.thread} steps={MOCKUP.steps} />
+          </AppWindowMockup>
+        }
+      >
+        <HeroEyebrow>{HERO.eyebrow}</HeroEyebrow>
+        <HeroHeading prefix={HERO.heroPrefix} accent={HERO.heroAccent} />
+        <HeroLede>{HERO.heroSubcopy}</HeroLede>
+        <HeroActions>
+          <PrimaryButton href="#contact-form" arrow>
+            {HERO.primaryCtaLabel}
+          </PrimaryButton>
+        </HeroActions>
+      </HeroSection>
 
       <section id="contact-form" className={styles.formSection}>
         {status === "success" ? (

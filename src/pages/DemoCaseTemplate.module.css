@@ -1,26 +1,14 @@
-/* Hero section uses a two-column grid: left side for text, right side for the demo chat mockup.
-   This matches InteriorPageTemplate's hero layout (Data/Technology/Consulting pages), adapting it
-   for a demo case study. The body section below keeps the narrowed prose measure (68ch) for
-   the narrative content. */
-.hero {
-  position: relative;
-  z-index: 10;
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  padding: 150px var(--side-padding) 70px;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
-}
+/* The hero is the shared <HeroSection> component (components/HeroSection). This file only
+   carries the case-study hero's own two extra text elements (tagline + body) and, via
+   `mockupClassName`, the stacked-width cap on the framed screenshot below. */
 
-.heroContent {
-  display: flex;
-  flex-direction: column;
-}
-
-.mockupCol {
-  flex-shrink: 0;
+/* Demo hero graphic is a tall framed screenshot — cap and centre it once the hero stacks so
+   it doesn't dominate the single column. */
+@media (max-width: 900px) {
+  .demoMockup {
+    max-width: 500px;
+    margin-inline: auto;
+  }
 }
 
 .tagline {
@@ -36,6 +24,9 @@
   font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.6;
   color: var(--text-secondary);
+  /* Same measure as InteriorPageTemplate's .subcopy, so the text column can't grow wide
+     enough to squeeze the graphic column and force an early wrap. */
+  max-width: 54ch;
 }
 
 /* Narrative body. Each block is its own <section>; adjacent 70px bottom + 70px top padding
@@ -49,6 +40,17 @@
   max-width: 68ch;
   margin: 0 auto;
   padding: 56px var(--side-padding);
+}
+
+/* Body section headings (Problem/What it does/How it works/Key features/Who/Trust) inherit
+   .sectionHeading's weight/line-height/letter-spacing from global.css but not a font-size —
+   nothing here filled that gap, so they were rendering at the browser's bare default <h2>
+   size. Matches the clamp(28px, 3.8vw, 46px) every other in-body section heading uses
+   site-wide. `.section h2` (class + element) outranks the single-class `.sectionHeading`
+   selector on specificity, so this wins without an inline style or a second class needed on
+   each heading. */
+.section h2 {
+  font-size: clamp(28px, 3.8vw, 46px);
 }
 
 /* First body section after the hero: 56px hero-bottom + 80px here ≈ the site's ~140px
@@ -134,26 +136,6 @@
   font-family: var(--fd);
   font-weight: 600;
   color: #f3f3f8;
-}
-
-/* On narrower screens, stack the hero text and mockup vertically, then return to the
-   body's prose measure (68ch) for content below. */
-@media (max-width: 1100px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
-  }
-
-  .mockupCol {
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero {
-    padding-top: 120px;
-  }
 }
 
 /* Two-up features get cramped in the narrowed column below ~768px — drop to one column
