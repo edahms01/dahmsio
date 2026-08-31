@@ -6,6 +6,7 @@ import SecondaryButton from "../components/SecondaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import SubServiceSection from "../components/SubServiceSection.jsx";
 import PipelineStep from "../components/PipelineStep.jsx";
+import DemoSection from "../components/DemoSection.jsx";
 import { INTERIOR_GLOW_BLOBS, SEE_CAPABILITIES_LABEL } from "../data/site.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 import styles from "./InteriorPageTemplate.module.css";
@@ -27,6 +28,10 @@ export default function InteriorPageTemplate({
   // Advisory engagement only and doesn't apply to Talent. Undefined on Data/Technology, which
   // keep the pipeline in its own section after all groups.
   pipelineAfterGroup,
+  // Optional — an array of demo objects (see src/data/demos.js). When present, DemoSection
+  // renders just above the closing CTA. Undefined on Data/Consulting, which pass nothing and
+  // render exactly as before; only Technology passes this for now.
+  demos,
   ctaHeading,
   ctaText,
   ctaButtonLabel,
@@ -110,6 +115,8 @@ export default function InteriorPageTemplate({
           </section>
         </>
       )}
+
+      {demos?.length ? <DemoSection demos={demos} /> : null}
 
       <section className={styles.cta}>
         <NetworkCanvas maxNodes={70} opacity={0.7} className={styles.ctaCanvas} />

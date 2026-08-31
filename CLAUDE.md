@@ -39,3 +39,27 @@ misreading of the original task brief, corrected in T5.
 
 No industry-specific pages yet. The site is deliberately horizontal right now. Do not add
 `/industries` or any vertical-specific routes unless explicitly asked.
+
+## Demo Section and Case Study Pages
+
+### Demo Section on Technology Page
+- Located in `src/components/DemoSection.jsx`
+- Renders as a main section (same structural styling as Capabilities and Pipeline)
+- Includes eyebrow label ("Featured Demos") defined in `src/data/demos.js`
+- Card styling uses accent colors consistently with other site components
+
+### Demo Case Study Pages (DemoCaseTemplate)
+- Template for individual demo case studies (e.g., Gods, Heroes, and Monsters)
+- **Hero layout:** Two-column grid (text left, demo chat mockup right) matching InteriorPageTemplate
+  - On desktop: full-width `var(--max-wide)` with grid layout
+  - On mobile (<1100px): stacks vertically
+- **Narrative body:** Uses narrowed 68ch prose measure for readability (distinct from hero's wide layout)
+- **Chat mockup:** DemoChatMockup.jsx shows example Q&A from the demo's knowledgebase
+  - Data passed via `hero.mockupQuestion`, `hero.mockupAnswer`, `hero.mockupSource` in the demo data module
+  - Example in `src/data/demoGodsHeroesMonsters.js`
+
+### Adding a New Demo
+1. Add demo card data to `src/data/demos.js` array
+2. Create data module `src/data/demo[YourName].js` with HERO section including mockup Q&A
+3. Create route in `src/routes.js` pointing to DemoCaseTemplate with the data module
+4. The case study route auto-renders as `/demos/[slug]/`

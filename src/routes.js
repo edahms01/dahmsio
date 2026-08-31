@@ -13,4 +13,5 @@ export const ROUTE_PATHS = {
   consulting: "/consulting/",
   about: "/about/",
   contact: "/contact/",
+  demoGodsHeroesMonsters: "/demos/gods-heroes-and-monsters/",
 };

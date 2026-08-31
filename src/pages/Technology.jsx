@@ -12,6 +12,7 @@ import {
   PIPELINE,
   CTA,
 } from "../data/technology.js";
+import { DEMOS } from "../data/demos.js";
 
 export default function Technology() {
   return (
@@ -29,6 +30,7 @@ export default function Technology() {
         pipelineEyebrow={PIPELINE_EYEBROW}
         pipelineHeading={PIPELINE_HEADING}
         pipeline={PIPELINE}
+        demos={DEMOS}
         ctaHeading={CTA.heading}
         ctaText={CTA.text}
         ctaButtonLabel={CTA.buttonLabel}
