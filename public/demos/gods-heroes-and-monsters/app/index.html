@@ -620,7 +620,11 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
       var isClassic = btn.dataset.mode === 'classic';
       gmPanel.classList.toggle('classic', isClassic);
       document.body.classList.toggle('classic-active', isClassic);
-      if (!isClassic) setExpanded(false);
+      // Carry the expanded layout across a view switch. Bubbles auto-expands on
+      // the first answer and Classic expands via its button; once either view is
+      // expanded, switching to the other opens it expanded too rather than
+      // snapping back to the pristine pageload size.
+      if (state.expanded) setExpanded(true);
     });
   });
 
