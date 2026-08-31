@@ -2,15 +2,17 @@ import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import JsonLd from "../components/JsonLd.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import HeroSection, { HeroEyebrow, HeroHeading, HeroActions } from "../components/HeroSection.jsx";
+import heroStyles from "../components/HeroSection.module.css";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
-import DemoChatMockup from "../components/mockups/DemoChatMockup.jsx";
+import DemoScreenshotFrame from "../components/mockups/DemoScreenshotFrame.jsx";
 import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
-// Same borrow About.jsx makes: the interior template's hero/CTA typography classes, so a
-// demo Case Study matches Data/Technology/Consulting exactly. DemoCaseTemplate.module.css
-// holds only what's specific to a case-study narrative (single-column hero, prose sections,
-// the how-it-works steps, the features list).
+// Hero is the shared <HeroSection>. The CTA still borrows InteriorPageTemplate's CTA classes
+// so it matches Data/Technology/Consulting exactly. DemoCaseTemplate.module.css holds only
+// what's specific to a case-study narrative (the hero's tagline/body, prose sections, the
+// how-it-works steps, the features list).
 import interiorStyles from "./InteriorPageTemplate.module.css";
 import styles from "./DemoCaseTemplate.module.css";
 
@@ -38,34 +40,29 @@ export default function DemoCaseTemplate({
       <PageMeta {...meta} />
       <JsonLd data={buildBreadcrumbSchema(meta.path, breadcrumbs)} />
 
-      <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} opacity={0.9} className={interiorStyles.heroCanvas} />
-        <div className={styles.heroContent}>
-          <Reveal>
-            <div className={`eyebrow ${interiorStyles.anim}`}>{hero.eyebrow}</div>
-            <h1 className={`${interiorStyles.h1} ${interiorStyles.anim} ${interiorStyles.animDelay1}`}>
-              {hero.name}
-            </h1>
-            <p className={styles.tagline}>{hero.tagline}</p>
-            <p className={styles.heroBody}>{hero.body}</p>
-            <div className={interiorStyles.ctaRow}>
-              {/* Plain <a href> (PrimaryButton's href branch), never a <Link> — the app path is
-                  a real static file, not an SPA route, so client routing would 404 it. New tab
-                  so the reader keeps the case study open to come back to. */}
-              <PrimaryButton href={hero.appPath} arrow target="_blank" rel="noopener">
-                {hero.tryItLabel}
-              </PrimaryButton>
-            </div>
-          </Reveal>
-        </div>
-        <Reveal className={styles.mockupCol}>
-          <DemoChatMockup
-            question={hero.mockupQuestion}
-            answer={hero.mockupAnswer}
-            answerSource={hero.mockupSource}
+      <HeroSection
+        mockupClassName={styles.demoMockup}
+        mockup={
+          <DemoScreenshotFrame
+            src={hero.screenshot}
+            alt={hero.screenshotAlt}
+            label={hero.screenshotLabel}
           />
-        </Reveal>
-      </header>
+        }
+      >
+        <HeroEyebrow>{hero.eyebrow}</HeroEyebrow>
+        <HeroHeading>{hero.name}</HeroHeading>
+        <p className={`${styles.tagline} ${heroStyles.anim} ${heroStyles.animDelay2}`}>{hero.tagline}</p>
+        <p className={`${styles.heroBody} ${heroStyles.anim} ${heroStyles.animDelay2}`}>{hero.body}</p>
+        <HeroActions>
+          {/* Plain <a href> (PrimaryButton's href branch), never a <Link> — the app path is a
+              real static file, not an SPA route, so client routing would 404 it. New tab so
+              the reader keeps the case study open to come back to. */}
+          <PrimaryButton href={hero.appPath} arrow target="_blank" rel="noopener">
+            {hero.tryItLabel}
+          </PrimaryButton>
+        </HeroActions>
+      </HeroSection>
 
       <article className={styles.body}>
         <Prose {...problem} />

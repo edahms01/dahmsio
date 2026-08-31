@@ -50,16 +50,17 @@ No industry-specific pages yet. The site is deliberately horizontal right now. D
 
 ### Demo Case Study Pages (DemoCaseTemplate)
 - Template for individual demo case studies (e.g., Gods, Heroes, and Monsters)
-- **Hero layout:** Two-column grid (text left, demo chat mockup right) matching InteriorPageTemplate
+- **Hero layout:** Two-column grid (text left, framed app screenshot right) matching InteriorPageTemplate
   - On desktop: full-width `var(--max-wide)` with grid layout
   - On mobile (<1100px): stacks vertically
 - **Narrative body:** Uses narrowed 68ch prose measure for readability (distinct from hero's wide layout)
-- **Chat mockup:** DemoChatMockup.jsx shows example Q&A from the demo's knowledgebase
-  - Data passed via `hero.mockupQuestion`, `hero.mockupAnswer`, `hero.mockupSource` in the demo data module
-  - Example in `src/data/demoGodsHeroesMonsters.js`
+- **Hero graphic:** `DemoScreenshotFrame.jsx` — a screenshot of the live demo app in the site's
+  window frame (chrome bar + dots + glow), sized/aligned like the interior pages' hero visuals
+  - Data via `hero.screenshot` (path under `public/images/demos/`) and `hero.screenshotAlt`
+  - Card thumbnail is the same screenshot with no frame (`thumbnail` in `src/data/demos.js`)
 
 ### Adding a New Demo
-1. Add demo card data to `src/data/demos.js` array
-2. Create data module `src/data/demo[YourName].js` with HERO section including mockup Q&A
+1. Add demo card data to `src/data/demos.js` array (incl. `thumbnail` screenshot path)
+2. Create data module `src/data/demo[YourName].js` with HERO section incl. `screenshot`/`screenshotAlt`
 3. Create route in `src/routes.js` pointing to DemoCaseTemplate with the data module
 4. The case study route auto-renders as `/demos/[slug]/`

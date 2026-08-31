@@ -2,6 +2,7 @@ import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import JsonLd from "../components/JsonLd.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import HeroSection, { HeroEyebrow, HeroHeading, HeroLede, HeroActions } from "../components/HeroSection.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
@@ -25,12 +26,10 @@ import {
   CTA,
 } from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
-// Reusing the interior page template's own hero/CTA text classes directly — same file, same
-// classnames — so typography matches Data/Technology/Consulting exactly. The hero and
-// Founder's Note containers are custom to this page (see About.module.css): the hero uses its
-// own two-column grid (mirroring InteriorPageTemplate's) for the network mockup, and the
-// Founder's Note needs its own paired-with-headshot grid (the headshot lives there, not in
-// the hero).
+// The hero comes from the shared HeroSection component. The CTA still borrows
+// InteriorPageTemplate's CTA classes so it matches Data/Technology/Consulting exactly; the
+// rest of this page's sections (Background, Credibility, Founder's Note, …) are custom to
+// About — see About.module.css.
 import interiorStyles from "./InteriorPageTemplate.module.css";
 import styles from "./About.module.css";
 
@@ -40,32 +39,23 @@ export default function About() {
       <PageMeta {...META} />
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
 
-      <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} opacity={0.9} className={interiorStyles.heroCanvas} />
-        <div>
-          <div className={`eyebrow ${interiorStyles.anim}`}>{HERO.eyebrow}</div>
-          <h1 className={`${interiorStyles.h1} ${interiorStyles.anim} ${interiorStyles.animDelay1}`}>
-            {HERO.heroPrefix} <span className={interiorStyles.gradientSpan}>{HERO.heroAccent}.</span>
-          </h1>
-          <p className={`${interiorStyles.subcopy} ${interiorStyles.anim} ${interiorStyles.animDelay2}`}>
-            {HERO.heroSubcopy}
-          </p>
-          <div className={`${interiorStyles.ctaRow} ${interiorStyles.anim} ${interiorStyles.animDelay3}`}>
-            <PrimaryButton to="/contact/" arrow>
-              {HERO.primaryCtaLabel}
-            </PrimaryButton>
-          </div>
-        </div>
-        {/* .heroMockupOffset: the grid is top-aligned (see .hero) so the mockup's position is
-            deterministic regardless of headline length, then nudged down by the eyebrow's own
-            height so its top lines up with the H1 headline, not the eyebrow above it —
-            matching how the mockup reads on Data/Technology/Consulting (their taller,
-            multi-line headlines put the vertically-centered mockup at headline height too;
-            About's shorter 2-line headline doesn't get there by centering alone). */}
-        <AppWindowMockup filename={MOCKUP.filename} className={styles.heroMockupOffset}>
-          <OrbitNetworkMockup />
-        </AppWindowMockup>
-      </header>
+      <HeroSection
+        wide
+        mockup={
+          <AppWindowMockup filename={MOCKUP.filename}>
+            <OrbitNetworkMockup />
+          </AppWindowMockup>
+        }
+      >
+        <HeroEyebrow>{HERO.eyebrow}</HeroEyebrow>
+        <HeroHeading prefix={HERO.heroPrefix} accent={HERO.heroAccent} />
+        <HeroLede>{HERO.heroSubcopy}</HeroLede>
+        <HeroActions>
+          <PrimaryButton to="/contact/" arrow>
+            {HERO.primaryCtaLabel}
+          </PrimaryButton>
+        </HeroActions>
+      </HeroSection>
 
       {/* Section 1 — Background */}
       <section className={`${styles.section} ${styles.sectionFirst}`}>

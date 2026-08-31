@@ -1,0 +1,117 @@
+/* Shared hero: the page-opening two-column band (text left, graphic right) used by every
+   top-level page — Data / Technology / Consulting (via InteriorPageTemplate), About, Contact,
+   and demo case studies (DemoCaseTemplate). Single source of truth for the grid, the graphic
+   column's alignment, the responsive stack, and the hero typography. Was previously copied
+   across four stylesheets. */
+
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  position: relative;
+  z-index: 10;
+  padding: 150px var(--side-padding) 70px;
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  /* Top-align, not center: with center, the graphic's top edge moved with its own height
+     (and the text length), so it landed at a different spot on every page. */
+  align-items: start;
+}
+
+/* About only: wider text column so "Global experience. / Local focus." breaks cleanly. */
+.heroWide {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.heroCanvas {
+  z-index: -1;
+}
+
+/* Graphic column. Offset down by exactly the eyebrow block (17px line + 16px margin-bottom
+   = 33px) so the graphic's top lands on the h1's top on every page, regardless of the
+   graphic's own height. */
+.mockupCol {
+  margin-top: 33px;
+}
+
+.anim {
+  animation: heroUp 0.7s var(--ease-out) both;
+}
+
+.animDelay1 {
+  animation-duration: 0.8s;
+  animation-delay: 0.08s;
+}
+
+.animDelay2 {
+  animation-duration: 0.8s;
+  animation-delay: 0.16s;
+}
+
+.animDelay3 {
+  animation-duration: 0.8s;
+  animation-delay: 0.24s;
+}
+
+.h1 {
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: clamp(40px, 5.6vw, 72px);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.gradientSpan {
+  background: linear-gradient(115deg, var(--accent), var(--accent3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subcopy {
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 52ch;
+  margin: 26px 0 0;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+  }
+
+  .heroWide {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stacked: no eyebrow beside the graphic to align to — drop the offset, the grid gap
+     handles the spacing. */
+  .mockupCol {
+    margin-top: 0;
+  }
+}

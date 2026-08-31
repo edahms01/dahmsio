@@ -27,16 +27,16 @@
   color: var(--text-secondary);
 }
 
-/* Two up on desktop (a single demo then sits at half width, left-aligned; it fills into a
-   proper row as more are added), one up on narrow screens — the same
-   collapse-to-single-column step .pipelineGrid / .credibilityGrid use. */
+/* Matches Home's .servicesGrid exactly (3-up, 22px gap, single collapse straight to one
+   column at 900px) — this section reads as the same "big card section" pattern as the
+   homepage's three service cards, not a bespoke 2-up grid. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
   }

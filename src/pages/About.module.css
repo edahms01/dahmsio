@@ -1,35 +1,8 @@
-/* Hero: two-column grid, mirroring InteriorPageTemplate's, paired with the network mockup.
-   Text column is weighted wider than the mockup column (1.2fr/.8fr, vs. the interior pages'
-   1.05fr/.95fr) so "Global experience." clears onto one line at the headline's max clamp
-   size (64px) on a standard laptop viewport, with "Local focus." wrapping cleanly onto its
-   own line below. No headshot slot here — that's paired with the Founder's Note instead, per
-   the content brief. align-items:start (not InteriorPageTemplate's center) makes the
-   mockup's position deterministic regardless of headline length, then .heroMockupOffset
-   below nudges it down to line up with the H1, not the eyebrow above it. */
-.hero {
-  position: relative;
-  z-index: 10;
-  padding: 150px var(--side-padding) 70px;
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 56px;
-  align-items: start;
-}
-
-/* Offsets the hero mockup down to the eyebrow's rendered height (13px text + 16px
-   margin-bottom, ~34px total) so its top lines up with the H1 below the eyebrow — matching
-   how the mockup reads on Data/Technology/Consulting (their taller, multi-line headlines put
-   the vertically-centered mockup at headline height too; About's shorter 2-line headline
-   doesn't get there by centering alone). */
-.heroMockupOffset {
-  margin-top: 34px;
-}
-
-/* No width cap here (unlike a prior 62ch version) — the h1 should only be bound by the grid
-   column, same as InteriorPageTemplate's hero text. The paragraph keeps its own 52ch cap via
-   interiorStyles.subcopy, so readability there is unaffected. */
+/* The hero is the shared <HeroSection> component (components/HeroSection). About passes its
+   `wide` variant — a 1.2fr/0.8fr text/graphic split, wider than the 1.05fr/0.95fr the other
+   pages use — so "Global experience." clears onto one line at the headline's max clamp size
+   with "Local focus." wrapping cleanly below. No headshot slot in the hero here; the
+   headshot is paired with the Founder's Note instead, per the content brief. */
 
 /* Shared shell for every major section on this page — Background, Credibility, How We Work,
    Operating Principles, Engagement Models, and Founder's Note — each its own <section>, no
@@ -390,11 +363,6 @@
 }
 
 @media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 120px;
-  }
-
   .credibilityGrid {
     grid-template-columns: 1fr 1fr;
   }

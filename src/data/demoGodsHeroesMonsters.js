@@ -29,15 +29,19 @@ export const BREADCRUMBS = [
 ];
 
 export const HERO = {
-  eyebrow: "Demo · Case Study",
+  eyebrow: "Demo",
   name: NAME,
   tagline: "Ask and the Old Gods will answer.",
   body: "This one's built on Thomas Bulfinch's 1855 collection of Greek, Roman, and Norse myth. Point the same approach at your product manuals, your policy documents, or years of support tickets, and you get the same thing: a straight, sourced answer instead of a search bar that hands back forty results.",
   tryItLabel: "Try it now",
   appPath: APP_PATH,
-  mockupQuestion: "Who were the three Fates in Greek mythology?",
-  mockupAnswer: "In Greek mythology, the three Fates (Moirai) were Clotho, Lachesis, and Atropos. Clotho spun the thread of life, Lachesis measured its length, and Atropos cut it at the end of each mortal's span. They represented the inevitable course of human destiny and fate.",
-  mockupSource: "From Bulfinch's Age of Fable, Chapter III",
+  // Hero graphic: a screenshot of the live app, shown in the site's window frame
+  // (DemoScreenshotFrame). public/images/demos/. screenshotLabel is the window's chrome-bar
+  // text — a mock domain, matching the technical filenames the interior pages use.
+  screenshot: "/images/demos/gods-heroes-and-monsters-screenshot.jpg",
+  screenshotAlt:
+    "The Gods, Heroes, and Monsters chat app: its title, tagline, and starter questions over a constellation backdrop.",
+  screenshotLabel: "fables-ai.app",
 };
 
 export const PROBLEM = {

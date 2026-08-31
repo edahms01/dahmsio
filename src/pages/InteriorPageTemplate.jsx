@@ -1,6 +1,7 @@
 import Layout from "../components/Layout.jsx";
 import JsonLd from "../components/JsonLd.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import HeroSection, { HeroEyebrow, HeroHeading, HeroLede, HeroActions } from "../components/HeroSection.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
@@ -60,23 +61,17 @@ export default function InteriorPageTemplate({
   return (
     <Layout blobs={INTERIOR_GLOW_BLOBS}>
       <JsonLd data={buildBreadcrumbSchema(breadcrumbPath)} />
-      <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} opacity={0.9} className={styles.heroCanvas} />
-        <div>
-          <div className={`eyebrow ${styles.anim}`}>{eyebrow}</div>
-          <h1 className={`${styles.h1} ${styles.anim} ${styles.animDelay1}`}>
-            {heroPrefix} <span className={styles.gradientSpan}>{heroAccent}.</span>
-          </h1>
-          <p className={`${styles.subcopy} ${styles.anim} ${styles.animDelay2}`}>{heroSubcopy}</p>
-          <div className={`${styles.ctaRow} ${styles.anim} ${styles.animDelay3}`}>
-            <PrimaryButton to="/contact/" arrow>
-              {primaryCtaLabel}
-            </PrimaryButton>
-            <SecondaryButton href="#capabilities">{SEE_CAPABILITIES_LABEL}</SecondaryButton>
-          </div>
-        </div>
-        {mockup}
-      </header>
+      <HeroSection mockup={mockup}>
+        <HeroEyebrow>{eyebrow}</HeroEyebrow>
+        <HeroHeading prefix={heroPrefix} accent={heroAccent} />
+        <HeroLede>{heroSubcopy}</HeroLede>
+        <HeroActions>
+          <PrimaryButton to="/contact/" arrow>
+            {primaryCtaLabel}
+          </PrimaryButton>
+          <SecondaryButton href="#capabilities">{SEE_CAPABILITIES_LABEL}</SecondaryButton>
+        </HeroActions>
+      </HeroSection>
 
       {/* id="capabilities" kept as a plain anchor — the hero's SecondaryButton above links
           here; the anchor id itself is structural, not copy, so it stays hardcoded. */}
