@@ -43,19 +43,34 @@ export function buildOrganizationSchema() {
 }
 
 /**
- * BreadcrumbList JSON-LD for an interior page: Home > <page>. The page's label is looked up
- * from NAV_LINKS by path, so it can't drift from what's actually in the nav. Not used on the
- * homepage itself — a single-crumb trail isn't meaningful there.
+ * BreadcrumbList JSON-LD. Home is always position 1.
+ *
+ * Default (one string arg): a two-crumb trail Home > <page>, with the page's label looked up
+ * from NAV_LINKS by path so it can't drift from what's actually in the nav.
+ *
+ * Deeper pages that aren't in the nav (e.g. a demo Case Study under /demos/) pass an explicit
+ * `crumbs` array instead — the full ordered post-Home trail, each `{ path, label }`, last
+ * entry being the current page. `path` is ignored when `crumbs` is given. A crumb's `path`
+ * may carry a fragment (e.g. "/technology/#demos") to point at an on-page anchor.
+ *
+ * Not used on the homepage itself — a single-crumb trail isn't meaningful there.
  */
-export function buildBreadcrumbSchema(path) {
-  const name = NAV_LINKS.find((link) => link.to === path)?.label ?? path;
+export function buildBreadcrumbSchema(path, crumbs) {
+  const trail = crumbs ?? [
+    { path, label: NAV_LINKS.find((link) => link.to === path)?.label ?? path },
+  ];
 
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name, item: `${SITE_URL}${path}` },
+      ...trail.map((crumb, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: crumb.label,
+        item: `${SITE_URL}${crumb.path}`,
+      })),
     ],
   };
 }

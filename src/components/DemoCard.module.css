@@ -1,0 +1,78 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.card:hover .cta {
+  color: var(--accent2);
+}
+
+.thumb {
+  aspect-ratio: 4 / 1;
+  background: linear-gradient(135deg, rgba(21, 155, 200, 0.18), rgba(79, 216, 255, 0.05));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  padding: 20px;
+}
+
+.category {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.summary {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-secondary2);
+  margin: 0;
+}
+
+/* Pushed to the card's bottom edge regardless of summary length, so a row of cards keeps its
+   affordance aligned. */
+.cta {
+  margin-top: auto;
+  padding-top: 6px;
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+@media (max-width: 560px) {
+  .body {
+    padding: 16px;
+  }
+}
