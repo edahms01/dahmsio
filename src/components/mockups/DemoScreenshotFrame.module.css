@@ -1,11 +1,14 @@
 /* The screenshot sits inside AppWindowMockup (the site's shared hero window). It's a tall
-   portrait capture; this height shows the app top-to-bottom through the chat input ("Enter
-   Chat" area) — that input defines the product at a glance, so it's kept in frame even though
-   it makes this graphic a little taller than the other pages' hero mockups. */
+   portrait capture; this crop keeps the app's title through the chat input ("Enter Chat"
+   area) in frame — that input defines the product at a glance. Fixed px, not a vh-relative
+   clamp: at the max hero width the graphic column is ~543px, so the cover scale is ~0.45
+   and ~460px of frame is needed to reach the input. A vh clamp collapsed toward its floor
+   on shorter windows and re-cropped the input out. The graphic is a little taller than the
+   other pages' hero mockups as a result — a deliberate trade for showing the input. */
 .shot {
   display: block;
   width: 100%;
-  height: clamp(360px, 46vh, 470px);
+  height: 460px;
   object-fit: cover;
   object-position: top center;
 }
