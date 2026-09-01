@@ -28,7 +28,7 @@ function ndjsonError(message) {
   });
 }
 
-export default async (request, context) => {
+export default async (request) => {
   const tStart = Date.now();
 
   if (request.method !== 'POST') {
