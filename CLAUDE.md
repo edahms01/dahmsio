@@ -53,7 +53,7 @@ No industry-specific pages yet. The site is deliberately horizontal right now. D
 - **Hero layout:** Two-column grid (text left, framed app screenshot right) matching InteriorPageTemplate
   - On desktop: full-width `var(--max-wide)` with grid layout
   - On mobile (<1100px): stacks vertically
-- **Narrative body:** Uses narrowed 68ch prose measure for readability (distinct from hero's wide layout)
+- **Narrative body:** Uses an 82ch prose measure (widened 20% from the original 68ch) for readability (distinct from hero's wide layout)
 - **Hero graphic:** `DemoScreenshotFrame.jsx` — a screenshot of the live demo app in the site's
   window frame (chrome bar + dots + glow), sized/aligned like the interior pages' hero visuals
   - Data via `hero.screenshot` (path under `public/images/demos/`) and `hero.screenshotAlt`

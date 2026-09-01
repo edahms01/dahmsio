@@ -32,7 +32,6 @@ export default function DemoCaseTemplate({
   howItWorks,
   features,
   who,
-  trust,
   cta,
 }) {
   return (
@@ -95,7 +94,6 @@ export default function DemoCaseTemplate({
         </section>
 
         <Prose {...who} />
-        <Prose {...trust} />
       </article>
 
       <section className={interiorStyles.cta}>

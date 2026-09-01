@@ -8,7 +8,6 @@ import {
   HOW_IT_WORKS,
   FEATURES,
   WHO,
-  TRUST,
   CTA,
 } from "../../data/demoGodsHeroesMonsters.js";
 
@@ -23,7 +22,6 @@ export default function GodsHeroesAndMonsters() {
       howItWorks={HOW_IT_WORKS}
       features={FEATURES}
       who={WHO}
-      trust={TRUST}
       cta={CTA}
     />
   );

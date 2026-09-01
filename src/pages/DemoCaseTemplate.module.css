@@ -37,12 +37,13 @@
 }
 
 .section {
-  max-width: 68ch;
+  /* Single-column narrative measure, widened 20% from the original 68ch. */
+  max-width: 82ch;
   margin: 0 auto;
   padding: 56px var(--side-padding);
 }
 
-/* Body section headings (Problem/What it does/How it works/Key features/Who/Trust) inherit
+/* Body section headings (Problem/What it does/How it works/Key features/Who) inherit
    .sectionHeading's weight/line-height/letter-spacing from global.css but not a font-size —
    nothing here filled that gap, so they were rendering at the browser's bare default <h2>
    size. Matches the clamp(28px, 3.8vw, 46px) every other in-body section heading uses

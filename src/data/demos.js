@@ -8,7 +8,7 @@ export const EYEBROW = "Our Work";
 export const DEMOS = [
   {
     slug: "gods-heroes-and-monsters",
-    category: "AI Chat",
+    category: "AI Chat · Knowledgebase",
     title: "Gods, Heroes, and Monsters",
     summary:
       "Ask about any god, hero, or monster and get an answer pulled straight from Bulfinch's 1855 telling of Greek, Roman, and Norse myth.",

@@ -99,11 +99,6 @@ export const WHO = {
   body: "Publishers and reference sites sitting on an archive nobody can search. Museums and education sites with a large body of historical text. Any brand with a deep well of content and no easy way for someone to just ask it a question.",
 };
 
-export const TRUST = {
-  heading: "Trust",
-  body: "Answers stay grounded in the source material, always traceable back to the original passage. Nothing proprietary about the approach, the same method works on a completely different text.",
-};
-
 export const CTA = {
   heading: "Want this pointed at your own content?",
   text: "Manuals, records, years of support tickets, whatever you're sitting on.",
