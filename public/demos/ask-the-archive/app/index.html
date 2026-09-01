@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The Case Study page (/demos/ask-the-archive/) is the canonical, search-facing
+     version of this; the raw app shouldn't compete with it in results. -->
+<meta name="robots" content="noindex, follow">
+<title>AskTheArchive — Election Integrity Document Archive</title>
+<meta name="description" content="Search the declassified Election Integrity document release. Independent research tool, not affiliated with any government agency.">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html,body{height:100%;margin:0;background:#0a1428}
+*{box-sizing:border-box}
+
+.ei-app{position:relative;height:100vh;display:flex;flex-direction:column;background:#0a1428;overflow:hidden;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+.ei-sky{position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 1200px 700px at 50% -10%, rgba(201,162,39,0.10), transparent 60%),
+    linear-gradient(180deg, #0a1428 0%, #060d1c 100%);}
+
+.ei-banner-wrap{position:relative;z-index:2;width:100%;display:flex;justify-content:center;overflow:hidden;max-height:400px;opacity:1;margin-top:0;pointer-events:auto;transition:max-height .55s cubic-bezier(.4,0,.2,1),opacity .4s ease,margin-top .55s cubic-bezier(.4,0,.2,1);padding:38px 20px 20px}
+.ei-banner-wrap.ei-expanded{max-height:0;opacity:0;margin-top:-24px;padding-top:0;padding-bottom:0;pointer-events:none}
+.ei-masthead{width:100%;max-width:720px;text-align:center}
+.ei-eyebrow{font-size:11.5px;letter-spacing:2.2px;font-weight:600;color:#c9a227;text-transform:uppercase}
+.ei-title{font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(28px,5vw,40px);color:#f2eee0;margin:8px 0 0;letter-spacing:-0.2px}
+.ei-rule{width:64px;height:2px;background:linear-gradient(90deg,transparent,#c9a227,transparent);margin:16px auto}
+.ei-subtitle{font-size:14.5px;color:rgba(238,241,246,0.68);max-width:560px;margin:0 auto;line-height:1.5}
+
+.ei-chat-pad{position:relative;z-index:2;flex:1;min-height:0;display:flex;justify-content:center;padding:8px 16px 26px;transition:padding .4s ease}
+.ei-chat-pad.ei-expanded{padding:48px 16px 26px}
+.ei-chat-col{width:100%;max-width:720px;display:flex;flex-direction:column;transition:max-width .4s ease}
+.ei-chat-pad.ei-expanded .ei-chat-col{max-width:936px}
+.ei-chat-card{flex:1;min-height:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(201,162,39,0.28);border-top:2px solid #c9a227;background:#0e1a30;box-shadow:0 30px 80px rgba(0,0,0,0.55),0 8px 24px rgba(0,0,0,0.4)}
+
+.ei-expand-btn{position:absolute;top:12px;right:12px;z-index:5;width:32px;height:32px;border-radius:8px;border:1px solid rgba(201,162,39,0.22);background:rgba(10,20,40,0.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:rgba(238,241,246,0.65);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:border-color .15s,color .15s,background .15s}
+.ei-expand-btn:hover{border-color:rgba(201,162,39,0.6);color:#f2eee0;background:rgba(20,25,15,0.8)}
+.ei-expand-btn svg{width:16px;height:16px}
+
+.ei-disclaimer{margin-top:16px;text-align:center;font-size:11.5px;letter-spacing:.3px;color:rgba(238,241,246,.62)}
+.ei-credit{margin-top:6px;text-align:center;font-size:13px;letter-spacing:.4px;color:rgba(238,241,246,.5)}
+.ei-credit a{color:rgba(201,162,39,.85);text-decoration:none;border-bottom:1px solid rgba(201,162,39,.4)}
+
+/* ---- AskTheArchive chat widget ---- */
+.aa-app{--bg:#0e1a30;--surface:#152540;--surface2:#1c3050;--border:rgba(201,162,39,0.16);--text:#eef1f6;--dim:rgba(238,241,246,0.6);--dim2:rgba(238,241,246,0.36);--accent:#c9a227;--sys:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--serif:'Source Serif 4',Georgia,serif;
+  display:flex;flex-direction:column;height:100%;background:var(--bg);color:var(--text);font-family:var(--sys);-webkit-font-smoothing:antialiased;overflow:hidden}
+.aa-header{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:1px solid var(--border);flex:0 0 auto}
+.aa-flag{flex:0 0 auto;display:flex;align-items:center}
+.aa-flag svg{width:42px;height:auto;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,0.3)}
+.aa-headtext{display:flex;flex-direction:column}
+.aa-wordmark{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-0.1px;line-height:1.1}
+.aa-subtitle{font-size:12.5px;color:var(--dim);margin-top:2px}
+
+.aa-scroll{flex:1;overflow-y:auto;padding:20px 16px 10px}
+.aa-scroll::-webkit-scrollbar{width:8px}
+.aa-scroll::-webkit-scrollbar-track{background:transparent}
+.aa-scroll::-webkit-scrollbar-thumb{background:rgba(201,162,39,0.18);border-radius:8px}
+.aa-thread{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:18px;transition:max-width .4s ease}
+.ei-chat-pad.ei-expanded .aa-thread{max-width:936px}
+
+.aa-row{display:flex;gap:13px;align-items:flex-start}
+.aa-row.aa-user{justify-content:flex-end}
+.aa-col{display:flex;flex-direction:column;gap:11px;max-width:90%}
+.aa-row.aa-user .aa-col{max-width:82%;align-items:flex-end;gap:8px}
+.aa-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px}
+.aa-bubble-bot{color:var(--text);font-size:15.5px;line-height:1.75}
+.aa-bubble-bot p{margin:0 0 12px}
+.aa-bubble-bot p:last-child{margin-bottom:0}
+.aa-bubble-bot h3.aa-md-h,.aa-bubble-bot h4.aa-md-h,.aa-bubble-bot h5.aa-md-h{font-family:var(--serif);font-weight:600;color:var(--text);line-height:1.3;margin:18px 0 8px}
+.aa-bubble-bot h3.aa-md-h{font-size:18px}
+.aa-bubble-bot h4.aa-md-h{font-size:16px}
+.aa-bubble-bot h5.aa-md-h{font-size:15px}
+.aa-bubble-bot>h3.aa-md-h:first-child,.aa-bubble-bot>h4.aa-md-h:first-child,.aa-bubble-bot>h5.aa-md-h:first-child{margin-top:0}
+.aa-bubble-bot ul.aa-md-ul{margin:0 0 12px;padding-left:20px}
+.aa-bubble-bot ul.aa-md-ul:last-child{margin-bottom:0}
+.aa-bubble-bot ul.aa-md-ul li{margin-bottom:4px}
+.aa-bubble-user{background:rgba(201,162,39,0.08);color:var(--text);border-radius:12px;padding:9px 13px;font-size:14.5px;line-height:1.55;white-space:pre-wrap}
+
+.aa-chips{display:flex;flex-direction:column;gap:9px;margin-top:4px;align-items:flex-start}
+.aa-chip{background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:13.5px;padding:11px 15px;border-radius:10px;cursor:pointer;font-family:var(--sys);text-align:left;line-height:1.35;min-height:44px;transition:all .15s;max-width:100%}
+.aa-chip:hover{border-color:var(--accent);background:var(--surface2)}
+
+.aa-paths{display:flex;flex-direction:column;gap:16px;margin-top:6px}
+.aa-path-group{display:flex;flex-direction:column;gap:9px;align-items:flex-start;min-width:0}
+.aa-path-label{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--accent);opacity:.85}
+.aa-path-group .aa-chip{position:relative;padding-left:26px;font-size:13px;line-height:1.4;width:100%}
+.aa-path-group .aa-chip::before{content:'';position:absolute;left:12px;top:18px;width:6px;height:6px;border-right:1.5px solid var(--dim2);border-bottom:1.5px solid var(--dim2);transform:rotate(-45deg)}
+.aa-path-group--new .aa-path-label{color:var(--dim)}
+
+/* Side by side once there's room for two columns of wrapped question text;
+   continue-path gets a bit more width since its questions tend to run longer. */
+@media (min-width:540px){
+  .aa-paths{flex-direction:row;align-items:flex-start;gap:20px}
+  .aa-path-group{flex:1 1 0}
+  .aa-path-group--continue{flex:1.15 1 0}
+}
+
+.aa-think-row{display:flex;gap:13px;align-items:flex-start}
+.aa-think-text{font-size:14px;color:var(--dim);font-style:italic;padding-top:2px;animation:aa-think-pulse 1.6s ease-in-out infinite}
+@keyframes aa-think-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+.aa-footer{flex:0 0 auto;padding:12px 14px;padding-bottom:calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--bg)}
+.aa-input-wrap{display:flex;align-items:flex-end;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:6px 6px 6px 16px;max-width:720px;margin:0 auto;transition:max-width .4s ease}
+.ei-chat-pad.ei-expanded .aa-input-wrap{max-width:936px}
+.aa-input-wrap textarea{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:15px;font-family:var(--sys);resize:none;line-height:1.45;padding:9px 0;max-height:120px}
+.aa-input-wrap textarea::placeholder{color:rgba(238,241,246,0.35)}
+.aa-send{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:none;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;cursor:default;background:var(--surface2);color:var(--dim2)}
+.aa-send.aa-send-active{cursor:pointer;background:var(--accent);color:#0a1428}
+</style>
+</head>
+<body>
+<div class="ei-app">
+  <div class="ei-sky"></div>
+
+  <div class="ei-banner-wrap" id="bannerWrap">
+    <div class="ei-masthead">
+      <div class="ei-eyebrow">Declassified Document Archive</div>
+      <div class="ei-title">AskTheArchive</div>
+      <div class="ei-rule"></div>
+      <div class="ei-subtitle">Search the declassified Election Integrity file release — electronic voting system vulnerabilities, foreign acquisition of voter data, the Michigan voter-registration investigation, and noncitizens on state voter rolls.</div>
+    </div>
+  </div>
+
+  <div class="ei-chat-pad" id="chatPad">
+    <div class="ei-chat-col">
+      <div class="ei-chat-card">
+        <button class="ei-expand-btn" id="expandBtn" title="Expand chat" aria-label="Expand chat">
+          <svg id="expandIconOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>
+          <svg id="expandIconClose" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M4 14h6v6"></path><path d="M20 10h-6v-6"></path><path d="M14 10L21 3"></path><path d="M3 21L10 14"></path></svg>
+        </button>
+
+        <div class="aa-app">
+          <header class="aa-header">
+            <div class="aa-flag" aria-hidden="true">
+              <svg width="26" height="14" viewBox="0 0 26 14" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="26" height="14" fill="#F5F2EA"/>
+                <rect x="0" y="0" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="2.154" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="4.308" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="6.462" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="8.615" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="10.769" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="12.923" width="26" height="1.18" fill="#B22234"/>
+                <rect x="0" y="0" width="10.4" height="7.538" fill="#1a2a5e"/>
+                <circle cx="1.46" cy="1.21" r="0.55" fill="#F5F2EA"/>
+                <circle cx="3.95" cy="1.21" r="0.55" fill="#F5F2EA"/>
+                <circle cx="6.45" cy="1.21" r="0.55" fill="#F5F2EA"/>
+                <circle cx="8.94" cy="1.21" r="0.55" fill="#F5F2EA"/>
+                <circle cx="1.46" cy="3.77" r="0.55" fill="#F5F2EA"/>
+                <circle cx="3.95" cy="3.77" r="0.55" fill="#F5F2EA"/>
+                <circle cx="6.45" cy="3.77" r="0.55" fill="#F5F2EA"/>
+                <circle cx="8.94" cy="3.77" r="0.55" fill="#F5F2EA"/>
+                <circle cx="1.46" cy="6.33" r="0.55" fill="#F5F2EA"/>
+                <circle cx="3.95" cy="6.33" r="0.55" fill="#F5F2EA"/>
+                <circle cx="6.45" cy="6.33" r="0.55" fill="#F5F2EA"/>
+                <circle cx="8.94" cy="6.33" r="0.55" fill="#F5F2EA"/>
+              </svg>
+            </div>
+            <div class="aa-headtext">
+              <div class="aa-wordmark">AskTheArchive</div>
+              <div class="aa-subtitle">Ask about the declassified files</div>
+            </div>
+          </header>
+
+          <div class="aa-scroll" id="aaScroll">
+            <div class="aa-thread" id="aaThread"></div>
+          </div>
+
+          <footer class="aa-footer">
+            <div class="aa-input-wrap">
+              <textarea id="aaInput" rows="1" placeholder="Ask about the declassified documents…"></textarea>
+              <button class="aa-send" id="aaSend" aria-label="Send">&#8593;</button>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <div class="ei-disclaimer">Independent research tool · Not affiliated with the White House or any government agency · Answers may be incomplete due to redactions</div>
+      <div class="ei-credit">Built by <a href="https://www.dahms.io/" target="_blank" rel="noopener">DahmsI/O</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var WELCOME_TEXT = "This archive searches the declassified Election Integrity document release — records on voting-system vulnerabilities, the acquisition of American voter data, the Michigan voter-registration investigation, and noncitizens on state voter rolls. Ask a question and I'll pull relevant passages from the source documents.";
+  var SUGGESTIONS = [
+    "What vulnerabilities were found in electronic voting systems?",
+    "What did the Michigan investigation find?",
+    "How did China acquire American voter data?",
+    "What's the finding on noncitizens on voter rolls?"
+  ];
+
+  // Curated per-category question banks for post-answer follow-up pills, rather
+  // than asking the LLM to invent them inline — keeps suggestions reliably on
+  // topic and avoids an extra model call after every answer.
+  var CATEGORIES = [
+    {
+      key: 'voting',
+      keywords: ['voting machine', 'ballot', 'dre machine', 'tabulat', 'pollbook', 'poll book', 'imagecast', 'defcon', 'electronic voting', 'voting system', 'ballot-counting', 'ballot counting', 'voting equipment'],
+      questions: [
+        "What vulnerabilities were found in electronic voting systems?",
+        "How were ballot marking devices compromised?",
+        "What weaknesses did CISA find in election networks?",
+        "How could vote tabulation systems be manipulated?"
+      ]
+    },
+    {
+      key: 'chinaVoterData',
+      keywords: ['china', 'chinese', 'beijing', 'prc', 'foreign acquisition'],
+      questions: [
+        "How did China acquire American voter data?",
+        "What voter data did foreign actors target?",
+        "Which states were affected by the voter data acquisition?",
+        "What was the scale of the voter data exposure?"
+      ]
+    },
+    {
+      key: 'michigan',
+      keywords: ['michigan', 'southfield', 'canvasser'],
+      questions: [
+        "What did the Michigan investigation find?",
+        "Who were the subjects of the Michigan voter-registration investigation?",
+        "How were voters registered without their consent in Michigan?",
+        "What was the FBI's role in the Michigan investigation?"
+      ]
+    },
+    {
+      key: 'noncitizens',
+      keywords: ['noncitizen', 'non-citizen', 'alien', 'citizenship', 'naturaliz'],
+      questions: [
+        "What's the finding on noncitizens on voter rolls?",
+        "How many noncitizens were found on state voter rolls?",
+        "Which states were examined for noncitizen registration?",
+        "How are noncitizen registrations typically discovered?"
+      ]
+    }
+  ];
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  // LlamaCloud's chat endpoint buffers the whole answer server-side and delivers it
+  // in one burst rather than streaming token-by-token (confirmed by direct timing
+  // tests — see README), so the wait is a single opaque gap of ~15-20s. Cycling
+  // status phrases make that gap feel active instead of dead air.
+  var THINKING_PHRASES = [
+    "Searching the declassified archive…",
+    "Cross-referencing FBI records…",
+    "Reviewing redacted excerpts…",
+    "Checking CISA technical assessments…",
+    "Scanning voter registration files…",
+    "Consulting investigative memos…",
+    "Pulling relevant passages…",
+    "Reviewing intelligence community reports…",
+    "Verifying source documents…",
+    "Assembling the findings…"
+  ];
+  var thinkingIntervalId = null;
+
+  function startThinkingPhrases() {
+    stopThinkingPhrases();
+    var queue = shuffle(THINKING_PHRASES);
+    var idx = 0;
+    function apply() {
+      var node = aaThread.querySelector('.aa-think-text');
+      if (node) node.textContent = queue[idx];
+    }
+    apply();
+    thinkingIntervalId = setInterval(function () {
+      idx++;
+      if (idx >= queue.length) { queue = shuffle(THINKING_PHRASES); idx = 0; }
+      apply();
+    }, 1900);
+  }
+
+  function stopThinkingPhrases() {
+    if (thinkingIntervalId) {
+      clearInterval(thinkingIntervalId);
+      thinkingIntervalId = null;
+    }
+  }
+
+  // 2 follow-ups from the category the exchange was about, plus 2 alternate paths
+  // each drawn from a different other category (two genuinely different forks).
+  function pickFollowups(userQuestion, answerText) {
+    var combined = (userQuestion + ' ' + answerText).toLowerCase();
+    var scores = CATEGORIES.map(function (cat) {
+      var score = 0;
+      cat.keywords.forEach(function (kw) {
+        if (combined.indexOf(kw) !== -1) score++;
+      });
+      return score;
+    });
+    var bestIdx = 0;
+    for (var i = 1; i < scores.length; i++) {
+      if (scores[i] > scores[bestIdx]) bestIdx = i;
+    }
+    if (scores[bestIdx] === 0) {
+      bestIdx = (userQuestion.length + answerText.length) % CATEGORIES.length;
+    }
+
+    var current = CATEGORIES[bestIdx];
+    var userQLower = userQuestion.trim().toLowerCase();
+    var sameCategoryPicks = shuffle(current.questions.filter(function (q) {
+      return q.toLowerCase() !== userQLower;
+    })).slice(0, 2);
+
+    var otherCategories = shuffle(CATEGORIES.filter(function (c) { return c.key !== current.key; }));
+    var newPathPicks = otherCategories.slice(0, 2).map(function (cat) {
+      return cat.questions[Math.floor(Math.random() * cat.questions.length)];
+    });
+
+    return { continueDown: sameCategoryPicks, newPath: newPathPicks };
+  }
+
+  var state = {
+    expanded: false,
+    started: false,
+    thinking: false,
+    input: '',
+    messages: [] // {role:'user'|'bot', text}
+  };
+
+  var bannerWrap = document.getElementById('bannerWrap');
+  var chatPad = document.getElementById('chatPad');
+  var expandBtn = document.getElementById('expandBtn');
+  var expandIconOpen = document.getElementById('expandIconOpen');
+  var expandIconClose = document.getElementById('expandIconClose');
+  var aaScroll = document.getElementById('aaScroll');
+  var aaThread = document.getElementById('aaThread');
+  var aaInput = document.getElementById('aaInput');
+  var aaSend = document.getElementById('aaSend');
+
+  function el(tag, className, text) {
+    var e = document.createElement(tag);
+    if (className) e.className = className;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function mdInline(s) {
+    return s
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/\*(.+?)\*/g, '<i>$1</i>');
+  }
+
+  // Minimal block-level markdown: paragraphs, #/##/### headings, and -/* bullet
+  // lists. The document-analyst persona reliably produces these; user chat
+  // bubbles are rendered as plain escaped text (no markdown), so this only
+  // runs on assistant messages.
+  function mdToHtml(raw) {
+    var text = raw
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    var lines = text.split('\n');
+    var html = '';
+    var para = [];
+
+    function flushPara() {
+      if (para.length) {
+        html += '<p>' + para.map(mdInline).join('<br>') + '</p>';
+        para = [];
+      }
+    }
+
+    var i = 0;
+    while (i < lines.length) {
+      var trimmed = lines[i].trim();
+      var headingMatch = trimmed.match(/^(#{1,3})\s+(.*)$/);
+
+      if (headingMatch) {
+        flushPara();
+        var level = headingMatch[1].length + 2; // # -> h3, ## -> h4, ### -> h5
+        html += '<h' + level + ' class="aa-md-h">' + mdInline(headingMatch[2]) + '</h' + level + '>';
+        i++;
+        continue;
+      }
+
+      if (/^[-*]\s+/.test(trimmed)) {
+        flushPara();
+        var items = [];
+        while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) {
+          items.push('<li>' + mdInline(lines[i].trim().replace(/^[-*]\s+/, '')) + '</li>');
+          i++;
+        }
+        html += '<ul class="aa-md-ul">' + items.join('') + '</ul>';
+        continue;
+      }
+
+      if (trimmed === '') {
+        flushPara();
+        i++;
+        continue;
+      }
+
+      para.push(lines[i]);
+      i++;
+    }
+    flushPara();
+    return html;
+  }
+
+  function renderExpand() {
+    bannerWrap.classList.toggle('ei-expanded', state.expanded);
+    chatPad.classList.toggle('ei-expanded', state.expanded);
+    expandIconOpen.style.display = state.expanded ? 'none' : '';
+    expandIconClose.style.display = state.expanded ? '' : 'none';
+  }
+
+  function renderSend() {
+    var active = state.input.trim().length > 0 && !state.thinking;
+    aaSend.classList.toggle('aa-send-active', active);
+  }
+
+  function renderThread() {
+    aaThread.innerHTML = '';
+
+    var all = [{ role: 'bot', text: WELCOME_TEXT }].concat(state.messages);
+
+    all.forEach(function (m) {
+      var row = el('div', 'aa-row' + (m.role === 'user' ? ' aa-user' : ''));
+      if (m.role === 'bot') {
+        row.appendChild(el('div', 'aa-dot'));
+      }
+      var col = el('div', 'aa-col');
+      var bubble = el('div', m.role === 'bot' ? 'aa-bubble-bot' : 'aa-bubble-user');
+      bubble.innerHTML = mdToHtml(m.text);
+      col.appendChild(bubble);
+
+      row.appendChild(col);
+      aaThread.appendChild(row);
+    });
+
+    if (!state.started) {
+      var chipsWrap = el('div', 'aa-chips');
+      SUGGESTIONS.forEach(function (s) {
+        var chip = el('button', 'aa-chip', s);
+        chip.addEventListener('click', function () { send(s); });
+        chipsWrap.appendChild(chip);
+      });
+      aaThread.appendChild(chipsWrap);
+    } else if (!state.thinking) {
+      var lastBotMsg = null;
+      for (var bi = state.messages.length - 1; bi >= 0; bi--) {
+        if (state.messages[bi].role === 'bot') { lastBotMsg = state.messages[bi]; break; }
+      }
+      if (lastBotMsg && lastBotMsg.followups) {
+        var fu = lastBotMsg.followups;
+        var pathsWrap = el('div', 'aa-paths');
+
+        var continueGroup = el('div', 'aa-path-group aa-path-group--continue');
+        continueGroup.appendChild(el('div', 'aa-path-label', 'Continue down this path…'));
+        fu.continueDown.forEach(function (s) {
+          var chip = el('button', 'aa-chip', s);
+          chip.addEventListener('click', function () { send(s); });
+          continueGroup.appendChild(chip);
+        });
+        pathsWrap.appendChild(continueGroup);
+
+        var newPathGroup = el('div', 'aa-path-group aa-path-group--new');
+        newPathGroup.appendChild(el('div', 'aa-path-label', 'Or choose a new path…'));
+        fu.newPath.forEach(function (s) {
+          var chip = el('button', 'aa-chip', s);
+          chip.addEventListener('click', function () { send(s); });
+          newPathGroup.appendChild(chip);
+        });
+        pathsWrap.appendChild(newPathGroup);
+
+        aaThread.appendChild(pathsWrap);
+      }
+    }
+
+    if (state.thinking) {
+      var trow = el('div', 'aa-think-row');
+      trow.appendChild(el('div', 'aa-dot'));
+      trow.appendChild(el('div', 'aa-think-text', 'Thinking…'));
+      aaThread.appendChild(trow);
+    }
+  }
+
+  function render() {
+    renderExpand();
+    renderSend();
+    renderThread();
+  }
+
+  // Scrolls so the current exchange's question lands at the top of the scroll
+  // view, with its answer starting right below — rather than snapping to the
+  // bottom past a long response, or anchoring on the answer alone with no
+  // visible context for what it's answering.
+  function scrollQuestionToTop() {
+    var rows = aaThread.querySelectorAll('.aa-row');
+    var row = rows[rows.length - 2] || rows[rows.length - 1];
+    if (row) row.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  async function send(raw) {
+    var text = (typeof raw === 'string' ? raw : aaInput.value).trim();
+    if (!text || state.thinking) return;
+
+    var FALLBACK_TEXT = "Sorry — I'm having trouble reaching the document archive right now. Give it a moment and try again.";
+    var hadError = false;
+
+    state.started = true;
+    state.input = '';
+    aaInput.value = '';
+    aaInput.style.height = 'auto';
+    state.messages.push({ role: 'user', text: text });
+
+    var botMsg = { role: 'bot', text: '' };
+    state.messages.push(botMsg);
+
+    state.thinking = true;
+    render();
+    scrollQuestionToTop();
+    startThinkingPhrases();
+
+    var bubbleEl = null;
+    var firstChunkSeen = false;
+
+    function attachBubbleRefs() {
+      var rows = aaThread.querySelectorAll('.aa-row');
+      var row = rows[rows.length - 1];
+      if (!row) return;
+      bubbleEl = row.querySelector('.aa-bubble-bot');
+    }
+
+    function handleFirstChunk() {
+      if (firstChunkSeen) return;
+      firstChunkSeen = true;
+      stopThinkingPhrases();
+      state.thinking = false;
+      render();
+      attachBubbleRefs();
+    }
+
+    try {
+      var res = await fetch('/.netlify/functions/ask-the-archive-ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: text,
+          history: state.messages.slice(0, -2).map(function (m) { return { role: m.role, text: m.text }; })
+        })
+      });
+      if (!res.ok) throw new Error('Request failed');
+
+      var reader = res.body.getReader();
+      var decoder = new TextDecoder();
+      var buffer = '';
+
+      while (true) {
+        var chunk = await reader.read();
+        if (chunk.done) break;
+        buffer += decoder.decode(chunk.value, { stream: true });
+        var lines = buffer.split('\n');
+        buffer = lines.pop();
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].trim();
+          if (!line) continue;
+          var parsed;
+          try { parsed = JSON.parse(line); } catch (e) { continue; }
+
+          if (parsed.type === 'delta') {
+            handleFirstChunk();
+            botMsg.text += parsed.text;
+            if (bubbleEl) bubbleEl.innerHTML = mdToHtml(botMsg.text);
+            aaScroll.scrollTop = aaScroll.scrollHeight;
+          } else if (parsed.type === 'error') {
+            handleFirstChunk();
+            hadError = true;
+            botMsg.text = FALLBACK_TEXT;
+            if (bubbleEl) bubbleEl.innerHTML = mdToHtml(botMsg.text);
+          }
+        }
+      }
+    } catch (err) {
+      hadError = true;
+      botMsg.text = FALLBACK_TEXT;
+    } finally {
+      stopThinkingPhrases();
+      if (!hadError && botMsg.text) {
+        botMsg.followups = pickFollowups(text, botMsg.text);
+      }
+      state.thinking = false;
+      render();
+      scrollQuestionToTop();
+    }
+  }
+
+  expandBtn.addEventListener('click', function () {
+    state.expanded = !state.expanded;
+    renderExpand();
+  });
+
+  aaInput.addEventListener('input', function () {
+    state.input = aaInput.value;
+    aaInput.style.height = 'auto';
+    aaInput.style.height = Math.min(aaInput.scrollHeight, 120) + 'px';
+    renderSend();
+  });
+
+  aaInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  });
+
+  aaSend.addEventListener('click', function () { send(); });
+
+  render();
+})();
+</script>
+</body>
+</html>
