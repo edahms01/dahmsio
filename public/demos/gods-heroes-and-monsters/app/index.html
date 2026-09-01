@@ -171,8 +171,13 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
   border-radius:0;backdrop-filter:none;max-width:100%;padding:2px 0 2px 16px}
 .gm-panel.classic .gm-log{gap:20px}
 
-.gm-think{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
-  color:oklch(0.7 0.05 160);padding:2px 0}
+/* Waiting-state phrase line. Matches the AskTheArchive demo's treatment: a slow opacity
+   pulse (gm-think-pulse, same 1.6s ease-in-out as that app's aa-think-pulse) so the line
+   reads as "filling the time" rather than a hard tick. Dropped the uppercase + wide
+   letter-spacing that made it feel brash next to a calm answer. */
+.gm-think{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.03em;
+  color:oklch(0.7 0.05 160);padding:2px 0;animation:gm-think-pulse 1.6s ease-in-out infinite}
+@keyframes gm-think-pulse{0%,100%{opacity:.5}50%{opacity:1}}
 
 .gm-composer{display:flex;align-items:center;gap:12px;padding:15px 18px;margin:14px 16px 18px;
   border-radius:10px;background:oklch(0.15 0.014 268 / 0.80);border:1px solid oklch(0.40 0.02 268 / 0.70);backdrop-filter:blur(8px)}
@@ -185,6 +190,8 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
 .gm-footnote-corner{position:relative;z-index:2;padding:0 24px 24px;max-width:620px;margin:0 auto}
 .gm-footnote-label{margin:0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:oklch(0.78 0.06 160)}
 .gm-footnote-text{margin:6px 0 0;font-family:system-ui,sans-serif;font-size:12.5px;line-height:1.55;color:oklch(0.72 0.01 265)}
+.gm-credit{margin:8px 0 0;font-family:system-ui,sans-serif;font-size:12px;letter-spacing:.4px;color:oklch(0.62 0.012 265)}
+.gm-credit a{color:oklch(0.78 0.06 160);text-decoration:none;border-bottom:1px solid oklch(0.78 0.06 160 / 0.4)}
 @media (min-width:860px){
   .gm-footnote-corner{position:fixed;bottom:32px;right:32px;max-width:280px;padding:0;margin:0}
 }
@@ -261,6 +268,7 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
 <div class="gm-footnote-corner">
   <p class="gm-footnote-label">About this demo</p>
   <p class="gm-footnote-text">Answers are drawn only from Bulfinch's Age of Fable (1855, public domain). A portfolio demo. Expect the occasional rough edge.</p>
+  <p class="gm-credit">Built by <a href="https://www.dahms.io/" target="_blank" rel="noopener">DahmsIO</a></p>
 </div>
 
 <script>
@@ -422,7 +430,7 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
       idx++;
       if (idx >= queue.length) { queue = shuffle(THINKING_PHRASES); idx = 0; }
       apply();
-    }, 1800);
+    }, 1900);
   }
 
   function stopThinkingPhrases() {

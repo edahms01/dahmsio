@@ -41,7 +41,7 @@ export const HERO = {
   screenshot: "/images/demos/gods-heroes-and-monsters-screenshot.jpg",
   screenshotAlt:
     "The Gods, Heroes, and Monsters chat app: its title, tagline, and starter questions over a constellation backdrop.",
-  screenshotLabel: "fables-ai.app",
+  screenshotLabel: "fables-ai.io",
 };
 
 export const PROBLEM = {
