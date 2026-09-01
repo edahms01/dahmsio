@@ -10,7 +10,7 @@
 <meta name="description" content="Ask and the Old Gods will answer. A chat guide to Bulfinch's Age of Fable, drawn from Greek, Roman, and Norse mythology.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:ital,wght@0,400;1,400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
 html,body{margin:0;min-height:100%;background:oklch(0.12 0.016 270);color:oklch(0.95 0.012 265);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 *{box-sizing:border-box}
@@ -106,9 +106,11 @@ body.expanded .gm-inner{max-width:920px}
 .gm-panel-head{display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:0 0 6px}
 /* Bubbles mode: the conversation area scrolls once it gets long (Classic mode
    sets its own taller/flex overrides below). */
-.gm-scroll{padding:6px 0;max-height:56vh;overflow-y:auto}
-.gm-scroll::-webkit-scrollbar{width:6px}
-.gm-scroll::-webkit-scrollbar-thumb{background:oklch(0.4 0.02 268 / 0.6);border-radius:6px}
+/* Bubbles mode hides the scrollbar entirely (content still scrolls by wheel / trackpad /
+   touch, and the log auto-scrolls to the newest message). Classic mode re-enables a thin
+   one below. */
+.gm-scroll{padding:6px 0;max-height:56vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.gm-scroll::-webkit-scrollbar{width:0;height:0;display:none}
 body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
 .gm-log{display:flex;flex-direction:column;gap:14px}
 
@@ -158,8 +160,8 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
   border-top:2px solid oklch(0.72 0.09 165);border-radius:14px;overflow:hidden;
   box-shadow:0 30px 80px rgba(0,0,0,0.5),0 8px 24px rgba(0,0,0,0.35);backdrop-filter:blur(10px)}
 .gm-panel.classic .gm-panel-head{padding:12px 16px 8px}
-.gm-panel.classic .gm-scroll{max-height:60vh;overflow-y:auto;padding:8px 18px}
-.gm-panel.classic .gm-scroll::-webkit-scrollbar{width:6px}
+.gm-panel.classic .gm-scroll{max-height:60vh;overflow-y:auto;padding:8px 18px;scrollbar-width:thin;-ms-overflow-style:auto}
+.gm-panel.classic .gm-scroll::-webkit-scrollbar{width:6px;height:6px;display:block}
 .gm-panel.classic .gm-scroll::-webkit-scrollbar-thumb{background:oklch(0.4 0.02 268 / 0.6);border-radius:6px}
 .gm-panel.classic .gm-composer{margin:8px 16px 16px}
 
@@ -175,7 +177,7 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
    pulse (gm-think-pulse, same 1.6s ease-in-out as that app's aa-think-pulse) so the line
    reads as "filling the time" rather than a hard tick. Dropped the uppercase + wide
    letter-spacing that made it feel brash next to a calm answer. */
-.gm-think{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.03em;
+.gm-think{font-family:'IBM Plex Mono',monospace;font-style:italic;font-size:12px;letter-spacing:0.03em;
   color:oklch(0.7 0.05 160);padding:2px 0;animation:gm-think-pulse 1.6s ease-in-out infinite}
 @keyframes gm-think-pulse{0%,100%{opacity:.5}50%{opacity:1}}
 
