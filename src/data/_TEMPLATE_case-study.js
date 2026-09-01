@@ -10,8 +10,15 @@
 //      repoint the import to your new data module.
 //   4. Add   { path: ROUTE_PATHS.<key>, element: <Name /> }   to routes in src/App.jsx.
 //   5. Add a card object to DEMOS in src/data/demos.js (skip if no Technology-page card).
-//   6. Add  public/images/demos/<slug>-screenshot.jpg  (hero graphic + card thumbnail).
-//   7. DEMO ONLY: deploy the app to  public/demos/<slug>/app/  so APP_PATH resolves.
+//      Its `thumbnail` is the CARD image (6b), not the hero screenshot.
+//   6. Add TWO images to public/images/demos/ (see _TEMPLATE_case-study.md "Hero & card
+//      images" for the crop rules — they are not the same file):
+//        6a. <slug>-screenshot.jpg  — the hero graphic (goes in the window frame).
+//        6b. <slug>-card.jpg        — the Technology-page card, a 5:2 strip of the app's
+//                                     title + blurb.
+//   7. DEMO ONLY: deploy the app to  public/demos/<slug>/app/  so APP_PATH resolves. Its
+//      index.html also needs a noindex meta and a "Back to the case study" link; only if it
+//      needs a server-side secret, a demo-namespaced Netlify Edge Function. See the .md.
 //
 // Fill in every TODO. Delete the DEMO-ONLY block for a client case study.
 // Style rules: company voice (we/our/us), plain language, pain-point-led,
@@ -54,15 +61,21 @@ export const HERO = {
     "TODO one paragraph, ~45-75 words. Name the reader's version of the problem, " +
     "then the payoff. Generalise past this specific example.",
 
-  // Hero graphic. Shown in the site window frame (DemoScreenshotFrame).
+  // Hero graphic (NOT the card — that's <slug>-card.jpg in demos.js). Shown in the site
+  // window frame by DemoScreenshotFrame. Keep app content clear of the far left/right
+  // edges: the frame is fixed-height and crops the SIDES. See the .md.
   screenshot: "/images/demos/TODO-slug-screenshot.jpg",
   screenshotAlt: "TODO real alt text describing what is in the image.",
 
-  // ---- DEMO ONLY (delete all three for a client case study) ----
-  screenshotLabel: "TODO-fake-domain.app",   // text in the window chrome bar
+  // ---- DEMO ONLY (delete for a client case study) ----
+  // Optional: px height of the frame's screenshot area, overriding DemoScreenshotFrame's
+  // 524 default. Lower it if the window's bottom edge sits below the app's content (e.g.
+  // 490). Shorten the FRAME here, never crop the image.
+  screenshotHeight: undefined,
+  screenshotLabel: "TODO-name.io",   // window chrome bar. Site convention: <name>.io
   appPath: APP_PATH,
   tryItLabel: "Try it now",
-  // -------------------------------------------------------------
+  // ---------------------------------------------------
 };
 
 // ---- BODY SECTIONS — headings are FIXED, do not edit the `heading` strings ----

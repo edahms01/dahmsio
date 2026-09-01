@@ -5,6 +5,7 @@ import Consulting from "./pages/Consulting.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import GodsHeroesAndMonsters from "./pages/demos/GodsHeroesAndMonsters.jsx";
+import AskTheArchive from "./pages/demos/AskTheArchive.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { ROUTE_PATHS } from "./routes.js";
 
@@ -25,6 +26,7 @@ export const routes = [
   { path: ROUTE_PATHS.about, element: <About /> },
   { path: ROUTE_PATHS.contact, element: <Contact /> },
   { path: ROUTE_PATHS.demoGodsHeroesMonsters, element: <GodsHeroesAndMonsters /> },
+  { path: ROUTE_PATHS.askTheArchive, element: <AskTheArchive /> },
   { path: "/404/", element: <NotFound /> },
   { path: "*", element: <NotFound /> },
 ];

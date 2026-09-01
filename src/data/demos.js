@@ -12,6 +12,14 @@ export const DEMOS = [
     title: "Gods, Heroes, and Monsters",
     summary:
       "Ask about any god, hero, or monster and get an answer pulled straight from Bulfinch's 1855 telling of Greek, Roman, and Norse myth.",
-    thumbnail: "/images/demos/gods-heroes-and-monsters-screenshot.jpg",
+    thumbnail: "/images/demos/gods-heroes-and-monsters-card.jpg",
+  },
+  {
+    slug: "ask-the-archive",
+    category: "AI Chat · Knowledgebase",
+    title: "AskTheArchive",
+    summary:
+      "Search the declassified U.S. Election Integrity file release: electronic voting system vulnerabilities, foreign acquisition of voter data, voter-registration concerns, and noncitizens on voter rolls.",
+    thumbnail: "/images/demos/ask-the-archive-card.jpg",
   },
 ];

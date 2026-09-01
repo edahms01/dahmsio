@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, follow">
 <title>AskTheArchive — Election Integrity Document Archive</title>
 <meta name="description" content="Search the declassified Election Integrity document release. Independent research tool, not affiliated with any government agency.">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
 <style>
 html,body{height:100%;margin:0;background:#0a1428}
 *{box-sizing:border-box}
@@ -106,9 +106,26 @@ html,body{height:100%;margin:0;background:#0a1428}
 .aa-input-wrap textarea::placeholder{color:rgba(238,241,246,0.35)}
 .aa-send{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:none;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;cursor:default;background:var(--surface2);color:var(--dim2)}
 .aa-send.aa-send-active{cursor:pointer;background:var(--accent);color:#0a1428}
+
+/* Deliberately the DahmsIO site's display font (Space Grotesk), not the app's Inter/Source
+   Serif - this is site chrome pointing back into the site, so it reads in the site's voice.
+   Same link, position, and behaviour as the Gods/Heroes demo; colour follows this app's
+   gold accent the way that one follows its green. */
+.ei-back{position:fixed;top:22px;left:24px;z-index:10;display:inline-flex;align-items:center;gap:9px;
+  font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:500;font-size:12.5px;letter-spacing:0.01em;
+  color:#c9a227;text-decoration:none;padding:6px 6px 6px 2px;transition:color .15s ease}
+.ei-back:hover{color:#f2eee0}
+.ei-back-arrow{font-size:15px;line-height:1}
+.ei-back-icon{display:block;width:16px;height:16px}
+@media (max-width:640px){.ei-back{top:14px;left:12px;font-size:11.5px;gap:7px}}
 </style>
 </head>
 <body>
+<a class="ei-back" href="/demos/ask-the-archive/">
+  <span class="ei-back-arrow" aria-hidden="true">&larr;</span>
+  <img class="ei-back-icon" src="/favicon.svg" alt="" width="16" height="16">
+  <span class="ei-back-label">Back to the case study</span>
+</a>
 <div class="ei-app">
   <div class="ei-sky"></div>
 

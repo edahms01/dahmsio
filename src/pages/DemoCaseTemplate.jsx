@@ -46,6 +46,7 @@ export default function DemoCaseTemplate({
             src={hero.screenshot}
             alt={hero.screenshotAlt}
             label={hero.screenshotLabel}
+            shotHeight={hero.screenshotHeight}
           />
         }
       >
