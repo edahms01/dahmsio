@@ -427,7 +427,7 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
   var gmInput = document.getElementById('gmInput');
   var gmSend = document.getElementById('gmSend');
 
-  var state = { started: false, thinking: false, expanded: false, docked: false, messages: [] };
+  var state = { started: false, thinking: false, revealing: false, expanded: false, docked: false, messages: [] };
   var thinkingIntervalId = null;
 
   function el(tag, cls, text) {
@@ -485,7 +485,7 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
   }
 
   function renderSend() {
-    gmSend.disabled = gmInput.value.trim().length === 0 || state.thinking;
+    gmSend.disabled = gmInput.value.trim().length === 0 || state.thinking || state.revealing;
   }
 
   function render() {
@@ -552,9 +552,24 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
     if (row) row.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
+  // The RAG backend buffers each answer and returns it in one or a few big
+  // bursts, not token-by-token — writing every delta straight to the DOM just
+  // slams a wall of text in. Instead we accumulate deltas into `target` and let
+  // a timer "type" it into the bubble, so the answer reads as if it's being
+  // written. Respects prefers-reduced-motion.
+  var REVEAL_TICK_MS = 30;
+  var prefersReducedMotion = !!(window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  // Drop a dangling **bold** / *italic* marker off a partial slice so half-open
+  // emphasis doesn't flash literal asterisks while the text is still arriving.
+  function tidyPartial(s) {
+    return s.replace(/\*\*([^*]*)$/, '$1').replace(/(^|[^*])\*([^*]*)$/, '$1$2');
+  }
+
   async function send(raw) {
     var text = (typeof raw === 'string' ? raw : gmInput.value).trim();
-    if (!text || state.thinking) return;
+    if (!text || state.thinking || state.revealing) return;
 
     var hadError = false;
     var isFirstQuestion = state.messages.length === 0;
@@ -572,6 +587,10 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
 
     var bubbleEl = null;
     var firstChunkSeen = false;
+    var target = '';       // full answer text received so far
+    var shownLen = 0;      // how much of it the reveal has painted in
+    var streamDone = false;
+    var revealTimer = null;
 
     function attachBubbleRefs() {
       var rows = gmLog.querySelectorAll('.gm-row');
@@ -579,13 +598,51 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
       if (row) bubbleEl = row.querySelector('.gm-bubble-bot');
     }
 
+    function paint() {
+      if (!bubbleEl) attachBubbleRefs();
+      botMsg.text = target.slice(0, shownLen);
+      if (bubbleEl) bubbleEl.innerHTML = mdToHtml(tidyPartial(botMsg.text));
+      gmScroll.scrollTop = gmScroll.scrollHeight;
+    }
+
+    function revealTick() {
+      if (shownLen < target.length) {
+        // Slice sized to the whole answer so it lands in ~1.3-1.5s regardless of
+        // length, then extended to the next whitespace so no word appears
+        // half-written.
+        var step = Math.max(6, Math.ceil(target.length / 45));
+        var end = Math.min(target.length, shownLen + step);
+        while (end < target.length && !/\s/.test(target.charAt(end))) end++;
+        shownLen = end;
+        paint();
+      } else if (streamDone) {
+        finishReveal();
+      }
+    }
+
+    function finishReveal() {
+      if (revealTimer) { clearInterval(revealTimer); revealTimer = null; }
+      state.revealing = false;
+      botMsg.text = target;
+      if (!hadError && target) botMsg.followups = pickFollowups(text, target);
+      render();
+      scrollQuestionToTop();
+    }
+
+    // First real chunk: clear the waiting state and settle the layout (dock the
+    // masthead, expand on the first answer) *before* the text starts writing in,
+    // then kick off the paced reveal.
     function handleFirstChunk() {
       if (firstChunkSeen) return;
       firstChunkSeen = true;
       stopThinkingPhrases();
       state.thinking = false;
+      state.revealing = true;
+      setDocked();
+      if (isFirstQuestion && !state.expanded) setExpanded(true);
       render();
       attachBubbleRefs();
+      if (!prefersReducedMotion) revealTimer = setInterval(revealTick, REVEAL_TICK_MS);
     }
 
     try {
@@ -618,11 +675,9 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
 
           if (parsed.type === 'delta') {
             handleFirstChunk();
-            botMsg.text += parsed.text;
-            if (bubbleEl) bubbleEl.innerHTML = mdToHtml(botMsg.text);
-            gmScroll.scrollTop = gmScroll.scrollHeight;
+            target += parsed.text;
+            if (prefersReducedMotion) { shownLen = target.length; paint(); }
           } else if (parsed.type === 'error') {
-            handleFirstChunk();
             hadError = true;
             console.error('[ask] stream error:', parsed.error);
           }
@@ -632,15 +687,25 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
       hadError = true;
       console.error('[ask] request failed:', err);
     } finally {
-      if (!firstChunkSeen) { stopThinkingPhrases(); state.thinking = false; }
-      if (hadError && !botMsg.text) botMsg.text = FALLBACK_TEXT;
-      // Any fully-returned response docks the masthead left, for every theme.
-      if (botMsg.text) setDocked();
-      if (!hadError && botMsg.text) {
-        botMsg.followups = pickFollowups(text, botMsg.text);
-        if (isFirstQuestion && !state.expanded) setExpanded(true);
+      streamDone = true;
+
+      if (!firstChunkSeen) {
+        // No text ever arrived — show the fallback with no reveal.
+        stopThinkingPhrases();
+        state.thinking = false;
+        state.revealing = false;
+        botMsg.text = target || FALLBACK_TEXT;
+        setDocked();
+        render();
+        scrollQuestionToTop();
+      } else {
+        if (hadError && !target) target = FALLBACK_TEXT;
+        // Close out now if the reveal has already caught up (or is disabled);
+        // otherwise revealTick() finishes when it reaches the end.
+        if (prefersReducedMotion || !revealTimer || shownLen >= target.length) {
+          finishReveal();
+        }
       }
-      render();
     }
   }
 
