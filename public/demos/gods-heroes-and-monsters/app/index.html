@@ -477,7 +477,7 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
       idx++;
       if (idx >= queue.length) { queue = shuffle(THINKING_PHRASES); idx = 0; }
       apply();
-    }, 1900);
+    }, 2850);
   }
 
   function stopThinkingPhrases() {
@@ -557,7 +557,11 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
   // slams a wall of text in. Instead we accumulate deltas into `target` and let
   // a timer "type" it into the bubble, so the answer reads as if it's being
   // written. Respects prefers-reduced-motion.
-  var REVEAL_TICK_MS = 30;
+  var REVEAL_TICK_MS = 50;
+  // Longest a reveal is allowed to run. Short answers type out at the constant
+  // base rate (a word or so per tick); only answers long enough to exceed this
+  // ceiling get sped up to fit inside it.
+  var REVEAL_MAX_MS = 10000;
   var prefersReducedMotion = !!(window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
@@ -607,10 +611,11 @@ body.expanded:not(.classic-active) .gm-scroll{max-height:68vh}
 
     function revealTick() {
       if (shownLen < target.length) {
-        // Slice sized to the whole answer so it lands in ~1.3-1.5s regardless of
-        // length, then extended to the next whitespace so no word appears
-        // half-written.
-        var step = Math.max(6, Math.ceil(target.length / 45));
+        // Constant base rate (~3 chars/tick — roughly a word per tick once the
+        // whitespace snap below rounds it out), so a longer answer genuinely
+        // takes longer to type. Only speeds up if the answer is long enough
+        // that the base rate would run past REVEAL_MAX_MS.
+        var step = Math.max(3, Math.ceil(target.length / (REVEAL_MAX_MS / REVEAL_TICK_MS)));
         var end = Math.min(target.length, shownLen + step);
         while (end < target.length && !/\s/.test(target.charAt(end))) end++;
         shownLen = end;
