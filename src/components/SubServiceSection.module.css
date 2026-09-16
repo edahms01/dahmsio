@@ -43,11 +43,16 @@
   margin-right: auto;
 }
 
+/* 90% width, centered — narrower than the full section so the accordion rows read as part of
+   the centered heading/intro above them, on Data/Technology/Consulting's shared first section. */
 .accordion {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-top: 44px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Card treatment ported straight from CapabilityCard so the accordion reads as native to the
