@@ -20,7 +20,7 @@ export const MOCKUP = {
     { from: "them", text: "Hi, we're looking to modernize our data stack before Q3. Where would you start?" },
     {
       from: "us",
-      text: "Great question. A specialist will follow up shortly to walk through it with you.",
+      text: "A specialist will follow up shortly to walk through it with you.",
       meta: "✓✓ Delivered",
     },
   ],

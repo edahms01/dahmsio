@@ -42,12 +42,7 @@ export default function DemoCaseTemplate({
       <HeroSection
         mockupClassName={styles.demoMockup}
         mockup={
-          <DemoScreenshotFrame
-            src={hero.screenshot}
-            alt={hero.screenshotAlt}
-            label={hero.screenshotLabel}
-            shotHeight={hero.screenshotHeight}
-          />
+          <DemoScreenshotFrame src={hero.screenshot} alt={hero.screenshotAlt} label={hero.screenshotLabel} />
         }
       >
         <HeroEyebrow>{hero.eyebrow}</HeroEyebrow>

@@ -1,15 +1,10 @@
-/* The screenshot sits inside AppWindowMockup (the site's shared hero window). It's a tall
-   portrait capture; this crop keeps the app's title through the chat input and the
-   Bubbles/Classic view toggle beneath it in frame — the input and toggle define the product
-   at a glance. Fixed px, not a vh-relative clamp: at the max hero width the graphic column
-   is ~543px, so the cover scale is ~0.45 and ~524px of frame is needed to reach the toggle.
-   A vh clamp collapsed toward its floor on shorter windows and re-cropped the bottom out.
-   The graphic is a little taller than the other pages' hero mockups as a result — a
-   deliberate trade for showing the full chat affordance. */
+/* The screenshot sits inside AppWindowMockup (the site's shared hero window). height:auto at
+   width:100% sizes the image at its own intrinsic aspect ratio, so the window's bottom edge
+   always lands exactly at the bottom of the screenshot's visible content — no fixed height
+   to tune per demo, and no cropping or letterbox gap regardless of how tall or wide a given
+   app's screenshot is. */
 .shot {
   display: block;
   width: 100%;
-  height: 524px;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
 }

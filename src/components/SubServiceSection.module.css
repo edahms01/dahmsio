@@ -11,12 +11,36 @@
   max-width: 26ch;
 }
 
+/* Centers the group eyebrow + heading, matching every other centered section head across the
+   site. .heading keeps its 26ch cap for readability at this size, so it needs its own
+   margin:auto to actually center as a block under text-align alone. */
+.groupHeadCentered {
+  text-align: center;
+}
+
+.groupHeadCentered .heading {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .intro {
   font-size: clamp(16px, 1.6vw, 18px);
   line-height: 1.65;
   color: var(--text-secondary);
   max-width: 62ch;
   margin: 20px 0 0;
+}
+
+/* Centers the intro paragraph block under the centered heading above, while keeping the
+   paragraph text itself left-aligned for readability (ragged-center text is harder to read
+   across multiple lines than a short centered heading is). */
+.introCentered {
+  text-align: left;
+}
+
+.introCentered .intro {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .accordion {

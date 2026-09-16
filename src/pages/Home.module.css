@@ -133,9 +133,23 @@
   padding: 130px var(--side-padding);
 }
 
+/* Centers the eyebrow + heading, matching the same treatment on About/Data/Technology/
+   Consulting's first section. */
+.sectionHeadCentered {
+  text-align: center;
+}
+
 .servicesHeading {
   font-size: clamp(32px, 4.4vw, 56px);
   max-width: 20ch;
+}
+
+/* Compound selector needed here, not a plain margin rule on .servicesHeading: global.css's
+   .sectionHeading sets margin:0 at the same specificity, and source order isn't reliable
+   across separate stylesheets. */
+.sectionHeadCentered .servicesHeading {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .servicesGrid {

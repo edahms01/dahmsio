@@ -49,32 +49,14 @@ export const MISSION = {
   eyebrow: "Our mission",
   textPrefix: "We make advanced data & technology",
   textAccent: "accessible to businesses of any size",
-  textSuffix: ", bridging the gap between complex tech and real business impact.",
+  textSuffix: ", turning complex tech directly into business impact.",
   linkLabel: "More on our mission →",
 };
 
 export const METHODOLOGY_EYEBROW = "How we work";
 export const METHODOLOGY_HEADING = "A methodology built around check-ins, not surprises.";
 export const METHODOLOGY_TEXT =
-  "Every project runs through a clear framework with collaboration points before each phase, so we can adapt fast when needs change and you always know exactly where things stand.";
-
-// Aligned to the sub-service names introduced in subservice-expansion-plan-v6.md, in each
-// page's own order (Data, Technology, Consulting Advisory, Consulting Talent).
-export const MARQUEE_ITEMS = [
-  "Data Foundations",
-  "Reporting & Dashboards",
-  "Analytics & Forecasting",
-  "Data Science & Machine Learning",
-  "Custom Software Development",
-  "Systems Integration",
-  "Workflow Automation",
-  "AI Implementation",
-  "Assessment & Audit",
-  "Strategy & Roadmap",
-  "Product & Delivery",
-  "Embedded Specialists",
-  "Interim Leadership",
-];
+  "Every project runs through a clear framework with check-ins before each phase, so we can adapt fast when needs change and you always know exactly where things stand.";
 
 export const SERVICES = [
   {

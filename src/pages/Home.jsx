@@ -4,14 +4,12 @@ import PageMeta from "../components/PageMeta.jsx";
 import NetworkCanvas from "../components/NetworkCanvas.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
-import Marquee from "../components/Marquee.jsx";
 import Reveal from "../components/Reveal.jsx";
 import FeatureCard from "../components/FeatureCard.jsx";
 import MethodologyStep from "../components/MethodologyStep.jsx";
 import {
   META,
   HERO,
-  MARQUEE_ITEMS,
   SERVICES,
   SERVICES_EYEBROW,
   SERVICES_HEADING,
@@ -57,7 +55,7 @@ export default function Home() {
       </header>
 
       <section id="services" className={styles.services}>
-        <Reveal>
+        <Reveal className={styles.sectionHeadCentered}>
           <div className="eyebrow">{SERVICES_EYEBROW}</div>
           <h2 className={`sectionHeading ${styles.servicesHeading}`}>{SERVICES_HEADING}</h2>
         </Reveal>
@@ -70,7 +68,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Marquee items={MARQUEE_ITEMS} />
 
       <section className={styles.mission}>
         <Reveal duration={900}>

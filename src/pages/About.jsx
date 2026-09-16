@@ -66,8 +66,11 @@ export default function About() {
             this wrapper (a previous 68ch cap here was removed) — "Enterprise capability,
             brought within reach." needs ~910px to sit on one line at this font size, and the
             section's own full width comfortably covers that; a ch cap belongs on flowing
-            paragraph prose, not a short headline like this one. */}
-        <Reveal>
+            paragraph prose, not a short headline like this one. Centered to match every other
+            section's eyebrow+heading treatment (Credibility, How We Work, Operating
+            Principles, Founder's Note) even though the body below stays in left-aligned
+            two-column prose. */}
+        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
           <div className="eyebrow" style={{ marginBottom: 14 }}>
             {BACKGROUND.eyebrow}
           </div>

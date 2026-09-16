@@ -103,9 +103,11 @@ export default function SubServiceSection({ groups, ctaLabel }) {
     <>
       {groups.map((group, groupIndex) => (
         <div className={styles.group} key={group.heading}>
-          <Reveal>
+          <Reveal className={styles.groupHeadCentered}>
             {group.eyebrow && <div className="eyebrow">{group.eyebrow}</div>}
             <h2 className={`sectionHeading ${styles.heading}`}>{group.heading}</h2>
+          </Reveal>
+          <Reveal className={styles.introCentered}>
             {group.paragraphs.map((paragraph) => (
               <p className={styles.intro} key={paragraph}>
                 {paragraph}

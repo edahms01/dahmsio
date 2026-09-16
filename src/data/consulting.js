@@ -165,7 +165,7 @@ export const SUBSERVICE_GROUPS = [
         slug: "/consulting/embedded-specialists/",
         title: "Embedded Specialists",
         outcome: "The right person on your team, for exactly as long as you need them.",
-        body: "Sometimes the gap isn't a decision, it's hands. We place analysts, engineers, or designers directly into your team, working alongside the people you already have rather than off in a separate shop. You get someone who shows up to your meetings and knows your systems, for the stretch of time the work actually requires, not a fixed headcount you're stuck with after it's done. They're not working in isolation either, when something calls for a second opinion or a harder problem needs another mind, they can bring it back to our wider network rather than guessing alone.",
+        body: "Sometimes the gap isn't a decision, it's hands. We place analysts, engineers, or designers directly into your team, working alongside the people you already have rather than off in a separate shop. You get someone who shows up to your meetings and knows your systems, for the stretch of time the work actually requires, not a fixed headcount you're stuck with after it's done. They're not working in isolation either. When a task calls for a second opinion or a harder problem needs a more experienced mind, they can bring it back to the network to ask for support.",
         symptoms: [
           "You have more work than people, but not enough to justify a full-time hire",
           "You need a specific skill, data engineering, design, development, that nobody on your team has right now",

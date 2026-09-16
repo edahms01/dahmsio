@@ -32,7 +32,7 @@ export const HERO = {
   eyebrow: "Demo",
   name: NAME,
   tagline: "Ask and the Old Gods will answer.",
-  body: "This one's built on Thomas Bulfinch's 1855 collection of Greek, Roman, and Norse myth. Point the same approach at your product manuals, your policy documents, or years of support tickets, and you get the same thing: a straight, sourced answer instead of a search bar that hands back forty results.",
+  body: "Built on Thomas Bulfinch's 1855 collection of Greek, Roman, and Norse myth. Point the same approach at your product manuals, your policy documents, or years of support tickets, and you get the same thing: a straight, sourced answer instead of a search bar that returns dozens of results you need to sort through.",
   tryItLabel: "Try it now",
   appPath: APP_PATH,
   // Hero graphic: a screenshot of the live app, shown in the site's window frame

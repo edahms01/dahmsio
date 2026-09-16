@@ -22,7 +22,7 @@ export const HERO = {
   heroPrefix: "Global experience.",
   heroAccent: "Local focus",
   heroSubcopy:
-    "We've spent our careers solving hard data and technology problems inside large, complex organizations. DahmsIO brings that same thinking to businesses that don't have an enterprise budget but deserve enterprise-level results.",
+    "We've spent our careers solving tough data and technology problems inside large, complex organizations. DahmsIO brings that same thinking to businesses that don't have an enterprise budget but deserve enterprise-level results.",
   primaryCtaLabel: "Get in touch",
 };
 
@@ -185,9 +185,9 @@ export const FOUNDERS_NOTE = {
   eyebrow: "Founder's Note",
   heading: "A note from our Founder",
   paragraphs: [
-    "I grew up in Westbrook, Maine and I've spent the last fifteen years in London, building data and technology solutions for some of the largest companies in the world.",
+    "I grew up in Westbrook, Maine and I've spent the last fifteen years in London, building data and technology solutions for large multinational companies.",
     "I've stayed hands-on the entire time, designing and shipping custom products, building data platforms and automations with engineers, and now building and implementing AI tools. I can tell you quickly and honestly what today's technology will do for your business and, just as usefully, what it won't.",
-    "I'm building DahmsIO because I want to bring that advanced global knowledge to the businesses driving local and regional economies. If you're running a business in New England, send us a message and let's talk about how data and technology can propel you to the next level.",
+    "I'm building DahmsIO because I want to bring that same experience to the businesses driving local and regional economies. If you're running a business in New England, send us a message and let's talk about how data and technology can close that gap for you.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one

@@ -4,8 +4,7 @@ import styles from "./DemoSection.module.css";
 import { EYEBROW } from "../data/demos.js";
 
 // One-liner under the heading, above the grid. Company voice, per website/CLAUDE.md.
-const INTRO =
-  "A few of the AI tools we've built. Same approach every time: point a knowledgebase at whatever source already exists, then just ask it questions.";
+const INTRO = "New software, connected systems, automated busywork, smarter tools. Here's a range of the problems we take on.";
 
 /**
  * The "Demos" block on the Technology page, rendered by InteriorPageTemplate just above the

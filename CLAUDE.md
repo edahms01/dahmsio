@@ -59,10 +59,12 @@ No industry-specific pages yet. The site is deliberately horizontal right now. D
   - Data via `hero.screenshot` (path under `public/images/demos/`) and `hero.screenshotAlt`
   - Hero and card use **two different images**: `<slug>-screenshot.jpg` (hero, framed) and
     `<slug>-card.jpg` (card thumbnail, a 5:2 strip of the app's title + blurb). Do not point
-    both at one file — the 5:2 card crop and the fixed-height framed hero crop need different
-    source shapes. Full mechanics in `src/data/_TEMPLATE_case-study.md`.
-  - Optional `hero.screenshotHeight` shortens the window frame (default 524, tuned for
-    Gods/Heroes) so its bottom edge meets a shorter app's screenshot.
+    both at one file — the card needs a 5:2 crop and the hero renders at the screenshot's own
+    aspect ratio, so they need different source shapes. Full mechanics in
+    `src/data/_TEMPLATE_case-study.md`.
+  - The hero screenshot renders at `width: 100%; height: auto` (its own intrinsic aspect
+    ratio), so the window frame's bottom edge always meets the screenshot's content exactly —
+    no per-demo height to tune, whatever the source image's proportions.
 
 ### Adding a New Demo
 Follow `src/data/_TEMPLATE_case-study.md` (full spec + checklist). In short:

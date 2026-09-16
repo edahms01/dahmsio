@@ -62,16 +62,13 @@ export const HERO = {
     "then the payoff. Generalise past this specific example.",
 
   // Hero graphic (NOT the card — that's <slug>-card.jpg in demos.js). Shown in the site
-  // window frame by DemoScreenshotFrame. Keep app content clear of the far left/right
-  // edges: the frame is fixed-height and crops the SIDES. See the .md.
+  // window frame by DemoScreenshotFrame, which renders it at its own intrinsic aspect ratio
+  // — the window's bottom edge always meets the screenshot's actual content, no per-demo
+  // height tuning needed. See the .md.
   screenshot: "/images/demos/TODO-slug-screenshot.jpg",
   screenshotAlt: "TODO real alt text describing what is in the image.",
 
   // ---- DEMO ONLY (delete for a client case study) ----
-  // Optional: px height of the frame's screenshot area, overriding DemoScreenshotFrame's
-  // 524 default. Lower it if the window's bottom edge sits below the app's content (e.g.
-  // 490). Shorten the FRAME here, never crop the image.
-  screenshotHeight: undefined,
   screenshotLabel: "TODO-name.io",   // window chrome bar. Site convention: <name>.io
   appPath: APP_PATH,
   tryItLabel: "Try it now",

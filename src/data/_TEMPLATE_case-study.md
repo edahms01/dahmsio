@@ -90,7 +90,6 @@ the Technology page.
 | `body` | One paragraph, ~45–75 words. Name the reader's version of the problem and the payoff. | see `demoGodsHeroesMonsters.js` |
 | `screenshot` | `/images/demos/<slug>-screenshot.jpg` — the **hero** image (not the card). Client case study: a photo, diagram, or result graphic instead. | |
 | `screenshotAlt` | Real alt text describing what's in the image. | |
-| `screenshotHeight` | **Demo only, optional.** px height of the window frame's screenshot area, overriding the `DemoScreenshotFrame` default of `524`. The default suits a taller app (Gods/Heroes has a control strip below its input). If the screenshot's content is shorter, the window's bottom edge floats below it in dead space — set a smaller value to pull the frame's bottom up to meet the content (AskTheArchive uses `490`). Shorten the **frame** here, never crop the image (see "Hero & card images"). | `490` |
 | `screenshotLabel` | Demo only: text in the window chrome bar. Site convention is `<name>.io`, echoing `dahms.io` (`roadmap.io`, `experts.io`, `revenue_dashboard.io`). Gods/Heroes' `fables-ai.app` predates that convention — don't copy it. Omit for client case studies. | `"ask-the-archive.io"` |
 | `appPath` | **Demo only.** `APP_PATH` const = `/demos/<slug>/app/`. Delete for client case studies. | |
 | `tryItLabel` | **Demo only.** Button text, e.g. `"Try it now"`. Delete for client case studies. | |
@@ -159,19 +158,16 @@ The card CSS (`DemoCard.module.css` `.thumb`) forces a **5:2 banner**, `object-f
 
 ### `<slug>-screenshot.jpg` — the hero
 
-Rendered by `DemoScreenshotFrame` inside the site window frame: `.shot` is a **fixed height**
-(`screenshotHeight`, default 524px), `object-fit: cover`, `object-position: top center`.
+Rendered by `DemoScreenshotFrame` inside the site window frame: `.shot` is `width: 100%;
+height: auto`, so the image renders at its own intrinsic aspect ratio and the window's
+bottom edge always meets the screenshot's actual content. No per-demo height to tune, and
+no cropping on any side, regardless of the image's proportions.
 
-- Height is the binding dimension, so the frame crops the **sides** to the hero column
-  width (~5px each side at the max width, more at narrower viewports). Keep the app's
-  content clear of the far left/right edges, or make sure the app's own background bleeds
-  there, so the side-crop removes margin and not text.
-- **Do not add side padding to fix side-cropping** — a wider image overflows the fixed-height
-  frame *more*, so it crops *more*. Counterintuitive but it bit us twice.
-- Aspect close to ~1:1 (slightly portrait is fine). Frame the part of the app that shows
-  what it does at a glance, top-anchored, like Gods/Heroes and AskTheArchive.
-- To remove dead space **below** the app, lower `screenshotHeight` (pull the frame's bottom
-  edge up). Never crop the image to do this — changing its aspect re-triggers side-cropping.
+- Whatever aspect ratio you export at is exactly what's shown — crop the source image itself
+  to frame the part of the app that shows what it does at a glance, top-anchored, like
+  Gods/Heroes and AskTheArchive.
+- ~1:1 to slightly portrait is a good target purely for how it balances against the hero
+  text column, not because of any frame constraint.
 
 ---
 
@@ -254,7 +250,6 @@ happen to be RAG chats, but nothing here assumes that.
 - [ ] Card added to `demos.js` (if it should appear on the Technology page), `thumbnail`
       pointing at `<slug>-card.jpg`
 - [ ] Both images exist: `<slug>-screenshot.jpg` (hero) and `<slug>-card.jpg` (card, 5:2)
-- [ ] `screenshotHeight` set if the window frame's bottom edge doesn't meet the screenshot
 - [ ] Demo only: app deployed at `public/demos/<slug>/app/`, `appPath` resolves
 - [ ] Demo app: `noindex` meta + "Back to the case study" link both present in its
       `index.html`; `fetch()` path matches its edge function's `config.path` (if it has one)

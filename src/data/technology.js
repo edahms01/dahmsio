@@ -33,7 +33,7 @@ export const SUBSERVICE_GROUPS = [
     heading: "Built, connected, automated, and made intelligent.",
     paragraphs: [
       "Build the software, connect it to what you already run, automate the manual work between them, then let AI sit on top. Each step makes the next one worth doing.",
-      "You don't need to start at the beginning. If you're already running plenty of systems and just need one piece added, a connection, an automation, or an AI layer. Tell us where you are and we'll start there.",
+      "You don't need to start at the beginning. If you're already running plenty of systems and just need one piece added (a connection, an automation, or an AI layer), tell us where you are and we'll start there.",
     ],
     numbered: true,
     items: [

@@ -30,7 +30,7 @@ export const HERO = {
   eyebrow: "Demo",
   name: NAME,
   tagline: "Ask the archive what the documents actually say.",
-  body: "This one runs on a batch of declassified U.S. government files, thousands of pages of reports, memos, and findings. Point the same setup at your contracts, your case files, or a decade of board minutes and it behaves the same way: ask in plain English, get an answer tied to what the records actually say, and nothing invented to fill a gap.",
+  body: "Built on a batch of declassified U.S. government files, thousands of pages of reports, memos, and findings. Point the same setup at your contracts, your case files, or a decade of board minutes and it behaves the same way: ask in plain English, get an answer tied to what the records actually say.",
   tryItLabel: "Try it now",
   appPath: APP_PATH,
   // Hero graphic: a screenshot of the live app, shown in the site's window frame
@@ -40,10 +40,6 @@ export const HERO = {
   screenshotAlt:
     "The AskTheArchive chat app: its title, a short description of the document set, and starter questions above a chat box, on a dark blue backdrop.",
   screenshotLabel: "ask-the-archive.io",
-  // Frame is shorter than the DemoScreenshotFrame default (524, tuned for the Gods/Heroes
-  // app and its view-toggle). This app ends at the chat input, so 490 pulls the window's
-  // bottom edge up to meet the screenshot instead of leaving a dead navy band.
-  screenshotHeight: 490,
 };
 
 export const PROBLEM = {
