@@ -187,7 +187,7 @@ export const FOUNDERS_NOTE = {
   paragraphs: [
     "I grew up in Westbrook, Maine and I've spent the last fifteen years in London, building data and technology solutions for large multinational companies.",
     "I've stayed hands-on the entire time, designing and shipping custom products, building data platforms and automations with engineers, and now building and implementing AI tools. I can tell you quickly and honestly what today's technology will do for your business and, just as usefully, what it won't.",
-    "I'm building DahmsIO because I want to bring that same experience to the businesses driving local and regional economies. If you're running a business in New England, send us a message and let's talk about how data and technology can close that gap for you.",
+    "I'm building DahmsIO because I want to bring that same experience to the businesses driving local and regional economies. If you're running a business and want help with progressing your data or technology usage, send us a message and let's talk about how we can close that gap for you.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one
