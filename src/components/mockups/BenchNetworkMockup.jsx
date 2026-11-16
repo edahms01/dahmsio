@@ -9,12 +9,12 @@ import styles from "./BenchNetworkMockup.module.css";
 // favor of one consistent color (.nodeLabel in the CSS module) after it read as an
 // inconsistency (some role titles grayer than others) rather than an intentional pattern.
 const SPECIALIST_LAYOUT = [
-  { x: 10, y: 7, codeColor: "var(--accent3)" },
-  { x: 34, y: 18, codeColor: "var(--accent3)" },
-  { x: 10, y: 33, codeColor: "var(--accent2)" },
+  { x: 10, y: 7, codeColor: "var(--accent)" },
+  { x: 34, y: 18, codeColor: "var(--accent)" },
+  { x: 10, y: 33, codeColor: "var(--accent)" },
   { x: 10, y: 59, codeColor: "var(--accent)" },
-  { x: 10, y: 83, codeColor: "var(--accent3)" },
-  { x: 34, y: 84, codeColor: "var(--accent2)" },
+  { x: 10, y: 83, codeColor: "var(--accent)" },
+  { x: 34, y: 84, codeColor: "var(--accent)" },
 ];
 
 const HUB = { x: 52, y: 48 };
@@ -23,11 +23,11 @@ const YOU = { x: 94, y: 48 };
 // Alternating solid/dashed strokes, cycling accent/accent3/accent2, matching the source.
 const SPOKE_STYLE = [
   { stroke: "var(--accent)", dash: false },
-  { stroke: "var(--accent3)", dash: true },
-  { stroke: "var(--accent2)", dash: false },
   { stroke: "var(--accent)", dash: true },
-  { stroke: "var(--accent3)", dash: false },
-  { stroke: "var(--accent2)", dash: true },
+  { stroke: "var(--accent)", dash: false },
+  { stroke: "var(--accent)", dash: true },
+  { stroke: "var(--accent)", dash: false },
+  { stroke: "var(--accent)", dash: true },
 ];
 
 export default function BenchNetworkMockup({ specialists, hub, chip, youLabel }) {
@@ -48,7 +48,7 @@ export default function BenchNetworkMockup({ specialists, hub, chip, youLabel })
             className={SPOKE_STYLE[i].dash ? styles.spokeDashed : styles.spoke}
           />
         ))}
-        <line x1={HUB.x} y1={HUB.y} x2={YOU.x} y2={YOU.y} stroke="var(--accent3)" className={styles.spokeMain} />
+        <line x1={HUB.x} y1={HUB.y} x2={YOU.x} y2={YOU.y} stroke="var(--accent)" className={styles.spokeMain} />
       </svg>
 
       <div className={styles.sweep} style={{ left: `${HUB.x}%`, top: `${HUB.y}%` }} />

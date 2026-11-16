@@ -32,56 +32,72 @@
 
 .pipelineGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .cta {
   position: relative;
   z-index: 10;
-  max-width: var(--max-cta);
-  margin: 0 auto 90px;
-  padding: 0 var(--side-padding);
+  padding: 190px max(var(--side-padding), calc((100% - var(--max-cta)) / 2 + var(--side-padding)));
 }
 
+/* Reaches 160px up into the section above and fades in at the top / out at the bottom, so
+   the canvas never ends hard against a neighbouring section. */
 .ctaCanvas {
-  opacity: 0.7;
+  z-index: -1;
+  top: -160px;
+  height: calc(100% + 160px);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.35) 160px,
+    #000 380px,
+    #000 calc(100% - 200px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.35) 160px,
+    #000 380px,
+    #000 calc(100% - 200px),
+    transparent
+  );
 }
 
 .ctaInner {
   position: relative;
   z-index: 1;
-  padding: 70px 48px;
   text-align: center;
 }
 
-/* Heading -> text -> button gaps set to the same value (28px), matching Home.module.css's
-   CTA (same reasoning: reads as evenly spaced instead of independently-sized gaps).
-   Compound selector (.ctaInner .ctaHeading, not just .ctaHeading) is required: the global
-   .sectionHeading class (also on this <h2>, for shared typography) sets margin: 0, and a
-   single-class selector ties with it on specificity, so the cascade's source order decided
-   the winner and silently zeroed this margin. The extra ancestor class breaks the tie. */
+/* Compound selector (.ctaInner .ctaHeading): global .sectionHeading sets margin: 0 at the
+   same specificity, so the extra ancestor class keeps this margin winning. */
 .ctaInner .ctaHeading {
-  font-size: clamp(30px, 4.4vw, 54px);
-  margin: 0 0 28px;
+  font-size: clamp(40px, 6.4vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  max-width: 14ch;
+  margin: 0 auto 28px;
 }
 
 .ctaText {
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
-  color: var(--text-secondary2);
-  max-width: 48ch;
-  margin: 0 auto 28px;
+  color: var(--text-secondary);
+  max-width: 50ch;
+  margin: 0 auto 42px;
 }
 
 @media (max-width: 900px) {
   .pipelineGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 560px) {
   .pipelineGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -12,17 +12,42 @@
 .hero {
   position: relative;
   z-index: 10;
-  min-height: 100vh;
+  min-height: 880px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 120px var(--side-padding) 80px;
-  max-width: var(--max-wide);
-  margin: 0 auto;
+  /* Section spans 100% of its container (not viewport-width units: those include the scrollbar). The inner
+     content column is built from padding: side-padding, or the gutter that centres a
+     max-wide column once the viewport is wider than it. */
+  padding: 200px max(var(--side-padding), calc((100% - var(--max-wide)) / 2 + var(--side-padding))) 120px;
 }
 
 .heroCanvas {
   z-index: -1;
+}
+
+/* CTA canvas reaches 160px up into the section above and fades in (top) and out (bottom),
+   so it never ends hard against a neighbouring section. */
+.ctaCanvas {
+  z-index: -1;
+  top: -160px;
+  height: calc(100% + 160px);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.35) 160px,
+    #000 380px,
+    #000 calc(100% - 200px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.35) 160px,
+    #000 380px,
+    #000 calc(100% - 200px),
+    transparent
+  );
 }
 
 .heroUp {
@@ -51,34 +76,31 @@
 
 .h1 {
   font-family: var(--fd);
-  font-weight: 700;
-  font-size: clamp(44px, 7.2vw, 92px);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  margin: 26px 0 0;
-  max-width: 16ch;
+  font-weight: 480;
+  font-size: clamp(46px, 7.8vw, 116px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin: 0;
+  max-width: 12ch;
 }
 
 .gradientSpan {
-  background: linear-gradient(115deg, var(--accent), var(--accent3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
 .subcopy {
-  font-size: clamp(17px, 1.7vw, 21px);
+  font-size: clamp(18px, 1.55vw, 21px);
   line-height: 1.55;
   color: var(--text-secondary);
-  max-width: 56ch;
-  margin: 28px 0 0;
+  max-width: 52ch;
+  margin: 34px 0 0;
 }
 
 .ctaRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 38px;
+  gap: 12px;
+  margin-top: 40px;
 }
 
 .services {
@@ -86,9 +108,7 @@
   z-index: 10;
   max-width: var(--max-wide);
   margin: 0 auto;
-  /* Bottom padding matches the top (and .mission's own padding below the marquee), so the
-     marquee bar sits with equal whitespace above and below it instead of hugging the cards. */
-  padding: 130px var(--side-padding);
+  padding: 140px var(--side-padding);
 }
 
 /* Centers the eyebrow + heading, matching the same treatment on About/Data/Technology/
@@ -98,8 +118,7 @@
 }
 
 .servicesHeading {
-  font-size: clamp(32px, 4.4vw, 56px);
-  max-width: 20ch;
+  max-width: 18ch;
 }
 
 /* Compound selector needed here, not a plain margin rule on .servicesHeading: global.css's
@@ -112,17 +131,13 @@
 
 .servicesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 56px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 64px;
 }
 
-/* Consulting's card runs one bullet longer than Data/Technology's (5 sub-services vs 4,
-   see home.js SERVICES), so the three cards no longer reach FeatureCard's bottom-anchored
-   "View Page" link at the same natural height. Grid stretch already sizes this Reveal
-   wrapper to the tallest card in the row, but that stretched height needs to be explicit
-   for FeatureCard's own height:100% to resolve against and push its link (margin-top: auto)
-   down to match across all three cards. */
+/* Consulting's card runs one bullet longer than Data/Technology's, so the Reveal wrapper
+   needs an explicit height for FeatureCard's own height:100% to resolve against. */
 .serviceReveal {
   height: 100%;
 }
@@ -132,37 +147,41 @@
   z-index: 10;
   max-width: var(--max-mission);
   margin: 0 auto;
-  padding: 130px var(--side-padding);
+  padding: 140px var(--side-padding);
   text-align: center;
 }
 
 .missionText {
   font-family: var(--fd);
-  font-weight: 500;
-  font-size: clamp(26px, 3.6vw, 44px);
-  line-height: 1.25;
-  letter-spacing: -0.025em;
-  margin: 0;
-  color: #f3f3f8;
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  margin: 0 auto;
+  max-width: 23ch;
+  color: var(--text);
 }
 
 .missionAccent {
-  color: var(--accent3);
+  color: var(--accent);
 }
 
 .missionLink {
-  display: inline-block;
-  margin-top: 20px;
-  font-family: var(--fd);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--accent3);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  display: inline-flex;
+  margin-top: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--surface-border-hi);
+  border-radius: 999px;
+  padding: 12px 20px;
+  transition: border-color 0.25s var(--ease-out);
 }
 
-.missionLink:hover {
-  color: #fff;
+@media (hover: hover) {
+  .missionLink:hover {
+    border-color: var(--accent);
+  }
 }
 
 .methodology {
@@ -170,13 +189,13 @@
   z-index: 10;
   max-width: var(--max-wide);
   margin: 0 auto;
-  padding: 40px var(--side-padding) 130px;
+  padding: 140px var(--side-padding);
 }
 
 .methodologyGrid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 60px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 80px;
   align-items: start;
 }
 
@@ -186,74 +205,86 @@
 }
 
 .methodologyHeading {
-  font-size: clamp(30px, 4vw, 50px);
-  margin: 0 0 20px;
+  max-width: 14ch;
+  margin: 18px 0 0;
 }
 
 .methodologyText {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--text-secondary2);
-  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 44ch;
+  margin: 24px 0 0;
 }
 
 .methodologyRight {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 
 .cta {
   position: relative;
   z-index: 10;
-  max-width: var(--max-cta);
-  margin: 0 auto 90px;
-  padding: 0 var(--side-padding);
-}
-
-.ctaCanvas {
-  opacity: 0.7;
+  padding: 190px max(var(--side-padding), calc((100% - var(--max-cta)) / 2 + var(--side-padding)));
 }
 
 .ctaInner {
   position: relative;
   z-index: 1;
-  padding: 52px 48px;
   text-align: center;
 }
 
-/* Heading -> text -> button gaps set to the same value (28px) so the CTA block reads as
-   evenly spaced, rather than each gap being sized independently.
-   Compound selector (.ctaInner .ctaHeading, not just .ctaHeading) is required here: the
-   global .sectionHeading class (also on this <h2>, for shared typography) sets margin: 0,
-   and a single-class selector ties with it on specificity, so the cascade's source order
-   decided the winner and silently zeroed this margin. The extra ancestor class breaks the
-   tie so this rule always wins regardless of bundle order. Rolled out to
-   InteriorPageTemplate.module.css too, same fix, same reason. */
+/* Compound selector (.ctaInner .ctaHeading): global .sectionHeading sets margin: 0 at the
+   same specificity, so the extra ancestor class keeps this margin winning regardless of
+   bundle order. */
 .ctaInner .ctaHeading {
-  font-size: clamp(32px, 4.6vw, 58px);
-  margin: 0 0 28px;
-}
-
-.ctaText {
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--text-secondary2);
-  max-width: 50ch;
+  font-size: clamp(40px, 6.4vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  max-width: 14ch;
   margin: 0 auto 28px;
 }
 
+.ctaText {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 50ch;
+  margin: 0 auto 42px;
+}
+
 @media (max-width: 900px) {
-  .servicesGrid {
-    grid-template-columns: 1fr;
+  .hero {
+    min-height: 760px;
+  }
+
+  .services,
+  .methodology {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .mission {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .cta {
+    padding-top: 130px;
+    padding-bottom: 130px;
+  }
+
+  .servicesGrid,
+  .methodologyGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .methodologyGrid {
-    grid-template-columns: 1fr;
+    gap: 48px;
   }
 
   .methodologyLeft {
     position: static;
   }
-
 }

@@ -7,7 +7,6 @@
 }
 
 .heading {
-  font-size: clamp(30px, 4.2vw, 52px);
   max-width: 26ch;
 }
 
@@ -48,25 +47,34 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 44px;
+  gap: 0;
+  margin-top: 56px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Card treatment ported straight from CapabilityCard so the accordion reads as native to the
-   page rather than a bespoke component — same gradient fill, border, radius, hover border. */
+/* Hairline-separated rows. The open row picks up a fill-lo background (:has on the
+   aria-expanded header, so no markup or JS change). */
 .row {
-  border-radius: var(--radius-card);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  transition: border-color 0.25s ease;
+  border-bottom: 1px solid var(--surface-border-lo);
+  border-radius: 0;
+  transition: background 0.25s var(--ease-out);
   scroll-margin-top: 100px;
 }
 
-.row:hover {
-  border-color: var(--hover-border);
+.rowWrap:first-child .row {
+  border-top: 1px solid var(--surface-border-lo);
+}
+
+.row:has(> .header[aria-expanded="true"]) {
+  background: var(--surface-fill-lo);
+}
+
+@media (hover: hover) {
+  .row:hover {
+    background: var(--surface-fill-lo);
+  }
 }
 
 .header {
@@ -87,33 +95,40 @@
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 14px 20px;
+  gap: 6px 20px;
   flex: 1;
+  min-width: 0;
 }
 
 .number {
   font-family: var(--fm);
-  font-size: 13px;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--accent);
   flex-shrink: 0;
 }
 
 .title {
   font-family: var(--fd);
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  flex-shrink: 0;
+  font-weight: 520;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .outcome {
-  font-size: 15px;
-  color: var(--text-secondary2);
+  font-size: 15.5px;
+  color: var(--text-secondary);
 }
 
 .toggleLabel {
   font-family: var(--fm);
-  font-size: 13px;
-  color: var(--accent3);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -144,7 +159,7 @@
 .body {
   font-size: 15px;
   line-height: 1.65;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
   margin: 0 28px 24px;
 }
 
@@ -168,8 +183,10 @@
   transition: color 0.2s ease;
 }
 
-.asideLink:hover {
-  color: var(--text-secondary2);
+@media (hover: hover) {
+  .asideLink:hover {
+    color: var(--text-secondary2);
+  }
 }
 
 .listBlock {
@@ -177,9 +194,9 @@
 }
 
 .listLabel {
-  font-family: var(--fd);
+  font-family: var(--fm);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted2);
@@ -197,7 +214,7 @@
 .list li {
   font-size: 14.5px;
   line-height: 1.6;
-  color: #d2d2dc;
+  color: var(--text);
   margin-bottom: 8px;
 }
 
@@ -220,5 +237,20 @@
   .cta {
     margin-left: 20px;
     margin-right: 20px;
+  }
+}
+
+/* Narrow phones: stack the toggle label under the title/outcome instead of squeezing the
+   title into a one-word-per-line column beside it. */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .headerMain {
+    width: 100%;
+    flex: none;
   }
 }

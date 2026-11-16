@@ -40,6 +40,7 @@ export const HERO = {
   screenshotAlt:
     "The AskTheArchive chat app: its title, a short description of the document set, and starter questions above a chat box, on a dark blue backdrop.",
   screenshotLabel: "ask-the-archive.io",
+  screenshotWebp: true, // WebP variants exist (640/960/1200) — see CLAUDE.md
 };
 
 export const PROBLEM = {

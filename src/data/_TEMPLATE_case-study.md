@@ -36,6 +36,11 @@ Mirrors the "Adding a New Demo" list in `website/CLAUDE.md`, fuller:
      frame by `DemoScreenshotFrame`.
    - **6b. `<slug>-card.jpg`** — the Technology-page card thumbnail. A 5:2 strip of the
      app's title + blurb. `demos.js` `thumbnail` points here.
+   - **6c. WebP variants of the hero screenshot** at 640, 960 and 1200px wide
+     (`<slug>-screenshot-640.webp`, `-960.webp`, `-1200.webp`), served by `DemoScreenshotFrame`
+     via `<picture>`/`srcset` **only when the demo's data sets `screenshotWebp: true`** (opt-in,
+     so a missing file can't break the hero); e.g. `cwebp -q 80 -m 6 -resize 640 0
+     <slug>-screenshot.jpg -o <slug>-screenshot-640.webp`. Without the flag the plain JPG is used.
 7. **Demo app only:** drop the standalone app at `public/demos/<slug>/app/` so
    `hero.appPath` (`/demos/<slug>/app/`) resolves to a real static file. The app's
    `index.html` needs three things beyond the app itself — see "The standalone demo app"

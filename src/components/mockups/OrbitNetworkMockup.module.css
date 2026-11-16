@@ -132,36 +132,36 @@
 .cornerTL {
   top: 14px;
   left: 14px;
-  border-top-color: rgba(79, 216, 255, 0.4);
-  border-left-color: rgba(79, 216, 255, 0.4);
+  border-top-color: rgba(134, 195, 90, 0.4);
+  border-left-color: rgba(134, 195, 90, 0.4);
 }
 
 .cornerTR {
   top: 14px;
   right: 14px;
-  border-top-color: rgba(79, 216, 255, 0.4);
-  border-right-color: rgba(79, 216, 255, 0.4);
+  border-top-color: rgba(134, 195, 90, 0.4);
+  border-right-color: rgba(134, 195, 90, 0.4);
 }
 
 .cornerBL {
   bottom: 14px;
   left: 14px;
-  border-bottom-color: rgba(79, 216, 255, 0.4);
-  border-left-color: rgba(79, 216, 255, 0.4);
+  border-bottom-color: rgba(134, 195, 90, 0.4);
+  border-left-color: rgba(134, 195, 90, 0.4);
 }
 
 .cornerBR {
   bottom: 14px;
   right: 14px;
-  border-bottom-color: rgba(79, 216, 255, 0.4);
-  border-right-color: rgba(79, 216, 255, 0.4);
+  border-bottom-color: rgba(134, 195, 90, 0.4);
+  border-right-color: rgba(134, 195, 90, 0.4);
 }
 
 .sweep {
   position: absolute;
   inset: 20px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0deg 300deg, rgba(79, 216, 255, 0.32) 335deg, transparent 360deg);
+  background: conic-gradient(from 0deg, transparent 0deg 300deg, rgba(134, 195, 90, 0.32) 335deg, transparent 360deg);
   mix-blend-mode: screen;
   animation: spinSlow 7s linear infinite;
 }
@@ -195,7 +195,7 @@
   width: 57px;
   height: 57px;
   border-radius: 50%;
-  border: 1px solid rgba(79, 216, 255, 0.5);
+  border: 1px solid rgba(134, 195, 90, 0.5);
   animation: pulseRing 3.2s ease-out infinite;
 }
 
@@ -214,7 +214,7 @@
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  border: 1px solid rgba(79, 216, 255, 0.6);
+  border: 1px solid rgba(134, 195, 90, 0.6);
   opacity: 0;
   animation: flareLoop 30s ease-in-out infinite;
 }
@@ -230,8 +230,7 @@
   width: 57px;
   height: 57px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent3));
-  box-shadow: 0 0 30px rgba(21, 155, 200, 0.55);
+  background: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,7 +240,7 @@
   width: 12px;
   height: 12px;
   border-radius: 3px;
-  background: #f4fbff;
+  background: var(--on-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {

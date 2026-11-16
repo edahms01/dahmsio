@@ -123,7 +123,7 @@ export default function SubServiceSection({ groups, ctaLabel }) {
 
               return (
                 <Reveal as="div" key={item.id} delay={i * 80} className={styles.rowWrap}>
-                  <div id={item.id} className={styles.row} style={{ "--hover-border": item.hoverBorder }}>
+                  <div id={item.id} className={styles.row}>
                     <button
                       type="button"
                       id={headerId}
@@ -134,7 +134,7 @@ export default function SubServiceSection({ groups, ctaLabel }) {
                     >
                       <span className={styles.headerMain}>
                         {group.numbered && (
-                          <span className={styles.number} style={{ color: item.markColor }}>
+                          <span className={styles.number}>
                             {item.number}
                           </span>
                         )}

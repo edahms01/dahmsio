@@ -3,23 +3,19 @@
   flex-direction: column;
   height: 100%;
   border-radius: var(--radius-card);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--surface);
+  border: 1px solid var(--surface-border-lo);
   overflow: hidden;
   transition:
-    border-color 0.25s ease,
-    transform 0.25s ease;
+    border-color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
 }
 
-/* Hover lift matches FeatureCard's (.servicesGrid) exactly, not just the border-color
-   change this had before. */
-.card:hover {
-  border-color: var(--accent);
-  transform: translateY(-6px);
-}
-
-.card:hover .cta {
-  color: var(--accent2);
+@media (hover: hover) {
+  .card:hover {
+    border-color: rgba(134, 195, 90, 0.45);
+    transform: translateY(-5px);
+  }
 }
 
 /* 2.5:1 banner crop of the live-app screenshot. object-position: top leads with the app's
@@ -28,12 +24,12 @@
   position: relative;
   aspect-ratio: 5 / 2;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(21, 155, 200, 0.18), rgba(79, 216, 255, 0.05));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface-fill-hi);
+  border-bottom: 1px solid var(--surface-border-lo);
 }
 
 /* Absolutely positioned so the (near-square) screenshot can't drive the thumb's height —
-   the 16:9 box wins and object-fit crops the overflow. */
+   the 5:2 box wins and object-fit crops the overflow. */
 .thumb img {
   position: absolute;
   inset: 0;
@@ -44,39 +40,35 @@
   object-position: top;
 }
 
-/* Padding matches FeatureCard's 32px exactly. This card also carries a thumb region
-   FeatureCard doesn't have — check the before/after screenshot; if 32px reads as too much
-   air under the 4:1 thumbnail, flag it back rather than silently keeping something that
-   doesn't look right in context. */
 .body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 7px;
-  padding: 32px;
+  gap: 8px;
+  padding: 34px 32px 30px;
 }
 
 .category {
   font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   color: var(--accent);
 }
 
-/* Size matches FeatureCard's title exactly (23px). */
 .title {
   font-family: var(--fd);
-  font-weight: 600;
-  font-size: 23px;
-  letter-spacing: -0.02em;
+  font-weight: 520;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
-/* Size matches FeatureCard's description exactly (15px / 1.6). */
 .summary {
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 1.6;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -84,15 +76,14 @@
    affordance aligned. */
 .cta {
   margin-top: auto;
-  padding-top: 6px;
-  font-family: var(--fm);
-  font-size: 11px;
+  padding-top: 22px;
+  font-weight: 600;
+  font-size: 15px;
   color: var(--accent);
-  transition: color 0.2s ease;
 }
 
 @media (max-width: 560px) {
   .body {
-    padding: 16px;
+    padding: 22px 20px 20px;
   }
 }

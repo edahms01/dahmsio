@@ -1,15 +1,26 @@
+/* Hairline-separated rows; the open row gets a fill-lo background (:has on the question's
+   aria-expanded state, so no markup change). */
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0;
   text-align: left;
+  border-top: 1px solid var(--surface-border-lo);
 }
 
 .item {
-  border-radius: var(--radius-card);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  overflow: hidden;
+  border-bottom: 1px solid var(--surface-border-lo);
+  transition: background 0.25s var(--ease-out);
+}
+
+.item:has(> .question[aria-expanded="true"]) {
+  background: var(--surface-fill-lo);
+}
+
+@media (hover: hover) {
+  .item:hover {
+    background: var(--surface-fill-lo);
+  }
 }
 
 .question {
@@ -18,13 +29,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 22px;
+  padding: 22px 22px;
   background: none;
   border: none;
   cursor: pointer;
   font-family: var(--fd);
-  font-weight: 600;
-  font-size: 15.5px;
+  font-weight: 520;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   text-align: left;
   color: var(--text);
 }
@@ -44,7 +57,7 @@
   left: 50%;
   background: var(--accent);
   transform: translate(-50%, -50%);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s var(--ease-out);
 }
 
 .icon::before {
@@ -64,8 +77,16 @@
 
 .answer {
   margin: 0;
-  padding: 0 22px 20px;
-  font-size: 14.5px;
+  padding: 0 22px 24px;
+  font-size: 15.5px;
   line-height: 1.6;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .icon::before,
+  .icon::after {
+    transition: none;
+  }
 }

@@ -1,5 +1,3 @@
-import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
-import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
@@ -28,14 +26,14 @@ export const MOCKUP = {
   value: "$1.28M",
   delta: "18.4%",
   bars: [
-    { height: 46, from: "rgba(21,155,200,.5)", to: "rgba(21,155,200,.12)" },
-    { height: 62, from: "rgba(21,155,200,.55)", to: "rgba(21,155,200,.14)" },
-    { height: 54, from: "rgba(43,184,216,.55)", to: "rgba(43,184,216,.14)" },
-    { height: 78, from: "rgba(129,110,247,.6)", to: "rgba(129,110,247,.15)" },
-    { height: 70, from: "rgba(79,216,255,.6)", to: "rgba(79,216,255,.15)" },
-    { height: 82, from: "var(--accent)", to: "rgba(79,216,255,.4)", glow: true },
-    { height: 90, forecast: true, bg: "rgba(79,216,255,.08)", border: "rgba(79,216,255,.55)" },
-    { height: 98, forecast: true, bg: "rgba(79,216,255,.06)", border: "rgba(79,216,255,.4)" },
+    { height: 46, from: "rgba(134,195,90,.4)" },
+    { height: 62, from: "rgba(134,195,90,.5)" },
+    { height: 54, from: "rgba(134,195,90,.6)" },
+    { height: 78, from: "rgba(134,195,90,.45)" },
+    { height: 70, from: "rgba(134,195,90,.7)" },
+    { height: 82, from: "var(--accent)", glow: true },
+    { height: 90, forecast: true, bg: "rgba(134,195,90,.08)", border: "rgba(134,195,90,.55)" },
+    { height: 98, forecast: true, bg: "rgba(134,195,90,.06)", border: "rgba(134,195,90,.4)" },
   ],
   stats: [
     { label: "CONVERSION", value: "4.7%" },
@@ -79,8 +77,6 @@ export const SUBSERVICE_GROUPS = [
           "Checks that flag bad or missing data before it reaches a report",
           "Documentation of where every number comes from",
         ],
-        markColor: ACCENT,
-        hoverBorder: hexToRgba(ACCENT, 0.45),
       },
       {
         number: "02",
@@ -101,8 +97,6 @@ export const SUBSERVICE_GROUPS = [
           "Separate views per team, so people see what's theirs and not everything at once",
           "Room to answer a new question yourself instead of waiting on whoever owns the spreadsheet",
         ],
-        markColor: ACCENT3,
-        hoverBorder: hexToRgba(ACCENT3, 0.45),
       },
       {
         number: "03",
@@ -123,8 +117,6 @@ export const SUBSERVICE_GROUPS = [
           "Scenario answers: what happens to the business if this goes up and that goes down",
           "A written explanation of the method in plain English, so you can defend the numbers to someone else",
         ],
-        markColor: ACCENT2,
-        hoverBorder: hexToRgba(ACCENT2, 0.45),
       },
       {
         number: "04",
@@ -145,8 +137,6 @@ export const SUBSERVICE_GROUPS = [
           "Monitoring that tells you when the model starts drifting, before it makes bad calls",
           "An honest answer up front on whether this is worth building for you at all",
         ],
-        markColor: ACCENT,
-        hoverBorder: hexToRgba(ACCENT, 0.45),
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
         // SubServiceSection.jsx.
@@ -168,19 +158,16 @@ export const PIPELINE_HEADING = "From raw source to real result.";
 export const PIPELINE = [
   {
     label: "STEP 01",
-    labelColor: ACCENT,
     title: "Collect",
     description: "Pull from every platform, database, and spreadsheet into one place.",
   },
   {
     label: "STEP 02",
-    labelColor: ACCENT,
     title: "Standardize",
     description: "Clean, de-duplicate, and automate so data stays consistent.",
   },
   {
     label: "STEP 03",
-    labelColor: ACCENT3,
     title: "Compute",
     // Changed per subservice-expansion-plan-v6 ("Data pipeline — stage lines"): "forecasting"
     // dropped as redundant with "statistical modeling" and to bring this card's copy length

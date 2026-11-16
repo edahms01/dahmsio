@@ -6,7 +6,7 @@
   z-index: 10;
   max-width: var(--max-wide);
   margin: 0 auto;
-  padding: 100px var(--side-padding);
+  padding: 140px var(--side-padding);
   scroll-margin-top: 90px;
 }
 
@@ -15,14 +15,15 @@
   text-align: center;
 }
 
-.heading {
-  font-size: clamp(28px, 3.8vw, 46px);
+.head .heading {
+  max-width: 22ch;
+  margin: 0 auto;
 }
 
 .intro {
   max-width: 60ch;
   margin: 18px auto 0;
-  font-size: clamp(16px, 1.6vw, 18px);
+  font-size: clamp(18px, 1.55vw, 21px);
   line-height: 1.65;
   color: var(--text-secondary);
 }
@@ -32,12 +33,12 @@
    homepage's three service cards, not a bespoke 2-up grid. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 @media (max-width: 900px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

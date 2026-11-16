@@ -1,6 +1,7 @@
 .brand {
   display: flex;
   align-items: center;
+  min-height: 44px;
 }
 
 /* Height driven by the --logo-height custom property (set from Brand's `size` prop, same

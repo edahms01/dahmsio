@@ -10,20 +10,20 @@
      so the hero-to-first-section gap is the same 170px site-wide (hero's shared 70px bottom
      padding + this). Was 40px, an unexplained outlier that left Contact's gap 60px tighter
      than every other page. */
-  padding: 100px var(--side-padding) 130px;
+  padding: 100px var(--side-padding) 140px;
 }
 
 .formCard {
   padding: 44px 48px;
   border-radius: var(--radius-card);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--surface);
+  border: 1px solid var(--surface-border-lo);
 }
 
 .formIntro {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
   margin: 0 0 32px;
 }
 
@@ -33,8 +33,10 @@
   transition: color 0.2s ease;
 }
 
-.formIntro a:hover {
-  color: var(--accent3);
+@media (hover: hover) {
+  .formIntro a:hover {
+    color: var(--accent2);
+  }
 }
 
 .form {
@@ -61,8 +63,8 @@
 
 .label {
   font-family: var(--fd);
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 520;
+  font-size: 15px;
   color: var(--text);
 }
 
@@ -77,12 +79,13 @@
 .field textarea,
 .field select {
   font-family: var(--fb);
-  font-size: 15px;
+  /* 16px minimum so iOS Safari does not zoom the page on focus. */
+  font-size: 16px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  padding: 12px 14px;
+  background: var(--surface-fill-lo);
+  border: 1px solid var(--surface-border-hi);
+  border-radius: var(--radius-input);
+  padding: 13px 16px;
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
@@ -91,14 +94,14 @@
 
 .field select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238a8a9a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A9285' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 36px;
 }
 
 .field select option {
-  background: #0c1218;
+  background: var(--surface);
   color: var(--text);
 }
 
@@ -112,7 +115,7 @@
 .field select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(21, 155, 200, 0.18);
+  box-shadow: 0 0 0 3px rgba(134, 195, 90, 0.18);
 }
 
 .checkboxGroup {
@@ -128,9 +131,10 @@
 .checkboxOption {
   display: flex;
   align-items: center;
+  min-height: 44px;
   gap: 8px;
   font-size: 14.5px;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
   cursor: pointer;
 }
 
@@ -138,6 +142,7 @@
   width: 16px;
   height: 16px;
   accent-color: var(--accent);
+  color-scheme: dark;
 }
 
 .helper {
@@ -147,15 +152,15 @@
 }
 
 .sectionLabel {
-  font-family: var(--fd);
-  font-weight: 600;
-  font-size: 13px;
+  font-family: var(--fm);
+  font-weight: 500;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--accent);
   margin: 4px 0 0;
   padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--surface-border-lo);
 }
 
 .honeypot {
@@ -165,10 +170,10 @@
 .errorText {
   font-size: 14px;
   line-height: 1.6;
-  color: #ff8a80;
-  background: rgba(255, 95, 87, 0.08);
-  border: 1px solid rgba(255, 95, 87, 0.25);
-  border-radius: 10px;
+  color: #f0a58a;
+  background: rgba(240, 165, 138, 0.08);
+  border: 1px solid rgba(240, 165, 138, 0.45);
+  border-radius: var(--radius-input);
   padding: 12px 16px;
   margin: 0;
 }
@@ -179,7 +184,7 @@
 
 .successHeading {
   font-family: var(--fd);
-  font-weight: 700;
+  font-weight: 480;
   font-size: clamp(26px, 3.2vw, 38px);
   letter-spacing: -0.03em;
   margin: 0 0 12px;
@@ -188,7 +193,7 @@
 .successText {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -197,7 +202,7 @@
   z-index: 10;
   max-width: 760px;
   margin: 0 auto;
-  padding: 0 var(--side-padding) 150px;
+  padding: 0 var(--side-padding) 140px;
   text-align: center;
 }
 
@@ -207,7 +212,6 @@
    the winner and silently zeroed this margin — same issue as InteriorPageTemplate's
    .ctaInner .ctaHeading. */
 .faqSection .faqHeading {
-  font-size: clamp(26px, 3.2vw, 38px);
   /* 52px matches the heading -> content gap used elsewhere (e.g. InteriorPageTemplate's
      .pipelineHead before .pipelineGrid) rather than the tighter 32px this had. */
   margin: 0 0 52px;

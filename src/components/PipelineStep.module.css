@@ -1,36 +1,50 @@
+/* Step card: 18px radius, hairline, fill-lo, 28px padding. The "STEP 0N" label is a small
+   accent pill. These sit four-up, so the pill stacks above the title rather than in the
+   72px left column the wider Home methodology steps use ("STEP 01" doesn't fit in 44px). */
 .step {
   height: 100%;
-  padding: 26px;
+  padding: 28px;
   border-radius: var(--radius-step);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--surface-fill-lo);
+  border: 1px solid var(--surface-border-lo);
 }
 
 .step.highlighted {
-  background: linear-gradient(180deg, rgba(21, 155, 200, 0.14), rgba(79, 216, 255, 0.1));
-  border: 1px solid rgba(43, 184, 216, 0.35);
+  border-color: rgba(134, 195, 90, 0.5);
 }
 
 .label {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(134, 195, 90, 0.16);
+  color: var(--accent);
   font-family: var(--fm);
+  font-weight: 500;
   font-size: 12px;
-  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+
+.step.highlighted .label {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .title {
   font-family: var(--fd);
-  font-weight: 600;
-  font-size: 19px;
-  margin: 0 0 8px;
+  font-weight: 520;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
 }
 
 .description {
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--text-secondary2);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
   margin: 0;
-}
-
-.step.highlighted .description {
-  color: #d2d2dc;
 }

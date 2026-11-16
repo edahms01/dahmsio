@@ -43,17 +43,6 @@
   padding: 56px var(--side-padding);
 }
 
-/* Body section headings (Problem/What it does/How it works/Key features/Who) inherit
-   .sectionHeading's weight/line-height/letter-spacing from global.css but not a font-size —
-   nothing here filled that gap, so they were rendering at the browser's bare default <h2>
-   size. Matches the clamp(28px, 3.8vw, 46px) every other in-body section heading uses
-   site-wide. `.section h2` (class + element) outranks the single-class `.sectionHeading`
-   selector on specificity, so this wins without an inline style or a second class needed on
-   each heading. */
-.section h2 {
-  font-size: clamp(28px, 3.8vw, 46px);
-}
-
 /* First body section after the hero: 56px hero-bottom + 80px here ≈ the site's ~140px
    section gap, a touch tighter for the hero-to-content step. */
 .body > .section:first-child {
@@ -68,7 +57,7 @@
 }
 
 /* How it works — a numbered list with the site's small mono index chip (same visual as the
-   pipeline-step numbers). global.css strips list markers, so the count comes from a CSS
+   step-number pills). global.css strips list markers, so the count comes from a CSS
    counter rather than list-style. */
 .steps {
   list-style: none;
@@ -99,18 +88,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  background: rgba(134, 195, 90, 0.16);
   font-family: var(--fm);
-  font-size: 13px;
-  color: var(--accent3);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--accent);
 }
 
 .stepLead {
   font-family: var(--fd);
-  font-weight: 600;
-  color: #f3f3f8;
+  font-weight: 520;
+  color: var(--text);
 }
 
 /* Key features — flat lead/body list, no card chrome (deliberately not CapabilityCard, which
@@ -135,8 +124,8 @@
 
 .featureLead {
   font-family: var(--fd);
-  font-weight: 600;
-  color: #f3f3f8;
+  font-weight: 520;
+  color: var(--text);
 }
 
 /* Two-up features get cramped in the narrowed column below ~768px — drop to one column

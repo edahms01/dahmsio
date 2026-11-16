@@ -1,5 +1,3 @@
-import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
-import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
@@ -58,8 +56,6 @@ export const SUBSERVICE_GROUPS = [
           "Web and mobile versions wherever your team needs them",
           "An architecture built to be extended later, not thrown away and rebuilt",
         ],
-        markColor: ACCENT,
-        hoverBorder: hexToRgba(ACCENT, 0.45),
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
         // SubServiceSection.jsx.
@@ -88,8 +84,6 @@ export const SUBSERVICE_GROUPS = [
           "One source of truth instead of three versions of the same number",
           "Fewer manual handoffs between tools and between people",
         ],
-        markColor: ACCENT3,
-        hoverBorder: hexToRgba(ACCENT3, 0.45),
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
         // SubServiceSection.jsx.
@@ -118,8 +112,6 @@ export const SUBSERVICE_GROUPS = [
           "Notifications and hand-offs that happen automatically at the right moment",
           "Time back for your team to spend where their judgment actually matters",
         ],
-        markColor: ACCENT2,
-        hoverBorder: hexToRgba(ACCENT2, 0.45),
       },
       {
         number: "04",
@@ -139,8 +131,6 @@ export const SUBSERVICE_GROUPS = [
           "The orchestration and decision logic that ties multiple steps together into one working system",
           "An honest answer up front on whether this is worth building for you at all",
         ],
-        markColor: ACCENT,
-        hoverBorder: hexToRgba(ACCENT, 0.45),
       },
     ],
   },
@@ -152,19 +142,16 @@ export const PIPELINE_HEADING = "From concept to production-ready system.";
 export const PIPELINE = [
   {
     label: "STEP 01",
-    labelColor: ACCENT,
     title: "Assess",
     description: "Audit your current stack and map where new technology fits or needs to integrate.",
   },
   {
     label: "STEP 02",
-    labelColor: ACCENT,
     title: "Architect",
     description: "Design the technical approach around your systems, budget, and timeline.",
   },
   {
     label: "STEP 03",
-    labelColor: ACCENT3,
     title: "Build & Integrate",
     description: "Ship new capabilities or connect them cleanly into what you already run.",
   },
