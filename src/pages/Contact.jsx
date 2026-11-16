@@ -8,7 +8,7 @@ import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import MessageMockup from "../components/mockups/MessageMockup.jsx";
 import FaqAccordion from "../components/FaqAccordion.jsx";
-import { INTERIOR_GLOW_BLOBS, CONTACT_EMAIL, CONTACT_MAILTO } from "../data/site.js";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "../data/site.js";
 import {
   META,
   HERO,
@@ -141,7 +141,7 @@ export default function Contact() {
   };
 
   return (
-    <Layout blobs={INTERIOR_GLOW_BLOBS}>
+    <Layout>
       <PageMeta {...META} />
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
       <HeroSection

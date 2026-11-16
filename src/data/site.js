@@ -46,28 +46,3 @@ export const SUBSERVICE_LABELS = {
 // Shared secondary hero CTA label for the interior-page template (Data/Technology/
 // Consulting) — same reasoning as SUBSERVICE_LABELS, all three pages reuse it verbatim.
 export const SEE_CAPABILITIES_LABEL = "See capabilities";
-
-// Shared ambient background blobs for the interior pages (Data/Technology/Consulting/About) — identical across all four.
-export const INTERIOR_GLOW_BLOBS = [
-  {
-    top: "-14%",
-    right: "-8%",
-    size: "50vw",
-    color: "rgba(21,155,200,.26)",
-    fade: 62,
-    blur: 30,
-    duration: 15,
-    speed: 0.15,
-  },
-  {
-    top: "44%",
-    left: "-12%",
-    size: "44vw",
-    color: "rgba(43,184,216,.18)",
-    fade: 64,
-    blur: 34,
-    duration: 17,
-    delay: 1.5,
-    speed: 0.24,
-  },
-];

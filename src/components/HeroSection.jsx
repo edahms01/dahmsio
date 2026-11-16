@@ -1,9 +1,9 @@
-import NetworkCanvas from "./NetworkCanvas.jsx";
+import FlowField from "./FlowField.jsx";
 import s from "./HeroSection.module.css";
 
 /**
  * The page-opening hero band: two-column grid (text left, graphic right) shared by every
- * top-level page. Owns the grid container, the background NetworkCanvas, and the graphic
+ * top-level page. Owns the grid container, the background FlowField, and the graphic
  * column (with its fixed top-alignment offset and responsive stack). Pass the hero text as
  * children — usually the HeroEyebrow / HeroHeading / HeroLede / HeroActions helpers below —
  * and the graphic as `mockup`.
@@ -15,7 +15,7 @@ import s from "./HeroSection.module.css";
 export default function HeroSection({ children, mockup, mockupClassName = "", wide = false }) {
   return (
     <header className={`${s.hero} ${wide ? s.heroWide : ""}`.trim()}>
-      <NetworkCanvas maxNodes={90} opacity={0.9} className={s.heroCanvas} />
+      <FlowField variant="hero" className={s.heroCanvas} />
       <div className={s.heroText}>{children}</div>
       <div className={`${s.mockupCol} ${mockupClassName}`.trim()}>{mockup}</div>
     </header>
@@ -28,8 +28,8 @@ export function HeroEyebrow({ children }) {
 
 /**
  * Hero headline. Either pass `prefix` + `accent` for the standard "Prefix <accent>." form
- * (accent gets the gradient and a trailing period), or pass plain `children` for a headline
- * with no gradient span (demo case studies use the demo's own name).
+ * (accent gets the solid accent colour and a trailing period), or pass plain `children` for a headline
+ * with no accent span (demo case studies use the demo's own name).
  */
 export function HeroHeading({ prefix, accent, children }) {
   return (

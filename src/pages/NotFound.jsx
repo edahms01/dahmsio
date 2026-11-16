@@ -2,13 +2,12 @@ import { Head } from "vite-react-ssg";
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
-import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import { META, CONTENT } from "../data/notFound.js";
 import styles from "./NotFound.module.css";
 
 export default function NotFound() {
   return (
-    <Layout blobs={INTERIOR_GLOW_BLOBS}>
+    <Layout>
       <PageMeta {...META} />
       <Head>
         {/* Never index the 404 page itself, page-specific and additive to PageMeta's tags. */}

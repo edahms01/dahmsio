@@ -1,7 +1,7 @@
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import JsonLd from "../components/JsonLd.jsx";
-import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import FlowField from "../components/FlowField.jsx";
 import HeroSection, { HeroEyebrow, HeroHeading, HeroLede, HeroActions } from "../components/HeroSection.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
@@ -10,7 +10,6 @@ import OrbitNetworkMockup from "../components/mockups/OrbitNetworkMockup.jsx";
 import BenchNetworkMockup from "../components/mockups/BenchNetworkMockup.jsx";
 import ContinuumGraphic from "../components/ContinuumGraphic.jsx";
 import CapabilityCard from "../components/CapabilityCard.jsx";
-import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import {
   META,
   HERO,
@@ -35,7 +34,7 @@ import styles from "./About.module.css";
 
 export default function About() {
   return (
-    <Layout blobs={INTERIOR_GLOW_BLOBS}>
+    <Layout>
       <PageMeta {...META} />
       <JsonLd data={buildBreadcrumbSchema(META.path)} />
 
@@ -74,7 +73,7 @@ export default function About() {
           <div className="eyebrow" style={{ marginBottom: 14 }}>
             {BACKGROUND.eyebrow}
           </div>
-          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+          <h2 className="sectionHeading">
             {BACKGROUND.heading}
           </h2>
         </Reveal>
@@ -108,13 +107,13 @@ export default function About() {
           <div className="eyebrow" style={{ marginBottom: 14 }}>
             {CREDIBILITY.eyebrow}
           </div>
-          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+          <h2 className="sectionHeading">
             {CREDIBILITY.heading}
           </h2>
         </Reveal>
         <Reveal className={styles.credibilityGrid}>
           {CREDIBILITY.items.map((item) => (
-            <div key={item.lead} className={styles.leadItem} style={{ "--hover-border": item.hoverBorder }}>
+            <div key={item.lead} className={styles.leadItem}>
               <span className={styles.leadItemLead}>{item.lead}</span>
               <span className={styles.leadItemBody}>{item.body}</span>
             </div>
@@ -136,7 +135,7 @@ export default function About() {
             <BenchNetworkMockup {...BENCH_NETWORK} />
           </AppWindowMockup>
           <div>
-            <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+            <h2 className="sectionHeading">
               {HOW_WE_WORK.heading}
             </h2>
             <p className={styles.sectionText}>{HOW_WE_WORK.paragraph}</p>
@@ -151,7 +150,7 @@ export default function About() {
           <div className="eyebrow" style={{ marginBottom: 14 }}>
             {HOW_WE_WORK.operatingEyebrow}
           </div>
-          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+          <h2 className="sectionHeading">
             {HOW_WE_WORK.operatingHeading}
           </h2>
         </Reveal>
@@ -175,7 +174,7 @@ export default function About() {
           <div className="eyebrow" style={{ marginBottom: 14 }}>
             {HOW_WE_WORK.engagementEyebrow}
           </div>
-          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+          <h2 className="sectionHeading">
             {HOW_WE_WORK.engagementHeading}
           </h2>
         </Reveal>
@@ -281,11 +280,9 @@ export default function About() {
       */}
 
       {/* .ctaCenterBetweenLines zeroes interiorStyles.cta's shared 90px bottom margin so this
-          content sits equidistant between the Founder's Note section above and the footer's
-          border-top below (both then rely solely on ctaInner's own symmetric 70px top/bottom
-          padding). No top border on this section itself (removed per Eric's call). */}
+          content sits equidistant between the Founder's Note section above and the footer below (both then rely solely on the CTA's own symmetric padding). No top border on this section itself (removed per Eric's call). */}
       <section className={`${interiorStyles.cta} ${styles.ctaCenterBetweenLines}`}>
-        <NetworkCanvas maxNodes={70} opacity={0.7} className={interiorStyles.ctaCanvas} />
+        <FlowField variant="cta" className={interiorStyles.ctaCanvas} />
         <Reveal duration={900} className={interiorStyles.ctaInner}>
           <h2 className={`sectionHeading ${interiorStyles.ctaHeading}`}>{CTA.heading}</h2>
           <p className={interiorStyles.ctaText}>{CTA.text}</p>

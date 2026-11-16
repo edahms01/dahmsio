@@ -1,13 +1,12 @@
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import JsonLd from "../components/JsonLd.jsx";
-import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import FlowField from "../components/FlowField.jsx";
 import HeroSection, { HeroEyebrow, HeroHeading, HeroActions } from "../components/HeroSection.jsx";
 import heroStyles from "../components/HeroSection.module.css";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import DemoScreenshotFrame from "../components/mockups/DemoScreenshotFrame.jsx";
-import { INTERIOR_GLOW_BLOBS } from "../data/site.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 // Hero is the shared <HeroSection>. The CTA still borrows InteriorPageTemplate's CTA classes
 // so it matches Data/Technology/Consulting exactly. DemoCaseTemplate.module.css holds only
@@ -35,14 +34,19 @@ export default function DemoCaseTemplate({
   cta,
 }) {
   return (
-    <Layout blobs={INTERIOR_GLOW_BLOBS}>
+    <Layout>
       <PageMeta {...meta} />
       <JsonLd data={buildBreadcrumbSchema(meta.path, breadcrumbs)} />
 
       <HeroSection
         mockupClassName={styles.demoMockup}
         mockup={
-          <DemoScreenshotFrame src={hero.screenshot} alt={hero.screenshotAlt} label={hero.screenshotLabel} />
+          <DemoScreenshotFrame
+            src={hero.screenshot}
+            alt={hero.screenshotAlt}
+            label={hero.screenshotLabel}
+            webp={hero.screenshotWebp}
+          />
         }
       >
         <HeroEyebrow>{hero.eyebrow}</HeroEyebrow>
@@ -93,7 +97,7 @@ export default function DemoCaseTemplate({
       </article>
 
       <section className={interiorStyles.cta}>
-        <NetworkCanvas maxNodes={70} opacity={0.7} className={interiorStyles.ctaCanvas} />
+        <FlowField variant="cta" className={interiorStyles.ctaCanvas} />
         <Reveal duration={900} className={interiorStyles.ctaInner}>
           <h2 className={`sectionHeading ${interiorStyles.ctaHeading}`}>{cta.heading}</h2>
           <p className={interiorStyles.ctaText}>{cta.text}</p>

@@ -1,5 +1,3 @@
-import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
-import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
 import { NAV_CTA_LABEL } from "./site.js";
 
@@ -28,7 +26,7 @@ export const HERO = {
 export const SERVICES_EYEBROW = "What we do";
 export const SERVICES_HEADING = "Three ways we move your business forward.";
 
-// textAccent renders inside its own <span> for the gradient treatment; textPrefix/textSuffix
+// textAccent renders inside its own <span> for the accent-colour treatment; textPrefix/textSuffix
 // are the plain-text copy around it.
 export const MISSION = {
   eyebrow: "Our mission",
@@ -57,11 +55,6 @@ export const SERVICES = [
     href: ROUTE_PATHS.data,
     linkLabel: "View the Data page",
     icon: "square",
-    markColor: ACCENT,
-    hoverBorder: hexToRgba(ACCENT, 0.5),
-    iconBg: `linear-gradient(135deg, ${hexToRgba(ACCENT, 0.25)}, ${hexToRgba(ACCENT2, 0.12)})`,
-    iconBorder: hexToRgba(ACCENT, 0.3),
-    iconGradient: `linear-gradient(135deg, ${ACCENT}, ${ACCENT2})`,
   },
   {
     title: "Tech Implementation",
@@ -75,11 +68,6 @@ export const SERVICES = [
     href: ROUTE_PATHS.technology,
     linkLabel: "View the Technology page",
     icon: "circle",
-    markColor: ACCENT3,
-    hoverBorder: hexToRgba(ACCENT3, 0.5),
-    iconBg: `linear-gradient(135deg, ${hexToRgba(ACCENT3, 0.25)}, ${hexToRgba(ACCENT2, 0.12)})`,
-    iconBorder: hexToRgba(ACCENT3, 0.3),
-    iconGradient: `linear-gradient(135deg, ${ACCENT3}, ${ACCENT2})`,
   },
   {
     title: "Data & Tech Consulting",
@@ -97,11 +85,6 @@ export const SERVICES = [
     href: ROUTE_PATHS.consulting,
     linkLabel: "View the Consulting page",
     icon: "triangle",
-    markColor: ACCENT2,
-    hoverBorder: hexToRgba(ACCENT2, 0.5),
-    iconBg: `linear-gradient(135deg, ${hexToRgba(ACCENT2, 0.25)}, ${hexToRgba(ACCENT, 0.12)})`,
-    iconBorder: hexToRgba(ACCENT2, 0.3),
-    iconGradient: `linear-gradient(135deg, ${ACCENT2}, ${ACCENT})`,
   },
 ];
 
@@ -129,39 +112,6 @@ export const METHODOLOGY_STEPS = [
     title: "Optimize",
     description:
       "We measure, refine, and maintain systems to keep your data and technology working as your business grows.",
-  },
-];
-
-export const HOME_GLOW_BLOBS = [
-  {
-    top: "-12%",
-    left: "-8%",
-    size: "52vw",
-    color: "rgba(21,155,200,.28)",
-    fade: 62,
-    blur: 30,
-    duration: 14,
-    speed: 0.15,
-  },
-  {
-    top: "38%",
-    right: "-14%",
-    size: "46vw",
-    color: "rgba(79,216,255,.20)",
-    blur: 34,
-    duration: 18,
-    delay: 2,
-    speed: 0.28,
-  },
-  {
-    bottom: "-16%",
-    left: "24%",
-    size: "44vw",
-    color: "rgba(43,184,216,.18)",
-    blur: 34,
-    duration: 16,
-    delay: 1,
-    speed: 0.2,
   },
 ];
 
