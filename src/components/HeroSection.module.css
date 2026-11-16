@@ -18,9 +18,9 @@
 .hero {
   position: relative;
   z-index: 10;
-  padding: 150px var(--side-padding) 70px;
-  max-width: var(--max-wide);
-  margin: 0 auto;
+  /* Spans 100% of its container (not viewport-width units, which include the scrollbar); the inner column is
+     made by padding: side-padding, or the gutter that centres a max-wide column. */
+  padding: 160px max(var(--side-padding), calc((100% - var(--max-wide)) / 2 + var(--side-padding))) 90px;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
@@ -42,7 +42,7 @@
   z-index: -1;
 }
 
-/* Graphic column. Offset down by exactly the eyebrow block (17px line + 16px margin-bottom
+/* Graphic column. Offset down by exactly the eyebrow block (~17px line + 16px margin-bottom
    = 33px) so the graphic's top lands on the h1's top on every page, regardless of the
    graphic's own height. */
 .mockupCol {
@@ -70,43 +70,40 @@
 
 .h1 {
   font-family: var(--fd);
-  font-weight: 700;
-  font-size: clamp(40px, 5.6vw, 72px);
-  line-height: 1.03;
-  letter-spacing: -0.035em;
+  font-weight: 480;
+  font-size: clamp(40px, 5.8vw, 80px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
   margin: 0;
 }
 
 .gradientSpan {
-  background: linear-gradient(115deg, var(--accent), var(--accent3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
 .subcopy {
-  font-size: clamp(16px, 1.6vw, 20px);
+  font-size: clamp(18px, 1.55vw, 21px);
   line-height: 1.55;
   color: var(--text-secondary);
   max-width: 52ch;
-  margin: 26px 0 0;
+  margin: 28px 0 0;
 }
 
 .ctaRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 34px;
+  gap: 12px;
+  margin-top: 36px;
 }
 
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr;
-    padding-top: 120px;
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 130px;
   }
 
   .heroWide {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   /* Stacked: no eyebrow beside the graphic to align to — drop the offset, the grid gap

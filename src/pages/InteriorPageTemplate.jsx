@@ -1,6 +1,6 @@
 import Layout from "../components/Layout.jsx";
 import JsonLd from "../components/JsonLd.jsx";
-import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import FlowField from "../components/FlowField.jsx";
 import HeroSection, { HeroEyebrow, HeroHeading, HeroLede, HeroActions } from "../components/HeroSection.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
@@ -8,7 +8,7 @@ import Reveal from "../components/Reveal.jsx";
 import SubServiceSection from "../components/SubServiceSection.jsx";
 import PipelineStep from "../components/PipelineStep.jsx";
 import DemoSection from "../components/DemoSection.jsx";
-import { INTERIOR_GLOW_BLOBS, SEE_CAPABILITIES_LABEL } from "../data/site.js";
+import { SEE_CAPABILITIES_LABEL } from "../data/site.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 import styles from "./InteriorPageTemplate.module.css";
 
@@ -42,7 +42,7 @@ export default function InteriorPageTemplate({
       <div className="eyebrow" style={{ marginBottom: 14 }}>
         {pipelineEyebrow}
       </div>
-      <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
+      <h2 className="sectionHeading">
         {pipelineHeading}
       </h2>
     </Reveal>
@@ -59,7 +59,7 @@ export default function InteriorPageTemplate({
   );
 
   return (
-    <Layout blobs={INTERIOR_GLOW_BLOBS}>
+    <Layout>
       <JsonLd data={buildBreadcrumbSchema(breadcrumbPath)} />
       <HeroSection mockup={mockup}>
         <HeroEyebrow>{eyebrow}</HeroEyebrow>
@@ -114,7 +114,7 @@ export default function InteriorPageTemplate({
       {demos?.length ? <DemoSection demos={demos} /> : null}
 
       <section className={styles.cta}>
-        <NetworkCanvas maxNodes={70} opacity={0.7} className={styles.ctaCanvas} />
+        <FlowField variant="cta" className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{ctaHeading}</h2>
           <p className={styles.ctaText}>{ctaText}</p>

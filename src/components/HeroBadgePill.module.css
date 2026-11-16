@@ -5,12 +5,10 @@
   align-self: flex-start;
   padding: 7px 15px 7px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-fill-lo);
+  border: 1px solid var(--surface-border-lo);
   font-size: 13.5px;
-  color: var(--text-secondary2b);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-secondary);
 }
 
 .dot {
@@ -18,6 +16,5 @@
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
   flex-shrink: 0;
 }

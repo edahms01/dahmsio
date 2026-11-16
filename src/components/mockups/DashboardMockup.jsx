@@ -19,13 +19,13 @@ export default function DashboardMockup({ label, value, delta, bars, stats, lege
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className={styles.chartOverlay}>
           <polygon
             points="68.75,15 81.25,3 93.75,0 93.75,17 81.25,20 68.75,21"
-            fill="var(--accent3)"
+            fill="var(--accent)"
             opacity="0.16"
           />
           <polyline
             points="6.25,54 18.75,38 31.25,46 43.75,22 56.25,30 68.75,18"
             fill="none"
-            stroke="#f4fbff"
+            stroke="var(--text)"
             strokeWidth="1.6"
             opacity="0.85"
             vectorEffect="non-scaling-stroke"
@@ -33,7 +33,7 @@ export default function DashboardMockup({ label, value, delta, bars, stats, lege
           <polyline
             points="68.75,18 81.25,10 93.75,2"
             fill="none"
-            stroke="var(--accent3)"
+            stroke="var(--accent)"
             strokeWidth="1.6"
             strokeDasharray="3 3"
             opacity="0.9"
@@ -58,9 +58,8 @@ export default function DashboardMockup({ label, value, delta, bars, stats, lege
               className={styles.bar}
               style={{
                 height: `${bar.height}%`,
-                background: `linear-gradient(180deg, ${bar.from}, ${bar.to})`,
+                background: bar.from,
                 animationDelay: `${0.5 + i * 0.1}s`,
-                boxShadow: bar.glow ? "0 0 20px rgba(21,155,200,.5)" : undefined,
               }}
             />
           ),

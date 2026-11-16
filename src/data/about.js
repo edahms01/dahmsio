@@ -1,6 +1,4 @@
 import { ROUTE_PATHS } from "../routes.js";
-import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
-import { hexToRgba } from "../utils/color.js";
 
 // Real copy — about-page-copy-v23.md. Company voice ("we"/"our") throughout except
 // FOUNDERS_NOTE, the one deliberate first-person exception (paired with the headshot). No em
@@ -56,32 +54,26 @@ export const CREDIBILITY = {
     {
       lead: "A single clear view.",
       body: "One trustworthy picture of your business, updated automatically, instead of three reports that don't agree.",
-      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       lead: "Data that runs itself.",
       body: "Automated pipelines and quality checks keep your numbers current and consistent, with no chasing.",
-      hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
       lead: "Tools your team actually uses.",
       body: "Software that fits how your team already works, so it gets used.",
-      hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
       lead: "AI applied where it pays.",
       body: "Assistants and agents that take real work off your team's plate, and a straight answer when AI isn't the right fit.",
-      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       lead: "Answers you can act on.",
       body: "Statistical modeling separates what's actually moving your results from what is happening in the background.",
-      hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
       lead: "A roadmap you can execute.",
       body: "A clear, costed plan for what to do first, whether you run it yourself or bring us back to build it.",
-      hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
   ],
 };
@@ -101,29 +93,21 @@ export const HOW_WE_WORK = {
       title: "Ongoing partner",
       description:
         "We act as your data and technology department on retainer: a set number of hours each month, spent on maintenance, improvements, or new work as your priorities move.",
-      markColor: ACCENT,
-      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
     {
       title: "Build & maintain",
       description:
         "We design and build the system, then keep it running, patched, and improving under an ongoing arrangement.",
-      markColor: ACCENT3,
-      hoverBorder: hexToRgba(ACCENT3, 0.45),
     },
     {
       title: "Build & hand-over",
       description:
         "We design, build, and hand over a finished solution. You own it outright from day one, and you handle maintenance going forward.",
-      markColor: ACCENT2,
-      hoverBorder: hexToRgba(ACCENT2, 0.45),
     },
     {
       title: "Advisory",
       description:
         "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and give you a clear roadmap you can run yourself or bring back to us.",
-      markColor: ACCENT,
-      hoverBorder: hexToRgba(ACCENT, 0.45),
     },
   ],
   operatingEyebrow: "Operating principles",

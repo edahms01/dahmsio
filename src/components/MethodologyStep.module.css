@@ -1,35 +1,79 @@
+/* Grid on the existing markup: number pill in a 72px left column, title + description in the
+   right column. .head uses display: contents so its children join the grid (no JSX change). */
 .step {
-  padding: 28px 30px;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: start;
+  padding: 28px 28px 30px;
   border-radius: var(--radius-step);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--surface-fill-lo);
+  border: 1px solid var(--surface-border-lo);
 }
 
 .head {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  margin-bottom: 10px;
+  display: contents;
 }
 
 .number {
-  font-family: var(--fd);
-  font-weight: 700;
-  font-size: 15px;
+  grid-column: 1;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(134, 195, 90, 0.16);
   color: var(--accent);
+  font-family: var(--fm);
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .title {
+  grid-column: 2;
+  grid-row: 1;
   font-family: var(--fd);
-  font-weight: 600;
-  font-size: 21px;
-  letter-spacing: -0.02em;
+  font-weight: 520;
+  font-size: 27px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
 .description {
-  font-size: 14.5px;
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 16px;
   line-height: 1.6;
-  color: var(--text-secondary2);
+  color: var(--text-secondary);
+  max-width: 50ch;
   margin: 0;
+}
+
+@media (max-width: 900px) {
+  .step {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px;
+  }
+
+  .number,
+  .title,
+  .description {
+    grid-column: 1;
+  }
+
+  .number {
+    grid-row: 1;
+  }
+
+  .title {
+    grid-row: 2;
+  }
+
+  .description {
+    grid-row: 3;
+  }
 }

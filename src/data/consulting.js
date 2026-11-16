@@ -1,5 +1,3 @@
-import { ACCENT, ACCENT2, ACCENT3 } from "./colors.js";
-import { hexToRgba } from "../utils/color.js";
 import { ROUTE_PATHS } from "../routes.js";
 
 export const META = {
@@ -84,8 +82,6 @@ export const SUBSERVICE_GROUPS = [
           "Recommendations you can act on yourself, hand to your team, or bring back to us",
           "No obligation to do anything else afterward",
         ],
-        markColor: ACCENT,
-        hoverBorder: hexToRgba(ACCENT, 0.45),
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
         // SubServiceSection.jsx.
@@ -115,8 +111,6 @@ export const SUBSERVICE_GROUPS = [
           "Clear success measures for each phase, so you know if it's working",
           "A plan built to hand to your own team, or bring back to us to run",
         ],
-        markColor: ACCENT3,
-        hoverBorder: hexToRgba(ACCENT3, 0.45),
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
         // SubServiceSection.jsx.
@@ -145,8 +139,6 @@ export const SUBSERVICE_GROUPS = [
           "Agile process and stakeholder alignment run for you",
           "A scoped, ready-to-build plan you can hand to your own team, ours, or anyone else",
         ],
-        markColor: ACCENT2,
-        hoverBorder: hexToRgba(ACCENT2, 0.45),
       },
     ],
   },
@@ -178,8 +170,6 @@ export const SUBSERVICE_GROUPS = [
           "Backed by a wider network for a second opinion when a problem calls for one",
           "A commitment sized to the actual work, not locked into a long-term hire",
         ],
-        markColor: ACCENT,
-        hoverBorder: hexToRgba(ACCENT, 0.45),
       },
       {
         id: "interim-leadership",
@@ -198,8 +188,6 @@ export const SUBSERVICE_GROUPS = [
           "Guidance for any specialists or staff already in place",
           "A clean handoff plan for when you hire permanently or the gap closes",
         ],
-        markColor: ACCENT3,
-        hoverBorder: hexToRgba(ACCENT3, 0.45),
       },
     ],
   },
@@ -216,19 +204,16 @@ export const PIPELINE_HEADING = "From first conversation to a finished plan.";
 export const PIPELINE = [
   {
     label: "STEP 01",
-    labelColor: ACCENT,
     title: "Discover",
     description: "Understand your business, your systems, and where things actually stand.",
   },
   {
     label: "STEP 02",
-    labelColor: ACCENT,
     title: "Plan",
     description: "Turn what we learned into a prioritized, sequenced set of recommendations.",
   },
   {
     label: "STEP 03",
-    labelColor: ACCENT3,
     title: "Refine",
     description: "Walk the plan through with you and adjust it based on what you push back on.",
   },

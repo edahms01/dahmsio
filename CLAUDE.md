@@ -55,7 +55,7 @@ No industry-specific pages yet. The site is deliberately horizontal right now. D
   - On mobile (<1100px): stacks vertically
 - **Narrative body:** Uses an 82ch prose measure (widened 20% from the original 68ch) for readability (distinct from hero's wide layout)
 - **Hero graphic:** `DemoScreenshotFrame.jsx` — a screenshot of the live demo app in the site's
-  window frame (chrome bar + dots + glow), sized/aligned like the interior pages' hero visuals
+  window frame (chrome bar + dots + neutral drop shadow), sized/aligned like the interior pages' hero visuals
   - Data via `hero.screenshot` (path under `public/images/demos/`) and `hero.screenshotAlt`
   - Hero and card use **two different images**: `<slug>-screenshot.jpg` (hero, framed) and
     `<slug>-card.jpg` (card thumbnail, a 5:2 strip of the app's title + blurb). Do not point
@@ -73,6 +73,11 @@ Follow `src/data/_TEMPLATE_case-study.md` (full spec + checklist). In short:
    equal the `ROUTE_PATHS` key
 3. Add the route to `src/routes.js` and `src/App.jsx`; add the wrapper in `src/pages/demos/`
 4. Add both images (`<slug>-screenshot.jpg`, `<slug>-card.jpg`)
+   - The hero screenshot also needs WebP variants at 640, 960 and 1200px wide next to it
+     (`<slug>-screenshot-640.webp`, `-960.webp`, `-1200.webp`). Opt-in: set `screenshotWebp: true`
+     in the demo's data; `DemoScreenshotFrame.jsx` then serves them through `<picture>`/`srcset`
+     with the JPG as the `<img>` fallback. Without the flag it renders the plain JPG.
+     e.g. `cwebp -q 80 -m 6 -resize 640 0 <slug>-screenshot.jpg -o <slug>-screenshot-640.webp`
 5. Demo app: drop it at `public/demos/<slug>/app/`; its `index.html` needs a `noindex` meta,
    a "Back to the case study" link, and (only if it needs a server-side secret) a Netlify
    Edge Function under `netlify/edge-functions/` with a demo-namespaced `config.path`

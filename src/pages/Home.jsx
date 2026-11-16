@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
-import NetworkCanvas from "../components/NetworkCanvas.jsx";
+import FlowField from "../components/FlowField.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import SecondaryButton from "../components/SecondaryButton.jsx";
 import Reveal from "../components/Reveal.jsx";
@@ -19,16 +19,15 @@ import {
   METHODOLOGY_TEXT,
   METHODOLOGY_STEPS,
   CTA,
-  HOME_GLOW_BLOBS,
 } from "../data/home.js";
 import styles from "./Home.module.css";
 
 export default function Home() {
   return (
-    <Layout blobs={HOME_GLOW_BLOBS}>
+    <Layout>
       <PageMeta {...META} />
       <header className={styles.hero}>
-        <NetworkCanvas maxNodes={90} opacity={0.9} className={styles.heroCanvas} />
+        <FlowField variant="hero" className={styles.heroCanvas} />
         <h1 className={`${styles.h1} ${styles.heroUp} ${styles.heroUpDelay1}`}>
           {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}.</span>
         </h1>
@@ -89,7 +88,7 @@ export default function Home() {
       </section>
 
       <section className={styles.cta}>
-        <NetworkCanvas maxNodes={70} opacity={0.7} className={styles.ctaCanvas} />
+        <FlowField variant="cta" className={styles.ctaCanvas} />
         <Reveal duration={900} className={styles.ctaInner}>
           <h2 className={`sectionHeading ${styles.ctaHeading}`}>{CTA.heading}</h2>
           <p className={styles.ctaText}>{CTA.text}</p>

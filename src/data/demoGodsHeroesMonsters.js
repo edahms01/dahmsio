@@ -42,6 +42,7 @@ export const HERO = {
   screenshotAlt:
     "The Gods, Heroes, and Monsters chat app: its title, tagline, and starter questions over a constellation backdrop.",
   screenshotLabel: "fables-ai.io",
+  screenshotWebp: true, // WebP variants exist (640/960/1200) — see CLAUDE.md
 };
 
 export const PROBLEM = {

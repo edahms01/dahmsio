@@ -103,7 +103,7 @@
    section, hence .subheadingFlush below rather than this rule's default top-margin. */
 .subheading {
   font-family: var(--fd);
-  font-weight: 600;
+  font-weight: 520;
   font-size: clamp(18px, 2vw, 22px);
   margin: 56px 0 28px;
 }
@@ -135,23 +135,25 @@
   position: relative;
   padding: 20px 22px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: border-color 0.25s ease;
+  background: var(--surface);
+  border: 1px solid var(--surface-border-lo);
+  transition: border-color 0.3s var(--ease-out);
   font-size: 15px;
   line-height: 1.65;
   color: var(--text-secondary);
 }
 
-.leadItem:hover {
-  border-color: var(--hover-border);
+@media (hover: hover) {
+  .leadItem:hover {
+    border-color: rgba(134, 195, 90, 0.45);
+  }
 }
 
 .leadItemLead {
   display: block;
   font-family: var(--fd);
-  font-weight: 600;
-  color: #f3f3f8;
+  font-weight: 520;
+  color: var(--text);
   margin-bottom: 6px;
   font-size: 16px;
 }
@@ -221,7 +223,7 @@
 .operatingPrincipleLead {
   font-family: var(--fd);
   font-weight: 600;
-  color: #f3f3f8;
+  color: var(--text);
 }
 
 /* The Long Cycle — ContinuumGraphic, moved here from Home (see About.jsx) to sit just before
@@ -246,11 +248,9 @@
   text-align: center;
 }
 
-/* Same breakout math as Home.module.css's own (former) .continuumGraphic: CSS max() picks 0
-   once the viewport is narrower than var(--max-wide), so the second term drops out cleanly
-   and this matches every other section's width there instead of overflowing it. */
+/* Full width of the section (the section itself is already unconstrained). */
 .continuumGraphic {
-  width: calc(100vw - var(--side-padding) - max(0px, (100vw - var(--max-wide)) / 2));
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -273,7 +273,7 @@
 /* Quote-style left border, standing in for italics as the page's "this is a letter" signal
    (see the comment in About.jsx above where this wraps the paragraphs + signature). */
 .letterBody {
-  border-left: 2px solid rgba(255, 255, 255, 0.14);
+  border-left: 2px solid var(--surface-border-hi);
   padding-left: 22px;
 }
 
@@ -332,7 +332,7 @@
   display: block;
   font-family: var(--fd);
   font-weight: 600;
-  color: #f3f3f8;
+  color: var(--text);
   font-size: 16px;
   margin-bottom: 6px;
 }

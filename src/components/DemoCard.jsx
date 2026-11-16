@@ -3,8 +3,8 @@ import styles from "./DemoCard.module.css";
 
 /**
  * One demo tile in the Technology page's Demos section. The whole card is the link target
- * (to the demo's Case Study page), not a button nested inside it. Visual treatment — gradient
- * fill, hairline border, hover border — is the same one CapabilityCard / SubServiceSection
+ * (to the demo's Case Study page), not a button nested inside it. Visual treatment — flat
+ * surface fill, hairline border, hover border — is the same one CapabilityCard / SubServiceSection
  * use elsewhere, so this reads as native to the page rather than a new component language.
  *
  * `thumbnail` is a screenshot of the live demo app (public/images/demos/…). No window
@@ -17,7 +17,7 @@ export default function DemoCard({ slug, category, title, summary, thumbnail }) 
         {thumbnail ? (
           <img src={thumbnail} alt="" loading="lazy" />
         ) : (
-          <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.05)" }} />
+          <div style={{ width: "100%", height: "100%", background: "var(--surface-fill-hi)" }} />
         )}
       </div>
       <div className={styles.body}>

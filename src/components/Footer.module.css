@@ -1,8 +1,7 @@
 .footer {
   position: relative;
   z-index: 10;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 48px var(--side-padding);
+  padding: 72px var(--side-padding) 56px;
   max-width: var(--max-wide);
   margin: 0 auto;
   display: flex;
@@ -14,19 +13,27 @@
 
 .tagline {
   font-size: 14px;
-  /* text-muted3 fails WCAG contrast against --bg (3.95:1, needs 4.5:1) — text-muted2 passes
-     (4.62:1) and is the next step up in the existing muted-text scale. */
+  /* text-muted3 is decorative only (4.0:1); text-muted2 passes AA. */
   color: var(--text-muted2);
-  font-style: italic;
 }
 
 .links {
   display: flex;
-  gap: 22px;
+  flex-wrap: wrap;
+  gap: 0 8px;
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
-.link:hover {
-  color: #fff;
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--text);
+  }
 }
