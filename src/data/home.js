@@ -14,7 +14,8 @@ export const META = {
 // the nav CTA are meant to say the same thing site-wide; single-sourced here instead of a
 // third hardcoded copy.
 export const HERO = {
-  heroPrefix: "Where innovation meets",
+  heroLine1: "Where innovation",
+  heroPrefix: "meets",
   heroAccent: "intelligence",
   heroSubcopy:
     "We turn complex data and technology into clear, practical systems that grow revenue, boost efficiency, and set ambitious businesses apart from competitors.",

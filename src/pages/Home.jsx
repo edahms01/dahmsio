@@ -29,6 +29,8 @@ export default function Home() {
       <header className={styles.hero}>
         <FlowField variant="hero" className={styles.heroCanvas} />
         <h1 className={`${styles.h1} ${styles.heroUp} ${styles.heroUpDelay1}`}>
+          {HERO.heroLine1}
+          <br />
           {HERO.heroPrefix} <span className={styles.gradientSpan}>{HERO.heroAccent}.</span>
         </h1>
         <p className={`${styles.subcopy} ${styles.heroUp} ${styles.heroUpDelay2}`}>{HERO.heroSubcopy}</p>

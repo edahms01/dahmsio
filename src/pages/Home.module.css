@@ -81,7 +81,16 @@
   line-height: 0.95;
   letter-spacing: -0.045em;
   margin: 0;
-  max-width: 12ch;
+  max-width: 20ch;
+}
+
+/* Keep the forced two-line headline ("Where innovation" / "meets intelligence.") on two lines
+   on phones: at the 46px floor, "meets intelligence." is ~372px wide, wider than a 390px
+   viewport's text column. */
+@media (max-width: 480px) {
+  .h1 {
+    font-size: min(46px, 10.2vw);
+  }
 }
 
 .gradientSpan {
