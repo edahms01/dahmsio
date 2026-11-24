@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import FlowField from "../components/FlowField.jsx";
@@ -13,11 +12,11 @@ import {
   SERVICES,
   SERVICES_EYEBROW,
   SERVICES_HEADING,
-  MISSION,
   METHODOLOGY_EYEBROW,
   METHODOLOGY_HEADING,
   METHODOLOGY_TEXT,
   METHODOLOGY_STEPS,
+  PRINCIPLES,
   CTA,
 } from "../data/home.js";
 import styles from "./Home.module.css";
@@ -56,22 +55,6 @@ export default function Home() {
         </div>
       </section>
 
-
-      <section className={styles.mission}>
-        <Reveal duration={900}>
-          <div className="eyebrow" style={{ marginBottom: 22 }}>
-            {MISSION.eyebrow}
-          </div>
-          <p className={styles.missionText}>
-            {MISSION.textPrefix} <span className={styles.missionAccent}>{MISSION.textAccent}</span>
-            {MISSION.textSuffix}
-          </p>
-          <Link to="/about/" className={styles.missionLink}>
-            {MISSION.linkLabel}
-          </Link>
-        </Reveal>
-      </section>
-
       <section id="methodology" className={styles.methodology}>
         <div className={styles.methodologyGrid}>
           <div className={styles.methodologyLeft}>
@@ -87,6 +70,20 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className={styles.principles}>
+        <Reveal className={styles.sectionHeadCentered}>
+          <div className="eyebrow">{PRINCIPLES.eyebrow}</div>
+          <h2 className={`sectionHeading ${styles.servicesHeading}`}>{PRINCIPLES.heading}</h2>
+        </Reveal>
+        <Reveal className={styles.operatingPrinciples} as="ul">
+          {PRINCIPLES.items.map((item) => (
+            <li key={item.lead} className={styles.operatingPrinciple}>
+              <span className={styles.operatingPrincipleLead}>{item.lead}</span> {item.body}
+            </li>
+          ))}
+        </Reveal>
       </section>
 
       <section className={styles.cta}>

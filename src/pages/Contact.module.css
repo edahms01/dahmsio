@@ -197,6 +197,58 @@
   margin: 0;
 }
 
+/* Engagement models — sits directly above the FAQ. Needs its own wider shell: the form column
+   above is capped at 760px, but a 2x2 card grid wants the site's standard content width. The
+   140px bottom padding supplies the section-to-section gap down to the FAQ (which has no top
+   padding of its own). */
+.engagementSection {
+  position: relative;
+  z-index: 10;
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 0 var(--side-padding) 140px;
+}
+
+.engagementHead {
+  text-align: center;
+}
+
+/* Four engagement models reuse CapabilityCard, laid out as a 2x2 square (moved here from
+   About). Steps to a single column at 560px rather than keeping two narrow columns down to
+   mobile.
+   grid-template-rows: 1fr 1fr (not the implicit auto rows a plain 2-column grid gets by
+   default) so the two rows can't diverge in height from each other — without it, each row
+   sizes to only its own two cards' content, and a longer description in row 2 makes it
+   taller than row 1 even though every card shares the same font size and padding. */
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  margin-top: 44px;
+}
+
+/* CapabilityCard's 36px padding and its description's 22px bottom margin are both tuned for
+   cards that also carry a numbered .rows list underneath (Data/Technology/Consulting) —
+   the engagement models have no rows, so unmodified the card was mostly empty space below
+   two lines of description. Smaller padding and a zeroed description margin here instead. */
+.engagementCard {
+  padding: 24px;
+}
+
+.engagementCard p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 560px) {
+  .engagementGrid {
+    grid-template-columns: 1fr;
+    /* Single column: each card is the only item in its row, so the desktop 1fr 1fr split has
+       nothing left to equalize. */
+    grid-template-rows: none;
+  }
+}
+
 .faqSection {
   position: relative;
   z-index: 10;

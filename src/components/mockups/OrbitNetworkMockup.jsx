@@ -1,7 +1,7 @@
 import styles from "./OrbitNetworkMockup.module.css";
 
 // Ported from the Claude Design hero graphic (About.dc.html, project a37bbdf4) — the
-// "global reach -> local focus" visual: eight nodes on concentric rings, orbiting slowly,
+// "global experience -> applied to your business" visual: eight nodes on concentric rings, orbiting slowly,
 // each firing a particle inward toward a pulsing center hub. Purely illustrative (no
 // props/labels, unlike the other AppWindowMockup children), so positions/colors/timings are
 // hardcoded to match the source design exactly rather than data-driven.

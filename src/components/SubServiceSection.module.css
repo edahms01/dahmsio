@@ -204,7 +204,7 @@
 }
 
 /* global.css resets `ul { list-style: none }` site-wide — restored here, same pattern as
-   About.module.css's .operatingPrinciples/.credentials. */
+   Home.module.css's .operatingPrinciples (and About.module.css's .credentials). */
 .list {
   list-style: disc;
   margin: 0;
