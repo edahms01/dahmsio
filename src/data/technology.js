@@ -136,7 +136,7 @@ export const SUBSERVICE_GROUPS = [
 ];
 
 export const PIPELINE_EYEBROW = "The build";
-export const PIPELINE_HEADING = "From idea to a system your team relies on.";
+export const PIPELINE_HEADING = "From first idea to working system.";
 
 export const PIPELINE = [
   {
