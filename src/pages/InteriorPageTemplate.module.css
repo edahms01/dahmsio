@@ -75,10 +75,13 @@
 /* Compound selector (.ctaInner .ctaHeading): global .sectionHeading sets margin: 0 at the
    same specificity, so the extra ancestor class keeps this margin winning. */
 .ctaInner .ctaHeading {
-  font-size: clamp(40px, 6.4vw, 92px);
+  font-size: clamp(32px, 6.4vw, 92px);
   line-height: 0.98;
   letter-spacing: -0.045em;
-  max-width: 14ch;
+  /* Two lines on every CTA heading: no ch cap (the old 14ch forced 3 lines on the longer
+     headings), balanced wrap so the two lines come out even. */
+  max-width: none;
+  text-wrap: balance;
   margin: 0 auto 28px;
 }
 
