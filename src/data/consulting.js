@@ -4,7 +4,7 @@ export const META = {
   path: ROUTE_PATHS.consulting,
   title: "Data & Tech Consulting | DahmsIO",
   description:
-    "Data and technology assessment, strategy and product consulting, plus embedded analysts, engineers, and interim leadership from DahmsIO.",
+    "Data and technology consulting from DahmsIO: assessments, strategy, and product direction, plus embedded specialists and interim leadership.",
 };
 
 export const HERO = {
@@ -12,7 +12,7 @@ export const HERO = {
   heroPrefix: "Strategy, vision, and talent that become",
   heroAccent: "part of your business",
   heroSubcopy:
-    "Some problems need a decision made. Others need someone to do the work. We plug into how you already run things, so every project has the right thinking and the right people behind it.",
+    "Some problems need a decision made. Others need someone to do the work. We can help with both, working inside your business the way it already runs.",
   primaryCtaLabel: "Scope a consulting project",
 };
 
@@ -55,7 +55,7 @@ export const SUBSERVICE_GROUPS = [
     eyebrow: "Advisory",
     heading: "Think before you build.",
     paragraphs: [
-      "Every advisory engagement answers three questions: what's actually happening, what should happen next, and how the work gets carried out once you commit. Start wherever you need. No build, no code, and no obligation to take on further work afterward.",
+      "Every advisory engagement answers three questions: what's happening now, what should happen next, and how the work gets done once you commit. Start wherever you need. Advisory is planning only, and there's no obligation to continue with us afterward.",
     ],
     numbered: true,
     items: [
@@ -67,27 +67,26 @@ export const SUBSERVICE_GROUPS = [
         // every `slug` in this file; see subservice-expansion-plan-v6.md).
         slug: "/consulting/assessment-audit/",
         title: "Assessment & Audit",
-        outcome: "A clear, honest picture of what you have and what it's costing you.",
-        body: "Before anything gets fixed, someone has to look at it plainly. We go through your systems, your process, your data, and the competitive landscape around you, then tell you what's actually working, what's quietly costing you time or money, and what to leave alone. No build happens here, and no assumption that one should.",
+        outcome: "A clear picture of what you have and what it's costing you.",
+        body: "Before anything gets fixed, someone has to look at it plainly. We review your systems, processes, data, and how your competitors operate, then tell you what's working, what's costing you time or money, and what to leave alone.",
         symptoms: [
           "You suspect something's wrong but can't put your finger on what",
           "You want a second opinion before committing to a bigger project",
-          "You don't know how you compare to competitors, or what they're doing that you aren't",
+          "You don't know how your business compares to competitors, or what they're doing that you aren't",
           "You inherited systems or a process nobody on your team fully understands anymore",
         ],
         deliverables: [
-          "A plain-English writeup of what you have today and how it's actually performing",
-          "A ranked list of what's genuinely costing you time or money, and what isn't",
+          "A plain-English writeup of what you have today and how it's performing",
+          "A ranked list of what's costing you time or money, and what isn't",
           "A look at where you stand against competitors and where the market's heading",
           "Recommendations you can act on yourself, hand to your team, or bring back to us",
-          "No obligation to do anything else afterward",
         ],
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
         // SubServiceSection.jsx.
         crossLink: {
           before:
-            "Audits tend to circle back to the same thing: the data itself needs work first. That's ",
+            "Audits often find that the data needs work first. That's ",
           linkText: "Data Foundations",
           after: ".",
           to: "/data/",
@@ -98,18 +97,18 @@ export const SUBSERVICE_GROUPS = [
         id: "strategy-roadmap",
         slug: "/consulting/strategy-roadmap/",
         title: "Strategy & Roadmap",
-        outcome: "A clear plan for what to do next and in what order.",
-        body: "Knowing something's wrong isn't the same as knowing what to do about it. We take stock of where you are, where you want to get to, and what you can actually afford right now, then turn that into a sequenced plan: what happens first, what comes after, and what can wait. You walk away with a roadmap, not a stack of options.",
+        outcome: "A plan for what to do next, and in what order.",
+        body: "Once you know what's wrong, the next question is what to do about it. We look at where you are, where you want to be, and what you can afford right now, then turn that into a plan: what happens first, what comes next, and what can wait.",
         symptoms: [
           "You have five things you know you should fix and no idea which one to start with",
           "You're planning next year's budget and want the technology and data pieces to make sense together",
-          "You've been given a vague mandate to \"modernize\" and need it turned into an actual plan",
+          "You've been given a vague mandate to \"modernize\" and need it turned into a concrete plan",
         ],
         deliverables: [
           "A written roadmap sequencing what to tackle now, next, and later",
-          "Priorities weighed against your actual budget and timeline, not a wish list",
+          "Priorities weighed against your real budget and timeline",
           "Clear success measures for each phase, so you know if it's working",
-          "A plan built to hand to your own team, or bring back to us to run",
+          "A plan built to hand to your own team, or bring back to us to implement",
         ],
         // Footnote-style cross-link to a related sub-service on another page. Rendered as a
         // small italic aside beneath `body`, not part of the approved plan-doc copy — see
@@ -127,16 +126,16 @@ export const SUBSERVICE_GROUPS = [
         slug: "/consulting/product-delivery/",
         title: "Product & Delivery",
         outcome: "Product thinking and hands-on direction once you've decided to build something.",
-        body: "A roadmap tells you what to build. This is where that turns into a plan a team can actually execute: needs mapped out, features defined and prioritized, wireframes or a clickable prototype if it helps everyone see the same thing before a line of code gets written. We can lead the process or work alongside whoever's already running it. The full build happens under a separate engagement, this is the thinking that shapes it.",
+        body: "A roadmap tells you what to build. This stage turns it into a plan a team can work from: needs mapped out, features defined and prioritized, and wireframes or a clickable prototype so everyone sees the same thing before any code is written. We can lead the process or support whoever's already running it. The build itself is a separate engagement.",
         symptoms: [
-          "You know what you want built but not exactly how it should work or look",
+          "You know what you want built but not how it should work or look",
           "You're running a build project yourself and want an experienced product person guiding the approach",
           "You want to see it before you commit, in wireframes or a working prototype, not just a written spec",
         ],
         deliverables: [
           "Requirements and priorities defined clearly enough for a team to build against",
           "Wireframes or a clickable prototype, so everyone sees the same thing before code gets written",
-          "Agile process and stakeholder alignment run for you",
+          "We run the planning meetings and keep everyone agreed on priorities",
           "A scoped, ready-to-build plan you can hand to your own team, ours, or anyone else",
         ],
       },
@@ -146,7 +145,7 @@ export const SUBSERVICE_GROUPS = [
     eyebrow: "Talent",
     heading: "The people to make it happen.",
     paragraphs: [
-      "Advisory answers what to do. Talent answers who does it, whether that's extra hands for a specific project or a senior leader directing the effort. Both join your team directly rather than working from a separate shop.",
+      "Advisory answers what to do. Talent answers who does it, whether that's extra hands for a specific project or a senior leader directing the effort. Either way, they work inside your team.",
     ],
     numbered: false,
     items: [
@@ -156,19 +155,18 @@ export const SUBSERVICE_GROUPS = [
         id: "embedded-specialists",
         slug: "/consulting/embedded-specialists/",
         title: "Embedded Specialists",
-        outcome: "The right person on your team, for exactly as long as you need them.",
-        body: "Sometimes the gap isn't a decision, it's hands. We place analysts, engineers, or designers directly into your team, working alongside the people you already have rather than off in a separate shop. You get someone who shows up to your meetings and knows your systems, for the stretch of time the work actually requires, not a fixed headcount you're stuck with after it's done. They're not working in isolation either. When a task calls for a second opinion or a harder problem needs a more experienced mind, they can bring it back to the network to ask for support.",
+        outcome: "The right person on your team, for as long as you need them.",
+        body: "Some work just needs more hands. We place analysts, engineers, or designers directly into your team, working alongside the people you already have. They join your meetings, learn your systems, and stay for as long as the work takes. When a problem needs a second opinion or more experience, they can call on the rest of our network.",
         symptoms: [
           "You have more work than people, but not enough to justify a full-time hire",
-          "You need a specific skill, data engineering, design, development, that nobody on your team has right now",
+          "You need a skill nobody on your team has right now (data engineering, design, or development)",
           "A key person is on leave or just left, and the work can't wait for a replacement search",
         ],
         deliverables: [
-          "A vetted specialist embedded directly in your team, not working from a separate queue",
-          "Analysts, engineers, or designers, matched to the specific gap you have",
-          "Someone who joins your meetings and knows your systems, not a black box handing off finished work",
-          "Backed by a wider network for a second opinion when a problem calls for one",
-          "A commitment sized to the actual work, not locked into a long-term hire",
+          "A vetted specialist working inside your team",
+          "Analysts, engineers, or designers, matched to the work",
+          "Backed by our wider network when a problem needs a second opinion",
+          "A commitment that ends when the work does",
         ],
       },
       {
@@ -176,17 +174,17 @@ export const SUBSERVICE_GROUPS = [
         slug: "/consulting/interim-leadership/",
         title: "Interim Leadership",
         outcome: "Senior, strategic leadership for the gap in your team.",
-        body: "Not all gaps need extra hands for day-to-day work, some need senior, strategic leadership. We step in as your data or technology lead for as long as the gap lasts, directing strategy, managing the people already doing the work, and answering directly to you. When you're ready to hire permanently or the gap closes, we hand everything over cleanly.",
+        body: "Some teams need a senior leader more than extra hands. We step in as your data or technology lead for as long as you need, setting strategy, managing the people already doing the work, and reporting directly to you. When you hire permanently, we hand everything over cleanly.",
         symptoms: [
           "You need senior technology or data leadership but aren't ready to hire a full-time executive",
           "You're growing fast and nobody on your team owns those decisions yet",
           "A leader just left and you need continuity while you search for their replacement",
         ],
         deliverables: [
-          "A senior leader directing strategy and owning the decisions during the gap",
-          "Direct accountability to you, not buried inside a larger team",
+          "A senior leader setting strategy and owning the decisions",
+          "Accountable directly to you",
           "Guidance for any specialists or staff already in place",
-          "A clean handoff plan for when you hire permanently or the gap closes",
+          "A clean handover plan for when you hire permanently",
         ],
       },
     ],
@@ -205,28 +203,28 @@ export const PIPELINE = [
   {
     label: "STEP 01",
     title: "Discover",
-    description: "Understand your business, your systems, and where things actually stand.",
+    description: "Understand your business, your systems, and where things stand.",
   },
   {
     label: "STEP 02",
     title: "Plan",
-    description: "Turn what we learned into a prioritized, sequenced set of recommendations.",
+    description: "Turn what we learn into a prioritized set of recommendations.",
   },
   {
     label: "STEP 03",
     title: "Refine",
-    description: "Walk the plan through with you and adjust it based on what you push back on.",
+    description: "Walk through the plan with you and adjust it based on your feedback.",
   },
   {
     label: "STEP 04",
     title: "Deliver",
-    description: "A finished roadmap or plan, ready to act on, by you, by us, or by anyone else.",
+    description: "A finished roadmap, ready for you, us, or anyone else to act on.",
     highlighted: true,
   },
 ];
 
 export const CTA = {
   heading: "Ready to decide what's next?",
-  text: "Tell us where the gap is and we'll map whether you need advice, extra hands, or both.",
+  text: "Tell us what's holding your business back and we'll work out whether you need advice, extra hands, or both.",
   buttonLabel: "Start a consulting project",
 };

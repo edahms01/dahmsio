@@ -45,4 +45,4 @@ export const SUBSERVICE_LABELS = {
 
 // Shared secondary hero CTA label for the interior-page template (Data/Technology/
 // Consulting) — same reasoning as SUBSERVICE_LABELS, all three pages reuse it verbatim.
-export const SEE_CAPABILITIES_LABEL = "See capabilities";
+export const SEE_CAPABILITIES_LABEL = "See services";

@@ -112,148 +112,6 @@
   margin: 0 0 20px;
 }
 
-/* Three columns of two rows (six items), stepping down to 2 then 1 at the same breakpoints
-   as InteriorPageTemplate's .pipelineGrid — the site's existing pattern for narrowing a grid
-   without leaving ragged unfilled space in a track. */
-.credibilityGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  /* .sectionHeading carries no margin of its own (see global.css) — this replaces the 20px
-     gap the old h3 .subheadingFlush treatment supplied, matching the 44px heading-to-grid gap
-     SubServiceSection uses elsewhere on the site when there's no intro paragraph in between
-     (see SubServiceSection.module.css .accordion). */
-  margin-top: 44px;
-}
-
-/* Small tiles — a lighter-weight cousin of CapabilityCard (see engagementModels below):
-   flat single-tone background instead of a gradient panel, a smaller radius, and no numbered
-   row list, so the two card grids on this page read as related but not repetitive. Full width
-   of its grid cell (see .credibilityGrid's 3-column track for the narrower footprint, instead
-   of a width:75% hack that left uneven gaps within each cell). */
-.leadItem {
-  position: relative;
-  padding: 20px 22px;
-  border-radius: 14px;
-  background: var(--surface);
-  border: 1px solid var(--surface-border-lo);
-  transition: border-color 0.3s var(--ease-out);
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-@media (hover: hover) {
-  .leadItem:hover {
-    border-color: rgba(134, 195, 90, 0.45);
-  }
-}
-
-.leadItemLead {
-  display: block;
-  font-family: var(--fd);
-  font-weight: 520;
-  color: var(--text);
-  margin-bottom: 6px;
-  font-size: 16px;
-}
-
-.leadItemBody {
-  display: block;
-  font-size: 14px;
-}
-
-/* Four engagement models reuse CapabilityCard, laid out as a 2x2 square (see About.jsx for
-   why this isn't interiorStyles.capabilitiesGrid). Steps to a single column at 560px (see
-   .credibilityGrid, same breakpoint), rather than keeping two narrow columns down to mobile.
-   grid-template-rows: 1fr 1fr (not the implicit auto rows a plain 2-column grid gets by
-   default) so the two rows can't diverge in height from each other — without it, each row
-   sizes to only its own two cards' content, and a longer description in row 2 makes it
-   taller than row 1 even though every card shares the same font size and padding. */
-.engagementGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 1fr;
-  gap: 16px;
-  margin-top: 44px;
-}
-
-/* CapabilityCard's 36px padding and its description's 22px bottom margin are both tuned for
-   cards that also carry a numbered .rows list underneath (Data/Technology/Consulting) —
-   About's engagementModels have no rows, so unmodified the card was mostly empty space below
-   two lines of description. Smaller padding and a zeroed description margin here instead. */
-.engagementCard {
-  padding: 24px;
-}
-
-.engagementCard p {
-  margin-bottom: 0;
-}
-
-/* Operating principles — a two-column bulleted list, set apart from the engagement cards
-   below by having no card background/border rather than by type size: body copy runs at the
-   same clamp(16px,1.6vw,18px) as .sectionText (and the rest of the page's prose) instead of
-   the smaller 15px used by CREDIBILITY's .leadItem / CapabilityCard's description. global.css
-   resets `ul { list-style: none }` site-wide, so this needs its own explicit list-style to
-   actually show bullets. margin-top matches CREDIBILITY's/Engagement Models' grids (44px,
-   since .sectionHeading itself carries no margin — see .credibilityGrid). Two columns (was a
-   single full-width column) so four short bullets don't read as a bare wall of text with
-   nothing else on the page — grid, not CSS multi-column, for predictable left/right pairing
-   instead of the balancer deciding where each item lands. list-style-position:inside because
-   outside markers on grid items don't reserve consistent gutter space the way they do in a
-   normal block flow — inside keeps each bullet flush with its own column instead of
-   overlapping the gap or the previous column. */
-.operatingPrinciples {
-  list-style: disc;
-  list-style-position: inside;
-  margin: 44px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 40px;
-  row-gap: 20px;
-}
-
-.operatingPrinciple {
-  font-size: clamp(16px, 1.6vw, 18px);
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-.operatingPrincipleLead {
-  font-family: var(--fd);
-  font-weight: 600;
-  color: var(--text);
-}
-
-/* The Long Cycle — ContinuumGraphic, moved here from Home (see About.jsx) to sit just before
-   Founder's Note. Its own section, not the shared .section shell, since the graphic itself
-   breaks past .section's var(--max-wide) cap (see .continuumGraphic below) — the shell would
-   just clip its own child back down. Vertical rhythm still matches every other section-to-
-   section gap on this page (70px top + 70px bottom stacking into 140px total), not Home's own
-   130px, so this reads as a peer of Engagement Models/Founder's Note rather than an outlier. */
-.continuum {
-  position: relative;
-  z-index: 10;
-  padding: 70px 0;
-}
-
-/* Kept at the standard content width/padding every other heading on this page uses, even
-   though the section around it no longer enforces that — the eyebrow reads as this page's
-   usual section label, only the graphic below it is the breakout element. */
-.continuumHead {
-  max-width: var(--max-wide);
-  margin: 0 auto 44px;
-  padding: 0 var(--side-padding);
-  text-align: center;
-}
-
-/* Full width of the section (the section itself is already unconstrained). */
-.continuumGraphic {
-  width: 100%;
-  margin: 0 auto;
-}
-
 /* Founder's Note — the one deliberate first-person-voice exception, paired with the headshot.
    Its own grid (see .foundersNoteGrid below), but the outer <section> itself is the shared
    .section shell in About.jsx, not a bespoke one — the padding is the same 70px every other
@@ -291,8 +149,8 @@
   font-size: 19px;
 }
 
-/* Compact bulleted list, small type, tight spacing, no card/box — same list-style override
-   as .operatingPrinciples, since global.css strips it by default. */
+/* Compact bulleted list, small type, tight spacing, no card/box — needs its own list-style
+   override, since global.css strips it by default. */
 .credentials {
   list-style: disc;
   margin: 0;
@@ -308,42 +166,6 @@
 
 .credentials li:last-child {
   margin-bottom: 0;
-}
-
-/* Where We Work — two office locations, centered as a pair beneath their own eyebrow, same
-   .sectionHeadCentered treatment as Founder's Note's. Deliberately undecorated (no border,
-   no background) like the credentials list above rather than Credibility's bordered
-   .leadItem tiles — this is address text only, not a card grid. */
-.whereWeWorkGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 260px));
-  justify-content: center;
-  gap: 16px 56px;
-}
-
-.location {
-  text-align: center;
-}
-
-/* Bold label sized against .leadItemLead (16px, same weight/family) — the page's existing
-   bold-label-then-body pattern — since credentials' plain list items have no separate label
-   to match against. */
-.locationCity {
-  display: block;
-  font-family: var(--fd);
-  font-weight: 600;
-  color: var(--text);
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-/* Smaller/regular, matching credentials' quiet muted tone rather than .leadItemBody's 14px
-   secondary — this is a single address line, not card body copy. */
-.locationAddress {
-  display: block;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text-muted2);
 }
 
 /* AppWindowMockup's .window already supplies the border/glow/rounded-corner frame that
@@ -366,10 +188,6 @@
 }
 
 @media (max-width: 900px) {
-  .credibilityGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .foundersNoteGrid {
     grid-template-columns: 1fr;
   }
@@ -383,23 +201,3 @@
   }
 }
 
-@media (max-width: 560px) {
-  .credibilityGrid,
-  .engagementGrid,
-  .operatingPrinciples {
-    grid-template-columns: 1fr;
-  }
-
-  /* Single column means each card is now the only item in its row — the desktop
-     grid-template-rows: 1fr 1fr split (see .engagementGrid) has nothing left to equalize, so
-     reset it back to natural per-card height instead of leaving two stray explicit tracks
-     mixed with two implicit ones. */
-  .engagementGrid {
-    grid-template-rows: none;
-  }
-
-  .whereWeWorkGrid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-}

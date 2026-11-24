@@ -5,7 +5,7 @@ export const META = {
   path: ROUTE_PATHS.home,
   title: "DahmsIO | Where innovation meets intelligence",
   description:
-    "DahmsIO is a data, technology, and consulting firm that turns complex data and technology into clear, practical systems.",
+    "DahmsIO brings enterprise-grade data, technology, and AI to businesses of any size, scoped and priced to fit your goals.",
 };
 
 // heroAccent has no trailing period — Home.jsx appends it, same convention as
@@ -18,7 +18,7 @@ export const HERO = {
   heroPrefix: "meets",
   heroAccent: "intelligence",
   heroSubcopy:
-    "We turn complex data and technology into clear, practical systems that grow revenue, boost efficiency, and set ambitious businesses apart from competitors.",
+    "We bring enterprise-grade data, technology, and AI to businesses of any size, scoped and priced to fit your goals.",
   primaryCtaLabel: NAV_CTA_LABEL,
   secondaryCtaLabel: "Explore services",
 };
@@ -27,26 +27,16 @@ export const HERO = {
 export const SERVICES_EYEBROW = "What we do";
 export const SERVICES_HEADING = "Three ways we move your business forward.";
 
-// textAccent renders inside its own <span> for the accent-colour treatment; textPrefix/textSuffix
-// are the plain-text copy around it.
-export const MISSION = {
-  eyebrow: "Our mission",
-  textPrefix: "We make advanced data & technology",
-  textAccent: "accessible to businesses of any size",
-  textSuffix: ", turning complex tech directly into business impact.",
-  linkLabel: "More on our mission →",
-};
-
 export const METHODOLOGY_EYEBROW = "How we work";
-export const METHODOLOGY_HEADING = "A methodology built around check-ins, not surprises.";
+export const METHODOLOGY_HEADING = "Check-ins before every phase, so nothing surprises you.";
 export const METHODOLOGY_TEXT =
-  "Every project runs through a clear framework with check-ins before each phase, so we can adapt fast when needs change and you always know exactly where things stand.";
+  "Every project follows the same steps, with regular check-ins scheduled. If your needs change, we adjust the plan, and you always know where things stand.";
 
 export const SERVICES = [
   {
     title: "Data Intelligence",
     description:
-      "Pipelines, warehouses, and dashboards that turn scattered data into decisions you can trust.",
+      "We pull your scattered data into one place and turn it into reports and forecasts you can trust.",
     bullets: [
       "Data Foundations",
       "Reporting & Dashboards",
@@ -59,7 +49,7 @@ export const SERVICES = [
   },
   {
     title: "Tech Implementation",
-    description: "We build new platforms, connect the systems you already run, and manage cloud and AI end to end.",
+    description: "We build software, connect the systems you already run, and automate the manual work in between.",
     bullets: [
       "Custom Software Development",
       "Systems Integration",
@@ -72,7 +62,7 @@ export const SERVICES = [
   },
   {
     title: "Data & Tech Consulting",
-    description: "Strategy, product vision and the right people, embedded alongside your team.",
+    description: "Advice on what to do next and experienced people to join your team.",
     // 5 bullets here vs. 4 on the Data/Technology cards above — Consulting has 5
     // sub-services (3 Advisory + 2 Talent) and Eric's call was to list all of them rather
     // than force a 4-item match with the other two cards.
@@ -100,7 +90,7 @@ export const METHODOLOGY_STEPS = [
     number: "02",
     title: "Strategize",
     description:
-      "We shape a solution built around your industry, timeline, and budget, with a clear plan and a way to tell whether it worked.",
+      "We design the approach around your industry, timeline, and budget, and agree up front how to measure success.",
   },
   {
     number: "03",
@@ -112,12 +102,37 @@ export const METHODOLOGY_STEPS = [
     number: "04",
     title: "Optimize",
     description:
-      "We measure, refine, and maintain systems to keep your data and technology working as your business grows.",
+      "We measure, refine, and maintain systems to keep your data and technology running smoothly as your business grows.",
   },
 ];
 
+// "What you can count on" — moved here from About's Operating Principles (merged with
+// Credibility's ownership/handover points). Rendered with the same list treatment as before.
+export const PRINCIPLES = {
+  eyebrow: "Our principles",
+  heading: "What you can count on.",
+  items: [
+    {
+      lead: "One lead, the right specialists.",
+      body: "Every project has one person accountable to you, with specialists from our network brought in as the work needs them.",
+    },
+    {
+      lead: "Plain English, always.",
+      body: "Every recommendation comes with what it does, what it costs, and what happens if you do nothing. If we can't explain it in terms of your business, we don't understand it well enough yet.",
+    },
+    {
+      lead: "Scope and price agreed up front.",
+      body: "You get a written scope, a price, and an estimated timeline before any work starts. If something changes mid-project, you hear about it before it affects the bill.",
+    },
+    {
+      lead: "What we build, you own.",
+      body: "Code, data, documentation, and accounts are in your name from day one, and everything is documented well enough for another developer to pick up. Nothing we build depends on us to keep running.",
+    },
+  ],
+};
+
 export const CTA = {
   heading: "Where do you want to be next year?",
-  text: "Tell us the business challenge you're facing and one of our specialists will be in touch. No pressure, no obligation.",
+  text: "Tell us what's slowing your business down and one of our specialists will come back with how we'd approach it. There's no obligation to go further.",
   buttonLabel: "Send a message",
 };

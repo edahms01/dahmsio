@@ -10,14 +10,14 @@ export const HERO = {
   eyebrow: "Get In Touch",
   heroPrefix: "Let's talk about your",
   heroAccent: "next steps",
-  heroSubcopy: "You don't need to know the solution yet. Describe the challenge you're dealing with, and we'll take it from there.",
+  heroSubcopy: "You don't need to have the answer yet. Tell us what you're dealing with, and we'll take it from there.",
   primaryCtaLabel: "Jump to the form",
 };
 
 export const MOCKUP = {
   filename: "hello@dahms.io",
   thread: [
-    { from: "them", text: "Hi, we're looking to modernize our data stack before Q3. Where would you start?" },
+    { from: "them", text: "Hi, our weekly reports take days to pull together and never match. Where would you start?" },
     {
       from: "us",
       text: "A specialist will follow up shortly to walk through it with you.",
@@ -27,11 +27,11 @@ export const MOCKUP = {
   // "What happens next" steps, replacing the old stats row — reads as a natural continuation
   // of the chat thread above it instead of three disconnected facts. No response-time claim
   // (deliberately dropped per Eric's review — not a promise we want to make).
-  steps: ["You send a message", "A specialist will respond", "Free project scoping, no obligation"],
+  steps: ["You send a message", "A specialist will respond", "We map out a plan with you"],
 };
 
 export const FORM_INTRO =
-  "Send us a message below. Describe your business challenge, goal, or idea, and a specialist will be in touch. Or if you'd prefer to send an email, drop us a note at";
+  "Send us a message below about your business problem, goal, or idea, and a specialist will be in touch. If you'd rather email, write to us at";
 
 export const FIELDS = {
   companyName: { name: "companyName", label: "Company Name", required: true, type: "text" },
@@ -41,7 +41,7 @@ export const FIELDS = {
     label: "Location",
     required: false,
     type: "text",
-    helper: "Please provide your city, state, or country so we know your timezone.",
+    helper: "Your city, state, or country, so we know your time zone.",
   },
   services: {
     name: "services",
@@ -56,7 +56,7 @@ export const FIELDS = {
     required: false,
     type: "select",
     placeholder: "Select a range…",
-    options: ["Not sure yet", "Under $5k", "$5k – $15k", "$15k – $35k", "$35k – $50k", "$50k+"],
+    options: ["Not sure yet", "Under $5k", "$5k to $15k", "$15k to $35k", "$35k to $50k", "$50k+"],
   },
   firstName: { name: "firstName", label: "First Name", required: true, type: "text" },
   lastName: { name: "lastName", label: "Last Name", required: true, type: "text" },
@@ -66,7 +66,7 @@ export const FIELDS = {
     label: "Message",
     required: true,
     type: "textarea",
-    helper: "If you don't know exactly what you need, just describe the challenge or problem you're facing.",
+    helper: "If you're not sure what you need, describe the problem you're facing.",
   },
 };
 
@@ -91,7 +91,7 @@ export const SUBMITTING_LABEL = "Sending…";
 // error/success states, not just in hidden metadata, so the rule applies same as visible copy.
 export const SUCCESS = {
   heading: "Message sent.",
-  text: "Thanks for reaching out. We'll be back with honest thoughts on where to start.",
+  text: "Thanks for reaching out. We'll be in touch with our thoughts on where to start.",
 };
 
 export const HONEYPOT_LABEL = "Don't fill this out if you're human:";
@@ -99,6 +99,36 @@ export const HONEYPOT_LABEL = "Don't fill this out if you're human:";
 // Trailing text before the mailto link, same pattern as FORM_INTRO (plain string, link and
 // closing period appended in JSX).
 export const ERROR_TEXT = "Something went wrong sending that. Try again, or email us directly at";
+
+// Engagement models — moved here from About (was HOW_WE_WORK.engagement*). Same shape as
+// CapabilityCard's props (title/description), so these render like the capability cards on
+// Data/Technology/Consulting rather than a bespoke treatment.
+export const ENGAGEMENT = {
+  eyebrow: "Engagement models",
+  heading: "Four ways to work together",
+  models: [
+    {
+      title: "Ongoing partner",
+      description:
+        "We act as your data and technology department on retainer: a set number of hours each month, spent on maintenance, improvements, or new work as your priorities move.",
+    },
+    {
+      title: "Build & maintain",
+      description:
+        "We design and build the system, then keep it running, patched, and improving under an ongoing arrangement.",
+    },
+    {
+      title: "Build & hand-over",
+      description:
+        "We design, build, and hand over a finished system. You own it outright from day one, and you handle maintenance going forward.",
+    },
+    {
+      title: "Advisory",
+      description:
+        "Some problems don't need anything built. We assess what you have, find what's holding your business back, and give you a roadmap you can run yourself or bring back to us.",
+    },
+  ],
+};
 
 export const FAQ_EYEBROW = "FAQ";
 
@@ -108,15 +138,15 @@ export const FAQ = [
   {
     question: "What if I don't know exactly what I need?",
     answer:
-      "That's normal, and it's where most conversations start. Describe the problem, not the solution. We'll help you figure out the rest.",
+      "That's normal, and it's where most conversations start. Tell us what's going wrong and we'll help you work out what you need.",
   },
   {
     question: "How fast can you start?",
-    answer: "Once we've scoped the work together, most projects begin within a couple of weeks.",
+    answer: "Once we've scoped the work together, we can usually begin within a couple of weeks.",
   },
   {
     question: "I've never worked with a consultant before. Is that a problem?",
-    answer: "No. We'll walk you through exactly how it works, no prior experience required.",
+    answer: "No. We'll explain how it works as we go.",
   },
   {
     question: "What if I'm not sure I can afford this?",
@@ -126,6 +156,6 @@ export const FAQ = [
   {
     question: "Do I have to sign a long-term contract?",
     answer:
-      "No. You can work with us on retainer, or for a single project with a clear end date. You pick the model that fits.",
+      "No. Pick the model above that fits, from a single project to an ongoing retainer.",
   },
 ];

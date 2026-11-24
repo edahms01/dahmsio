@@ -8,26 +8,21 @@ import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import OrbitNetworkMockup from "../components/mockups/OrbitNetworkMockup.jsx";
 import BenchNetworkMockup from "../components/mockups/BenchNetworkMockup.jsx";
-import ContinuumGraphic from "../components/ContinuumGraphic.jsx";
-import CapabilityCard from "../components/CapabilityCard.jsx";
 import {
   META,
   HERO,
   MOCKUP,
   BACKGROUND,
-  CREDIBILITY,
   HOW_WE_WORK,
   BENCH_NETWORK,
-  CONTINUUM,
   HEADSHOT,
   FOUNDERS_NOTE,
-  // WHERE_WE_WORK, — unused while the Where We Work section below is commented out
   CTA,
 } from "../data/about.js";
 import { buildBreadcrumbSchema } from "../utils/schema.js";
 // The hero comes from the shared HeroSection component. The CTA still borrows
 // InteriorPageTemplate's CTA classes so it matches Data/Technology/Consulting exactly; the
-// rest of this page's sections (Background, Credibility, Founder's Note, …) are custom to
+// rest of this page's sections (Background, Our network, Founder's Note) are custom to
 // About — see About.module.css.
 import interiorStyles from "./InteriorPageTemplate.module.css";
 import styles from "./About.module.css";
@@ -60,14 +55,13 @@ export default function About() {
       <section className={`${styles.section} ${styles.sectionFirst}`}>
         {/* Eyebrow + big statement heading, matching Data/Technology/Consulting's
             "Capabilities"/"The pipeline" pattern — the nested subheadings elsewhere on this
-            page (operatingHeading) stay at .subheading's smaller size, since those pages
+            page (the Founder's Note heading) stay at .subheading's smaller size, since those pages
             don't have an equivalent second heading level to match against. No width cap on
             this wrapper (a previous 68ch cap here was removed) — "Enterprise capability,
             brought within reach." needs ~910px to sit on one line at this font size, and the
             section's own full width comfortably covers that; a ch cap belongs on flowing
             paragraph prose, not a short headline like this one. Centered to match every other
-            section's eyebrow+heading treatment (Credibility, How We Work, Operating
-            Principles, Founder's Note) even though the body below stays in left-aligned
+            section's eyebrow+heading treatment (How We Work, Founder's Note) even though the body below stays in left-aligned
             two-column prose. */}
         <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
           <div className="eyebrow" style={{ marginBottom: 14 }}>
@@ -93,36 +87,7 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* Section 2 — Credibility: its own section (not folded into Background) so it gets the
-          same section-to-section rhythm as everywhere else on the page — no divider line, just
-          the standard 70px-bottom/70px-top padding stack (140px gap), matching how
-          Data/Technology/Consulting separate Capabilities from Pipeline. Same eyebrow +
-          big-heading treatment as Background/How We Work below, now that this is a peer
-          section rather than a nested subsection of Background — but centered above the grid
-          rather than left-aligned, same .sectionHeadCentered treatment (and marginBottom:0
-          override) as Engagement Models below, since these six cards read as a set rather
-          than a left-to-right continuation of prose the way Background's copy does. */}
-      <section className={styles.section}>
-        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
-          <div className="eyebrow" style={{ marginBottom: 14 }}>
-            {CREDIBILITY.eyebrow}
-          </div>
-          <h2 className="sectionHeading">
-            {CREDIBILITY.heading}
-          </h2>
-        </Reveal>
-        <Reveal className={styles.credibilityGrid}>
-          {CREDIBILITY.items.map((item) => (
-            <div key={item.lead} className={styles.leadItem}>
-              <span className={styles.leadItemLead}>{item.lead}</span>
-              <span className={styles.leadItemBody}>{item.body}</span>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* Section 3 — How We Work (intro only; Operating Principles and Engagement Models are
-          each their own section below). */}
+      {/* Section 2 — How We Work ("Our network"). */}
       <section className={styles.section}>
         {/* Eyebrow centered above the whole graphic + text pairing (same treatment as
             Founder's Note's eyebrow above its own two-column grid), heading/paragraph left-
@@ -143,80 +108,7 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* Section 4 — Operating Principles: its own section, same rhythm/spacing rationale and
-          centered eyebrow + big-heading treatment as Credibility/Engagement Models. */}
-      <section className={styles.section}>
-        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
-          <div className="eyebrow" style={{ marginBottom: 14 }}>
-            {HOW_WE_WORK.operatingEyebrow}
-          </div>
-          <h2 className="sectionHeading">
-            {HOW_WE_WORK.operatingHeading}
-          </h2>
-        </Reveal>
-        <Reveal className={styles.operatingPrinciples} as="ul">
-          {HOW_WE_WORK.operatingPrinciples.map((principle) => (
-            <li key={principle.lead} className={styles.operatingPrinciple}>
-              <span className={styles.operatingPrincipleLead}>{principle.lead}</span> {principle.body}
-            </li>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* Section 5 — Engagement Models: its own section, same rhythm/spacing rationale and
-          eyebrow + big-heading treatment as Credibility above, but centered above the grid
-          (the four cards read as a set, not a left-to-right continuation of prose the way
-          Credibility's/Background's copy-heavy sections do) — same .sectionHeadCentered
-          treatment as How We Work's eyebrow, marginBottom zeroed so the gap down to the grid
-          still comes from .engagementGrid's own 44px margin-top alone. */}
-      <section className={styles.section}>
-        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 0 }}>
-          <div className="eyebrow" style={{ marginBottom: 14 }}>
-            {HOW_WE_WORK.engagementEyebrow}
-          </div>
-          <h2 className="sectionHeading">
-            {HOW_WE_WORK.engagementHeading}
-          </h2>
-        </Reveal>
-        {/* Reuses CapabilityCard directly (see .engagementCard below for its own tuned
-            padding) inside a 2x2 grid of its own — .engagementGrid, not
-            interiorStyles.capabilitiesGrid: that class doesn't actually exist in
-            InteriorPageTemplate.module.css (Data/Technology/Consulting build their capability
-            cards through SubServiceSection instead), so referencing it here was a latent bug —
-            these four cards were rendering as a plain single-column stack, not a grid, until
-            now. margin-top matches the 44px heading-to-grid gap used elsewhere on this page
-            (see .credibilityGrid) now that this heading has no intro paragraph before it. */}
-        <Reveal className={styles.engagementGrid}>
-          {HOW_WE_WORK.engagementModels.map((model) => (
-            <CapabilityCard key={model.title} {...model} className={styles.engagementCard} />
-          ))}
-        </Reveal>
-      </section>
-
-      {/*
-      Section 6 — The Long Cycle: DISABLED per Eric, 2026-08-22 — ContinuumGraphic needs more
-      work before it goes back out. Commented out rather than removed so the markup is ready
-      to restore as-is. Was: moved here from Home (see home.js's history) so the compounding-
-      progress framing lands right before Founder's Note makes it personal. Structured exactly
-      as it was on Home — centered eyebrow + heading in the standard content-width wrapper,
-      graphic breaking out past it (see .continuum/.continuumHead/.continuumGraphic in
-      About.module.css) — using its own section shell rather than the shared .section, so the
-      graphic isn't clipped back down to var(--max-wide).
-
-      <section className={styles.continuum}>
-        <Reveal className={styles.continuumHead}>
-          <div className="eyebrow">{CONTINUUM.eyebrow}</div>
-          <h2 className="sectionHeading" style={{ fontSize: "clamp(28px, 3.8vw, 46px)" }}>
-            {CONTINUUM.heading}
-          </h2>
-        </Reveal>
-        <Reveal>
-          <ContinuumGraphic className={styles.continuumGraphic} />
-        </Reveal>
-      </section>
-      */}
-
-      {/* Section 7 — Founder's Note: the one deliberate first-person-voice exception, paired
+      {/* Section 3 — Founder's Note: the one deliberate first-person-voice exception, paired
           with the headshot. Eyebrow sits centered above the whole two-column grid (graphic +
           text), not tucked inside the text column, so it reads as this section's title the
           same way BACKGROUND's and HOW_WE_WORK's centered eyebrows do. Uses the standard
@@ -257,27 +149,6 @@ export default function About() {
           </div>
         </Reveal>
       </section>
-
-      {/* Section 8 — Where We Work: commented out 2026-08-22 pending revisit (Eric's call).
-          a compact, undecorated block (no card chrome, no map
-          embed) listing our two physical locations — same shape as Founder's Note's
-          credentials list (small, quiet, address text only) rather than the Credibility
-          section's bordered tiles. Centered eyebrow above the pair, same treatment as
-          Founder's Note's and How We Work's own centered eyebrows.
-      <section className={styles.section}>
-        <Reveal className={styles.sectionHeadCentered} style={{ marginBottom: 28 }}>
-          <div className="eyebrow">{WHERE_WE_WORK.eyebrow}</div>
-        </Reveal>
-        <Reveal className={styles.whereWeWorkGrid}>
-          {WHERE_WE_WORK.locations.map((location) => (
-            <div key={location.city} className={styles.location}>
-              <span className={styles.locationCity}>{location.city}</span>
-              <span className={styles.locationAddress}>{location.address}</span>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-      */}
 
       {/* .ctaCenterBetweenLines zeroes interiorStyles.cta's shared 90px bottom margin so this
           content sits equidistant between the Founder's Note section above and the footer below (both then rely solely on the CTA's own symmetric padding). No top border on this section itself (removed per Eric's call). */}

@@ -8,6 +8,7 @@ import Reveal from "../components/Reveal.jsx";
 import AppWindowMockup from "../components/mockups/AppWindowMockup.jsx";
 import MessageMockup from "../components/mockups/MessageMockup.jsx";
 import FaqAccordion from "../components/FaqAccordion.jsx";
+import CapabilityCard from "../components/CapabilityCard.jsx";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "../data/site.js";
 import {
   META,
@@ -24,6 +25,7 @@ import {
   SUCCESS,
   HONEYPOT_LABEL,
   ERROR_TEXT,
+  ENGAGEMENT,
   FAQ_EYEBROW,
   FAQ_HEADING,
   FAQ,
@@ -228,6 +230,20 @@ export default function Contact() {
             </form>
           </Reveal>
         )}
+      </section>
+
+      <section className={styles.engagementSection}>
+        <Reveal className={styles.engagementHead}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>
+            {ENGAGEMENT.eyebrow}
+          </div>
+          <h2 className="sectionHeading">{ENGAGEMENT.heading}</h2>
+        </Reveal>
+        <Reveal className={styles.engagementGrid}>
+          {ENGAGEMENT.models.map((model) => (
+            <CapabilityCard key={model.title} {...model} className={styles.engagementCard} />
+          ))}
+        </Reveal>
       </section>
 
       <section className={styles.faqSection}>

@@ -1,10 +1,10 @@
 import { ROUTE_PATHS } from "../routes.js";
 
-// Real copy — about-page-copy-v23.md. Company voice ("we"/"our") throughout except
+// Approved copy, Nov 2026 update. Company voice ("we"/"our") throughout except
 // FOUNDERS_NOTE, the one deliberate first-person exception (paired with the headshot). No em
-// dashes anywhere, no employer
-// names, no business-size language (positioning is by geography and by relationship to
-// technology, not by size) — keep it that way in any future edits here.
+// or en dashes anywhere, Oxford comma in every list of three or more, no employer names.
+// Positioning is "businesses of any size, scoped and priced to fit your goals" — keep it that
+// way in any future edits here.
 // "fifteen years" (London tenure, not total career length) is the current figure per Eric's
 // 2026-08 rewrite — update if it drifts out of date.
 
@@ -12,124 +12,42 @@ export const META = {
   path: ROUTE_PATHS.about,
   title: "About | DahmsIO",
   description:
-    "DahmsIO brings enterprise-grade data, analytics, and technology experience to businesses, founded by Eric Dahms.",
+    "DahmsIO brings enterprise-grade data, technology, and AI to businesses of any size. Founded by Eric Dahms and backed by a network of specialists.",
 };
 
 export const HERO = {
   eyebrow: "About",
-  heroPrefix: "Global experience.",
-  heroAccent: "Local focus",
+  heroPrefix: "Global experience,",
+  heroAccent: "applied to your business",
   heroSubcopy:
-    "We've spent our careers solving tough data and technology problems inside large, complex organizations. DahmsIO brings that same thinking to businesses that don't have an enterprise budget but deserve enterprise-level results.",
+    "Our team has spent careers solving data and technology problems inside large, complex organizations. DahmsIO brings that experience to businesses of any size, scoped and priced to fit your goals.",
   primaryCtaLabel: "Get in touch",
 };
 
 // Hero mockup — OrbitNetworkMockup, ported from the Claude Design hero graphic (project
 // a37bbdf4, About.dc.html): orbiting nodes firing inward toward a pulsing center hub,
-// visualizing the "Global experience. Local focus." headline. Purely illustrative, so the
-// only page-specific data is the app-window filename.
+// visualizing the "Global experience, applied to your business." headline. Purely illustrative,
+// so the only page-specific data is the app-window filename.
 export const MOCKUP = {
-  filename: "global-local.io",
+  filename: "applied-experience.io",
 };
 
 export const BACKGROUND = {
   eyebrow: "Background",
   heading: "Enterprise capability, brought within reach.",
   paragraphs: [
-    "Most businesses aren't short on tools or data. They're short on time to get real value out of them. The numbers get reconciled by hand, the same spreadsheet gets rebuilt every month, and everyone works around systems that don't talk to each other.",
-    "None of that is a technology problem. The fixes have existed for years. Most of them just assume someone in-house has the time to set them up and keep them running.",
-    "DahmsIO exists to close that gap. Twenty years of doing this at enterprise scale means we know which parts actually matter for a business like yours, and which you can safely leave out.",
-    "So whether you're not sure where to start or already know exactly what's broken, it begins the same way: an honest look at where you are, and where you want to go next.",
-  ],
-};
-
-export const CREDIBILITY = {
-  eyebrow: "In action",
-  heading: "What this looks like in practice",
-  // Small tiles, deliberately lighter-weight than engagementModels' CapabilityCard treatment
-  // below (flat background instead of a gradient panel, no numbered row list) so the two card
-  // grids on this page read as related but distinct. hoverBorder cycles through the site's
-  // three accents same as engagementModels.
-  items: [
-    {
-      lead: "A single clear view.",
-      body: "One trustworthy picture of your business, updated automatically, instead of three reports that don't agree.",
-    },
-    {
-      lead: "Data that runs itself.",
-      body: "Automated pipelines and quality checks keep your numbers current and consistent, with no chasing.",
-    },
-    {
-      lead: "Tools your team actually uses.",
-      body: "Software that fits how your team already works, so it gets used.",
-    },
-    {
-      lead: "AI applied where it pays.",
-      body: "Assistants and agents that take real work off your team's plate, and a straight answer when AI isn't the right fit.",
-    },
-    {
-      lead: "Answers you can act on.",
-      body: "Statistical modeling separates what's actually moving your results from what is happening in the background.",
-    },
-    {
-      lead: "A roadmap you can execute.",
-      body: "A clear, costed plan for what to do first, whether you run it yourself or bring us back to build it.",
-    },
+    "Most businesses aren't short on tools or data. They're short on the time to get value from them. Numbers get reconciled by hand, the same spreadsheet gets rebuilt every month, and everyone works around systems that don't talk to each other.",
+    "None of that is a technology problem. The fixes have existed for years, but most of them assume someone in-house has the time to set them up and keep them running.",
+    "DahmsIO exists to put that innovation and intelligence to work for you. Twenty years of building data and technology systems for large organizations means we know which parts matter for a business like yours, and which you can safely leave out.",
+    "You might know what's broken, or you might not be sure where to start. Either way, we begin with a clear look at where you are and where you want to go next.",
   ],
 };
 
 export const HOW_WE_WORK = {
   eyebrow: "Our network",
-  heading: "A network of experts to build your future.",
+  heading: "The right specialist for each part of the job.",
   paragraph:
-    "Few people are genuinely expert in infrastructure, data science, software engineering, and product development all at once. DahmsIO works through a vetted network of specialists, brought in as a project needs them. You get the right person for the problem, and one point of contact throughout.",
-  engagementEyebrow: "Engagement models",
-  engagementHeading: "Four ways to work together",
-  // Same shape as CapabilityCard's props (title/description/markColor/hoverBorder) — reusing
-  // that component directly so these look like the capability cards on Data/Technology/
-  // Consulting, not a bespoke treatment unique to this page.
-  engagementModels: [
-    {
-      title: "Ongoing partner",
-      description:
-        "We act as your data and technology department on retainer: a set number of hours each month, spent on maintenance, improvements, or new work as your priorities move.",
-    },
-    {
-      title: "Build & maintain",
-      description:
-        "We design and build the system, then keep it running, patched, and improving under an ongoing arrangement.",
-    },
-    {
-      title: "Build & hand-over",
-      description:
-        "We design, build, and hand over a finished solution. You own it outright from day one, and you handle maintenance going forward.",
-    },
-    {
-      title: "Advisory",
-      description:
-        "Not every problem needs something built. We assess what you have, diagnose what's holding it back, and give you a clear roadmap you can run yourself or bring back to us.",
-    },
-  ],
-  operatingEyebrow: "Operating principles",
-  operatingHeading: "How we operate",
-  operatingPrinciples: [
-    {
-      lead: "Plain English, always.",
-      body: "Every recommendation comes with what it does, what it costs, and what happens if you do nothing. If we can't explain it in terms of your business, we don't understand it well enough yet.",
-    },
-    {
-      lead: "Scope and price agreed up front.",
-      body: "You get a written scope, a price, and a timeline before any work starts. If something changes mid-project, you hear about it before it affects the bill, not after.",
-    },
-    {
-      lead: "What we build, you own.",
-      body: "Code, data, documentation, and accounts are in your name from day one. No proprietary black boxes, no systems that stop working if you stop working with us.",
-    },
-    {
-      lead: "Built to be handed over.",
-      body: "Everything we build is documented well enough for another developer to pick it up. You should be free to leave, not locked in.",
-    },
-  ],
+    "Very few people are expert in infrastructure, data science, software engineering, and product development combined. We build each team from a vetted network of specialists, chosen for the work in front of us. You get the right people for the problem, and one person accountable for the whole project.",
 };
 
 // Text content for BenchNetworkMockup (the "bench of specialists -> PM hub -> You" graphic
@@ -158,20 +76,13 @@ export const HEADSHOT = {
   alt: "Eric Dahms, founder of DahmsIO",
 };
 
-// The Long Cycle — moved here from Home (home.js) so this page carries the compounding-
-// progress framing right before Founder's Note makes it personal. Copy unchanged.
-export const CONTINUUM = {
-  eyebrow: "The Long Cycle",
-  heading: "Progress that compounds over time.",
-};
-
 export const FOUNDERS_NOTE = {
   eyebrow: "Founder's Note",
-  heading: "A note from our Founder",
+  heading: "A note from our founder",
   paragraphs: [
-    "I grew up in Westbrook, Maine and I've spent the last fifteen years in London, building data and technology solutions for large multinational companies.",
-    "I've stayed hands-on the entire time, designing and shipping custom products, building data platforms and automations with engineers, and now building and implementing AI tools. I can tell you quickly and honestly what today's technology will do for your business and, just as usefully, what it won't.",
-    "I'm building DahmsIO because I want to bring that same experience to the businesses driving local and regional economies. If you're running a business and want help with progressing your data or technology usage, send us a message and let's talk about how we can close that gap for you.",
+    "I grew up in Westbrook, Maine, and I've spent the last fifteen years in London, building data and technology systems for large multinational companies.",
+    "I've stayed hands-on the whole time: designing and shipping custom products, building data platforms and automations with engineering teams, and now creating AI tools. I can tell you quickly and honestly what today's technology will do for your business and, just as usefully, what it won't.",
+    "I'm building DahmsIO to bring that experience to businesses that haven't had access to it. For bigger projects, I bring in specialists I've worked alongside for years, so you get a full team with one person accountable. If you want more from your data or technology, send us a message and let's talk.",
   ],
   // Source copy styles the signature as "— Eric Dahms, Founder" with a leading em dash;
   // omitted here since the page-wide "no em dash" constraint takes precedence over that one
@@ -185,21 +96,8 @@ export const FOUNDERS_NOTE = {
   ],
 };
 
-export const WHERE_WE_WORK = {
-  eyebrow: "Where We Work",
-  locations: [
-    { city: "Westbrook, ME, USA", address: "607 Bridgton Rd, Westbrook, ME 04092" },
-    // "Covent Garden" and "United Kingdom" dropped from the visible line (kept in the
-    // JSON-LD streetAddress/addressCountry, which are separate fields) so this fits on one
-    // line, matching Westbrook's single-line address instead of wrapping to two — see
-    // About.jsx's Where We Work section for why that wrap mattered (visual balance, not a
-    // top-alignment bug: both city labels were already pixel-aligned).
-    { city: "London, UK", address: "71-75 Shelton Street, London, WC2H 9JQ" },
-  ],
-};
-
 export const CTA = {
-  heading: "Start with a conversation",
-  text: "Tell us what's slowing your business down. You'll get an honest answer on whether we can help, what it would take, and what it would cost, before you commit to anything.",
+  heading: "Ready to work together?",
+  text: "Good partnerships start with a conversation. Tell us about your business and where you want to take it.",
   buttonLabel: "Get in touch",
 };
