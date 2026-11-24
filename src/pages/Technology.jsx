@@ -12,7 +12,8 @@ import {
   PIPELINE,
   CTA,
 } from "../data/technology.js";
-import { DEMOS } from "../data/demos.js";
+// Demo section hidden (Eric, 2026-11-24). To restore: uncomment this import and the demos prop below.
+// import { DEMOS } from "../data/demos.js";
 
 export default function Technology() {
   return (
@@ -30,7 +31,7 @@ export default function Technology() {
         pipelineEyebrow={PIPELINE_EYEBROW}
         pipelineHeading={PIPELINE_HEADING}
         pipeline={PIPELINE}
-        demos={DEMOS}
+        // demos={DEMOS}
         ctaHeading={CTA.heading}
         ctaText={CTA.text}
         ctaButtonLabel={CTA.buttonLabel}
