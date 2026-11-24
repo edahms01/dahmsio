@@ -1,7 +1,8 @@
 # DahmsIO website
 
-Marketing site for DahmsIO, a solo data & technology consultancy serving small and mid-sized
-businesses across New England (ME, NH, VT, MA, RI, CT).
+Marketing site for DahmsIO, a data, technology, and AI consultancy. DahmsIO is founded by
+Eric Dahms and staffs each project from a vetted network of specialists, with one person
+accountable to the client. Positioning is size- and region-neutral: "businesses of any size".
 
 ## Stack
 
@@ -22,18 +23,60 @@ page section constants. Keep this pattern for any new page.
 
 ## Audience
 
-Non-technical business owners and operators. Copy is plain-language, pain-point-led, never
-jargon.
+Non-technical business owners and operators. Copy is plain-language, problem-led, never
+jargon. Assume the reader knows their problem, not the technology that fixes it.
+
+## Positioning
+
+- Visionary line (Home H1, title, footer tagline): "Where innovation meets intelligence."
+- Positioning line (Home hero subline; echoed in meta descriptions and the About hero):
+  "We bring enterprise-grade data, technology, and AI to businesses of any size, scoped and
+  priced to fit your goals."
+- Three supporting points, each with proof on the site:
+  1. One lead, the right specialists (About "Our network", Home principles).
+  2. Plain English, scope and price agreed up front (Home principles, Contact FAQ).
+  3. What we build, you own (Home principles, Contact engagement models).
+- "Innovation" and "intelligence" echoes: tie each to something concrete. Intelligence =
+  numbers you can make decisions from (Data side). Innovation = new software and AI put to
+  work (Technology side). Current placements: Data intro and Data CTA, Technology hero
+  subline, About Background. Don't add more without a reason.
+- Data page motif: "decisions you can trust". Keep "trust" to the headline, the section
+  heading, and nowhere else nearby.
 
 ## Voice
 
-Plural/company voice ("we," "our," "us") throughout — the site reads as DahmsIO the company,
-not a personal freelance pitch, even though Eric Dahms is the sole consultant behind it.
-The `/about` page is the deliberate exception in framing, not in pronoun: it can and should
-name Eric Dahms as founder (search engines and buyers both weight a real, credentialed human
-as a trust signal), but should read as company history — "Our Story," not a personal
-first-person bio. Don't reintroduce first-person-singular voice site-wide; that was a prior
-misreading of the original task brief, corrected in T5.
+- Plural company voice ("we", "our", "us") everywhere. DahmsIO is a team, not a solo
+  practice. The only first-person copy is the signed Founder's Note on `/about`.
+- Write "DahmsIO" as one word in readable text; "DahmsI/O" exists only in the logo files.
+- "Consultant" is fine as a category noun, never as a self-reference (use "we").
+
+## Copy rules
+
+Run new or edited copy through the `dahmsio-copywriting` and `humanizer` skills before
+shipping. Hard rules:
+
+- No em or en dashes in rendered or hidden copy (ranges use "to": "$5k to $15k"). When
+  removing a dash, use a period, colon, or parentheses. Never a comma splice.
+- Oxford comma in every list of three or more.
+- Sentence case for headings. Eyebrows are typed in uppercase by CSS.
+- Never use "solution" or "solutions". Never "journey".
+- No "X without Y" constructions. No negation lists ("No X, no Y").
+- Avoid staged contrasts ("X, not Y", "instead of", "rather than", "isn't the same as").
+  The site keeps exactly one on purpose: About Background ("aren't short on tools or data").
+- Cut filler intensifiers: "actually", "genuinely", "just", "exactly", "quietly", "real".
+  Don't repeat "honest" or "straight answer".
+- No "Whether you're X or Y" openers, no staged run-ups, no one-line summary closers.
+- Say "updated automatically", not "current". Avoid "gap" outside Consulting's staffing sense.
+- Jargon to avoid in client-facing copy: RAG (say "AI Chat"), pipeline, data stack,
+  full stack, orchestration, agents, production-ready, iterate, stakeholder alignment,
+  resourcing, operationalize.
+- No claims that assume a track record ("most projects", "our clients") and no promises
+  of anything free.
+- Closing CTA headings are questions ("Ready to...?"). Step-card section headings use the
+  "From X to Y." shape.
+- No employer names anywhere. No business-size language about a specific client.
+- Geography: none in visible copy. The Westbrook and London addresses live only in the
+  `ProfessionalService` JSON-LD (`src/data/organization.js`).
 
 ## Scope guardrails
 
@@ -43,6 +86,8 @@ No industry-specific pages yet. The site is deliberately horizontal right now. D
 ## Demo Section and Case Study Pages
 
 ### Demo Section on Technology Page
+- Currently hidden: the section is commented out on the Technology page (demos may live in
+  Eric's personal portfolio instead). Don't re-enable it unless asked.
 - Located in `src/components/DemoSection.jsx`
 - Renders as a main section (same structural styling as Capabilities and Pipeline)
 - Includes eyebrow label ("Featured Demos") defined in `src/data/demos.js`
